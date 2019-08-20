@@ -1,0 +1,127 @@
+<br />
+<div>
+  <h4 style="text-align: center; color: rgb(3, 54, 148)">النتائج</h4>
+</div>
+<br />
+<div *ngIf="noDataFound">
+  <br>
+  <alert type="info">
+    <strong>لا توجد اي طلبات </strong>
+  </alert>
+</div>
+
+<div *ngIf="errorMessage">
+  <br>
+  <alert type="danger">
+    <strong>عفوا، حدث خطا، حاول مره أخرى. </strong>
+  </alert>
+</div>
+
+
+
+<!-- <button type="button" class="btn btn-pill btn-primary" style="width: 100px;  color:white !important;"
+  (click)="searchByKey($event)">بحث <i class="fa fa-search"></i></button>
+<input style=" width: 200px; border: 2px solid grey; border-radius: 4px;" type="text" placeholder="    "
+  [(ngModel)]="searchKey" (keyup.enter)="searchByKey($event)" />
+<span class="small text-muted"> يمكن البحث باستخدام ( الرقم القومي - رقم الموبيل - جزء من اسم المواطن - التاريخ) </span> -->
+
+<br />
+<form class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSearch()" novalidate>
+  <div class="form-group row ">
+    <div class="col-md-2">
+      <button type="button" (click)="printResults()" class="btn btn-md btn-success"><i class="fa fa-print"></i>
+        طباعة </button>
+    </div>
+
+    <label class="col-md-0 col-form-label font-weight-bold" for="sDate"><b style="color:darkred"> من : </b></label>
+    <div class="col-md-2">
+      <input [(ngModel)]="startDate" #sDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && sDate.invalid }"
+        required class="form-control" type="date" name="sDate" style="text-align: right" placeholder="date">
+      <div *ngIf="f.submitted && sDate.invalid" class="invalid-feedback">
+        <div *ngIf="sDate.errors.required"> برجاء ادخال تاريخ</div>
+      </div>
+    </div>
+    <label class="col-md-0 col-form-label font-weight-bold" for="eDate"><b style="color:darkred"> الي : </b></label>
+    <div class="col-md-2">
+      <input [(ngModel)]="endDate" #eDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && eDate.invalid }" required
+        class="form-control" type="date" name="eDate" style="text-align: right" placeholder="date">
+      <div *ngIf="f.submitted && eDate.invalid" class="invalid-feedback">
+        <div *ngIf="f.submitted && eDate.invalid &&eDate.errors.required"> برجاء ادخال تاريخ</div>
+      </div>
+    </div>
+    <label class="col-md-0 col-form-label font-weight-bold" for="requestStatus"><b style="color:darkred">نتيجة
+        الطلب </b></label>
+    <div class="col-md-2">
+      <select name="requestStatus" class="form-control" [(ngModel)]="selectedRequestStatusId" #requestStatus="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && requestStatus.invalid }" required>
+        <option *ngFor="let requestStatus of requestStatuses" [value]="requestStatus.id">{{requestStatus.name}}
+        </option>
+      </select>
+      <div *ngIf="f.submitted && requestStatus.invalid" class="invalid-feedback">
+        <div *ngIf="requestStatus.errors.required"> برجاء اختيار نتيجة الطلب </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-search"></i>
+        بحث</button>
+    </div>
+  </div>
+</form>
+
+
+<table id="resultsTable" class="table table-responsive-sm table-hover table-outline mb-0">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th class="text-center">رقم الطلب</th>
+      <th class="text-center">الرقم القومي</th>
+      <th class="text-center">الاسم </th>
+      <th class="text-center">العنوان </th>
+      <th class="text-center">النتيجة</th>
+      <th class="text-center">الاعاقة</th>
+      <!-- <th class="text-center">تعديل</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let request of requestResults ; let i=index">
+      <td class="text-center"><b>{{items+i+1}}</b></td>
+      <td class="text-center"><a
+          [routerLink]="['/request/', request.id,{componentMode: 'viewMode'}]"><b>{{request.requestId}}</b></a>
+
+      </td>
+      <td class="text-center">
+        <b>{{request.nationalId}}</b>
+      </td>
+      <td class="text-center">
+        <b>{{request.citizenName}}</b>
+      </td>
+      <td class="text-center">
+        <b>{{request.address}}</b>
+      </td>
+      <td class="text-center">
+        <b>{{request.result}}</b>
+      </td>
+      <td class="text-center">
+        <b>{{request.disability}}</b>
+      </td>
+      <!-- <td class="text-center">
+        <button type="button" class="edit-btn btn btn-info" (click)="onEdit(request.id)">تعديل
+          <i class="fa fa-edit"></i>
+        </button>
+      </td> -->
+
+    </tr>
+
+
+  </tbody>
+</table>
+<hr>
+<ul class="nav nav-pills justify-content-center">
+  <li class="page-item"><a class="page-link" (click)="prevPage($event)">السابق</a></li>
+
+  <li class="nav-item" *ngFor="let p of pages; let i=index">
+    <a [ngClass]="{'active':i==page}" (click)="setPage(i,$event)" class="nav-link active" href="#">{{i}}</a>
+  </li>
+  <li class="page-item"><a class="page-link" (click)="nextPage($event)">التالي</a></li>
+</ul>
+<hr>

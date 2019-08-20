@@ -1,0 +1,64 @@
+<div class="animated fadeIn ">
+
+  <div *ngIf="successMessage">
+      <br>
+      <alert type="success">
+          <strong>تم إضافه بيانات المدينة بنجاح! </strong>
+      </alert>
+  </div>
+  <div *ngIf="! successMessage">
+      <br>
+  </div>
+  <div class="row ">
+      <div style="width:100% !important;">
+          <div class="card">
+              <div class="card-header">
+                  <strong>بيانات المدينة</strong>
+                  <div class="card-header-actions">
+                      <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
+                  </div>
+              </div>
+
+              <div (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" class="card-body ">
+                  <form class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" novalidate>
+
+                      <div class="form-group row">
+                          <label class="col-md-1 col-form-label font-weight-bold" for="name"> اسم المدينة </label>
+                          <div class="col-md-6">
+                              <input [attr.disabled]="disabled ? '' : null" maxlength="100" [(ngModel)]="city.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required type="text" name="name" class="form-control" >
+                              <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                                  <div *ngIf="name.errors.required"> برجاء ادخال  اسم المدينة</div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-md-1 col-form-label font-weight-bold" for="governate">المحافظة</label>
+                        <div class="col-md-6">
+                                <!-- <input name="governate"  class="form-control" type="text" list="governates-list" [(ngModel)]="selectedGovernateId" #governate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && governate.invalid }" (change)="onGovernateChanged(governate.value)" required/> -->
+                                <select [attr.disabled]="disabled ? '' : null" name="governate"  class="form-control" [(ngModel)]="selectedGovernateId" #governate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && governate.invalid }" required >
+                                  <option *ngFor="let governate of governates"  [value]="governate.id" >{{governate.name}}</option>
+                                </select>
+                                <div *ngIf="f.submitted && governate.invalid" class="invalid-feedback">
+                                        <div *ngIf="governate.errors.required"> برجاء اختيار المحافظة</div>
+                                </div>
+                        </div>
+                      </div>
+
+                      <div *ngIf="componentMode=='editMode'" class="card-footer">
+                        <button type="submit" class="btn btn-sm btn-success" ><i class="fa fa-dot-circle-o"></i>حفظ</button>
+                        <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i> رجوع</button>
+                      </div>
+                      <div *ngIf="componentMode=='viewMode'" class="card-footer">
+                          <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i> رجوع</button>
+                      </div>
+
+                  </form>
+              </div>
+
+          </div>
+
+      </div>
+
+  </div>
+</div>

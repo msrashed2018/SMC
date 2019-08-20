@@ -1,0 +1,175 @@
+<div class="animated fadeIn ">
+
+  <div class="row ">
+    <div style="width:100% !important;">
+      <div class="card">
+
+
+        <div class="card-header">
+          <strong>بيانات اللجنة</strong>
+          <div class="card-header-actions">
+            <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i
+                class={{iconCollapse}}></i></button>
+          </div>
+        </div>
+        <div (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" class="card-body ">
+          <form class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" novalidate>
+            <!-- <div class="form-group row">
+                <label class="col-md-2 col-form-label font-weight-bold" for="name"> الاسم (*)</label>
+                <div class="col-md-6">
+                  <input maxlength="100" [(ngModel)]="requestModel.name"  #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required type="text"  name="name" class="form-control" >
+                  <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                    <div *ngIf="name.errors.required"> برجاء ادخال اسم اللجنة</div>
+                  </div>
+                </div>
+              </div> -->
+
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="type-select">نوع اللجنة</label>
+              <div class="col-md-6">
+                <select [(ngModel)]="requestModel.type" #type="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && type.invalid }" name="type-select" class="form-control"
+                  required>
+                  <option value="رمد">رمد</option>
+                  <option value="عظام">عظام</option>
+                </select>
+                <div *ngIf="f.submitted && type.invalid" class="invalid-feedback">
+                  <div *ngIf="type.errors.required"> برجاء اختيار نوع اللجنة</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="date-input"> تاريخ الانعقاد</label>
+              <div class="col-md-6">
+                <input [(ngModel)]="requestModel.date" #date="ngModel" type="date" name="date-input"
+                [ngClass]="{ 'is-invalid': f.submitted && date.invalid }" class="form-control" required>
+                <div *ngIf="f.submitted && date.invalid" class="invalid-feedback">
+                  <div *ngIf="date.errors.required"> برجاء اختيار تاريخ اللجنة</div>
+                </div>
+              </div>
+              
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="function-select">وظيفة اللجنة</label>
+              <div class="col-md-6">
+                <select [(ngModel)]="requestModel.function" #function="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && function.invalid }" name="function-select"
+                  class="form-control" required>
+                  <option value="تظلمات">تظلمات</option>
+                  <option value="اخري">اخري</option>
+                </select>
+                <div *ngIf="f.submitted && function.invalid" class="invalid-feedback">
+                  <div *ngIf="function.errors.required"> برجاء اختيار وظيفة اللجنة</div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="zone-select">المقر</label>
+              <div class="col-md-6">
+                <select [(ngModel)]="selectedZoneId" name="zone-select" #zone="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && zone.invalid }" class="form-control" required>
+                  <option *ngFor="let zone of zones" [value]="zone.id">{{zone.name}}</option>
+                </select>
+                <div *ngIf="f.submitted && zone.invalid" class="invalid-feedback">
+                  <div *ngIf="zone.errors.required"> برجاء اختيار المقر التابع للعضو</div>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="member1-select">العضو الاول</label>
+              <div class="col-md-6">
+                <select [(ngModel)]="selectedMember1Id" name="member1-select" #member1="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && member1.invalid }" class="form-control" required>
+                  <option *ngFor="let member of members" [value]="member.id">{{member.name}} | {{member.title}}</option>
+                </select>
+                <div *ngIf="f.submitted && member1.invalid" class="invalid-feedback">
+                  <div *ngIf="member1.errors.required"> برجاء اختيار العضو</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="member2-select">العضو الثاني</label>
+              <div class="col-md-6">
+                <select [(ngModel)]="selectedMember2Id" name="member2-select" #member2="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && member2.invalid }" class="form-control" required>
+                  <option *ngFor="let member of members" [value]="member.id">{{member.name}} | {{member.title}}</option>
+                </select>
+                <div *ngIf="f.submitted && member2.invalid" class="invalid-feedback">
+                  <div *ngIf="member2.errors.required"> برجاء اختيار العضو</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="member3-select">العضو الثالث</label>
+              <div class="col-md-6">
+                <select [(ngModel)]="selectedMember3Id" name="member3-select" class="form-control">
+                  <option></option>
+                  <option *ngFor="let member of members" [value]="member.id">{{member.name}} | {{member.title}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="member4-select">العضو الرابع</label>
+              <div class="col-md-6">
+                <select [(ngModel)]="selectedMember4Id" name="member4-select" class="form-control">
+                  <option></option>
+                  <option *ngFor="let member of members" [value]="member.id">{{member.name}} | {{member.title}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="member5-select">العضو الخامس</label>
+              <div class="col-md-6">
+                <select [(ngModel)]="selectedMember5Id" name="member5-select" class="form-control">
+                  <option></option>
+                  <option *ngFor="let member of members" [value]="member.id">{{member.name}} | {{member.title}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="member6-select">العضو السادس</label>
+              <div class="col-md-6">
+                <select [(ngModel)]="selectedMember6Id" name="member6-select" #member6="ngModel" class="form-control">
+                  <option></option>
+                  <option *ngFor="let member of members" [value]="member.id">{{member.name}} | {{member.title}}</option>
+                </select>
+              </div>
+            </div>
+
+
+
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="description-input">ملاحظات</label>
+              <div class="col-md-6">
+                <input maxlength="150" [(ngModel)]="requestModel.description" #description="ngModel" type="text"
+                  id="description-input" name="description-input" class="form-control" placeholder="">
+              </div>
+            </div>
+
+
+
+            <div class="card-footer">
+              <div *ngIf="errorMessage != '' ">
+                <alert type="danger">{{errorMessage}}</alert>
+              </div>
+              <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+                أضف اللجنة</button>
+              <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i>
+                إلغاء</button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <!--/.row-->
+</div>

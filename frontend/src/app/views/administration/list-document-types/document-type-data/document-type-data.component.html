@@ -1,0 +1,71 @@
+<div class="animated fadeIn ">
+
+  <div class="row ">
+    <div style="width:100% !important;">
+      <div class="card">
+        <div class="card-header">
+          <strong>بيانات نوع الملف</strong>
+          <div class="card-header-actions">
+            <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i
+                class={{iconCollapse}}></i></button>
+          </div>
+        </div>
+
+        <div (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" class="card-body ">
+          <form class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()">
+
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="text-input"> اسم النوع (*)</label>
+              <div class="col-md-6">
+                <input maxlength="50" [(ngModel)]="requestModel.name" #type="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && type.invalid }" required type="text" name="text-input"
+                  class="form-control">
+                <div *ngIf="f.submitted && type.invalid" class="invalid-feedback">
+                  <div *ngIf="type.errors.required"> هذا الحقل مطلوب</div>
+                </div>
+                <!-- <span class="help-block">ادخل الاسم</span> -->
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="category-select">تصنيف</label>
+              <div class="col-md-6">
+                <select [(ngModel)]="requestModel.category" #category="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && category.invalid }" name="category-select"
+                  class="form-control" required>
+                  <option value="PERSONAL">اوراق شخصية</option>
+                  <option value="EYE">اوراق كشف الرمد</option>
+                  <option value="BONES">اوراق كشف العظام</option>
+                  <option value="OTHER">اوراق اخري</option>
+                </select>
+                <div *ngIf="f.submitted && category.invalid" class="invalid-feedback">
+                  <div *ngIf="category.errors.required"> برجاء اختيار نوع اللجنة</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="text-input">ملاحظات</label>
+              <div class="col-md-6">
+                <input [(ngModel)]="requestModel.description" #description="ngModel" type="text" id="text-input"
+                  name="text-input" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="card-footer">
+              <div *ngIf="errorMessage != '' ">
+                <alert type="danger">{{errorMessage}}</alert>
+              </div>
+              <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+                أضف النوع</button>
+              <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i>
+                إلغاء</button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <!--/.row-->
+</div>

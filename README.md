@@ -1,1 +1,1 @@
-# SMC
+# SMC-web-tool

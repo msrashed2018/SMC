@@ -1,0 +1,93 @@
+<br />
+<div>
+  <h4 style="text-align: center; color: rgb(3, 54, 148)">الطلبات</h4>
+</div>
+<br />
+<div *ngIf="noDataFound">
+  <br>
+  <alert type="info">
+    <strong>لا توجد اي طلبات </strong>
+  </alert>
+</div>
+
+<div *ngIf="errorMessage">
+  <br>
+  <alert type="danger">
+    <strong>عفوا، حدث خطا، حاول مره أخرى. </strong>
+  </alert>
+</div>
+<button type="button" class="btn btn-pill btn-primary" style="width: 100px;  color:white !important;"
+  (click)="searchByKey($event)">بحث <i class="fa fa-search"></i></button>
+<!-- <output class="searchHint" > من فضلك ادخل الرقم القومي :</output> -->
+<input style=" width: 200px; border: 2px solid grey; border-radius: 4px;" type="text"
+  placeholder="    " [(ngModel)]="searchKey" 
+ (keyup.enter)="searchByKey($event)"/> 
+<span class="small text-muted"> يمكن البحث باستخدام   ( الرقم القومي - رقم الموبيل - جزء من اسم المواطن - التاريخ) </span> 
+
+<br /><br />
+<table class="table table-responsive-sm table-hover table-outline mb-0">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th class="text-center">رقم الطلب</th>
+      <th class="text-center">الرقم القومي</th>
+      <th class="text-center">اسم المواطن</th>
+      <th class="text-center">نوع الطلب</th>
+      <th class="text-center">حالة الطلب</th>
+      <th class="text-center">تاريخ التسجيل</th>
+      <th class="text-center">تعديل</th>
+      <th class="text-center">حذف</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let request of requests ; let i=index">
+      <td class="text-center"><b>{{items+i+1}}</b></td>
+      <td class="text-center"><a
+          [routerLink]="['/request/', request.id,{componentMode: 'viewMode'}]"><b>{{request.id}}</b></a><div class="small text-muted">
+            تسجيل بواسطة: {{request.createdBy}}
+          </div></td>
+      <td class="text-center">
+        <b *ngIf="request.citizen != null">{{request.citizen.nationalId}}</b>
+      </td>
+      <td class="text-center">
+        <div><a *ngIf="request.citizen != null"
+            [routerLink]="['/citizen/view-edit', request.citizen.id,{componentMode: 'viewMode'}]"><b>{{request.citizen.name}}</b></a>
+        </div>
+        <div class="small text-muted">
+          تسجيل بواسطة: {{request.createdBy}}
+        </div>
+      </td>
+      <td class="text-center">
+        <b *ngIf="request.requestType != null">{{request.requestType.name}}</b>
+      </td>
+      <td class="text-center">
+        <b *ngIf="request.requestStatus != null">{{request.requestStatus.name}}</b>
+      </td>
+      <td class="text-center">
+        <b>{{request.requestDate}}</b>
+      </td>
+      <td class="text-center">
+        <button type="button" class="edit-btn btn btn-info" (click)="onEdit(request.id)">تعديل
+          <i class="fa fa-edit"></i>
+        </button>
+      </td>
+      <td class="text-center">
+        <button type="button" class="delete-btn btn btn-danger" (click)="onDelete(request.id)">حذف
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+
+
+  </tbody>
+</table>
+<hr>
+<ul class="nav nav-pills justify-content-center">
+  <li class="page-item"><a class="page-link" (click)="prevPage($event)">السابق</a></li>
+
+  <li class="nav-item" *ngFor="let p of pages; let i=index">
+    <a [ngClass]="{'active':i==page}" (click)="setPage(i,$event)" class="nav-link active" href="#">{{i}}</a>
+  </li>
+  <li class="page-item"><a class="page-link" (click)="nextPage($event)">التالي</a></li>
+</ul>
+<hr>

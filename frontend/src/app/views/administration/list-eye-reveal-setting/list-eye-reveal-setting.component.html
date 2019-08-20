@@ -1,0 +1,94 @@
+<br />
+<div>
+  <h4 style="text-align: center; color: rgb(3, 54, 148)">اعدادات كشف الرمد</h4>
+</div>
+
+<br />
+<div *ngIf="noDataFound">
+  <br>
+  <alert type="info">
+    <strong>لا توجد بيانات مطابقه للمدخلات. </strong>
+  </alert>
+</div>
+
+<div *ngIf="errorMessage">
+  <br>
+  <alert type="danger">
+    <strong>عفوا، حدث خطا، حاول مره أخرى. </strong>
+  </alert>
+</div>
+<button (click)="onAdd()" class="btn btn-success "><strong> اضافة</strong> <i class="fa fa-plus-circle"></i></button>
+<br> <br>
+<table class="table table-responsive-sm table-hover table-outline mb-0 text-center">
+  <thead class="thead-light">
+    <tr>
+      <th class="text-center">#</th>
+      <th class="text-center">قياس العين اليمني</th>
+      <th class="text-center">قياس العين اليسري</th>
+      <th class="text-center">تمييز الالوان</th>
+      <th class="text-center">النظارة</th>
+      <th class="text-center">حول</th>
+      <th class="text-center">النتيجة</th>
+      <th class="text-center">تعديل</th>
+      <th class="text-center">مسح</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let setting of settings ; let i=index">
+      <td class="text-center"><a
+          [routerLink]="['/administration/eye-reveal-settings', setting.id,{componentMode: 'viewMode'}]"><b>{{items+i+1}}</b></a>
+      </td>
+      <td class="text-center">
+        <div><strong>{{setting.rightMeasure.title}}</strong></div>
+      </td>
+      <td class="text-center">
+        <div><strong>{{setting.leftMeasure.title}}</strong></div>
+      </td>
+      <td class="text-center">
+        <div>
+          <b *ngIf="setting.distinguishColor=='1'">نعم </b>
+          <b *ngIf="setting.distinguishColor=='0'">لا </b>
+        </div>
+      </td>
+      <td class="text-center">
+        <div>
+          <b *ngIf="setting.useGlasses=='1'">نعم </b>
+          <b *ngIf="setting.useGlasses=='0'">لا </b>
+        </div>
+      </td>
+      <td class="text-center">
+        <div>
+          <b *ngIf="setting.squint=='1'">نعم </b>
+          <b *ngIf="setting.squint=='0'">لا </b>
+        </div>
+      </td>
+      <td class="text-center">
+        <div>
+          <b style="color: green" *ngIf="setting.result=='مقبول'">مقبول</b>
+          <b style="color: red" *ngIf="setting.result=='مرفوض'">مرفوض</b>
+          <b style="color: orange" *ngIf="setting.result=='اعادة مناظرة'">اعادة مناظرة</b>
+        </div>
+      </td>
+      <td class="text-center">
+        <button type="button" class="edit-btn btn btn-info" (click)="onEdit(setting.id)">تعديل
+          <i class="fa fa-edit"></i>
+        </button>
+      </td>
+      <td class="text-center">
+        <button type="button" class="delete-btn btn btn-danger" (click)="onDelete(setting.id)">حذف
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<ul class="nav nav-pills justify-content-center">
+  <li class="page-item"><a class="page-link" (click)="prevPage($event)">السابق</a></li>
+
+  <li class="nav-item" *ngFor="let p of pages; let i=index">
+    <a [ngClass]="{'active':i==page}" (click)="setPage(i,$event)" class="nav-link active" href="#">{{i}}</a>
+  </li>
+  <li class="page-item"><a class="page-link" (click)="nextPage($event)">التالي</a></li>
+</ul>
+<hr>

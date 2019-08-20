@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" dir="rtl" lang="ar">
+
+<head>
+    <title>الكشف الطبي</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style type="text/css">
+        p {
+            margin: 0;
+            padding: 0;
+            font-size: 11px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        /* table,
+            th,
+            td {
+                border: 1px solid black; border-collapse: collapse;
+            } */
+
+        th {
+            text-align: center;
+        }
+
+        td {
+            padding: 0px;
+        }
+    </style>
+
+</head>
+
+<body vlink="blue" link="blue">
+
+    <div>
+        <table>
+            <tr>
+                <td style="text-align: center">
+                    <img width="80" height="80" src="../../../../../assets/img/brand/logo_2.png"
+                        alt="background image" />
+                </td>
+                <td></td>
+                <td rowspan="2"><img style="border: 1px solid #ddd;" width="120" height="140"
+                        src="frontend/coreui-free-angular-admin-template/src/assets/img/brand/logo_2.png"
+                        alt="صورة شخصية" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <p style="text-align: center"><b> وزارة الصحة والسكان</b></p>
+                    <p style="text-align: center"><b> الإدارة العامة للمجالس الطبية</b></p>
+                    <p style="text-align: center"><b> المتخصصة</b></p>
+                    <p style="text-align: center"><b> السيارات المجهزة</b></p>
+                </td>
+                <td>
+                    <h2 style="text-align: center"> نتيجة الكشف الطبي رمد</h2>
+                </td>
+
+            </tr>
+
+        </table>
+        <br>
+        <table style=" border-collapse:separate; border-spacing: 0 1px">
+            <tr>
+                <td colspan="2">
+                    <p>الرقم القومي : ${nationalId}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>الاسم : ${name}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>العنوان : ${address}</p>
+                </td>
+                <td>
+                    <p>المحافظة: ${governate}</p>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>تاريخ كشف الرمد : ${eyeCommittee}</p>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <table style="border: 1px solid black; border-collapse: collapse;">
+            <col width="30%">
+            <col width="35%">
+            <col width="35%">
+            <tr style="border: 1px solid black; border-collapse: collapse;">
+                <th></th>
+                <th>
+                    <p><b> العين اليمنى</p></b>
+                </th>
+                <th>
+                    <p><b>العين اليسرى</b></p>
+                </th>
+
+            </tr>
+            <tr style="border: 1px solid black; border-collapse: collapse;">
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: right; padding: 20px;">
+                    <p>قوة الإبصار</p>
+                </td>
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: right; padding: 20px;"></td>
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: right; padding: 20px;"></td>
+            </tr>
+            <tr style="border: 1px solid black; border-collapse: collapse;">
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: right; padding: 20px;">
+                    <p>النظارة</p>
+                </td>
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: center; padding: 20px;">
+                    <p>بنظارة&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
+                    </p>
+                </td>
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: center; padding: 20px;">
+                    <p>بدون
+                        نظارة&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
+                    </p>
+                </td>
+
+            </tr>
+            <tr style="border: 1px solid black; border-collapse: collapse;">
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: right; padding: 20px;">
+                    <p>تمييز الألوان</p>
+                </td>
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: center; padding: 20px;">
+                    <p>يميز
+                        الألوان&#160;&#160;&#160;&#160;&#160;&#160;&#160;(&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
+                    </p>
+                </td>
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: center; padding: 20px;">
+                    <p>لا يميز
+                        الألوان&#160;&#160;&#160;&#160;&#160;&#160;&#160;(&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
+                    </p>
+                </td>
+            </tr>
+            <tr style="border: 1px solid black; border-collapse: collapse;">
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: right; padding: 20px;">
+                    <p> مجال النظر</p>
+                </td>
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: center; padding: 20px;">
+                    <p>سليم
+                        :&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
+                    </p>
+                </td>
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: center; padding: 20px;">
+                    <p>غير سليم
+                        :&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
+                    </p>
+                </td>
+            </tr>
+            <tr style="border: 1px solid black; border-collapse: collapse;">
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: right; padding: 20px;">
+                    <p>يوجد حول حقيقي أو ظاهري يؤثر على سلامة الرؤيا</p>
+                </td>
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: center; padding: 20px;">
+                    <p>موجود
+                        :&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
+                    </p>
+                </td>
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: center; padding: 20px;">
+                    <p>غير موجود
+                        :&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
+                    </p>
+                </td>
+
+            </tr>
+            <tr style="border: 1px solid black; border-collapse: collapse;">
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: center; padding: 20px;"
+                    colspan="3">
+                    <p style="font-size: 13pt"><b>قرار اللجنة</b></p>
+                </td>
+            </tr>
+            <tr style="border: 1px solid black; border-collapse: collapse;">
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: center; padding: 20px;">
+                    <p>لائق&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
+                    </p>
+                </td>
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: center; padding: 20px;">
+                    <p>غير
+                        لائق&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
+                    </p>
+                </td>
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: center; padding: 20px;">
+                    <p>يعاد
+                        مناظرته&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
+                    </p>
+                </td>
+            </tr>
+
+        </table>
+        <br>
+        <hr>
+        <br>
+        <p>الطبيب المختص / ...........................................................
+            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+            الموظف المختص / ...................................................
+        </p>
+        <!-- <p>الموظف المختص / ...................................................</p> -->
+
+        <br>
+        <p>التاريخ :
+            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+            التاريخ :
+        </p>
+        <p></p>
+    </div>
+</body>
+
+</html>

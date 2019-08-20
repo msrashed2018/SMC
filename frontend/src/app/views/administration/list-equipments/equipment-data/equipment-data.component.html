@@ -1,0 +1,51 @@
+<div class="animated fadeIn ">
+
+  <div class="row ">
+    <div style="width:100% !important;">
+      <div class="card">
+        <div class="card-header">
+          <strong>بيانات السيارة</strong>
+          <div class="card-header-actions">
+            <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i
+                class={{iconCollapse}}></i></button>
+          </div>
+        </div>
+
+        <div (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" class="card-body ">
+          <form   class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" >
+
+            <div class="form-group row">
+              <label class="col-md-1 col-form-label font-weight-bold" for="name"> النوع (*)</label>
+              <div class="col-md-6">
+                <input maxlength="100" [(ngModel)]="requestModel.name"  #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required type="text"  name="text-input" class="form-control" >
+                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                  <div *ngIf="name.errors.required"> هذا الحقل مطلوب</div>
+                </div>
+                <!-- <span class="help-block">ادخل الاسم</span> -->
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-1 col-form-label font-weight-bold" for="text-input">ملاحظات</label>
+              <div class="col-md-6">
+                <input [(ngModel)]="requestModel.description" #price="ngModel" type="text" id="text-input" name="text-input" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="card-footer">
+                <div *ngIf="errorMessage != '' ">
+                    <alert type="danger">{{errorMessage}}</alert>
+                </div> 
+              <button type="submit" class="btn btn-sm btn-primary" ><i class="fa fa-dot-circle-o"></i>
+                أضف السيارة</button>
+              <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i> إلغاء</button>
+            </div>
+  
+          </form>
+        </div>
+        
+      </div>
+
+    </div>
+
+  </div>
+  <!--/.row-->
+</div>

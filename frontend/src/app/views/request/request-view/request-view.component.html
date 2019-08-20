@@ -1,0 +1,431 @@
+<div class="animated fadeIn ">
+
+    <div *ngIf="errorMessage">
+        <alert type="danger">
+            <strong>{{message}}</strong>
+        </alert>
+    </div>
+    <div *ngIf="successMessage">
+        <br>
+        <alert type="success">
+            <strong>{{message}}</strong>
+        </alert>
+    </div>
+
+    <br />
+
+    <div class="row ">
+        <div id="requestData" style="width:100% !important;">
+            <div class="card">
+                <div class="card-header">
+                    <strong style="color: rgba(27, 17, 168, 0.582);">البيانات الاساسية للطلب</strong>
+                    <div class="card-header-actions">
+                        <button type="button" class="card-header-action btn btn-link btn-minimize"
+                            (click)="toggleRequestDataCollapse()"><i class={{iconRequestDataCollapse}}></i></button>
+                    </div>
+                </div>
+
+                <div (collapsed)="requestDataCollapsed($event)" (expanded)="requestDataExpanded($event)"
+                    [collapse]="isRequestDataCollapsed" class="card-body ">
+                    <div class="form-group row">
+                        <label class=" col-md-2 col-form-label font-weight-bold" for="citizenName">اسم المواطن</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="citizen.name" #citizenName="ngModel" type="text"
+                                name="citizenName" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="nationalId">الرقم القومي</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="citizen.nationalId" #nationalId="ngModel"
+                                type="number" name="nationalId" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="requestId">رقم الطلب</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="request.id" #requestId="ngModel" type="number"
+                                name="requestId" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="requestType">نوع الطلب</label>
+                        <div *ngIf="request.requestType != null " class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="request.requestType.name" #requestType="ngModel"
+                                type="text" name="requestType" class="form-control">
+                        </div>
+                        <div *ngIf="request.requestType == null " class="col-md-5">
+                            <input [attr.disabled]="true" value="" type="text" name="requestType" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="createdBy">تسجيل بواسطة</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="request.createdBy" #createdBy="ngModel"
+                                type="text" name="createdBy" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="requestDate"> تاريخ التسجيل</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="request.requestDate" #createdDate="ngModel"
+                                type="text" name="requestDate" class="form-control">
+                        </div>
+                    </div>
+                    <div *ngIf="request.custom != null " class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="custom">الجمرك</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="request.custom.name" #custom="ngModel"
+                                type="text" name="custom" class="form-control">
+                        </div>
+                    </div>
+
+                    <div *ngIf="request.trafficManagement != null " class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="trafficManagement">ادارة
+                            المرور</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="request.trafficManagement.name"
+                                #trafficManagement="ngModel" type="text" name="trafficManagement" class="form-control">
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="requestState">حالة الطلب</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="request.state" #requestState="ngModel" type="text" name="requestState" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="eyeRevealState">حالة كشف الرمد</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="request.eyeRevealState" #eyeRevealState="ngModel" type="text" name="eyeRevealState" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="bonesRevealState">حالة كشف العظام</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="request.bonesRevealState" #bonesRevealState="ngModel" type="text" name="bonesRevealState" class="form-control">
+                        </div>
+                    </div> -->
+                    <!-- <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="zone">المقر</label>
+                        <div class="col-md-5">
+                            <input   [attr.disabled]="true" [(ngModel)]="request.zone.name" #zone="ngModel" type="text"
+                                name="zone" class="form-control">
+                        </div>
+                    </div> -->
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="description">ملاحظات</label>
+                        <div class="col-md-5">
+                            <textarea [attr.disabled]="true" [(ngModel)]="request.description" #description="ngModel"
+                                type="text" name="description" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="requestStatus">نتيجة الطلب</label>
+                        <div *ngIf="request.requestStatus != null " class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="request.requestStatus.name"
+                                #requestStatus="ngModel" type="text" name="requestStatus" class="form-control">
+                        </div>
+                        <div *ngIf="request.requestStatus == null " class="col-md-5">
+                            <input [attr.disabled]="true" value="" type="text" name="requestStatus"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+        <div style="width:100% !important;">
+            <div class="card">
+                <div class="card-header">
+                    <strong style="color: rgba(27, 17, 168, 0.582)">المدفوعات </strong>
+                    <div class="card-header-actions">
+                        <button type="button" class="card-header-action btn btn-link btn-minimize"
+                            (click)="togglePaymentDataCollapse()"><i class={{iconPaymentDataCollapse}}></i></button>
+                    </div>
+                </div>
+                <div (collapsed)="paymentDataCollapsed($event)" (expanded)="paymentDataExpanded($event)"
+                    [collapse]="isPaymentDataCollapsed" class="card-body ">
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="price">سعر الطلب</label>
+                        <div *ngIf="payment != null" class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="payment.price" #price="ngModel" type="number"
+                                name="price" class="form-control">
+                        </div>
+                        <div *ngIf="payment == null " class="col-md-5">
+                            <input [attr.disabled]="true" value="" type="number" name="price" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="receiptSerialNumber">رقم
+                            الايصال</label>
+                        <div *ngIf="payment != null " class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="payment.receiptSerialNumber"
+                                #receiptSerialNumber="ngModel" type="text" name="receiptSerialNumber"
+                                class="form-control">
+                        </div>
+                        <div *ngIf="payment == null " class="col-md-5">
+                            <input [attr.disabled]="true" value="" type="text" name="receiptSerialNumber"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="paymentDone">تم الدفع</label>
+                        <div *ngIf="payment != null " class="col-md-5">
+                            <input [attr.disabled]="true" type="checkbox" name="payment.paymentDone"
+                                [checked]="paymentDoneCheck" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="paymentDate">تاريخ الدفع</label>
+                        <div *ngIf="payment != null " class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="payment.paymentDate" #birthDate="ngModel"
+                                class="form-control" type="date" name="birthDate" style="text-align: right">
+                        </div>
+                        <div *ngIf="payment == null " class="col-md-5">
+                            <input [attr.disabled]="true" value="" class="form-control" type="date" name="birthDate"
+                                style="text-align: right">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div *ngIf="paymentErrorMessage != '' ">
+                            <alert type="danger">{{paymentErrorMessage}}</alert>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="width:100% !important;">
+            <div class="card">
+                <div class="card-header">
+                    <strong style="color: rgba(27, 17, 168, 0.582)">كشف الرمد</strong>
+                    <div class="card-header-actions">
+                        <button type="button" class="card-header-action btn btn-link btn-minimize"
+                            (click)="toggleEyeRevealDataCollapse()"><i class={{iconEyeRevealDataCollapse}}></i></button>
+                    </div>
+                </div>
+                <div (collapsed)="eyeRevealDataCollapsed($event)" (expanded)="eyeRevealDataExpanded($event)"
+                    [collapse]="isEyeRevealDataCollapsed" class="card-body ">
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="eyeCommitteeDate">تاريخ
+                            اللجنة</label>
+                        <div *ngIf="request.eyeCommittee != null " class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="request.eyeCommittee.date" type="text"
+                                name="eyeCommitteeDate" class="form-control">
+                        </div>
+                        <div *ngIf="request.eyeCommittee == null " class="col-md-5">
+                            <input [attr.disabled]="true" value="" type="text" name="eyeCommitteeDate"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="rightMeasure">قياس العين
+                            اليمني</label>
+                        <div *ngIf="eyeReveal != null && eyeReveal.rightEye != null" class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="eyeReveal.rightEye.title" type="text"
+                                name="rightMeasure" class="form-control">
+                        </div>
+                        <div *ngIf="eyeReveal == null || eyeReveal.rightEye == null" class="col-md-5">
+                            <input [attr.disabled]="true" value="" type="text" name="rightMeasure" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="leftMeasure">قياس العين
+                            اليسري</label>
+                        <div *ngIf="eyeReveal != null && eyeReveal.leftEye != null" class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="eyeReveal.leftEye.title" type="text"
+                                name="leftMeasure" class="form-control">
+
+                        </div>
+                        <div *ngIf="eyeReveal == null || eyeReveal.leftEye == null" class="col-md-5">
+                            <input [attr.disabled]="true" value="" type="text" name="leftMeasure" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="distinguish">التمييز</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" type="checkbox" name="distinguish"
+                                [checked]="distinguishCheck" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="squint">حول</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" type="checkbox" name="squint" [checked]="squintCheck" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="glasses">النظارة</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" type="checkbox" name="glasses" [checked]="glassesCheck" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="eyeRevealResult">النتيجة</label>
+                        <div *ngIf="eyeReveal != null" class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="eyeReveal.result" type="text"
+                                name="eyeRevealResult" class="form-control">
+                        </div>
+                        <div *ngIf="eyeReveal == null" class="col-md-5">
+                            <input [attr.disabled]="true" value="" type="text" name="eyeRevealResult"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="description">ملاحظات</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="eyeReveal.description" #description="ngModel"
+                                type="text" name="description" class="form-control">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div *ngIf="eyeRevealErrorMessage != '' ">
+                            <alert type="danger">{{eyeRevealErrorMessage}}</alert>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="width:100% !important;">
+            <div class="card">
+                <div class="card-header">
+                    <strong style="color: rgba(27, 17, 168, 0.582)">كشف العظام</strong>
+                    <div class="card-header-actions">
+                        <button type="button" class="card-header-action btn btn-link btn-minimize"
+                            (click)="toggleBonesRevealDataCollapse()"><i
+                                class={{iconBonesRevealDataCollapse}}></i></button>
+                    </div>
+                </div>
+                <div (collapsed)="bonesRevealDataCollapsed($event)" (expanded)="bonesRevealDataExpanded($event)"
+                    [collapse]="isBonesRevealDataCollapsed" class="card-body ">
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="bonesCommitteeDate"> تاريخ
+                            اللجنة</label>
+                        <div *ngIf="request.bonesCommittee != null" class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="request.bonesCommittee.date" type="text"
+                                name="bonesCommitteeDate" class="form-control">
+                        </div>
+                        <div *ngIf="request.bonesCommittee == null" class="col-md-5">
+                            <input [attr.disabled]="true" value="" type="text" name="bonesCommitteeDate"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="disabilityType">نوع الاعاقة</label>
+                        <div *ngIf="bonesReveal != null && bonesReveal.disability != null" class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="bonesReveal.disability.name" type="text"
+                                name="disabilityType" class="form-control">
+                        </div>
+                        <div *ngIf="bonesReveal == null || bonesReveal.disability == null" class="col-md-5">
+                            <input [attr.disabled]="true" value="" type="text" name="disabilityType"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="equipmentType">نوع المعده</label>
+                        <div *ngIf="bonesReveal != null && bonesReveal.disability != null && bonesReveal.disability.equipment != null "
+                            class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="bonesReveal.disability.equipment.name"
+                                type="text" name="equipmentType" class="form-control">
+                        </div>
+                        <div *ngIf="bonesReveal == null || bonesReveal.disability == null || bonesReveal.disability.equipment == null "
+                            class="col-md-5">
+                            <input [attr.disabled]="true" value="" type="text" name="equipmentType"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="bonesRevealResult">النتيجة</label>
+                        <div *ngIf="bonesReveal != null " class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="bonesReveal.result" type="text"
+                                name="bonesRevealResult" class="form-control">
+                        </div>
+                        <div *ngIf="bonesReveal == null " class="col-md-5">
+                            <input [attr.disabled]="true" value="" type="text" name="bonesRevealResult"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="description">ملاحظات</label>
+                        <div *ngIf="bonesReveal != null " class="col-md-5">
+                            <textarea [attr.disabled]="true" [(ngModel)]="bonesReveal.description"
+                                #description="ngModel" type="text" name="description" class="form-control"></textarea>
+                        </div>
+                        <div *ngIf="bonesReveal == null " class="col-md-5">
+                            <textarea [attr.disabled]="true" z type="text" name="description"
+                                class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div *ngIf="bonesRevealErrorMessage != '' ">
+                            <alert type="danger">{{bonesRevealErrorMessage}}</alert>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="width:100% !important;">
+            <div class="card">
+                <div class="card-header">
+                    <strong style="color: rgba(27, 17, 168, 0.582)">الاوراق</strong>
+                    <div class="card-header-actions">
+                        <button type="button" class="card-header-action btn btn-link btn-minimize"
+                            (click)="toggleFileUploadDataCollapse()"><i
+                                class={{iconFileUploadDataCollapse}}></i></button>
+                    </div>
+                </div>
+                <div (collapsed)="fileUploadDataCollapsed($event)" (expanded)="fileUploadDataExpanded($event)"
+                    [collapse]="isFileUploadDataCollapsed" class="card-body ">
+                    <div>
+                        <table class="table table-responsive-sm table-hover table-outline mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="text-center">الملفات</th>
+                                    <!-- <th class="text-center">تصنيف</th> -->
+                                    <th class="text-center">تحميل</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let requestDocument of requestDocuments ; let i=index">
+                                    <td class="text-center">
+                                        <i class="fa fa-file-pdf-o" style="font-size:18px;color:red"></i>
+                                        <b>{{requestDocument.name}}</b>
+                                    </td>
+                                    <!-- <td class="text-center">
+                                        <i class="fa fa-file-pdf-o" style="font-size:18px;color:red"></i>
+                                        <b>{{requestDocument.documentType.category}}</b>
+                                    </td> -->
+                                    <td class="text-center">
+                                        <button type="button" class="delete-btn btn btn-success"
+                                            (click)="getFile(requestDocument.name)">تحميل
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+                    <div class="card-footer">
+                        <div *ngIf="fileErrorMessage">
+                            <alert type="danger">
+                                <strong>{{fileErrorMessage}}</strong>
+                            </alert>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+        </div>
+    </div>

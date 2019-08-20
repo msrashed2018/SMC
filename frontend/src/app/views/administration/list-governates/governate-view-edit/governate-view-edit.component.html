@@ -1,0 +1,76 @@
+<div class="animated fadeIn ">
+
+    <div *ngIf="successMessage">
+        <br>
+        <alert type="success">
+            <strong>تم إضافه بيانات المدينة بنجاح! </strong>
+        </alert>
+    </div>
+    <div *ngIf="! successMessage">
+        <br>
+    </div>
+    <div class="row ">
+        <div style="width:100% !important;">
+            <div class="card">
+                <div class="card-header">
+                    <strong>بيانات المحافظة</strong>
+                    <div class="card-header-actions">
+                        <button type="button" class="card-header-action btn btn-link btn-minimize"
+                            (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
+                    </div>
+                </div>
+
+                <div (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed"
+                    class="card-body ">
+                    <form class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" novalidate>
+
+                        <div class="form-group row">
+                            <label class="col-md-1 col-form-label font-weight-bold" for="name"> اسم المحافظة </label>
+                            <div class="col-md-6">
+                                <input [attr.disabled]="disabled ? '' : null" maxlength="100"
+                                    [(ngModel)]="governate.name" #name="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required type="text"
+                                    name="name" class="form-control">
+                                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                                    <div *ngIf="name.errors.required"> برجاء ادخال اسم المحافظة</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-1 col-form-label font-weight-bold" for="zone">المقر</label>
+                            <div class="col-md-6">
+                                <select [attr.disabled]="disabled ? '' : null" name="zone" class="form-control"
+                                    [(ngModel)]="selectedZoneId" #zone="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && zone.invalid }" required>
+                                    <option *ngFor="let zone of zones" [value]="zone.id">{{zone.name}}</option>
+                                </select>
+                                <div *ngIf="f.submitted && zone.invalid" class="invalid-feedback">
+                                    <div *ngIf="zone.errors.required"> برجاء اختيار المقر</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="componentMode=='editMode'" class="card-footer">
+                            <div *ngIf="errorMessage != '' ">
+                                <alert type="danger">{{errorMessage}}</alert>
+                            </div>
+                            <button type="submit" class="btn btn-sm btn-success"><i
+                                    class="fa fa-dot-circle-o"></i>حفظ</button>
+                            <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i
+                                    class="fa fa-ban"></i> رجوع</button>
+                        </div>
+                        <div *ngIf="componentMode=='viewMode'" class="card-footer">
+                            <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i
+                                    class="fa fa-ban"></i> رجوع</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

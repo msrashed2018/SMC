@@ -1,0 +1,87 @@
+<div class="animated fadeIn ">
+
+  <div class="row ">
+    <div style="width:100% !important;">
+      <div class="card">
+        
+        
+        <div class="card-header">
+          <strong>بيانات المستخدم</strong>
+          <div class="card-header-actions">
+            <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i
+                class={{iconCollapse}}></i></button>
+          </div>
+        </div>
+        <div (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" class="card-body ">
+          <form   class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" novalidate>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="name"> اسم المستخدم (*)</label>
+              <div class="col-md-6">
+                <input maxlength="100" [(ngModel)]="requestModel.username"  #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required type="text"  name="name" class="form-control" >
+                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                  <div *ngIf="name.errors.required"> برجاء ادخال اسم المستخدم</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="name"> كلمة السر (*)</label>
+              <div class="col-md-6">
+                <input maxlength="20" [(ngModel)]="requestModel.password"  #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required type="password"  name="password" class="form-control" >
+                <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                  <div *ngIf="password.errors.required"> برجاء ادخال كلمة السر</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label font-weight-bold" for="zone-select">المقر</label>
+                <div class="col-md-6">
+                        <select  [(ngModel)]="selectedZoneId" name="zone-select" #zone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && zone.invalid }" class="form-control" required>
+                          <option *ngFor="let zone of zones" [value]="zone.id" >{{zone.name}}</option>
+                        </select>
+                        <div *ngIf="f.submitted && zone.invalid" class="invalid-feedback">
+                          <div *ngIf="zone.errors.required"> برجاء اختيار  المقر التابع المستخدم</div>
+                        </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label font-weight-bold" for="roles">الصلاحيات</label>
+              <div class="col-md-6">
+                  <div class="form-check" *ngFor="let role of roles; let i=index">
+                          <input  type="checkbox"
+                              name="roles"
+                              value="{{role}}"
+                              id="{{i}}"
+                              [checked]="rolesChecked[i]"
+                              (change)="onRoleChecked(i, $event)"/>
+                              <label for="{{i}}">{{role.description}}</label>
+                  </div>
+              </div>
+          </div>
+
+
+
+            <div class="card-footer">
+                <div *ngIf="errorMessage != '' ">
+                    <alert type="danger">{{errorMessage}}</alert>
+                </div>
+              <button type="submit" class="btn btn-sm btn-primary" ><i class="fa fa-dot-circle-o"></i>
+                أضف المستخدم</button>
+              <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i> إلغاء</button>
+            </div>
+  
+          </form>
+        </div>
+        
+      </div>
+
+    </div>
+
+  </div>
+  <!--/.row-->
+</div>

@@ -1,0 +1,65 @@
+<div class="animated fadeIn ">
+
+    <div *ngIf="successMessage">
+        <br>
+        <alert type="success">
+            <strong>تم إضافه بيانات القياس بنجاح! </strong>
+        </alert>
+    </div>
+    <div *ngIf="! successMessage">
+        <br>
+    </div>
+    <div class="row ">
+        <div style="width:100% !important;">
+            <div class="card">
+                <div class="card-header">
+                    <strong>بيانات قياس النظر</strong>
+                    <div class="card-header-actions">
+                        <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
+                    </div>
+                </div>
+
+                <div (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" class="card-body ">
+                    <form class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" novalidate>
+
+                        <div class="form-group row">
+                            <label class="col-md-1 col-form-label font-weight-bold" for="title">نوع القياس </label>
+                            <div class="col-md-6">
+                                <input [attr.disabled]="disabled ? '' : null" maxlength="100" [(ngModel)]="measure.title" #title="ngModel" [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" required type="text" name="title" class="form-control" >
+                                <div *ngIf="f.submitted && title.invalid" class="invalid-feedback">
+                                    <div *ngIf="title.errors.required"> برجاء ادخال نوع القياس</div>
+                                    <div *ngIf="title.errors.maxlength">اسم المواطن لايتعدي 100حرف</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-1 col-form-label font-weight-bold" for="description">ملاحظات</label>
+                            <div class="col-md-6">
+                                <input [attr.disabled]="disabled ? '' : null" maxlength="150" [(ngModel)]="measure.description" #description="ngModel" type="text" name="description" class="form-control" >
+                                <div *ngIf="f.submitted && description.invalid" class="invalid-feedback">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div *ngIf="componentMode=='editMode'" class="card-footer">
+                                <div *ngIf="errorMessage != '' ">
+                                        <alert type="danger">{{errorMessage}}</alert>
+                                    </div> 
+                            <button type="submit" class="btn btn-sm btn-success" ><i class="fa fa-dot-circle-o"></i>حفظ</button>
+                            <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i> رجوع</button>
+                        </div>
+                        <div *ngIf="componentMode=='viewMode'" class="card-footer">
+                            <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i> رجوع</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

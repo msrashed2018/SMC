@@ -1,0 +1,115 @@
+<div class="animated fadeIn ">
+
+    <div *ngIf="successMessage">
+        <br>
+        <alert type="success">
+            <strong>تم إضافه بيانات الضبط بنجاح! </strong>
+        </alert>
+    </div>
+    <div *ngIf="! successMessage">
+        <br>
+    </div>
+    <div class="row ">
+        <div style="width:100% !important;">
+            <div class="card">
+                <div class="card-header">
+                    <strong>بيانات كشف الرمد</strong>
+                    <div class="card-header-actions">
+                        <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
+                    </div>
+                </div>
+
+                <div (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" class="card-body ">
+                    <form class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" novalidate>
+                        
+                      <div class="form-group row">
+                            <label class="col-md-2 col-form-label font-weight-bold" for="rightMeasure">قياس العين اليمني</label>
+                            <div class="col-md-6">
+                                    <select  [(ngModel)]="selectedRightMeasureId" name="rightMeasure" #rightMeasure="ngModel" [ngClass]="{ 'is-invalid': f.submitted && rightMeasure.invalid }" class="form-control" required>
+                                      <option *ngFor="let measure of measures" [value]="measure.id" >{{measure.title}}</option>
+                                    </select>
+                                    <div *ngIf="f.submitted && rightMeasure.invalid" class="invalid-feedback">
+                                      <div *ngIf="rightMeasure.errors.required"> برجاء اختيار  قياس العين اليمني</div>
+                                    </div>
+                            </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-md-2 col-form-label font-weight-bold" for="leftMeasure">قياس العين اليسري</label>
+                          <div class="col-md-6">
+                                  <select  [(ngModel)]="selectedLeftMeasureId" name="leftMeasure" #leftMeasure="ngModel" [ngClass]="{ 'is-invalid': f.submitted && leftMeasure.invalid }" class="form-control" required>
+                                    <option *ngFor="let measure of measures" [value]="measure.id" >{{measure.title}}</option>
+                                  </select>
+                                  <div *ngIf="f.submitted && leftMeasure.invalid" class="invalid-feedback">
+                                    <div *ngIf="leftMeasure.errors.required"> برجاء اختيار  قياس العين اليسري</div>
+                                  </div>
+                          </div>
+                      </div>
+
+
+
+                      <div class="form-group row">
+                          <label class="col-md-2 col-form-label font-weight-bold" for="distinguish">التمييز</label>
+                          <div class="col-md-6">
+                                      <input  type="checkbox"
+                                          name="distinguish"
+                                          [checked]="distinguishCheck"
+                                          (change)="onDistinguishChecked($event)"/>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-md-2 col-form-label font-weight-bold" for="glasses">النظارة</label>
+                          <div class="col-md-6">
+                                      <input  type="checkbox"
+                                          name="glasses"
+                                          [checked]="glassesCheck"
+                                          (change)="onGlassesChecked($event)"/>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                            <label class="col-md-2 col-form-label font-weight-bold" for="squint">حول</label>
+                            <div class="col-md-6">
+                                        <input  type="checkbox"
+                                            name="squint"
+                                            [checked]="squintCheck"
+                                            (change)="onSquintChecked($event)"/>
+                            </div>
+                        </div>
+
+                      <div class="form-group row">
+                          <label class="col-md-2 col-form-label font-weight-bold" for="result">النتيجة</label>
+                          <div class="col-md-6">
+                                  <select  [(ngModel)]="setting.result"  name="result" #result="ngModel" [ngClass]="{ 'is-invalid': f.submitted && result.invalid }" class="form-control" required>
+                                    <option  value="مقبول" >مقبول</option>
+                                    <option  value="مرفوض" >مرفوض</option>
+                                    <option  value="اعادة مناظرة" >اعادة مناظرة</option>
+                                  </select>
+                                  <div *ngIf="f.submitted && result.invalid" class="invalid-feedback">
+                                    <div *ngIf="result.errors.required"> برجاء اختيار النتيجة</div>
+                                  </div>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-md-2 col-form-label font-weight-bold" for="description">ملاحظات</label>
+                          <div class="col-md-6">
+                              <input maxlength="150" [(ngModel)]="setting.description" #description="ngModel" type="text" name="description" class="form-control" >
+                          </div>
+                      </div>
+
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> أضف الضبط</button>
+                            <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i> إلغاء</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

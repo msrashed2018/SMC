@@ -1,0 +1,62 @@
+<div class="animated fadeIn ">
+
+    <div *ngIf="successMessage">
+      <br>
+      <alert type="success">
+        <strong>تم إضافه حالة الطلب بنجاح! </strong>
+      </alert>
+    </div>
+    <div *ngIf="! successMessage">
+      <br>
+    </div>
+    <div class="row ">
+      <div style="width:100% !important;">
+        <div class="card">
+          <div class="card-header">
+            <strong>بيانات حالة الطلب</strong>
+            <div class="card-header-actions">
+              <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i
+                  class={{iconCollapse}}></i></button>
+            </div>
+          </div>
+  
+          <div (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" class="card-body ">
+            <form   class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" >
+  
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label font-weight-bold" for="name"> اسم الحالة</label>
+                <div class="col-md-6">
+                  <input [attr.disabled]="disabled ? '' : null"  maxlength="50" [(ngModel)]="requestModel.name"  #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required type="text"  name="name" class="form-control" >
+                  
+                  <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                    <div *ngIf="name.errors.required"> هذا الحقل مطلوب</div>
+                  </div>
+                  <!-- <span class="help-block">ادخل الاسم</span> -->
+                </div>
+              </div>
+              <div  class="form-group row">
+                <label class="col-md-2 col-form-label font-weight-bold" for="description">ملاحظات</label>
+                <div class="col-md-6">
+                  <input  [attr.disabled]="disabled ? '' : null" maxlength="150" [(ngModel)]="requestModel.description" #description="ngModel" type="text"  name="description" class="form-control" >
+                </div>
+              </div>
+              <div *ngIf="componentMode=='editMode'" class="card-footer">
+                  <div *ngIf="errorMessage != '' ">
+                      <alert type="danger">{{errorMessage}}</alert>
+                  </div>
+                <button type="submit" class="btn btn-sm btn-success" ><i class="fa fa-dot-circle-o"></i>حفظ</button>
+                <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i> رجوع</button>
+              </div>
+              <div *ngIf="componentMode=='viewMode'" class="card-footer">
+                  <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i> رجوع</button>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+  
+      </div>
+  
+    </div>
+    <!--/.row-->
+  </div>

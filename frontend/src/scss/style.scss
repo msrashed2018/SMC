@@ -1,0 +1,20 @@
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+
+// If you want to add something do it here
+@import "custom";
+.main{
+    background-color: #fff
+}
+.edit-btn,.deletebtn{
+    color:#fff
+}
+.list-container{
+    margin-top: 20px
+}
+.form-control.is-invalid{
+    background-image: none
+}

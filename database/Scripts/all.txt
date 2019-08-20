@@ -1,0 +1,1860 @@
+CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_AUDIT"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_CITIZEN
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_CITIZEN"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_CITY
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_CITY"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_COMMITTEE
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_COMMITTEE"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_COMMITTEE_MEMBER
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_COMMITTEE_MEMBER"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_COUNCIL
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_COUNCIL"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_CUSTOM
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_CUSTOM"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_DISABILITY
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_DISABILITY"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_DOCUMENT_TYPE
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_DOCUMENT_TYPE"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_EQUIPMENT
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_EQUIPMENT"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_EYE_MEASURE
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_EYE_MEASURE"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_GENDER
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_GENDER"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_GOVERNATE
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_GOVERNATE"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_OCCUPATION
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_OCCUPATION"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_REQUEST
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_REQUEST"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_REQUEST_DETAIL
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_REQUEST_DETAIL"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_REQUEST_DOCUMENT
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_REQUEST_DOCUMENT"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_REQUEST_STATUS
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_REQUEST_STATUS"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_REQUEST_TYPE
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_REQUEST_TYPE"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_ROLE
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_ROLE"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 20 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_TRAFFIC_MANAGEMENT
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_TRAFFIC_MANAGEMENT"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_USER
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_USER"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 20 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_USER_ROLES
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_USER_ROLES"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 20 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_ZONE
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_ZONE"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 3 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+
+--------------------------------------------------------
+--  DDL for Sequence SEQ_REQUEST_PAYMENT
+--------------------------------------------------------
+
+	CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_REQUEST_PAYMENT"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_BONES_REVEAL
+--------------------------------------------------------
+
+	CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_BONES_REVEAL"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_EYE_REVEAL
+--------------------------------------------------------
+	
+	CREATE SEQUENCE  "MOH_WORKFLOW_SCHEMA"."SEQ_EYE_REVEAL"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------
+--  DDL for Table CITIZEN
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."CITIZEN" 
+   (	"CITIZEN_ID" NUMBER, 
+	"CITIZEN_NAME" VARCHAR2(100 BYTE), 
+	"NATIONAL_ID" NUMBER, 
+	"GENDER" VARCHAR2(10 BYTE), 
+	"BIRTH_DATE" TIMESTAMP (6), 
+	"ADDRESS" VARCHAR2(200 BYTE), 
+	"MOBILE_NO" VARCHAR2(100 BYTE), 
+	"FINGERPRINT" VARCHAR2(200 BYTE), 
+	"CREATED_BY" VARCHAR2(100 BYTE), 
+	"CREATED_DATE" TIMESTAMP (6), 
+	"MODIFIED_BY" VARCHAR2(100 BYTE), 
+	"MODIFIED_DATE" TIMESTAMP (6), 
+	"CITY_ID" NUMBER, 
+	"GOVERNATE_ID" NUMBER, 
+	"OCCUPATION_ID" NUMBER
+   );
+--------------------------------------------------------
+--  DDL for Table CITY
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."CITY" 
+   (	"CITY_ID" NUMBER, 
+	"CITY_NAME" VARCHAR2(100 BYTE), 
+	"GOVERNATE_ID" NUMBER
+   );
+--------------------------------------------------------
+--  DDL for Table COMMITTEE
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" 
+   (	"COMMITTEE_ID" NUMBER, 
+	"COMMITTEE_DATE" TIMESTAMP (6), 
+	"COMMITTEE_FUNCTION" VARCHAR2(100 BYTE), 
+	"COMMITTEE_TYPE" VARCHAR2(100 BYTE), 
+	"MEMBER_ONE_ID" NUMBER, 
+	"MEMBER_TWO_ID" NUMBER, 
+	"MEMBER_THREE_ID" NUMBER, 
+	"MEMBER_FOUR_ID" NUMBER, 
+	"MEMBER_FIVE_ID" NUMBER, 
+	"MEMBER_SIX_ID" NUMBER, 
+	"COMMITTEE_DESCRIPTION" VARCHAR2(255 BYTE), 
+	"ZONE_ID" NUMBER
+   );
+--------------------------------------------------------
+--  DDL for Table COMMITTEE_MEMBER
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" 
+   (	"COMMITTEE_MEMBER_ID" NUMBER, 
+	"MEMBER_NAME" VARCHAR2(100 BYTE), 
+	"MEMBER_TITLE" VARCHAR2(100 BYTE), 
+	"MEMBER_DESCRIPTION" VARCHAR2(255 BYTE), 
+	"MEMBER_MOBILE_NO" VARCHAR2(20 BYTE), 
+	"ZONE_ID" NUMBER
+   );
+--------------------------------------------------------
+--  DDL for Table CUSTOM
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."CUSTOM" 
+   (	"CUSTOM_ID" NUMBER , 
+	"CUSTOM_NAME" VARCHAR2(100 BYTE), 
+	"CUSTOM_DESCRIPTION" VARCHAR2(255 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table DISABILITY
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."DISABILITY" 
+   (	"DISABILITY_ID" NUMBER , 
+	"DISABILITY_NAME" VARCHAR2(355 BYTE), 
+	"EQUIPMENT_ID" NUMBER, 
+	"ACCEPTED" NUMBER(1,0), 
+	"DISABILITY_DESCRIPTION" VARCHAR2(355 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table DOCUMENT_TYPE
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."DOCUMENT_TYPE" 
+   (	"DOCUMENT_TYPE_ID" NUMBER, 
+	"DOCUMENT_TYPE_NAME" VARCHAR2(100 BYTE), 
+	"DOCUMENT_TYPE_DESCRIPTION" VARCHAR2(100 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table EQUIPMENT
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."EQUIPMENT" 
+   (	"EQUIPMENT_ID" NUMBER, 
+	"EQUIPMENT_NAME" VARCHAR2(355 BYTE), 
+	"EQUIPMENT_DESCRIPTION" VARCHAR2(355 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table EYE_MEASURE
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."EYE_MEASURE" 
+   (	"MEASURE_ID" NUMBER, 
+	"MEASURE_TITLE" VARCHAR2(100 BYTE), 
+	"MEASURE_DESCRIPTION" VARCHAR2(255 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table EYE_REVEAL
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL" 
+   (	"EYE_REVEAL_ID" NUMBER, 
+	"DISTINGUISH_COLOR" NUMBER(1,0), 
+	"FIELD_OF_SIGHT" NUMBER, 
+	"RESULT" VARCHAR2(100 BYTE), 
+	"REVEAL_DONE" NUMBER, 
+	"SQUINT" NUMBER, 
+	"USE_GLASSES" NUMBER, 
+	"LEFT_MEASURE_ID" NUMBER, 
+	"RIGHT_MEASURE_ID" NUMBER, 
+	"DESCRIPTION" VARCHAR2(255 BYTE), 
+	"REQUEST_ID" NUMBER
+   );
+--------------------------------------------------------
+--  DDL for Table EYE_REVEAL_SETTING
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL_SETTING" 
+   (	"SETTING_ID" VARCHAR2(20 BYTE), 
+	"SETTING_DESCRIPTION" VARCHAR2(100 BYTE), 
+	"DISTINGUISH_COLOR" VARCHAR2(1 BYTE), 
+	"SETTING_RESULT" VARCHAR2(50 BYTE), 
+	"SQUINT" NUMBER(1,0), 
+	"USE_GLASSES" NUMBER(1,0), 
+	"LEFT_MEASURE_ID" NUMBER, 
+	"RIGHT_MEASURE_ID" NUMBER
+   );
+--------------------------------------------------------
+--  DDL for Table GOVERNATE
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."GOVERNATE" 
+   (	"GOVERNATE_ID" NUMBER, 
+	"GOVERNATE_CODE" NUMBER, 
+	"GOVERNATE_NAME" VARCHAR2(100 BYTE), 
+	"ZONE_ID" NUMBER
+   );
+--------------------------------------------------------
+--  DDL for Table OCCUPATION
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."OCCUPATION" 
+   (	"OCCUPATION_ID" NUMBER, 
+	"OCCUPATION_NAME" VARCHAR2(100 BYTE), 
+	"OCCUPATION_DESCRIPTION" VARCHAR2(255 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table REQUEST
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST" 
+   (	"REQUEST_ID" NUMBER, 
+	"CITIZEN_ID" NUMBER, 
+	"REQUEST_TYPE_ID" NUMBER, 
+	"CUSTOM_ID" NUMBER, 
+	"TRAFFIC_MANAGEMENT_ID" NUMBER, 
+	"REQUEST_DATE" TIMESTAMP (6), 
+	"STATE" VARCHAR2(100 BYTE), 
+	"EYE_REVEAL_STATE" VARCHAR2(100 BYTE), 
+	"BONES_REVEAL_STATE" VARCHAR2(100 BYTE), 
+	"CREATED_BY" VARCHAR2(100 BYTE), 
+	"MODIFIED_BY" VARCHAR2(100 BYTE), 
+	"MODIFIED_DATE" TIMESTAMP (6), 
+	"BONES_COMMITTEE_ID" NUMBER, 
+	"EYE_COMMITTEE_ID" NUMBER, 
+	"REQUEST_STATUS_ID" NUMBER, 
+	"DESCRIPTION" VARCHAR2(255 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table REQUEST_DOCUMENT
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_DOCUMENT" 
+   (	"REQUEST_DOCUMENT_ID" NUMBER, 
+	"NAME" VARCHAR2(100 BYTE), 
+	"PATH" VARCHAR2(200 BYTE), 
+	"TYPE" VARCHAR2(100 BYTE), 
+	"REQUEST_ID" NUMBER
+   );
+--------------------------------------------------------
+--  DDL for Table REQUEST_PAYMENT
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_PAYMENT" 
+   (	"REQUEST_PAYMENT_ID" NUMBER, 
+	"PAYMENT_DATE" TIMESTAMP (6), 
+	"PAYMENT_DONE" NUMBER(1,0), 
+	"PRICE" NUMBER, 
+	"RECEIPT_SERIAL_NO" VARCHAR2(255 BYTE), 
+	"REQUEST_ID" NUMBER
+   );
+--------------------------------------------------------
+--  DDL for Table REQUEST_STATUS
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_STATUS" 
+   (	"REQUEST_STATUS_ID" NUMBER, 
+	"REQUEST_STATUS_NAME" VARCHAR2(255 BYTE), 
+	"REQUEST_STATUS_DESCRIPTION" VARCHAR2(300 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table REQUEST_TYPE
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_TYPE" 
+   (	"REQUEST_TYPE_ID" NUMBER, 
+	"REQUEST_TYPE_NAME" VARCHAR2(255 BYTE), 
+	"REQUEST_TYPE_PRICE" NUMBER DEFAULT 0, 
+	"REQUEST_TYPE_DESCRIPTION" VARCHAR2(355 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table SYSTEM_AUDIT
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_AUDIT" 
+   (	"AUDIT_ID" NUMBER, 
+	"ACTION" VARCHAR2(255 BYTE), 
+	"DETAILS" VARCHAR2(300 BYTE), 
+	"REQUEST_ID" VARCHAR2(100 BYTE), 
+	"PERFORMED_BY" VARCHAR2(100 BYTE), 
+	"TIMESTAMP" TIMESTAMP (6), 
+	"COLUMN1" VARCHAR2(20 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table SYSTEM_ROLE
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_ROLE" 
+   (	"ROLE_ID" NUMBER, 
+	"ROLE_NAME" VARCHAR2(150 BYTE), 
+	"ROLE_DESCRIPTION" VARCHAR2(255 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table SYSTEM_USER
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_USER" 
+   (	"USER_ID" NUMBER, 
+	"USERNAME" VARCHAR2(100 BYTE), 
+	"PASSWORD" VARCHAR2(255 BYTE), 
+	"CREATED_DATE" TIMESTAMP (6), 
+	"ZONE_ID" NUMBER
+   );
+--------------------------------------------------------
+--  DDL for Table TRAFFIC_MANAGEMENT
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."TRAFFIC_MANAGEMENT" 
+   (	"TRAFFIC_ID" NUMBER, 
+	"TRAFFIC_NAME" VARCHAR2(200 BYTE), 
+	"TRAFFIC_DESCRIPTION" VARCHAR2(255 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table USER_ROLES
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."USER_ROLES" 
+   (	
+	"USER_ID" NUMBER, 
+	"ROLE_ID" NUMBER
+   );
+--------------------------------------------------------
+--  DDL for Table ZONE
+--------------------------------------------------------
+
+  CREATE TABLE "MOH_WORKFLOW_SCHEMA"."ZONE" 
+   (	"ZONE_ID" NUMBER, 
+	"ZONE_NAME" VARCHAR2(100 BYTE), 
+	"ZONE_DESCRIPTION" VARCHAR2(255 BYTE)
+   );
+
+
+
+
+
+--------------------------------------------------------
+--  DDL for Index CITIZEN_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."CITIZEN_PK" ON "MOH_WORKFLOW_SCHEMA"."CITIZEN" ("CITIZEN_ID");
+--------------------------------------------------------
+--  DDL for Index CITIZEN_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."CITIZEN_UK1" ON "MOH_WORKFLOW_SCHEMA"."CITIZEN" ("NATIONAL_ID");
+--------------------------------------------------------
+--  DDL for Index CITY_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."CITY_PK" ON "MOH_WORKFLOW_SCHEMA"."CITY" ("CITY_ID");
+--------------------------------------------------------
+--  DDL for Index CITY_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."CITY_UK1" ON "MOH_WORKFLOW_SCHEMA"."CITY" ("CITY_NAME");
+--------------------------------------------------------
+--  DDL for Index COMMITTEE_MEMBER_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER_PK" ON "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" ("COMMITTEE_MEMBER_ID");
+--------------------------------------------------------
+--  DDL for Index COMMITTEE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."COMMITTEE_PK" ON "MOH_WORKFLOW_SCHEMA"."COMMITTEE" ("COMMITTEE_ID");
+--------------------------------------------------------
+--  DDL for Index CUSTOM_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."CUSTOM_PK" ON "MOH_WORKFLOW_SCHEMA"."CUSTOM" ("CUSTOM_ID");
+--------------------------------------------------------
+--  DDL for Index CUSTOM_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."CUSTOM_UK1" ON "MOH_WORKFLOW_SCHEMA"."CUSTOM" ("CUSTOM_NAME");
+--------------------------------------------------------
+--  DDL for Index DISABILITY_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."DISABILITY_PK" ON "MOH_WORKFLOW_SCHEMA"."DISABILITY" ("DISABILITY_ID");
+--------------------------------------------------------
+--  DDL for Index DISABILITY_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."DISABILITY_UK1" ON "MOH_WORKFLOW_SCHEMA"."DISABILITY" ("DISABILITY_NAME");
+--------------------------------------------------------
+--  DDL for Index DOCUMENT_TYPE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."DOCUMENT_TYPE_PK" ON "MOH_WORKFLOW_SCHEMA"."DOCUMENT_TYPE" ("DOCUMENT_TYPE_ID");
+--------------------------------------------------------
+--  DDL for Index DOCUMENT_TYPE_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."DOCUMENT_TYPE_UK1" ON "MOH_WORKFLOW_SCHEMA"."DOCUMENT_TYPE" ("DOCUMENT_TYPE_NAME");
+--------------------------------------------------------
+--  DDL for Index EQUIPMENT_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."EQUIPMENT_PK" ON "MOH_WORKFLOW_SCHEMA"."EQUIPMENT" ("EQUIPMENT_ID");
+--------------------------------------------------------
+--  DDL for Index EQUIPMENT_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."EQUIPMENT_UK1" ON "MOH_WORKFLOW_SCHEMA"."EQUIPMENT" ("EQUIPMENT_NAME");
+--------------------------------------------------------
+--  DDL for Index EYE_MEASURE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."EYE_MEASURE_PK" ON "MOH_WORKFLOW_SCHEMA"."EYE_MEASURE" ("MEASURE_ID");
+--------------------------------------------------------
+--  DDL for Index EYE_MEASURE_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."EYE_MEASURE_UK1" ON "MOH_WORKFLOW_SCHEMA"."EYE_MEASURE" ("MEASURE_TITLE");
+--------------------------------------------------------
+--  DDL for Index EYE_REVEAL_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL_PK" ON "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL" ("EYE_REVEAL_ID");
+--------------------------------------------------------
+--  DDL for Index EYE_REVEAL_SETTING_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL_SETTING_PK" ON "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL_SETTING" ("SETTING_ID");
+--------------------------------------------------------
+--  DDL for Index GOVERNATE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."GOVERNATE_PK" ON "MOH_WORKFLOW_SCHEMA"."GOVERNATE" ("GOVERNATE_ID");
+--------------------------------------------------------
+--  DDL for Index GOVERNATE_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."GOVERNATE_UK1" ON "MOH_WORKFLOW_SCHEMA"."GOVERNATE" ("GOVERNATE_NAME");
+--------------------------------------------------------
+--  DDL for Index GOVERNATE_UK2
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."GOVERNATE_UK2" ON "MOH_WORKFLOW_SCHEMA"."GOVERNATE" ("GOVERNATE_CODE");
+--------------------------------------------------------
+--  DDL for Index OCCUPATION_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."OCCUPATION_PK" ON "MOH_WORKFLOW_SCHEMA"."OCCUPATION" ("OCCUPATION_ID");
+--------------------------------------------------------
+--  DDL for Index OCCUPATION_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."OCCUPATION_UK1" ON "MOH_WORKFLOW_SCHEMA"."OCCUPATION" ("OCCUPATION_NAME");
+--------------------------------------------------------
+--  DDL for Index REQUEST_DOCUMENT_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."REQUEST_DOCUMENT_PK" ON "MOH_WORKFLOW_SCHEMA"."REQUEST_DOCUMENT" ("REQUEST_DOCUMENT_ID");
+--------------------------------------------------------
+--  DDL for Index REQUEST_PAYMENT_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."REQUEST_PAYMENT_PK" ON "MOH_WORKFLOW_SCHEMA"."REQUEST_PAYMENT" ("REQUEST_PAYMENT_ID");
+--------------------------------------------------------
+--  DDL for Index REQUEST_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."REQUEST_PK" ON "MOH_WORKFLOW_SCHEMA"."REQUEST" ("REQUEST_ID");
+--------------------------------------------------------
+--  DDL for Index REQUEST_STATUS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."REQUEST_STATUS_PK" ON "MOH_WORKFLOW_SCHEMA"."REQUEST_STATUS" ("REQUEST_STATUS_ID");
+--------------------------------------------------------
+--  DDL for Index REQUEST_STATUS_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."REQUEST_STATUS_UK1" ON "MOH_WORKFLOW_SCHEMA"."REQUEST_STATUS" ("REQUEST_STATUS_NAME");
+--------------------------------------------------------
+--  DDL for Index REQUEST_TYPE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."REQUEST_TYPE_PK" ON "MOH_WORKFLOW_SCHEMA"."REQUEST_TYPE" ("REQUEST_TYPE_ID");
+--------------------------------------------------------
+--  DDL for Index REQUEST_TYPE_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."REQUEST_TYPE_UK1" ON "MOH_WORKFLOW_SCHEMA"."REQUEST_TYPE" ("REQUEST_TYPE_NAME");
+--------------------------------------------------------
+--  DDL for Index SYSTEM_AUDIT_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."SYSTEM_AUDIT_PK" ON "MOH_WORKFLOW_SCHEMA"."SYSTEM_AUDIT" ("AUDIT_ID");
+--------------------------------------------------------
+--  DDL for Index SYSTEM_ROLE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."SYSTEM_ROLE_PK" ON "MOH_WORKFLOW_SCHEMA"."SYSTEM_ROLE" ("ROLE_ID");
+--------------------------------------------------------
+--  DDL for Index SYSTEM_ROLE_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."SYSTEM_ROLE_UK1" ON "MOH_WORKFLOW_SCHEMA"."SYSTEM_ROLE" ("ROLE_NAME");
+--------------------------------------------------------
+--  DDL for Index SYSTEM_USER_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."SYSTEM_USER_PK" ON "MOH_WORKFLOW_SCHEMA"."SYSTEM_USER" ("USER_ID");
+--------------------------------------------------------
+--  DDL for Index SYSTEM_USER_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."SYSTEM_USER_UK1" ON "MOH_WORKFLOW_SCHEMA"."SYSTEM_USER" ("USERNAME");
+--------------------------------------------------------
+--  DDL for Index TRAFFIC_MANAGEMENT_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."TRAFFIC_MANAGEMENT_PK" ON "MOH_WORKFLOW_SCHEMA"."TRAFFIC_MANAGEMENT" ("TRAFFIC_ID");
+--------------------------------------------------------
+--  DDL for Index TRAFFIC_MANAGEMENT_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."TRAFFIC_MANAGEMENT_UK1" ON "MOH_WORKFLOW_SCHEMA"."TRAFFIC_MANAGEMENT" ("TRAFFIC_NAME");
+--------------------------------------------------------
+--  DDL for Index ZONE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."ZONE_PK" ON "MOH_WORKFLOW_SCHEMA"."ZONE" ("ZONE_ID");
+--------------------------------------------------------
+--  DDL for Index ZONE_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOH_WORKFLOW_SCHEMA"."ZONE_UK1" ON "MOH_WORKFLOW_SCHEMA"."ZONE" ("ZONE_NAME");
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------
+--  Constraints for Table CITIZEN
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITIZEN" MODIFY ("CITIZEN_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITIZEN" MODIFY ("CITIZEN_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITIZEN" MODIFY ("NATIONAL_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITIZEN" ADD CONSTRAINT "CITIZEN_PK" PRIMARY KEY ("CITIZEN_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITIZEN" ADD CONSTRAINT "CITIZEN_UK1" UNIQUE ("NATIONAL_ID")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CITY
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITY" MODIFY ("CITY_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITY" MODIFY ("CITY_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITY" MODIFY ("GOVERNATE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITY" ADD CONSTRAINT "CITY_PK" PRIMARY KEY ("CITY_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITY" ADD CONSTRAINT "CITY_UK1" UNIQUE ("CITY_NAME")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COMMITTEE
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" MODIFY ("COMMITTEE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" MODIFY ("COMMITTEE_DATE" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" MODIFY ("COMMITTEE_FUNCTION" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" MODIFY ("COMMITTEE_TYPE" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" ADD CONSTRAINT "COMMITTEE_PK" PRIMARY KEY ("COMMITTEE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" MODIFY ("ZONE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table COMMITTEE_MEMBER
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" MODIFY ("COMMITTEE_MEMBER_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" MODIFY ("MEMBER_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" MODIFY ("MEMBER_TITLE" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" MODIFY ("ZONE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" ADD CONSTRAINT "COMMITTEE_MEMBER_PK" PRIMARY KEY ("COMMITTEE_MEMBER_ID")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CUSTOM
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CUSTOM" MODIFY ("CUSTOM_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CUSTOM" ADD CONSTRAINT "CUSTOM_PK" PRIMARY KEY ("CUSTOM_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CUSTOM" MODIFY ("CUSTOM_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CUSTOM" ADD CONSTRAINT "CUSTOM_UK1" UNIQUE ("CUSTOM_NAME")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DISABILITY
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."DISABILITY" MODIFY ("DISABILITY_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."DISABILITY" MODIFY ("DISABILITY_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."DISABILITY" MODIFY ("EQUIPMENT_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."DISABILITY" MODIFY ("ACCEPTED" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."DISABILITY" ADD CONSTRAINT "DISABILITY_PK" PRIMARY KEY ("DISABILITY_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."DISABILITY" ADD CONSTRAINT "DISABILITY_UK1" UNIQUE ("DISABILITY_NAME")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DOCUMENT_TYPE
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."DOCUMENT_TYPE" ADD  category VARCHAR2(100 BYTE) ;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."DOCUMENT_TYPE" MODIFY ("DOCUMENT_TYPE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."DOCUMENT_TYPE" MODIFY ("DOCUMENT_TYPE_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."DOCUMENT_TYPE" ADD CONSTRAINT "DOCUMENT_TYPE_PK" PRIMARY KEY ("DOCUMENT_TYPE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."DOCUMENT_TYPE" ADD CONSTRAINT "DOCUMENT_TYPE_UK1" UNIQUE ("DOCUMENT_TYPE_NAME")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table EQUIPMENT
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EQUIPMENT" MODIFY ("EQUIPMENT_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EQUIPMENT" MODIFY ("EQUIPMENT_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EQUIPMENT" ADD CONSTRAINT "EQUIPMENT_PK" PRIMARY KEY ("EQUIPMENT_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EQUIPMENT" ADD CONSTRAINT "EQUIPMENT_UK1" UNIQUE ("EQUIPMENT_NAME")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table EYE_MEASURE
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_MEASURE" MODIFY ("MEASURE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_MEASURE" MODIFY ("MEASURE_TITLE" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_MEASURE" ADD CONSTRAINT "EYE_MEASURE_PK" PRIMARY KEY ("MEASURE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_MEASURE" ADD CONSTRAINT "EYE_MEASURE_UK1" UNIQUE ("MEASURE_TITLE")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table EYE_REVEAL
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL" MODIFY ("REQUEST_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL" MODIFY ("EYE_REVEAL_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL" MODIFY ("RESULT" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL" ADD CONSTRAINT "EYE_REVEAL_PK" PRIMARY KEY ("EYE_REVEAL_ID");
+--------------------------------------------------------
+--  Constraints for Table EYE_REVEAL_SETTING
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL_SETTING" MODIFY ("SETTING_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL_SETTING" MODIFY ("SETTING_RESULT" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL_SETTING" MODIFY ("LEFT_MEASURE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL_SETTING" MODIFY ("RIGHT_MEASURE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL_SETTING" ADD CONSTRAINT "EYE_REVEAL_SETTING_PK" PRIMARY KEY ("SETTING_ID");
+--------------------------------------------------------
+--  Constraints for Table GOVERNATE
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."GOVERNATE" MODIFY ("GOVERNATE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."GOVERNATE" MODIFY ("GOVERNATE_CODE" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."GOVERNATE" MODIFY ("GOVERNATE_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."GOVERNATE" MODIFY ("ZONE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."GOVERNATE" ADD CONSTRAINT "GOVERNATE_PK" PRIMARY KEY ("GOVERNATE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."GOVERNATE" ADD CONSTRAINT "GOVERNATE_UK2" UNIQUE ("GOVERNATE_CODE")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."GOVERNATE" ADD CONSTRAINT "GOVERNATE_UK1" UNIQUE ("GOVERNATE_NAME")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table OCCUPATION
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."OCCUPATION" MODIFY ("OCCUPATION_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."OCCUPATION" MODIFY ("OCCUPATION_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."OCCUPATION" ADD CONSTRAINT "OCCUPATION_PK" PRIMARY KEY ("OCCUPATION_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."OCCUPATION" ADD CONSTRAINT "OCCUPATION_UK1" UNIQUE ("OCCUPATION_NAME")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table REQUEST
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST" MODIFY ("REQUEST_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST" MODIFY ("CITIZEN_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST" MODIFY ("REQUEST_TYPE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST" ADD CONSTRAINT "REQUEST_PK" PRIMARY KEY ("REQUEST_ID")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table REQUEST_DOCUMENT
+--------------------------------------------------------
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_DOCUMENT" MODIFY TYPE number ;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_DOCUMENT" RENAME COLUMN TYPE TO DOCUMENT_TYPE_ID;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_DOCUMENT" ADD CONSTRAINT "REQUEST_DOCUMENT_FK2" FOREIGN KEY ("DOCUMENT_TYPE_ID")  REFERENCES "MOH_WORKFLOW_SCHEMA"."DOCUMENT_TYPE" ("DOCUMENT_TYPE_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_DOCUMENT" ADD CONSTRAINT REQUEST_DOCUMENT_UK1 UNIQUE (DOCUMENT_TYPE_ID, REQUEST_ID);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_DOCUMENT" MODIFY ("REQUEST_DOCUMENT_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_DOCUMENT" MODIFY ("NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_DOCUMENT" MODIFY ("PATH" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_DOCUMENT" ADD CONSTRAINT "REQUEST_DOCUMENT_PK" PRIMARY KEY ("REQUEST_DOCUMENT_ID");
+--------------------------------------------------------
+--  Constraints for Table REQUEST_PAYMENT
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_PAYMENT" MODIFY ("REQUEST_PAYMENT_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_PAYMENT" MODIFY ("RECEIPT_SERIAL_NO" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_PAYMENT" MODIFY ("REQUEST_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_PAYMENT" ADD CONSTRAINT "REQUEST_PAYMENT_PK" PRIMARY KEY ("REQUEST_PAYMENT_ID");
+--------------------------------------------------------
+--  Constraints for Table REQUEST_STATUS
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_STATUS" MODIFY ("REQUEST_STATUS_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_STATUS" MODIFY ("REQUEST_STATUS_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_STATUS" ADD CONSTRAINT "REQUEST_STATUS_PK" PRIMARY KEY ("REQUEST_STATUS_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_STATUS" ADD CONSTRAINT "REQUEST_STATUS_UK1" UNIQUE ("REQUEST_STATUS_NAME")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table REQUEST_TYPE
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_TYPE" MODIFY ("REQUEST_TYPE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_TYPE" MODIFY ("REQUEST_TYPE_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_TYPE" MODIFY ("REQUEST_TYPE_PRICE" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_TYPE" ADD CONSTRAINT "REQUEST_TYPE_PK" PRIMARY KEY ("REQUEST_TYPE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_TYPE" ADD CONSTRAINT "REQUEST_TYPE_UK1" UNIQUE ("REQUEST_TYPE_NAME")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table SYSTEM_AUDIT
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_AUDIT" MODIFY ("AUDIT_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_AUDIT" MODIFY ("ACTION" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_AUDIT" MODIFY ("PERFORMED_BY" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_AUDIT" ADD CONSTRAINT "SYSTEM_AUDIT_PK" PRIMARY KEY ("AUDIT_ID")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table SYSTEM_ROLE
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_ROLE" MODIFY ("ROLE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_ROLE" MODIFY ("ROLE_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_ROLE" ADD CONSTRAINT "SYSTEM_ROLE_PK" PRIMARY KEY ("ROLE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_ROLE" ADD CONSTRAINT "SYSTEM_ROLE_UK1" UNIQUE ("ROLE_NAME")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table SYSTEM_USER
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_USER" MODIFY ("USER_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_USER" MODIFY ("USERNAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_USER" MODIFY ("PASSWORD" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_USER" MODIFY ("ZONE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_USER" ADD CONSTRAINT "SYSTEM_USER_PK" PRIMARY KEY ("USER_ID")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table TRAFFIC_MANAGEMENT
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."TRAFFIC_MANAGEMENT" MODIFY ("TRAFFIC_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."TRAFFIC_MANAGEMENT" MODIFY ("TRAFFIC_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."TRAFFIC_MANAGEMENT" ADD CONSTRAINT "TRAFFIC_MANAGEMENT_PK" PRIMARY KEY ("TRAFFIC_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."TRAFFIC_MANAGEMENT" ADD CONSTRAINT "TRAFFIC_MANAGEMENT_UK1" UNIQUE ("TRAFFIC_NAME")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table USER_ROLES
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."USER_ROLES" MODIFY ("USER_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."USER_ROLES" MODIFY ("ROLE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table ZONE
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."ZONE" MODIFY ("ZONE_ID" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."ZONE" MODIFY ("ZONE_NAME" NOT NULL ENABLE);
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."ZONE" ADD CONSTRAINT "ZONE_PK" PRIMARY KEY ("ZONE_ID")
+  USING INDEX  ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."ZONE" ADD CONSTRAINT "ZONE_UK1" UNIQUE ("ZONE_NAME")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table CITIZEN
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITIZEN" ADD CONSTRAINT "CITIZEN_FK1" FOREIGN KEY ("GOVERNATE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."GOVERNATE" ("GOVERNATE_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITIZEN" ADD CONSTRAINT "CITIZEN_FK2" FOREIGN KEY ("OCCUPATION_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."OCCUPATION" ("OCCUPATION_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITIZEN" ADD CONSTRAINT "CITIZEN_FK3" FOREIGN KEY ("CITY_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."CITY" ("CITY_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table CITY
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."CITY" ADD CONSTRAINT "CITY_FK1" FOREIGN KEY ("GOVERNATE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."GOVERNATE" ("GOVERNATE_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table COMMITTEE
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" ADD CONSTRAINT "COMMITTEE_FK1" FOREIGN KEY ("MEMBER_ONE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" ("COMMITTEE_MEMBER_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" ADD CONSTRAINT "COMMITTEE_FK2" FOREIGN KEY ("MEMBER_TWO_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" ("COMMITTEE_MEMBER_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" ADD CONSTRAINT "COMMITTEE_FK3" FOREIGN KEY ("MEMBER_THREE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" ("COMMITTEE_MEMBER_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" ADD CONSTRAINT "COMMITTEE_FK4" FOREIGN KEY ("MEMBER_FOUR_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" ("COMMITTEE_MEMBER_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" ADD CONSTRAINT "COMMITTEE_FK5" FOREIGN KEY ("MEMBER_FIVE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" ("COMMITTEE_MEMBER_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" ADD CONSTRAINT "COMMITTEE_FK6" FOREIGN KEY ("MEMBER_SIX_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" ("COMMITTEE_MEMBER_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE" ADD CONSTRAINT "COMMITTEE_FK7" FOREIGN KEY ("ZONE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."ZONE" ("ZONE_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table COMMITTEE_MEMBER
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."COMMITTEE_MEMBER" ADD CONSTRAINT "COMMITTEE_MEMBER_FK1" FOREIGN KEY ("ZONE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."ZONE" ("ZONE_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table DISABILITY
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."DISABILITY" ADD CONSTRAINT "DISABILITY_FK1" FOREIGN KEY ("EQUIPMENT_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."EQUIPMENT" ("EQUIPMENT_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EYE_REVEAL
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL" ADD CONSTRAINT "EYE_REVEAL_FK1" FOREIGN KEY ("LEFT_MEASURE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."EYE_MEASURE" ("MEASURE_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL" ADD CONSTRAINT "EYE_REVEAL_FK2" FOREIGN KEY ("RIGHT_MEASURE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."EYE_MEASURE" ("MEASURE_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL" ADD CONSTRAINT "EYE_REVEAL_FK3" FOREIGN KEY ("REQUEST_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."REQUEST" ("REQUEST_ID") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EYE_REVEAL_SETTING
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL_SETTING" ADD CONSTRAINT "EYE_REVEAL_SETTING_FK1" FOREIGN KEY ("LEFT_MEASURE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."EYE_MEASURE" ("MEASURE_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."EYE_REVEAL_SETTING" ADD CONSTRAINT "EYE_REVEAL_SETTING_FK2" FOREIGN KEY ("RIGHT_MEASURE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."EYE_MEASURE" ("MEASURE_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table GOVERNATE
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."GOVERNATE" ADD CONSTRAINT "GOVERNATE_FK1" FOREIGN KEY ("ZONE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."ZONE" ("ZONE_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table REQUEST
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST" ADD CONSTRAINT "REQUEST_FK1" FOREIGN KEY ("CITIZEN_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."CITIZEN" ("CITIZEN_ID") ON DELETE CASCADE ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST" ADD CONSTRAINT "REQUEST_FK2" FOREIGN KEY ("TRAFFIC_MANAGEMENT_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."TRAFFIC_MANAGEMENT" ("TRAFFIC_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST" ADD CONSTRAINT "REQUEST_FK3" FOREIGN KEY ("REQUEST_TYPE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."REQUEST_TYPE" ("REQUEST_TYPE_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST" ADD CONSTRAINT "REQUEST_FK4" FOREIGN KEY ("REQUEST_STATUS_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."REQUEST_STATUS" ("REQUEST_STATUS_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST" ADD CONSTRAINT "REQUEST_FK5" FOREIGN KEY ("EYE_COMMITTEE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."COMMITTEE" ("COMMITTEE_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST" ADD CONSTRAINT "REQUEST_FK6" FOREIGN KEY ("CUSTOM_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."CUSTOM" ("CUSTOM_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table REQUEST_DOCUMENT
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_DOCUMENT" ADD CONSTRAINT "REQUEST_DOCUMENT_FK1" FOREIGN KEY ("REQUEST_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."REQUEST" ("REQUEST_ID") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table REQUEST_PAYMENT
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."REQUEST_PAYMENT" ADD CONSTRAINT "REQUEST_PAYMENT_FK1" FOREIGN KEY ("REQUEST_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."REQUEST" ("REQUEST_ID") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table SYSTEM_USER
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."SYSTEM_USER" ADD CONSTRAINT "SYSTEM_USER_FK1" FOREIGN KEY ("ZONE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."ZONE" ("ZONE_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table USER_ROLES
+--------------------------------------------------------
+
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."USER_ROLES" ADD CONSTRAINT "USER_ROLES_FK1" FOREIGN KEY ("USER_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."SYSTEM_USER" ("USER_ID") ENABLE;
+  ALTER TABLE "MOH_WORKFLOW_SCHEMA"."USER_ROLES" ADD CONSTRAINT "USER_ROLES_FK2" FOREIGN KEY ("ROLE_ID")
+	  REFERENCES "MOH_WORKFLOW_SCHEMA"."SYSTEM_ROLE" ("ROLE_ID") ENABLE;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.ZONE
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (70,'???? ??? ??????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (71,'?????? ????? ????? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (72,'???? ??? ???',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (73,'???? ??? ???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (74,'???? ??? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (75,'???? ??? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (76,'???? ??? ????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (77,'???? ??? ???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (78,'???? ??? ?????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (79,'???? ??? ??? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (80,'???? ??? ???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (81,'???? ??? ????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (82,'???? ??? ???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (83,'???? ??? ???????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (84,'???? ??? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (85,'???? ??? ??? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (86,'???? ??? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (87,'???? ??? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (88,'???? ??? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (89,'???? ??? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (90,'???? ??? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (91,'???? ??? ????? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (92,'???? ??? ?????? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (93,'???? ??? ???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (94,'???? ??? ???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (95,'???? ??? ???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.ZONE (ZONE_ID,ZONE_NAME,ZONE_DESCRIPTION) values (1,'?????? ????? ??????? ????????','?? ???? ???????');
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.USER_ROLES
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.USER_ROLES (USER_ID,ROLE_ID) values (2,6);
+Insert into MOH_WORKFLOW_SCHEMA.USER_ROLES (USER_ID,ROLE_ID) values (3,7);
+Insert into MOH_WORKFLOW_SCHEMA.USER_ROLES (USER_ID,ROLE_ID) values (4,5);
+Insert into MOH_WORKFLOW_SCHEMA.USER_ROLES (USER_ID,ROLE_ID) values (5,8);
+Insert into MOH_WORKFLOW_SCHEMA.USER_ROLES (USER_ID,ROLE_ID) values (6,9);
+Insert into MOH_WORKFLOW_SCHEMA.USER_ROLES (USER_ID,ROLE_ID) values (7,10);
+Insert into MOH_WORKFLOW_SCHEMA.USER_ROLES (USER_ID,ROLE_ID) values (8,3);
+Insert into MOH_WORKFLOW_SCHEMA.USER_ROLES (USER_ID,ROLE_ID) values (9,4);
+Insert into MOH_WORKFLOW_SCHEMA.USER_ROLES (USER_ID,ROLE_ID) values (1,1);
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (1,'????? ???? ??????? ',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (2,'????? ???? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (3,'????? ???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (4,'????? ???? ????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (5,'????? ???? ???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (6,'????? ???? ?????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (7,'????? ???? ??? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (8,'????? ???? ???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (9,'????? ???? ????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (10,'????? ???? ???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (11,'????? ???? ???????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (12,'????? ???? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (13,'????? ???? ??? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (14,'????? ???? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (15,'????? ???? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (16,'????? ???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (17,'????? ???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (18,'????? ???? ???',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (19,'????? ???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (20,'????? ???? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (21,'????? ???? ????? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (22,'????? ???? ?????? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (23,'????? ???? ???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (24,'????? ???? ???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (25,'????? ???? ???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (26,'??????? ?????? ?????? ????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.TRAFFIC_MANAGEMENT (TRAFFIC_ID,TRAFFIC_NAME,TRAFFIC_DESCRIPTION) values (27,'????? ???? ??????????',null);
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.SYSTEM_USER
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_USER (USER_ID,USERNAME,PASSWORD,CREATED_DATE,ZONE_ID) values (2,'eye','$2a$10$tMPI04TYrepQCB9cmmunHOPpEboWzD6lvwJxiOsq0g.EGoCDnfbpG',null,1);
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_USER (USER_ID,USERNAME,PASSWORD,CREATED_DATE,ZONE_ID) values (3,'bones','$2a$10$dtmakn6rmEr7k0ctRIHCgu3j9AAcnhRcItEE88R7OQ0SjX02rYQvm',null,1);
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_USER (USER_ID,USERNAME,PASSWORD,CREATED_DATE,ZONE_ID) values (4,'register','$2a$10$CaLwfM/7DHErFQ354btuUuSk19NWgQHeszPpGb/1GHx0Huj3lNpv2',null,1);
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_USER (USER_ID,USERNAME,PASSWORD,CREATED_DATE,ZONE_ID) values (5,'medicalregister','$2a$10$e9IdbUSfoNJN9OUu7r9JKeG/9IcGpVAYkYOSdRAAsH7km2SMr7TeW',null,1);
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_USER (USER_ID,USERNAME,PASSWORD,CREATED_DATE,ZONE_ID) values (6,'reviewer','$2a$10$UF0W1BtHUi7xBG863OYGW.GrRMdgrmS/NdHUVr5tA5U8OA7SuOM1m',null,1);
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_USER (USER_ID,USERNAME,PASSWORD,CREATED_DATE,ZONE_ID) values (7,'approver','$2a$10$oFruULr1K2h8ZxQ49q3FE.xTRXSXJPdlrhB8MdWERfzIOpAzDNJy.',null,1);
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_USER (USER_ID,USERNAME,PASSWORD,CREATED_DATE,ZONE_ID) values (8,'citizenregister','$2a$10$twUR7P8alu1qkOVIeWd1G.R5U6bUe7rH6I1SdlzrsADDTT9YRD/W2',null,1);
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_USER (USER_ID,USERNAME,PASSWORD,CREATED_DATE,ZONE_ID) values (9,'cashier','$2a$10$a7fwnuxNM2yqHBkFm.kqJunvBnCpL.s/xqQbOSOr0RlKlSaxWyduG',null,1);
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_USER (USER_ID,USERNAME,PASSWORD,CREATED_DATE,ZONE_ID) values (1,'admin','$2a$10$L9MIF6lIh1bVDi7xnz4g1uZ9Ylcl73e89adMYQ6tmf/G28YnIUueq',null,1);
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.SYSTEM_AUDIT
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_AUDIT (AUDIT_ID,ACTION,DETAILS,REQUEST_ID,PERFORMED_BY,TIMESTAMP,COLUMN1) values (41,'??? ?????? ?????',' ??? ??????? : ???? ???? ???? ????? ?????? : 29106202101137','0','admin',to_timestamp('30-JUN-19 03.28.58.172000000 AM','DD-MON-RR HH.MI.SSXFF AM'),null);
+REM INSERTING into MOH_WORKFLOW_SCHEMA.SYSTEM_ROLE
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_ROLE (ROLE_ID,ROLE_NAME,ROLE_DESCRIPTION) values (3,'CITIZEN','????? ? ????? ?????? ?????????');
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_ROLE (ROLE_ID,ROLE_NAME,ROLE_DESCRIPTION) values (4,'CASHIER','????? ????????? ?????? ????? ???????? ? ????? ????????');
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_ROLE (ROLE_ID,ROLE_NAME,ROLE_DESCRIPTION) values (5,'CONTINUE_REGISTERING','??????? ?????? ?????, ??? ????? ??????? ? ????? ???? ??? ?????? ? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_ROLE (ROLE_ID,ROLE_NAME,ROLE_DESCRIPTION) values (6,'EYE','????? ???? ????????? ???? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_ROLE (ROLE_ID,ROLE_NAME,ROLE_DESCRIPTION) values (7,'BONES','????? ???? ????????? ???? ??????');
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_ROLE (ROLE_ID,ROLE_NAME,ROLE_DESCRIPTION) values (8,'MEDICAL_REGISTERING','????? ?????? ??? ?????? ? ????? , ? ??? ????? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_ROLE (ROLE_ID,ROLE_NAME,ROLE_DESCRIPTION) values (9,'REQUESTS_REVIEWER','?????? ??????? ? ??????? ????? ????? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_ROLE (ROLE_ID,ROLE_NAME,ROLE_DESCRIPTION) values (10,'REQUESTS_APPROVER','?????? ??????? ? ??????? ????? ???????');
+Insert into MOH_WORKFLOW_SCHEMA.SYSTEM_ROLE (ROLE_ID,ROLE_NAME,ROLE_DESCRIPTION) values (1,'ADMIN','????? ?????? ???????');
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (1,'???? ????',0,'???? ????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (2,'???? ???? ?????',0,'???? ???? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (3,'?? ??????',0,'?? ??????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (4,'????? ?????? ???? ????',0,'????? ?????? ???? - ????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (5,'??? ????',200,'??? ????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (6,'??? ??????',400,'??? ??????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (7,'???? ????',0,'???? ????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (8,'????? ?????? ????',0,'????? ?????? - ????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (9,'????? ??????',0,'????? ??????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (10,'??? ?????',0,'??? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (11,'??? ????? ???????',0,'??? ????? ???????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (12,'????? ????? ??? ???',0,'????? ????? ??? ???');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (13,'????? ?????? ????',0,'????? ?????? ????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (14,'????? ??????  ???? ????',0,'????? ??????  ???? ????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (15,'???? ???????? ????',0,'???? ???????? ????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (16,'???? ???????? ????',0,'???? ???????? ????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_TYPE (REQUEST_TYPE_ID,REQUEST_TYPE_NAME,REQUEST_TYPE_PRICE,REQUEST_TYPE_DESCRIPTION) values (17,'????? ?????? ?????',0,'????? ?????? ?????');
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (1,'???? ????','???? ????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (2,'???? ???? ???????','???? ???? ???????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (3,'???? ?????-??????','???? ?????-??????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (4,'???? ???????-??????','???? ???????-??????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (5,'?? ???????','?? ???????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (6,'????? ??????','????? ??????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (7,'???? ?????','???? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (8,'???? ?????','???? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (9,'???? ???????','???? ???????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (10,'???','???');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (11,'?? ??????','?? ??????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (12,'???? ?????- ?????','???? ?????- ?????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (13,'???? ???????-?????','???? ???????-?????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (14,'????? ??????','????? ??????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (15,'????? ?????','????? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (16,'???? ???? ??????? ?????','???? ???? ??????? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (17,'?? ????','?? ????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (18,'??? ?????? ??????? ?????','??? ?????? ??????? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (19,'????? ?????? ????? - ??????','????? ?????? ????? - ??????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (20,'????? ?????? ?????','????? ?????? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (21,'???? ??????? - ??????','???? ??????? - ??????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (22,'???? ???????','???? ???????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (23,'??? ??????? - ??????','??? ??????? - ??????');
+Insert into MOH_WORKFLOW_SCHEMA.REQUEST_STATUS (REQUEST_STATUS_ID,REQUEST_STATUS_NAME,REQUEST_STATUS_DESCRIPTION) values (24,'??? ???????','??? ???????');
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.OCCUPATION
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (1,'????? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (3,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (5,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (6,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (7,'???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (8,'????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (10,'?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (12,'???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (13,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (14,'???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (15,'?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (16,'???? ???',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (17,'?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (18,'??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (19,'???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (20,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (21,'???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (22,'???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (23,'???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (25,'??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (29,'??? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (30,'???? ???',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (31,'???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (33,'?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (35,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (37,'???? ???',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (40,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (41,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (42,'???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (44,'?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (45,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (46,'?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (49,'??? ???',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (50,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (51,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (53,'??? ???',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (54,'????? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (56,'???? ???',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (57,'??? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (58,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (59,'???',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (61,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (65,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (66,'???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (67,'?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (68,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (69,'???? ???',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (70,'???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (71,'???? ???',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (72,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (73,'???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (74,'???? ???',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (75,'????? ???',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (76,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (78,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (79,'???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (84,'???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (85,'???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (86,'?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (87,'???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (88,'??? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (90,'?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (91,'???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (93,'??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (94,'?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (95,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (96,'?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (97,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (98,'??? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (99,'???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (100,'????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (102,'???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (103,'?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (104,'???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (105,'???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (109,'???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (110,'???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (112,'???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (114,'????? ???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (116,'????? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (121,'???? ??? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (123,'???? ??? ?????? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (136,'???? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (138,'????? ??? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (139,'????? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (140,'???? ???? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (144,'???? ??? ????? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (146,'???? ???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (148,'????? ????? ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (150,'???? ????? / ????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (151,'????? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (155,'???? ??? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (159,'???? ??? ????? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (160,'???? ??? ???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (164,'????? ??? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (167,'????? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (172,'???? ??? ?????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (174,'???? ??? ????? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (175,'???? ??? ????? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (176,'???? ??? ????? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (189,'???? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (192,'????? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (194,'????? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (195,'???? ????? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (201,'???? ??? ???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (204,'?????? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (213,'???? ??? ????? ????? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (218,'???? ??? ?????? ??????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (219,'????? ??????? ???????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (220,'???? ????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.OCCUPATION (OCCUPATION_ID,OCCUPATION_NAME,OCCUPATION_DESCRIPTION) values (223,'??? ???? ??????',null);
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.GOVERNATE
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (1,1,'???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (2,2,'??????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (29,29,'??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (19,19,'???????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (18,18,'???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (21,21,'??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (12,12,'????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (13,13,'???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (16,16,'???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (14,14,'?????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (17,17,'????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (24,24,'??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (28,28,'?????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (25,25,'?????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (22,22,'??? ????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (26,26,'?????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (27,27,'???',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (15,15,'??? ?????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (33,33,'???? ?????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (88,88,'????? ???? ?????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (3,3,'???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (4,4,'?????? ',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (11,11,'?????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (23,23,'?????? ',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (31,31,'????? ??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (32,32,'?????? ??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (34,34,'???? ?????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (35,35,'???? ?????',1);
+Insert into MOH_WORKFLOW_SCHEMA.GOVERNATE (GOVERNATE_ID,GOVERNATE_CODE,GOVERNATE_NAME,ZONE_ID) values (37,37,'????',1);
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.EYE_MEASURE
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (1,'6/6','6/6');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (2,'6/9','6/9');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (3,'6/12','6/12');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (4,'6/18','6/18');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (5,'6/24','6/24');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (6,'6/36','6/36');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (7,'6/60','6/60');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (8,'5/60','5/60');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (9,'??? ?? (6/60)','??? ?? (6/60)');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (10,'?????? ?????','?????? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (11,'???? ?????','???? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (12,'???? ???? ??','???? ???? ??');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (13,'?? ?????','?? ?????');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (14,'????','????');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (15,'??? ??????','??? ??????');
+Insert into MOH_WORKFLOW_SCHEMA.EYE_MEASURE (MEASURE_ID,MEASURE_TITLE,MEASURE_DESCRIPTION) values (16,'????? ?????','????? ?????');
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.EQUIPMENT
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (186,'????? ??????? ???????? ???? ????? ????? ???? ?????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (187,'????? ??????? ???????? ???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (188,'????? ???? ?????? ???? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (189,'????? ???? ?????? ??????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (190,'?????? ??????? ???????? ?????? ?????? ???????? ??? ???? ????? ????? ????? ????? ????? ????? ??????? + ???? ???? ?????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (191,'?????? ??????? ???????? ?????? ?????? ???????? ??? ???? ????? ????? ????? ????? ????? ????? ??????? + ???? ???? ?????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (192,'?????? ??????? ???????? ?????? ?????? ???????? ??? ???? ????? ????? ????? ????? ????? ????? ??????+ ???? ???? ??????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (193,'?????? ??????? ???????? ?????? ?????? ???????? ??? ???? ????? ????? ????? ????? ????? ????? ?????? + ???? ???? ??????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (194,'?????? ??????? ???????? ?????? ?????? ???????? ??? ???? ????? ????? ???????? ???????? ???? ????? ????? ???? ????????? ',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (195,'????? ????? ?????  ????? ??????? ???????? ????? ?????? ???? ????? ',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (196,'?????? ??????? ???????? ?????? ?????? ???????? ??? ???? ????? ????? ???????? ???????? ???? ????? ????? ???? ?????????? ',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (197,'?????? ??????? ???????? ?????? ?????? ???????? ??? ???? ????? ????? + ???? ???? ?????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (198,'?????? ??????? ???????? ?????? ?????? ???????? ??? ???? ????? ????? + ???? ???? ?????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (199,'??????? ???????? ???? ????? ????? ????? ????? ????? ???? ??????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (200,'????? ??????? ???????? ???? ????? ?? ???? ????? ?????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (201,'????? ??????? ???????? ???? ????? ????? ?????? ???? ????? ?? ?????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (202,'????? ???? ?????? ???? ????? ?? ?????????',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (203,'???? ????? ?????+???? ???? ????????? ??? ?? ???? ????????? ?????? ???? ???? ?? ????? ?????? ??????? ???? ??????? ?????  ?????? ???? ??????? ',null);
+Insert into MOH_WORKFLOW_SCHEMA.EQUIPMENT (EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_DESCRIPTION) values (204,'?????? ??????? ???????? ?????? ?????? ???????? ??? ???? ????? ????? ????? ????? ????? ????? ???????+????? ??????? ???????? ???? ????? ????? ???? ?????????? ',null);
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.DOCUMENT_TYPE
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.DOCUMENT_TYPE (DOCUMENT_TYPE_ID,DOCUMENT_TYPE_NAME,DOCUMENT_TYPE_DESCRIPTION) values (2,'???? ?????','?? ???? ???????');
+Insert into MOH_WORKFLOW_SCHEMA.DOCUMENT_TYPE (DOCUMENT_TYPE_ID,DOCUMENT_TYPE_NAME,DOCUMENT_TYPE_DESCRIPTION) values (3,'????? ??????2','?? ???? ???????2');
+
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.DISABILITY
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (373,'???? ??????? ?????? ???? ??? ??????? ????????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (374,'???? ????? ????? ?????? ???? ???? ??????? ?????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (375,'??? ?????? ?????? ???? ?? ??? ???? ???',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (376,'???? ???? ?????? ?????? ??????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (377,'??? ???? ??????? ????? ????? ?????? ?? ???? ??? ????? ?????? ????? ?????? ???????? ?? ??? ????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (378,'???? ???? ?????? ????? ?????? ??? ??? ???? ????? ?????? ?????? ?????? ?????? ?? ??? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (379,'??? ?????? ?????? ?????? ?? ????? ????? ?????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (380,'???? ??????? ?????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (381,'??? ???? ???? ????? ?????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (382,'???? ????????? ???????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (383,'??? ?????? ?????? ?????? ???? ????? ?????? ?????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (384,'????? ????? ????? ???????? ?????? ???????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (216,'??? ???????? ???????? ',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (217,'???? ???? ????? ?????? ?????? ???? ??????? ???????? ?? ??????? ',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (218,'???? ???? ????? ?????? ?????? ???? ??????? ???????? ?? ??????? ',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (219,'??? ?????? ?????? ?????? ???? ??? ????? ??????? ????? ??????? ',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (220,'??? ?????? ?????? ?????? ???? ??? ????? ??????? ????? ??????? ',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (221,'??? ?????? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (222,'??? ?????? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (223,'??? ?????? ????? ?????? ?????? ???? ??? ????? ??????? ????? ??????? ',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (224,'??? ?????? ????? ?????? ?????? ???? ??? ????? ??????? ????? ???????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (225,'???? ??????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (226,'???? ??????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (227,'???? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (228,'???? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (229,'??? ?????? ?????? ?????? ?????? ??? ????? ????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (230,'??? ?????? ?????? ?????? ?????? ??? ?????  ????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (231,'??? ????? ?????? ?????? ?????? ????? ??????? ?? ??? ????? ??????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (232,'??? ????? ?????? ?????? ?????? ????? ??????? ?? ??? ????? ??????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (233,'??? ?????? ?????? ?????? ???? ?? ????? ???? ????? ????? ?????? ??? ???? ??????? ?? ??? ?????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (234,'??? ?????? ?????? ?????? ???? ?? ????? ???? ????? ????? ?????? ??? ???? ??????? ?? ??? ?????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (235,'??? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (236,'??? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (237,'???? ????? ???? ????????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (238,'???? ??????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (239,'???? ??????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (240,'???? ???????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (241,'????? ??? ???? ????? ?????? ?????? ?????? ????? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (242,'??? ?????? ?????? ?????? ?? ????? ???????? ????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (243,'??? ???? ?????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (244,'??? ???? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (245,'??? ??? ?????? ?????? + ????? ???? ??????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (246,'?????? ???????? ??????? ???????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (247,'??? ???? ?????? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (248,'???? ?????? ?????? ?? ?????? ????? ???? ??????? ?????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (249,'??? ?????? ?????? ?????? ?? ????? ????? ?????? ?????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (250,'???? ????? ????? ?????? ?? ?????? ?? ??? ??? ????? ?????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (251,'???? ???? ??????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (252,'???? ???? ?????? ???? ?????? ????? ??????? ????? ???? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (253,'????? ????? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (254,'???? ????????? ???????? ?? ??? ???? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (255,'????? ???????? ??????? ?????? ?????? ???????? ?? ??? ????? ???? ??????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (256,'??? ???????? ???????? ???? ??? ????? ??????? ????? ??????? ',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (257,'???? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (258,'???? ???????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (259,'???? ?????? ???????? ????? ?????? ?????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (260,'??? ?????? ?????? ?????? ???? ??????? ????? ???? ?????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (261,'????? ???? ????? ?????? ?????? ?? ????? ????? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (262,'????? ???? ????? ?????? ?????? ?? ????? ????? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (263,'???? ????? ?????? ???? ????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (264,'??? ?????? ?????? ?????? ?? ??? ?????? ?????? ?????? ??????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (265,'????? ??? ( 2 ) ???? ????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (266,'???? ???? ?????? ?????? ?????? ?????? ??? ????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (267,'??? ?????? ????? ?????? ?????? ???? ????? ???? ?????? ?????? ?? ??? ????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (268,'??? ????? ?????? ?????? ?????? ????? ???? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (269,'??? ????? ?????? ?????? ?????? ????? ???? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (270,'??? ?????? ???? ?????? ??? ??????? ????? ???? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (271,'??? ?????? ????? ?????? ?????? ???? ????? ???? ?????? ?????? ?? ??? ????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (272,'??? ?????? ???????? ????????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (273,'??? ???? ?????? ?????? ?????? ?? ???? ?????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (274,'???? ??????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (275,'??? ???? ???????? ???? ?????? ???? ???',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (276,'??? ???? ?????? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (277,'??? ?????? ?????? ?????? ?????? ??? ????? ???? + ?????? ????? ???? ',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (278,'??? ???? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (279,'???? ???? ????? ?????? ?????? ???? ????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (280,'??? ???????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (281,'???? ????? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (282,'???? ????????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (283,'???? ???????? ???????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (284,'???? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (285,'???? ?????? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (286,'???? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (287,'???? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (288,'???? ????????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (289,'??? ?????? ??????? ????????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (290,'?????? ???????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (291,'??? ?????? ?????? ?????? + ??? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (292,'???? ????? ????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (293,'???? ????? ????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (294,'???? ???? ????????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (295,'???? ???? ????? ????? ?????? + ???? ???? ????? ?????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (296,'??? ?????? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (297,'??? ?????? ????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (298,'??? ?????? ????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (299,'??? ?????? ???????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (300,'???? ?????? ?????? ?? ????? ???? ??????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (301,'??? ????? ?????? ?????? ?????? ????? ??????? ?? ??? ????? ??????? ?????? ???? ?????? ?????? ?????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (302,'???? ?? ?????? ?????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (303,'???? ?? ?????? ?????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (304,'??? ?????? ????? ?????? ?????? ?? ???? ???? ?????? ?????? ????? ?? ??? ????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (305,'??? ?????? ?????? ?????? ???? ??? ????? ??????? ????? ??????? ?? ???? ?????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (306,'??? ?????? ?????? ?????? ???? ??? ????? ??????? ????? ??????? ?? ???? ?????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (307,'??? ?????? ?????? ?????? ???? ??? ????? ??????? ????? ??????? ?? ???? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (308,'??? ?????? ?????? ?????? ???? ??? ????? ??????? ????? ??????? ?? ???? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (309,'????? ???? ?????? ???? ????? ?? ????????? ',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (310,'????? ????? ????? ??????? ??????? ???????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (311,'????? ????? ????? ??????? ',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (312,'??? ???? ????? ?????? (???? ???? ????????) ?????? ???? ????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (313,'????? ????? ????? ??????? ',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (314,'???? ????? ?????? ?????? ???? ????? ????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (315,'??? ?????? ???? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (316,'??? ???? ????? ??????',200,1,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (317,'??? ????? ?????? ?????? ??? ????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (318,'??? ??????? ?????? ?????? ?????? ?? ????? ???? ????? ????? ??? ??????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (319,'???? ?????? ?????? ?????? ?????? ???? ????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (320,'???? ?????? ?????? ?????? ?????? ???? ????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (321,'???? ???? ????? ?????? ?????? ???? ????? ???? ',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (322,'???? ???? ??????? ???????? ?? ??? ???? ????????? ???????? ??? ???? ???? ???????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (323,'??? ????????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (324,'??? ????? 80 ?? ?? ??? ??????? ???????? ???????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (325,'????? ????? ?????? ???? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (326,'??? ?????? ???? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (327,'???? ???? ??????? ?????? ?????? ???? ????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (328,'???? ???? ??????? ????? ??????? ??????? ???? ?????? ??????? ??????? ?????? ?????? ',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (329,'???? ???? ????? ?????? ?????? ???? ????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (330,'???? ???? ????? ????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (331,'???? ??????? ?????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (332,'????? ????? ?????? ?????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (333,'??? ?????? ???? ?????? ?????? ???? ????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (334,'??? ?????? ???? ?????? ?????? ???? ????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (335,'???? ????? ?????? ?????? ???? ????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (336,'??? ???????? ????????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (337,'????? ?????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (338,'??? ??????? ???????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (339,'??? ??????? ????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (340,'??? ??????? ????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (341,'??? ?????? ???? ?????? ??? ??????? ????? ???? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (342,'??? ???? ?????? ?????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (343,'??? ???? ?????? ?????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (344,'??? ???????? ????????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (345,'???? ?????? ????? ?????? ?????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (346,'??? ???? ?????? ?????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (347,'??? ???? ?????? ?????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (348,'??? ???? ???????? ????????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (349,'???? ?????? ?????? ?????? ???? ????? ???? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (350,'???? ?????? ?????? ?????? ???? ????? ???? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (351,'???? ?????? ?????? + ??? ?????? ?????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (352,'??? ???????? ???????? + ??? ?????? ?????? ??? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (353,'??? ?????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (354,'?????? ???? ?????? ?????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (355,'?????? ???? ?????? ?????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (356,'??? ??????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (357,'??? ??????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (358,'??? ?????? ?????? ?????? +  ??? ?????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (359,'??? ?????? ?????? ?????? + ??? ?????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (360,'??? ???? ????????? ???????? ?? ?????? ???? ?????? ???????? ???????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (361,'??? ?????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (362,'??? ??? ?????? ?????? + ????? ???? ??????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (363,'??? ???? ???? ???? ??????? ?????? ?????? ??? ????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (364,'??? ???? ???? ???? ??????? ?????? ?????? ??? ????? ????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (365,'??? ???? ????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (366,'????? ??????? ?????? ??????? ?? ??? ????? ???? ??????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (367,'??? ???? ???? ???? ????? ????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (368,'??? ?????? ?????? ?????? ???? ?????? ?????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (369,'??? ?????? ?????? ?????? ???? ?????? ?????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (370,'????? ???? ????? ?????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (371,'????? ???? ????? ?????? ??????',200,0,null);
+Insert into MOH_WORKFLOW_SCHEMA.DISABILITY (DISABILITY_ID,DISABILITY_NAME,EQUIPMENT_ID,ACCEPTED,DISABILITY_DESCRIPTION) values (372,'????? ???? ????? ????????',200,0,null);
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.CUSTOM
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.CUSTOM (CUSTOM_ID,CUSTOM_NAME,CUSTOM_DESCRIPTION) values (1,'???????','?? ???? ???????');
+Insert into MOH_WORKFLOW_SCHEMA.CUSTOM (CUSTOM_ID,CUSTOM_NAME,CUSTOM_DESCRIPTION) values (2,'??????????','?? ???? ???????');
+Insert into MOH_WORKFLOW_SCHEMA.CUSTOM (CUSTOM_ID,CUSTOM_NAME,CUSTOM_DESCRIPTION) values (3,'?????','?? ???? ???????');
+Insert into MOH_WORKFLOW_SCHEMA.CUSTOM (CUSTOM_ID,CUSTOM_NAME,CUSTOM_DESCRIPTION) values (4,'???? ?????','?? ???? ???????');
+Insert into MOH_WORKFLOW_SCHEMA.CUSTOM (CUSTOM_ID,CUSTOM_NAME,CUSTOM_DESCRIPTION) values (5,'??????','?? ???? ???????');
+Insert into MOH_WORKFLOW_SCHEMA.CUSTOM (CUSTOM_ID,CUSTOM_NAME,CUSTOM_DESCRIPTION) values (6,'????? ???','?? ???? ???????');
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.COMMITTEE_MEMBER
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.COMMITTEE_MEMBER (COMMITTEE_MEMBER_ID,MEMBER_NAME,MEMBER_TITLE,MEMBER_DESCRIPTION,MEMBER_MOBILE_NO,ZONE_ID) values (2,'???? ???? ?????????','???? ????','?? ???? ???????','01200000000',1);
+Insert into MOH_WORKFLOW_SCHEMA.COMMITTEE_MEMBER (COMMITTEE_MEMBER_ID,MEMBER_NAME,MEMBER_TITLE,MEMBER_DESCRIPTION,MEMBER_MOBILE_NO,ZONE_ID) values (5,'????????? ???? ????','????','?? ???? ???????','015000000000',72);
+Insert into MOH_WORKFLOW_SCHEMA.COMMITTEE_MEMBER (COMMITTEE_MEMBER_ID,MEMBER_NAME,MEMBER_TITLE,MEMBER_DESCRIPTION,MEMBER_MOBILE_NO,ZONE_ID) values (4,'????? ???? ????','???','?? ???? ???????','01015090111',70);
+Insert into MOH_WORKFLOW_SCHEMA.COMMITTEE_MEMBER (COMMITTEE_MEMBER_ID,MEMBER_NAME,MEMBER_TITLE,MEMBER_DESCRIPTION,MEMBER_MOBILE_NO,ZONE_ID) values (1,'???? ???? ?????????','???? ???','?? ???? ???????','010000000000',1);
+Insert into MOH_WORKFLOW_SCHEMA.COMMITTEE_MEMBER (COMMITTEE_MEMBER_ID,MEMBER_NAME,MEMBER_TITLE,MEMBER_DESCRIPTION,MEMBER_MOBILE_NO,ZONE_ID) values (3,'???? ???? ????????? ','?????','?? ???? ???????','011000000000',70);
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.COMMITTEE
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.COMMITTEE (COMMITTEE_ID,COMMITTEE_DATE,COMMITTEE_FUNCTION,COMMITTEE_TYPE,MEMBER_ONE_ID,MEMBER_TWO_ID,MEMBER_THREE_ID,MEMBER_FOUR_ID,MEMBER_FIVE_ID,MEMBER_SIX_ID,COMMITTEE_DESCRIPTION,ZONE_ID) values (1,to_timestamp('12-JUL-19 02.00.00.000000000 AM','DD-MON-RR HH.MI.SSXFF AM'),'????','????',2,5,4,1,3,null,'?? ???? ???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.COMMITTEE (COMMITTEE_ID,COMMITTEE_DATE,COMMITTEE_FUNCTION,COMMITTEE_TYPE,MEMBER_ONE_ID,MEMBER_TWO_ID,MEMBER_THREE_ID,MEMBER_FOUR_ID,MEMBER_FIVE_ID,MEMBER_SIX_ID,COMMITTEE_DESCRIPTION,ZONE_ID) values (2,to_timestamp('31-AUG-19 02.00.00.000000000 AM','DD-MON-RR HH.MI.SSXFF AM'),'????','???',1,5,null,null,null,null,'?? ???? ???????',70);
+
+REM INSERTING into MOH_WORKFLOW_SCHEMA.CITIZEN
+SET DEFINE OFF;
+REM INSERTING into MOH_WORKFLOW_SCHEMA.CITY
+SET DEFINE OFF;
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (735,'????',15);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (736,'????',15);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (475,'????? ???????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (476,'????? ????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (477,'??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (478,'??? ???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (479,'???????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (480,'??????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (481,'????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (482,'????? ??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (483,'?????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (484,'???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (485,'??????',14);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (486,'????',4);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (487,'??????',15);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (488,'?????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (489,'??????? ???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (490,'????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (491,'???? ??????',23);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (492,'????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (493,'??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (494,'??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (495,'?????? ???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (496,'?????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (497,'???????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (498,'????????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (499,'????',29);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (500,'???? ???',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (501,'?????????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (502,'???? ????',29);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (503,'????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (504,'???? ?????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (505,'??????????? ???',19);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (506,'??????????? ????',19);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (507,'???????? ???',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (508,'???????? ???',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (509,'?????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (510,'15 ????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (511,'???? ??',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (512,'???',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (513,'????? ???',28);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (514,'?????????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (515,'??????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (516,'????? ???',25);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (517,'?????????',11);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (518,'??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (519,'?????? ???',34);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (520,'???? ?????? ???',14);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (521,'???? ?????? ???',14);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (522,'??????',14);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (523,'???',14);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (524,'??????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (525,'????????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (526,'???????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (527,'?????? ?????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (528,'?????? ??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (529,'????? ??? - ???',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (530,'????? ??? - ???',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (531,'???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (532,'???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (533,'???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (534,'??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (535,'??? ???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (536,' ??? ??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (537,'?????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (538,'???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (539,'??? ???',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (540,'??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (541,'??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (542,'??????? ???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (543,'????? ?????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (544,'?????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (545,'????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (546,'??? ???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (547,'???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (548,'??? ?????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (549,'????? ????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (550,'?????? ????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (551,'??? ???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (552,'??????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (553,'??? ???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (554,'???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (555,'????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (556,'???????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (557,'?????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (558,'?????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (559,'??????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (560,'??????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (561,'????????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (562,'??? ?????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (563,'???????????',19);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (564,'???? ??????',19);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (565,'????',19);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (566,'??????? ???',19);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (567,'??????? ???',19);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (568,'??? ????',19);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (569,'????????',19);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (570,'?????',28);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (571,'????',28);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (572,'??? ????',28);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (573,'????',28);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (574,'??? ??????',28);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (575,'?????',25);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (576,'?????',25);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (577,'?????',25);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (578,'?????',25);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (579,'??????',25);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (580,'??? ???',25);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (581,'???????',25);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (582,'???? ????',25);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (583,'???????',25);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (584,'????',25);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (585,'?????',25);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (586,'???????',31);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (587,'?????',31);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (588,'???? ???',31);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (589,'??????',31);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (590,'??? ????',31);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (591,'??????',31);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (592,'????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (593,'???????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (594,'????? ???????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (595,'??? ???',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (596,'??? ??????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (597,'????????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (598,'??? ?????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (599,'??? ????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (600,'??????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (601,'?????????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (602,'????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (603,'??? ????????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (604,'?????????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (605,'????????? ???????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (606,'???? ???????',18);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (607,'?? ?????',3);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (608,'?? ??????',3);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (609,'?? ???????',3);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (610,'?? ???????',3);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (611,'?? ??????',3);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (612,'?? ??????',3);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (613,'?? ?????',3);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (614,'??? ????',22);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (615,'???? ????',22);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (616,'?????',22);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (617,'???',22);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (618,'???????',22);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (619,'???????',22);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (620,'?????',22);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (621,'???? ??????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (622,'?????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (623,'?????????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (624,'??????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (625,'?? ????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (626,'6 ??????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (627,'?? ?????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (628,'????????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (629,'??????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (630,'?????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (631,'??????? ???????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (632,'????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (633,'???????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (634,'????????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (635,'?????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (636,'??? ???',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (637,'????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (638,'???',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (639,'?????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (640,'??????????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (641,'?????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (642,'????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (643,'????????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (644,'???? ?????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (645,'??? ????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (646,'??? ?????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (647,'??????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (648,'??? ???????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (649,'?????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (650,'?????',11);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (651,'??? ???',11);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (652,'???????',11);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (653,'??????',11);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (654,'?????',26);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (655,'???????',26);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (656,'????',26);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (657,'??? ??????',26);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (658,'?????',26);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (659,'??????',26);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (660,'?????',26);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (661,'???',26);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (662,'????',26);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (663,'???????',26);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (664,'???????',26);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (665,'??????',4);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (666,'????????',4);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (667,'?????',4);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (668,'???????',4);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (669,'??? ????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (670,'??? ????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (671,'????? ???',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (672,'?????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (673,'????????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (674,'???? ???',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (675,'????????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (676,'????????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (677,'?????? ?? ?????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (678,'?????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (679,'??? ???',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (680,'???? ?????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (681,'????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (682,'????? ?????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (683,'???????????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (684,'???????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (685,'??????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (686,'????????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (687,'????',35);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (688,'?????',35);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (689,'???',35);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (690,'???',35);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (691,'??? ???',35);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (692,'??? ?????',35);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (693,'??? ?????',34);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (694,'??????',34);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (695,'??????',34);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (696,'????? ????',34);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (697,'???',34);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (698,'?????? ??????',16);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (699,'?????? ?????? - ???',16);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (700,'????',16);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (701,'???? - ???',16);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (702,'?????',16);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (703,'????',16);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (704,'??????',16);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (705,'????',16);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (706,'?????',16);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (707,'??? ??????',16);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (708,'??????',23);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (709,'????',23);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (710,'??????',23);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (711,'?????',23);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (712,'?????',23);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (713,'????',14);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (714,'?????',14);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (715,'??????? ???????',14);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (716,'???? ??????',14);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (717,'???????',14);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (718,'??? ???',14);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (719,'???? ???????',14);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (720,'???',14);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (721,'??? ???',27);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (722,'?????',27);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (723,'??? ?????',27);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (724,'?????',27);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (725,'????',27);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (726,'???',27);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (727,'???',27);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (728,'???',27);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (729,'?????',27);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (730,'?????',29);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (731,'????',27);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (732,'??????',29);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (733,'??? ?????',15);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (734,'???????',15);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (737,'?????',15);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (738,'????',15);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (739,'?????',15);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (740,'???? ????',15);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (741,'??????',15);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (742,'???',15);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (743,'?????',17);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (744,'???????',17);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (745,'???? ?????',17);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (746,'????',17);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (747,'????? ???????',17);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (748,'??? ??????',17);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (749,'???',17);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (750,'???????',17);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (751,'???? ?????',17);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (752,'??????',17);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (753,'??? ?????',24);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (754,'??? ????',24);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (755,'??? ????',24);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (756,'??????',24);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (757,'??????',24);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (758,'????',24);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (759,'?????',24);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (760,'????',24);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (761,'??????',24);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (762,'?????? ???????',24);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (763,'???????',32);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (764,'???????',32);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (765,'????????',32);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (766,'???? ??????',33);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (767,'???? ???????',33);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (768,'???? ??????',33);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (769,'???? ?????',33);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (770,'???? ???????',33);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (771,'???? ?????',33);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (772,'???? ??????',33);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (773,'???? ????',33);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (774,'???? ????',12);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (775,'??? ?????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (776,'??? ?????',35);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (777,'??????',34);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (778,'????? ??????',13);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (779,'???',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (780,'????? ???????',21);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (781,'???????',35);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (782,'????????',35);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (783,'???? ????',2);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (784,'??????',29);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (785,'????????',1);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (786,'????????',26);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (787,'??? ????',11);
+Insert into MOH_WORKFLOW_SCHEMA.CITY (CITY_ID,CITY_NAME,GOVERNATE_ID) values (788,'????? ????',21);
+
+
+
+
+
+
+

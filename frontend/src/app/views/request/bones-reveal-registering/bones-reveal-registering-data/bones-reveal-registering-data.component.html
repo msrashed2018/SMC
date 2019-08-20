@@ -1,0 +1,235 @@
+<div class="animated fadeIn ">
+
+    <div *ngIf="errorMessage">
+        <alert type="danger">
+            <strong>{{message}}</strong>
+        </alert>
+    </div>
+    <div *ngIf="successMessage">
+        <br>
+        <alert type="success">
+            <strong>{{message}}</strong>
+        </alert>
+    </div>
+
+    <br />
+
+    <div class="row ">
+
+        <div style="width:100% !important;">
+            <div class="card">
+                <div class="card-header">
+                    <strong style="color: rgba(27, 17, 168, 0.582);">البيانات الاساسية للطلب</strong>
+                    <div class="card-header-actions">
+                        <button type="button" class="card-header-action btn btn-link btn-minimize"
+                            (click)="toggleRequestDataCollapse()"><i class={{iconRequestDataCollapse}}></i></button>
+                    </div>
+                </div>
+
+                <div (collapsed)="requestDataCollapsed($event)" (expanded)="requestDataExpanded($event)"
+                    [collapse]="isRequestDataCollapsed" class="card-body ">
+                    <!-- <form class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" novalidate> -->
+                    <div class="form-group row">
+                        <label class=" col-md-2 col-form-label font-weight-bold" for="citizenName">اسم المواطن</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="citizen.name" #citizenName="ngModel" type="text"
+                                name="citizenName" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="nationalId">الرقم القومي</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="citizen.nationalId" #nationalId="ngModel"
+                                type="number" name="nationalId" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="requestId">رقم الطلب</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="request.id" #requestId="ngModel" type="number"
+                                name="requestId" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="type">نوع الطلب</label>
+                        <div class="col-md-5">
+                            <input [attr.disabled]="true" [(ngModel)]="requestType.name" #type="ngModel" type="text"
+                                name="type" class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- <div class="card-footer">
+                            <div *ngIf="requestDataErrorMessage != '' ">
+                                <alert type="danger">{{requestDataErrorMessage}}</alert>
+                            </div>
+                            <div *ngIf="requestDataSuccessMessage!= '' ">
+                                <alert type="success"> {{requestDataSuccessMessage}} </alert>
+                            </div>
+                            <button (click)="onSaveRequestData()" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> حفظ</button>
+                        </div> -->
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="bonesCommittee != null " style="width:100% !important;">
+            <div class="card">
+                <div class="card-header">
+                    <strong style="color: rgba(27, 17, 168, 0.582)">كشف العظام</strong>
+                    <div class="card-header-actions">
+                        <button type="button" class="card-header-action btn btn-link btn-minimize"
+                            (click)="toggleBonesRevealDataCollapse()"><i
+                                class={{iconBonesRevealDataCollapse}}></i></button>
+                    </div>
+                </div>
+                <div (collapsed)="bonesRevealDataCollapsed($event)" (expanded)="bonesRevealDataExpanded($event)"
+                    [collapse]="isBonesRevealDataCollapsed" class="card-body ">
+                    <!-- <form class="form-horizontal" #bonesForm="ngForm" (ngSubmit)="f.form.valid && onSave()" novalidate> -->
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="bonesCommitteeDate">تاريخ
+                            اللجنة</label>
+                        <div class="col-md-6">
+                            <input [attr.disabled]="true" [(ngModel)]="bonesCommittee.date" type="text"
+                                name="bonesCommitteeDate" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="disabilityType">نوع الاعاقة</label>
+                        <div class="col-md-6">
+                            <input list="id-disabilityType" [(ngModel)]="selectedDisabilityTypeName"
+                                name="disabilityType" #disabilityType="ngModel" class="form-control"
+                                (change)="onDisabilityChanged(disabilityType.value)">
+                            <datalist id="id-disabilityType">
+                                <option *ngFor="let disability of disabilities" [value]="disability.name">
+                                    {{disability.name}}</option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="equipmentType">نوع السيارة</label>
+                        <div class="col-md-6">
+                            <textarea [attr.disabled]="true" [(ngModel)]="equipment" type="text" name="equipmentType"
+                                class="form-control"></textarea>
+                            <!-- <textarea style="background-color:black;color:white;" [(ngModel)]='rapidPageValue' rows="30" cols="120"></textarea> -->
+                            <!-- <select [attr.disabled]="true" name="equipmentType" class="form-control" [(ngModel)]="selectedEquipmentTypeId">
+                              <option *ngFor="let equipment of equipments" [value]="equipment.id">{{equipment.name}}</option>
+                          </select> -->
+                        </div>
+                    </div>
+                    <div *ngIf="bonesReveal.result != null" class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="bonesRevealResult">النتيجة</label>
+                        <div class="col-md-6">
+                            <select [attr.disabled]="true" [(ngModel)]="bonesReveal.result" name="bonesRevealResult"
+                                class="form-control">
+                                <option value="مقبول">مقبول</option>
+                                <option value="مرفوض">مرفوض</option>
+                                <option value="اعادة مناظرة">اعادة مناظرة</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold" for="description">ملاحظات</label>
+                        <div class="col-md-6">
+                            <input [(ngModel)]="bonesReveal.description" #description="ngModel" type="text"
+                                name="description" class="form-control">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div *ngIf="bonesRevealErrorMessage != '' ">
+                            <alert type="danger">{{bonesRevealErrorMessage}}</alert>
+                        </div>
+                        <div *ngIf="bonesRevealSuccessMessage!= '' ">
+                            <alert type="success"> {{bonesRevealSuccessMessage}} </alert>
+                        </div>
+                        <button (click)="onSaveBonesReveal()" class="btn btn-sm btn-primary"><i
+                                class="fa fa-dot-circle-o"></i> حفظ</button>
+                    </div>
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+
+        <div style="width:100% !important;">
+            <div class="card">
+                <div class="card-header">
+                    <strong style="color: rgba(27, 17, 168, 0.582)">الاوراق</strong>
+                    <div class="card-header-actions">
+                        <button type="button" class="card-header-action btn btn-link btn-minimize"
+                            (click)="toggleFileUploadDataCollapse()"><i
+                                class={{iconFileUploadDataCollapse}}></i></button>
+                    </div>
+                </div>
+                <div (collapsed)="fileUploadDataCollapsed($event)" (expanded)="fileUploadDataExpanded($event)"
+                    [collapse]="isFileUploadDataCollapsed" class="card-body ">
+                    <div>
+                        <table class="table table-responsive-sm table-hover table-outline mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="text-center">الملف</th>
+                                    <th class="text-center">تحميل</th>
+                                    <th class="text-center">حذف</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let requestDocument of requestDocuments ; let i=index">
+                                    <td class="text-center">
+                                        <i class="fa fa-file-pdf-o" style="font-size:18px;color:red"></i>
+                                        <b>{{requestDocument.name}}</b>
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="button" class="delete-btn btn btn-success"
+                                            (click)="getFile(requestDocument.name)">تحميل
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="button" class="delete-btn btn btn-danger"
+                                            (click)="deleteFile(requestDocument.name)">حذف
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div *ngIf="uploading" class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                            attr.aria-valuenow="{{progress.percentage}}" aria-valuemin="0" aria-valuemax="100"
+                            [ngStyle]="{width:progress.percentage+'%'}">
+                            {{progress.percentage}}%</div>
+                    </div>
+                    <br><br><br>
+                    <div class="form-group row">
+                        <label class="col-md-1 col-form-label font-weight-bold" for="documentType">نوع الملف <b
+                                style="color: red">*</b></label>
+                        <div class="col-md-3">
+                            <select [(ngModel)]="selectedDocumentTypeId" name="documentType" class="form-control">
+                                <option *ngFor="let documentType of documentTypes" [value]="documentType.id">
+                                    {{documentType.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <label class="col-md-2 col-form-label" for="file-input">
+                            <input type="file" accept="application/pdf" id="file-input" name="file-input"
+                                (change)="selectFile($event)">
+                        </label>
+                    </div>
+                    <div *ngIf="fileUploadErrorMessage">
+                        <alert type="danger">
+                            <strong>{{fileUploadErrorMessage}}</strong>
+                        </alert>
+                    </div>
+                    <div class="card-footer">
+                        <button class="col-md-2 col-form-label" class="btn btn-success" [disabled]="!selectedFiles"
+                            (click)="upload()">رفع</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

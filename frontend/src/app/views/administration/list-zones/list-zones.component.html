@@ -1,0 +1,57 @@
+<br />
+<div>
+  <h4 style="text-align: center; color: rgb(3, 54, 148)">المقرات</h4>
+</div>
+
+<br />
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+<!-- <div class="container"> -->
+<button (click)="onAdd()" class="btn btn-success "><strong> اضافة</strong> <i class="fa fa-plus-circle"></i></button>
+<br /><br />
+<table id="print-section" class="table table-responsive-sm table-hover table-outline mb-0 text-center">
+  <thead class="thead-light">
+    <tr>
+      <th class="text-center">#</th>
+      <th class="text-center">اسم المقر</th>
+      <th class="text-center">ملاحظات</th>
+      <th class="text-center">تعديل</th>
+      <th class="text-center">حذف</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let zone of zones; let i=index">
+      <td><b>{{items+i+1}}</b></td>
+      <td class="text-center"><a
+          [routerLink]="['/administration/zones', zone.id,{componentMode: 'viewMode'}]"><b>{{zone.name}}</b></a></td>
+
+      <td class="text-center"><b>{{zone.description}}</b></td>
+      <td class="text-center">
+        <button type="button" class="edit-btn btn btn-info" (click)="onEdit(zone.id)">تعديل
+          <i class="fa fa-edit"></i>
+        </button>
+      </td>
+      <td class="text-center">
+        <button type="button" class="delete-btn btn btn-danger" (click)="onDelete(zone.id)">حذف
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+
+<hr>
+<ul class="nav nav-pills justify-content-center">
+  <li class="page-item"><a class="page-link" (click)="prevPage($event)">السابق</a></li>
+
+  <li class="nav-item" *ngFor="let p of pages; let i=index">
+    <a [ngClass]="{'active':i==page}" (click)="setPage(i,$event)" class="nav-link active" href="#">{{i}}</a>
+  </li>
+  <li class="page-item"><a class="page-link" (click)="nextPage($event)">التالي</a></li>
+</ul>
+<hr>
+
+
+
+
+<!-- </div> -->

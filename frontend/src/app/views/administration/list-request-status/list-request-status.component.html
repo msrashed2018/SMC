@@ -1,0 +1,54 @@
+<br />
+<div>
+  <h4 style="text-align: center; color: rgb(3, 54, 148)">حالات الطلب</h4>
+</div>
+<br />
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+
+<!-- <div class="container"> -->
+<button (click)="onAdd()" class="btn btn-success "><strong> اضافة</strong> <i class="fa fa-plus-circle"></i></button>
+<br /><br />
+<table class="table table-responsive-sm table-hover table-outline mb-0 text-center">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">رقم</th>
+      <th scope="col">حالة الطلب</th>
+      <th scope="col">ملاحظات</th>
+      <th scope="col">تعديل</th>
+      <th scope="col">حذف</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let status of requestStatus; let i=index">
+      <td><b>{{items+i+1}}</b></td>
+      <td><a
+          [routerLink]="['/administration/request-status', status.id,{componentMode: 'viewMode'}]"><b>{{status.name}}</b></a>
+      </td>
+      <td><b>{{status.description}}</b></td>
+      <td>
+        <button type="button" class="edit-btn btn btn-info" (click)="onEdit(status.id)">تعديل
+          <i class="fa fa-edit"></i>
+        </button>
+      </td>
+      <td>
+        <button type="button" class="delete-btn btn btn-danger" (click)="onDelete(status.id)">حذف
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+
+<hr>
+<ul class="nav nav-pills justify-content-center">
+  <li class="page-item"><a class="page-link" (click)="prevPage($event)">السابق</a></li>
+
+  <li class="nav-item" *ngFor="let p of pages; let i=index">
+    <a [ngClass]="{'active':i==page}" (click)="setPage(i,$event)" class="nav-link active" href="#">{{i}}</a>
+  </li>
+  <li class="page-item"><a class="page-link" (click)="nextPage($event)">التالي</a></li>
+</ul>
+<hr>
+
+<!-- </div> -->

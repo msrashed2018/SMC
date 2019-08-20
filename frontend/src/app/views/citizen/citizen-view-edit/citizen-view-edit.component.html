@@ -1,0 +1,191 @@
+<div class="animated fadeIn ">
+
+    <div *ngIf="errorMessage">
+        <br>
+        <alert type="danger">
+            <strong>{{message}}</strong>
+        </alert>
+    </div>
+    <div class="row ">
+        <div style="width:100% !important;">
+            <div class="card">
+                <div class="card-header">
+                    <strong>بيانات المواطن</strong>
+                    <div class="card-header-actions">
+                        <button type="button" class="card-header-action btn btn-link btn-minimize"
+                            (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
+                    </div>
+                </div>
+
+                <div (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed"
+                    class="card-body ">
+                    <form class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" novalidate>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label font-weight-bold" for="name">الاسم <b
+                                    style="color: red">*</b></label>
+                            <div class="col-md-6">
+                                <input [attr.disabled]="disabled ? '' : null" maxlength="100" [(ngModel)]="citizen.name"
+                                    #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required
+                                    type="text" name="name" class="form-control" placeholder="الاسم بالكامل" autofocus>
+                                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                                    <div *ngIf="name.errors.required"> برجاء ادخال اسم المواطن</div>
+                                    <div *ngIf="name.errors.maxlength">اسم المواطن لايتعدي 100حرف</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label font-weight-bold" for="nationalId">الرقم القومي <b
+                                    style="color: red">*</b></label>
+                            <div class="col-md-6">
+                                <input [attr.disabled]="disabled ? '' : null" minlength="14" maxlength="14"
+                                    (input)="onNationalIdChange($event.target.value)" [(ngModel)]="citizen.nationalId"
+                                    #nationalId="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && nationalId.invalid }" required type="text"
+                                    name="nationalId" class="form-control" placeholder="الرقم القومي" pattern="(2|3)[0-9][0-9][0-1][1-9][0-3][0-9](1|2|29|19|18|21|12|13|16|14|17|24|28|25|22|26|27|15|33|88|3|4|11|23|31|32|34|35|37)\d\d\d\d\d">
+                                <div *ngIf="f.submitted && nationalId.invalid" class="invalid-feedback">
+                                    <div *ngIf="nationalId.errors.required"> برجاء ادخال الرقم القومي</div>
+                                    <div *ngIf="nationalId.errors.minlength">الرقم القومي يتكون من 14 رقم, ادخل الرقم
+                                        صحيح</div>
+                                    <div *ngIf="nationalId.errors.maxlength">الرقم القومي يتكون من 14 رقم, ادخل الرقم
+                                        صحيح</div>
+                                        <div *ngIf="nationalId.errors.pattern">الرقم القومي غير صحيح</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label font-weight-bold" for="birthDate">تاريخ الميلاد <b
+                                    style="color: red">*</b></label>
+                            <div class="col-md-6">
+                                <!-- <input class="form-control"  type="text" [(ngModel)]="citizen.birthDate" #birthDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && birthDate.invalid }" name="birthDate" placeholder="YYYY-MM-DD" required /> -->
+
+                                <input [attr.disabled]="disabled ? '' : null" [(ngModel)]="citizen.birthDate"
+                                    #birthDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && birthDate.invalid }"
+                                    required class="form-control" type="date" name="birthDate" style="text-align: right"
+                                    placeholder="date">
+                                <div *ngIf="f.submitted && birthDate.invalid" class="invalid-feedback">
+                                    <div *ngIf="birthDate.errors.required"> برجاء ادخال تاريخ الميلاد</div>
+                                    <!-- <div *ngIf="birthDate.errors.pattern"> التاريخ غير صحيح</div> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label font-weight-bold" for="address">العنوان</label>
+                            <div class="col-md-6">
+                                <input [attr.disabled]="disabled ? '' : null" maxlength="150"
+                                    [(ngModel)]="citizen.address" #address="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" type="text"
+                                    name="address" class="form-control" >
+                                <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
+                                    <div *ngIf="address.errors.maxlength"> العنوان لا يجب ان يتعدي 150 حرف </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label font-weight-bold" for="mobileNumber">رقم
+                                الموبيل</label>
+                            <div class="col-md-6">
+                                <input [attr.disabled]="disabled ? '' : null" maxlength="12"
+                                    [(ngModel)]="citizen.mobileNumber" #mobileNumber="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && mobileNumber.invalid }" type="text"
+                                    name="mobileNumber" class="form-control" pattern="(01)[0-9]{9}" placeholder="01xxxxxxxxx">
+                                <div *ngIf="f.submitted && mobileNumber.invalid" class="invalid-feedback">
+                                    <div *ngIf="mobileNumber.errors.maxlength"> رقم الموبيل لا يجب ان يتعدي 11 رقم
+                                    </div>
+                                    <div *ngIf="mobileNumber.errors.pattern">رقم الموبيل غير صحيح</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label font-weight-bold" for="governate">المحافظة <b
+                                    style="color: red">*</b></label>
+                            <div class="col-md-6">
+                                <!-- <input name="governate"  class="form-control" type="text" list="governates-list" [(ngModel)]="selectedGovernateId" #governate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && governate.invalid }" (change)="onGovernateChanged(governate.value)" required/> -->
+                                <select [attr.disabled]="disabled ? '' : null" name="governate" class="form-control"
+                                    [(ngModel)]="selectedGovernateId" #governate="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && governate.invalid }"
+                                    (change)="onGovernateChanged(governate.value)" required>
+                                    <option></option>
+                                    <option *ngFor="let governate of governates" [value]="governate.id">
+                                        {{governate.name}}</option>
+                                </select>
+                                <div *ngIf="f.submitted && governate.invalid" class="invalid-feedback">
+                                    <div *ngIf="governate.errors.required"> برجاء اختيار المحافظة</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label font-weight-bold" for="city">المدينة <b
+                                    style="color: red">*</b></label>
+                            <div class="col-md-6">
+                                <select [attr.disabled]="disabled ? '' : null" [(ngModel)]="selectedCityId"
+                                    #city="ngModel" [ngClass]="{ 'is-invalid': f.submitted && city.invalid }"
+                                    name="city" class="form-control" required>
+                                    <option></option>
+                                    <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+                                </select>
+                                <div *ngIf="f.submitted && city.invalid" class="invalid-feedback">
+                                    <div *ngIf="city.errors.required"> برجاء اختيار المدينة</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label font-weight-bold" for="occupation">المهنه <b
+                                    style="color: red">*</b></label>
+                            <div class="col-md-6">
+                                <select [attr.disabled]="disabled ? '' : null" [(ngModel)]="selectedOccupationId"
+                                    #occupation="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && occupation.invalid }" name="occupation"
+                                    class="form-control" required>
+                                    <option></option>
+                                    <option *ngFor="let occupation of occupations" [value]="occupation.id">
+                                        {{occupation.name}}</option>
+                                </select>
+                                <div *ngIf="f.submitted && occupation.invalid" class="invalid-feedback">
+                                    <div *ngIf="occupation.errors.required"> برجاء اختيار المهنة</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label font-weight-bold" for="gender">النوع <b
+                                    style="color: red">*</b></label>
+                            <div class="col-md-6">
+                                <select [attr.disabled]="disabled ? '' : null" [(ngModel)]="citizen.gender"
+                                    #gender="ngModel" [ngClass]="{ 'is-invalid': f.submitted && gender.invalid }"
+                                    name="gender" class="form-control" required>
+                                    <!-- <option *ngFor="let gender of genders" [value]="gender.id">{{gender.name}}</option> -->
+                                    <option></option>
+                                    <option value="ذكر">ذكر</option>
+                                    <option value="أنثي">أنثي</option>
+                                </select>
+                                <div *ngIf="f.submitted && gender.invalid" class="invalid-feedback">
+                                    <div *ngIf="gender.errors.required"> برجاء اختيار النوع</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="componentMode=='editMode'" class="card-footer">
+                            <button type="submit" class="btn btn-sm btn-success"><i
+                                    class="fa fa-dot-circle-o"></i>حفظ</button>
+                            <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i
+                                    class="fa fa-ban"></i> رجوع</button>
+                        </div>
+                        <div *ngIf="componentMode=='viewMode'" class="card-footer">
+                            <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i
+                                    class="fa fa-ban"></i> رجوع</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
