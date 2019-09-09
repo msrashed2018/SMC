@@ -22,6 +22,7 @@ import { DocumentCategory } from '../../../../model/document-category.enum';
 import { RequestDocument } from '../../../../model/request-document.model';
 import { AppPrint } from '../../../../app-print';
 import { RequestType } from '../../../../model/request-type.model';
+import { PERSONAL_PHOTO_FILE_NAME } from '../../../../app-words';
 
 @Component({
   selector: 'app-continue-registering-data',
@@ -338,7 +339,7 @@ export class ContinueRegisteringDataComponent implements OnInit {
 
   print(): void {
    
-    this.requestService.getImage(this.requestId,"صورة شخصية.png").subscribe(
+    this.requestService.getImage(this.requestId,PERSONAL_PHOTO_FILE_NAME).subscribe(
       response =>{
         this.errorMessage = false;
         var blob = new Blob([response]/*, { type: "image/png"}*/);
