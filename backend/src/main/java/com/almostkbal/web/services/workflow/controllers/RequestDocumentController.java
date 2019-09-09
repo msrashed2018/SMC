@@ -138,7 +138,7 @@ public class RequestDocumentController {
 
 	@GetMapping("/api/requests/{id}/documents/{filename:.+}")
 	@ResponseBody
-//	@PreAuthorize("hasRole('ROLsE_ADMIN') OR hasRole('ROLE_REQUEST_CONTINUE_REGISTERING') OR hasRole('ROLE_EYE_REVEAL_RESULT_REGISTERING') OR hasRole('ROLE_BONES_REVEAL_RESULT_REGISTERING') OR hasRole('ROLE_REQUEST_REVIEWING') ")
+	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_REQUEST_CONTINUE_REGISTERING') OR hasRole('ROLE_EYE_REVEAL_RESULT_REGISTERING') OR hasRole('ROLE_BONES_REVEAL_RESULT_REGISTERING') OR hasRole('ROLE_REQUEST_REVIEWING') ")
 	public ResponseEntity<Resource> retreiveRequestDocument(@PathVariable long id, @PathVariable String filename) {
 
 		RequestDocument document = documentRepository.findByRequestIdAndName(id, filename);
