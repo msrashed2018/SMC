@@ -336,7 +336,7 @@ export class ContinueRegisteringDataComponent implements OnInit {
 
   }
 
-  print(personalImageUrl): void {
+  print(): void {
    
     this.requestService.getImage(this.requestId,"صورة شخصية.png").subscribe(
       response =>{
@@ -377,13 +377,13 @@ export class ContinueRegisteringDataComponent implements OnInit {
       if (this.request.bonesCommittee != null) {
         bonesCommittee = this.request.bonesCommittee.date;
   
-        bonesPageContents = AppPrint.getBonesResultPageContent(nationalId, birthDate, name, occupation, address, governate, mobileNumber, custom, bonesCommittee,"");
+        bonesPageContents = AppPrint.getBonesResultPageContent(nationalId, birthDate, name, occupation, address, governate, mobileNumber, custom, bonesCommittee,url);
   
       }
   
       if (this.request.eyeCommittee != null) {
         eyeCommittee = this.request.eyeCommittee.date;
-        eyePageContents = AppPrint.getEyeResultPageContent(nationalId, name, address, governate, eyeCommittee, personalImageUrl);
+        eyePageContents = AppPrint.getEyeResultPageContent(nationalId, name, address, governate, eyeCommittee, url);
   
       }
   
