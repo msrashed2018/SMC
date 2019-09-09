@@ -183,4 +183,9 @@ searchByStatesAndSearchKey(state,bonesRevealState, eyeRevealState,searchKey,page
         alert( 'Please disable your Pop-up blocker and try again.');
     }
   }
+
+
+  getImage(id,fileName){
+    return this.http.get(`${API_URL}/requests/${id}/documents/${fileName}`,{responseType: 'arraybuffer'} );
+  }
 }

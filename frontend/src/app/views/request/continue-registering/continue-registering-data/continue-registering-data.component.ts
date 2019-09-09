@@ -336,56 +336,74 @@ export class ContinueRegisteringDataComponent implements OnInit {
 
   }
 
-  print(): void {
-    let bonesPageContents, eyePageContents, popupWin, name = "", address = ""
-      , nationalId = 0, occupation = "", birthDate = "", mobileNumber = ""
-      , governate = "", custom = "", bonesCommittee = " لم يتم تحديد اللجنة", eyeCommittee = " لم يتم تحديد اللجنة";
+  print(personalImageUrl): void {
+   
+    this.requestService.getImage(this.requestId,"صورة شخصية.png").subscribe(
+      response =>{
+        this.errorMessage = false;
+        var blob = new Blob([response]/*, { type: "image/png"}*/);
+        var url = window.URL.createObjectURL(blob);
+        let bonesPageContents, eyePageContents, popupWin, name = "", address = ""
+        , nationalId = 0, occupation = "", birthDate = "", mobileNumber = ""
+        , governate = "", custom = "", bonesCommittee = " لم يتم تحديد اللجنة", eyeCommittee = " لم يتم تحديد اللجنة";
+  
+      if (this.citizen.name != null) {
+        name = this.citizen.name;
+      }
+      if (this.citizen.address != null) {
+        address = this.citizen.address
+      }
+      if (this.citizen.nationalId != null) {
+        nationalId = this.citizen.nationalId;
+      }
+      if (this.citizen.occupation != null) {
+        occupation = this.citizen.occupation.name
+      }
+      if (this.citizen.birthDate != null) {
+        birthDate = this.citizen.birthDate
+      }
+      if (this.citizen.mobileNumber != null) {
+        mobileNumber = this.citizen.mobileNumber
+      }
+  
+      if (this.citizen.governate != null) {
+        governate = this.citizen.governate.name
+      }
+  
+      if (this.request.custom != null) {
+        custom = this.request.custom.name;
+      }
+  
+      if (this.request.bonesCommittee != null) {
+        bonesCommittee = this.request.bonesCommittee.date;
+  
+        bonesPageContents = AppPrint.getBonesResultPageContent(nationalId, birthDate, name, occupation, address, governate, mobileNumber, custom, bonesCommittee,"");
+  
+      }
+  
+      if (this.request.eyeCommittee != null) {
+        eyeCommittee = this.request.eyeCommittee.date;
+        eyePageContents = AppPrint.getEyeResultPageContent(nationalId, name, address, governate, eyeCommittee, personalImageUrl);
+  
+      }
+  
+      popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+      // // window.print()
+      popupWin.document.open();
+      popupWin.document.write(bonesPageContents + eyePageContents);
+      popupWin.document.close();
+      popupWin.print();
+        
 
-    if (this.citizen.name != null) {
-      name = this.citizen.name;
-    }
-    if (this.citizen.address != null) {
-      address = this.citizen.address
-    }
-    if (this.citizen.nationalId != null) {
-      nationalId = this.citizen.nationalId;
-    }
-    if (this.citizen.occupation != null) {
-      occupation = this.citizen.occupation.name
-    }
-    if (this.citizen.birthDate != null) {
-      birthDate = this.citizen.birthDate
-    }
-    if (this.citizen.mobileNumber != null) {
-      mobileNumber = this.citizen.mobileNumber
-    }
+        
+      },error =>{
+        this.errorMessage = true;
+        this.message = error.error.message;
+      }
 
-    if (this.citizen.governate != null) {
-      governate = this.citizen.governate.name
-    }
+    )
 
-    if (this.request.custom != null) {
-      custom = this.request.custom.name;
-    }
 
-    if (this.request.bonesCommittee != null) {
-      bonesCommittee = this.request.bonesCommittee.date;
-
-      bonesPageContents = AppPrint.getBonesResultPageContent(nationalId, birthDate, name, occupation, address, governate, mobileNumber, custom, bonesCommittee);
-
-    }
-
-    if (this.request.eyeCommittee != null) {
-      eyeCommittee = this.request.eyeCommittee.date;
-      eyePageContents = AppPrint.getEyeResultPageContent(nationalId, name, address, governate, eyeCommittee);
-
-    }
-
-    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
-    // // window.print()
-    popupWin.document.open();
-    popupWin.document.write(bonesPageContents + eyePageContents);
-    popupWin.document.close();
-    popupWin.print();
+   
   }
 }

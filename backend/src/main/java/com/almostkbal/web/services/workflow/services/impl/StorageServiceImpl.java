@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -55,7 +56,7 @@ public class StorageServiceImpl implements StorageService{
 			if (resource.exists() || resource.isReadable()) {
 				return resource;
 			} else {
-				throw new RuntimeException("FAIL!");
+				throw new ResourceNotFoundException("غير موجود "+filename+" الملف  ");
 			}
 		} catch (MalformedURLException e) {
 			log.error(e.getMessage(), e);

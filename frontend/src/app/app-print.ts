@@ -610,7 +610,7 @@ export class AppPrint {
         `
     }
 
-    static getEyeResultPageContent(nationalId, name, address, governate, eyeCommittee): string {
+    static getEyeResultPageContent(nationalId, name, address, governate, eyeCommittee,personalImageUrl): string {
         return `
     <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" dir="rtl" lang="ar">
@@ -653,7 +653,7 @@ export class AppPrint {
                 </td>
                 <td></td>
                 <td rowspan="2">
-                <img style="border: 1px solid #ddd;" width="120" height="140" src="/assets/img/brand/pp.png" alt="صورة شخصية"/>
+                <img style="border: 1px solid #ddd;" width="120" height="140" src="${personalImageUrl}" alt="صورة شخصية"/>
                 
                 </td>
             </tr>
@@ -773,7 +773,7 @@ export class AppPrint {
     `
 
     }
-    static getBonesResultPageContent(nationalId, birthDate, name, occupation, address, governate, mobileNumber, custom, bonesCommittee): string {
+    static getBonesResultPageContent(nationalId, birthDate, name, occupation, address, governate, mobileNumber, custom, bonesCommittee, imageUrl): string {
         return `
         <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" dir="rtl" lang="ar">
         
@@ -818,7 +818,7 @@ export class AppPrint {
                         </td>
                         <td><img width="80" height="80" src="../../../../../assets/img/brand/logo_2.png" alt="background image"/></td>
                         <td><h2>نتيجة الكشف  الطبي</h2></td>
-                        <td><img width="80" height="100" src="../../../img/brand/logo_2.png" alt="صورة شخصية"/></td>
+                        <td><img width="80" height="100" src="${imageUrl}" alt="صورة شخصية"/></td>
                     </tr>
                 </table>
                 <p>  •   على قرار وزير المالية رقم 861 لسنة 2005 </p>
