@@ -59,8 +59,10 @@ public class RequestDocumentController {
 	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_REQUEST_CONTINUE_REGISTERING') OR hasRole('ROLE_EYE_REVEAL_RESULT_REGISTERING') OR hasRole('ROLE_BONES_REVEAL_RESULT_REGISTERING')")
 	public ResponseEntity<String> uploadRequestDocument(@PathVariable long id, @RequestParam long documentTypeId,
 			@RequestParam("file") MultipartFile file) {
+
 		String message = "";
 		String currentUploadFileName = "";
+		String documentName = "";
 		try {
 
 			if (!requestRepository.existsById(id)) {
@@ -76,15 +78,23 @@ public class RequestDocumentController {
 			request.setId(id);
 
 			currentUploadFileName = file.getOriginalFilename();
-//			if (!file.getContentType().equals("application/pdf")) {
-//				ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(),
-//						"file[ " + currentUploadFileName + " ] type is not supported ",
-//						"file[ " + currentUploadFileName + " ] type is not supported ");
-//				return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
-//			}
+			String contentType = file.getContentType();
+			if (!contentType.equals("application/pdf") && !contentType.equals("image/png")) {
+				ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(),
+						"file[ " + currentUploadFileName + " ] type is not supported ",
+						"file extension must be ending with .pdf or .png");
+				return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+			}
 
 			log.info("store file :" + currentUploadFileName);
-			String documentName = documentType.get().getName().concat(".pdf");
+			
+			if(contentType.equals("application/pdf")) {
+				documentName = documentType.get().getName().concat(".pdf");
+			}else{
+				documentName = documentType.get().getName().concat(".png");
+			}
+			
+			
 			String storedPath = storageService.store(id, documentType.get(), documentName, file);
 
 			RequestDocument document = new RequestDocument();
@@ -106,11 +116,11 @@ public class RequestDocumentController {
 			log.error(ex.getMessage(), ex);
 			message = "تم حفظ ملف من هذا النوع من قبل";
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
-		}catch (FileAlreadyExistsException ex) {
+		} catch (FileAlreadyExistsException ex) {
 			log.error(ex.getMessage(), ex);
 			message = "تم حفظ ملف من هذا النوع من قبل";
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 			message = "  فشل في حفظ الملف " + currentUploadFileName + "!";
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
@@ -125,15 +135,14 @@ public class RequestDocumentController {
 		if (!requestRepository.existsById(id)) {
 			throw new ResourceNotFoundException("هذا الطلب غير موجود");
 		}
-		if(category.equals(DocumentCategory.ALL)) {
+		if (category.equals(DocumentCategory.ALL)) {
 			List<RequestDocument> documents = documentRepository.findByRequestId(id);
 			return ResponseEntity.ok().body(documents);
-		}else {
+		} else {
 			List<RequestDocument> documents = documentRepository.findByRequestIdAndDocumentTypeCategory(id, category);
 			return ResponseEntity.ok().body(documents);
 		}
 
-		
 	}
 
 	@GetMapping("/api/requests/{id}/documents/{filename:.+}")

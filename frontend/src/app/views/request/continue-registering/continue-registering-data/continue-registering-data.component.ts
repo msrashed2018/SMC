@@ -50,7 +50,7 @@ export class ContinueRegisteringDataComponent implements OnInit {
   eyeCommittee = new Committee();
   bonesCommittee = new Committee();
   committees: Committee[];
-  printEnabled: boolean = true;
+  printEnabled: boolean = false;
 
   eyeCommittees: Committee[];
   bonesCommittees: Committee[];
@@ -341,7 +341,7 @@ export class ContinueRegisteringDataComponent implements OnInit {
    
     this.requestService.getImage(this.requestId,PERSONAL_PHOTO_FILE_NAME).subscribe(
       response =>{
-        this.errorMessage = false;
+        this.medicalRevealSuccessMessage = '';
         var blob = new Blob([response]/*, { type: "image/png"}*/);
         var url = window.URL.createObjectURL(blob);
         let bonesPageContents, eyePageContents, popupWin, name = "", address = ""
@@ -398,8 +398,7 @@ export class ContinueRegisteringDataComponent implements OnInit {
 
         
       },error =>{
-        this.errorMessage = true;
-        this.message = error.error.message;
+        this.medicalRevealSuccessMessage = error.error.message;
       }
 
     )
