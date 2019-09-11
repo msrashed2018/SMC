@@ -161,9 +161,15 @@ searchByStatesAndSearchKey(state,bonesRevealState, eyeRevealState,searchKey,page
     return this.http.get<RequestDocument[]>(`${API_URL}/requests/${id}/documents/findByCategory?category=${category}`)
   }
 //https://stackoverflow.com/questions/51682514/how-download-a-file-from-httpclient
-  getRequestDocument(id, fileName){
+  getRequestDocument(id, fileName:string){
     this.http.get(`${API_URL}/requests/${id}/documents/${fileName}`,{responseType: 'arraybuffer'} )
-      .subscribe(response => this.downLoadFile(response, "application/pdf"));
+      .subscribe(response => {
+        if(fileName.endsWith(".png")){
+          this.downLoadFile(response, "image/png")
+        }else{
+          this.downLoadFile(response, "application/pdf")
+        }
+      });
   }
 
   deleteRequestDocument(id, fileName){
@@ -176,6 +182,7 @@ searchByStatesAndSearchKey(state,bonesRevealState, eyeRevealState,searchKey,page
      * @param type - type of the document.
      */
   downLoadFile(data: any, type: string) {
+
     var blob = new Blob([data], { type: type});
     var url = window.URL.createObjectURL(blob);
     var pwa = window.open(url);
