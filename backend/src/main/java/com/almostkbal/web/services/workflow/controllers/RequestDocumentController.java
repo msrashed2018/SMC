@@ -76,12 +76,12 @@ public class RequestDocumentController {
 			request.setId(id);
 
 			currentUploadFileName = file.getOriginalFilename();
-			if (!file.getContentType().equals("application/pdf")) {
-				ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(),
-						"file[ " + currentUploadFileName + " ] type is not supported ",
-						"file[ " + currentUploadFileName + " ] type is not supported ");
-				return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
-			}
+//			if (!file.getContentType().equals("application/pdf")) {
+//				ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(),
+//						"file[ " + currentUploadFileName + " ] type is not supported ",
+//						"file[ " + currentUploadFileName + " ] type is not supported ");
+//				return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+//			}
 
 			log.info("store file :" + currentUploadFileName);
 			String documentName = documentType.get().getName().concat(".pdf");
