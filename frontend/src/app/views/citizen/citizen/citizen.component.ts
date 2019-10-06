@@ -22,6 +22,7 @@ import { TrafficManagementService } from '../../../services/administration/traff
 import { CustomService } from '../../../services/administration/custom.service';
 import { TokenStorageService } from '../../../services/authentication/jwt/token-storage.service';
 import { AppPrint } from '../../../app-print';
+import { Tafkeet } from '../../../tafkeet';
 
 @Component({
   selector: 'app-citizen',
@@ -277,7 +278,7 @@ export class CitizenComponent implements OnInit {
 
   printPaymentPermission(): void {
     let paymentPermissionPageContent, popupWin, name = ""
-      , nationalId = 0, mobileNumber = "", custom = "";
+      , nationalId = 0, mobileNumber = "", custom = "",tafkeet ="صفر" ;
     if (this.citizen.name != null) {
       name = this.citizen.name;
     }
@@ -294,7 +295,14 @@ export class CitizenComponent implements OnInit {
       custom = this.customs.find((c) => c.id == this.selectedCustomId).name;
     }
 
-    paymentPermissionPageContent = AppPrint.getPaymentPermsissionPageContent(name, custom);
+    if(this.requestPrice == 0){
+      tafkeet = "صفر"
+    }else{
+      tafkeet = Tafkeet.tafqeet(this.requestPrice)
+    }
+    tafkeet = tafkeet + " جنيها";
+    
+    paymentPermissionPageContent = AppPrint.getPaymentPermsissionPageContent(name, custom, this.requestPrice,tafkeet);
     popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
     // // window.print()
     popupWin.document.open();

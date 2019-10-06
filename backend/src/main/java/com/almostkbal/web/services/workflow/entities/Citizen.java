@@ -1,5 +1,6 @@
 package com.almostkbal.web.services.workflow.entities;
 
+import java.sql.Clob;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Past;
@@ -84,7 +86,8 @@ public class Citizen {
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date modifiedDate;
 	
-	@Column(name = "fingerprint")
+	@Column(name = "fingerprint", columnDefinition="CLOB")
+	@Lob
 	private String fingerprint;
 
 	public Citizen() {

@@ -7,7 +7,6 @@ import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
 import { RouteGuardService } from './services/authentication/route-guard.service';
 
 export const routes: Routes = [
@@ -40,37 +39,12 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'register',
-    component: RegisterComponent,
-    data: {
-      title: 'Register Page'
-    }
-  },
-  {
     path: '',
     component: DefaultLayoutComponent,
     data: {
       title: 'Home'
     },
     children: [
-      {
-        path: 'base',
-        loadChildren: './views/base/base.module#BaseModule',
-        canActivate: [RouteGuardService],
-
-      },
-      {
-        path: 'buttons',
-        loadChildren: './views/buttons/buttons.module#ButtonsModule',
-        canActivate: [RouteGuardService],
-
-      },
-      {
-        path: 'charts',
-        loadChildren: './views/chartjs/chartjs.module#ChartJSModule',
-        canActivate: [RouteGuardService],
-
-      },
       {
         path: 'dashboard',
         loadChildren: './views/dashboard/dashboard.module#DashboardModule',
@@ -92,30 +66,6 @@ export const routes: Routes = [
       {
         path: 'request',
         loadChildren: './views/request/request.module#RequestModule',
-        canActivate: [RouteGuardService],
-
-      },
-      {
-        path: 'icons',
-        loadChildren: './views/icons/icons.module#IconsModule',
-        canActivate: [RouteGuardService],
-
-      },
-      {
-        path: 'notifications',
-        loadChildren: './views/notifications/notifications.module#NotificationsModule',
-        canActivate: [RouteGuardService],
-
-      },
-      {
-        path: 'theme',
-        loadChildren: './views/theme/theme.module#ThemeModule',
-        canActivate: [RouteGuardService],
-
-      },
-      {
-        path: 'widgets',
-        loadChildren: './views/widgets/widgets.module#WidgetsModule',
         canActivate: [RouteGuardService],
 
       }

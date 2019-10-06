@@ -35,7 +35,6 @@ public class CommitteeMember {
 	
 	@OneToOne()
 	@JoinColumn(name = "zone_id")
-	@NotNull(message = "لابد من ادخال المقر التابع له العضو")
 	private Zone zone;
 	
 	public CommitteeMember() {

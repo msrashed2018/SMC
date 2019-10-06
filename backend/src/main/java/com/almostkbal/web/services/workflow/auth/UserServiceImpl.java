@@ -30,7 +30,6 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 	private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		System.out.println("\n\n loadUserByUsername \n\n");
 		User user = userRepository.findByUsername(username);
 		if (user == null) {
 			throw new UsernameNotFoundException("Invalid username or password.");

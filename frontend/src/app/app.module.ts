@@ -4,7 +4,6 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy, CommonModule, DatePipe } from '@angular/common';
-
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
@@ -22,9 +21,9 @@ import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -44,7 +43,6 @@ import { AppRoutingModule } from './app.routing';
 // Import 3rd party views
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { RouteGuardService } from './services/authentication/route-guard.service';
 import { ConfirmModalComponent } from './views/confirm-modal/confirm-modal.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
@@ -53,6 +51,7 @@ import { AuthInterceptor } from './services/authentication/jwt/auth-interceptor'
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     // CommonModule,
     AppRoutingModule,
     AppAsideModule,
@@ -63,7 +62,6 @@ import { AuthInterceptor } from './services/authentication/jwt/auth-interceptor'
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule,
     HttpModule,
     HttpClientModule,
     FormsModule,    
@@ -78,7 +76,6 @@ import { AuthInterceptor } from './services/authentication/jwt/auth-interceptor'
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent,
     ConfirmModalComponent
     
   ],

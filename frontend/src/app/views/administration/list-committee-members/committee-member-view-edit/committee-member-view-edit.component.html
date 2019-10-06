@@ -77,6 +77,11 @@
             </div>
 
             <div *ngIf="componentMode=='editMode'" class="card-footer">
+              <div *ngIf="errorMessage">
+                <alert type="danger">
+                  <strong>{{errorMessage}}</strong>
+                </alert>
+              </div>
               <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-dot-circle-o"></i>حفظ</button>
               <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i>
                 رجوع</button>

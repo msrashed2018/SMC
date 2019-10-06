@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -94,6 +95,9 @@ public class Request {
 
 	@Column(name = "description")
 	private String description;
+	
+	@Transient
+	private boolean hasPrevRequest;
 
 	public Request() {
 
@@ -233,6 +237,14 @@ public class Request {
 
 	public void setZone(Zone zone) {
 		this.zone = zone;
+	}
+
+	public boolean isHasPrevRequest() {
+		return hasPrevRequest;
+	}
+
+	public void setHasPrevRequest(boolean hasPrevRequest) {
+		this.hasPrevRequest = hasPrevRequest;
 	}
 
 }

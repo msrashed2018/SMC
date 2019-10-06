@@ -41,18 +41,6 @@ public class DocumentTypeController {
 	@Autowired
 	private DocumentTypeRepository documentTypeRepository;
 	
-	public static Currency getByCode(int code) {
-	    for(Currency c : Currency.getAvailableCurrencies()) {
-	        if(c.getNumericCode() == code) {
-	            return c;
-	        }
-	    }
-	    throw new IllegalArgumentException("Unkown currency code: " + code);
-	}
-	
-
-	
-	
 	@GetMapping("/api/document-types")
 	public Page<DocumentType> retrieveAllDocumentTypes(@RequestParam("page") int page, @RequestParam("size") int size) {
 		return documentTypeRepository.findAll(PageRequest.of(page, size));

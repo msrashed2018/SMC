@@ -23,6 +23,7 @@ import { RequestDocument } from '../../../../model/request-document.model';
 import { AppPrint } from '../../../../app-print';
 import { RequestType } from '../../../../model/request-type.model';
 import { PERSONAL_PHOTO_FILE_NAME } from '../../../../app-words';
+import { Tafkeet } from '../../../../tafkeet';
 
 @Component({
   selector: 'app-continue-registering-data',
@@ -217,19 +218,19 @@ export class ContinueRegisteringDataComponent implements OnInit {
   getFile(requestDocumentName) {
     this.requestService.getRequestDocument(this.request.id, requestDocumentName);
   }
-  // deleteFile(requestDocumentName) {
-  //   this.requestService.deleteRequestDocument(this.request.id, requestDocumentName).subscribe(
-  //     result => {
-  //       this.fileUploadErrorMessage = "";
-  //       this.showFiles(true);
-  //     },
-  //     error => {
-  //       this.fileUploadErrorMessage = error.error.message;
-  //     }
+  deleteFile(requestDocumentName) {
+    this.requestService.deleteRequestDocument(this.request.id, requestDocumentName).subscribe(
+      result => {
+        this.fileUploadErrorMessage = "";
+        this.showFiles(true);
+      },
+      error => {
+        this.fileUploadErrorMessage = error.error.message;
+      }
 
 
-  //   );
-  // }
+    );
+  }
   upload() {
 
     if (this.selectedDocumentTypeId != 0) {
@@ -246,7 +247,11 @@ export class ContinueRegisteringDataComponent implements OnInit {
 
         },
         error => {
-          this.fileUploadErrorMessage = error.error;
+          if (error.error.message != null) {
+            this.fileUploadErrorMessage = error.error.message;
+          } else {
+            this.fileUploadErrorMessage = error.error;
+          }
           console.log('oops', error.error)
         }
 
@@ -308,7 +313,7 @@ export class ContinueRegisteringDataComponent implements OnInit {
   }
 
   printReceivedDoocumentReceipts(): void {
-    let receivedDocumentReceiptPageContent, eyePageContents, popupWin, name = "", custom = "", bonesCommitteeDate = " لم يتم تحديد اللجنة", eyeCommitteeDate = " لم يتم تحديد اللجنة";
+    var receivedDocumentReceiptPageContent = "", popupWin, name = "", custom = "", bonesCommitteeDate = " لم يتم تحديد اللجنة", eyeCommitteeDate = " لم يتم تحديد اللجنة",tafkeet ="صفر" ;
 
     if (this.citizen.name != null) {
       name = this.citizen.name;
@@ -325,85 +330,99 @@ export class ContinueRegisteringDataComponent implements OnInit {
     if (this.request.eyeCommittee != null) {
       eyeCommitteeDate = this.request.eyeCommittee.date;
     }
-
-    receivedDocumentReceiptPageContent = AppPrint.getReceivedDocumentReceiptPageContent(name, custom, eyeCommitteeDate, bonesCommitteeDate);
+    if(this.request.requestType.price == 0){
+      tafkeet = "صفر"
+    }else{
+      tafkeet = Tafkeet.tafqeet(this.request.requestType.price)
+    }
+    tafkeet = tafkeet + " جنيها";
+    receivedDocumentReceiptPageContent += AppPrint.getReceivedDocumentReceiptPageContent(name, custom, eyeCommitteeDate, bonesCommitteeDate, this.request.requestType.price, tafkeet);
 
     popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
     // // window.print()
     popupWin.document.open();
     popupWin.document.write(receivedDocumentReceiptPageContent);
     popupWin.document.close();
-    popupWin.print();
+    // popupWin.print();
 
   }
 
   print(): void {
-   
-    this.requestService.getImage(this.requestId,PERSONAL_PHOTO_FILE_NAME).subscribe(
-      response =>{
-        this.medicalRevealSuccessMessage = '';
+
+    this.requestService.getImage(this.requestId, PERSONAL_PHOTO_FILE_NAME).subscribe(
+      response => {
+        this.medicalRevealErrorMessage = '';
         var blob = new Blob([response]/*, { type: "image/png"}*/);
         var url = window.URL.createObjectURL(blob);
-        let bonesPageContents, eyePageContents, popupWin, name = "", address = ""
-        , nationalId = 0, occupation = "", birthDate = "", mobileNumber = ""
-        , governate = "", custom = "", bonesCommittee = " لم يتم تحديد اللجنة", eyeCommittee = " لم يتم تحديد اللجنة";
-  
-      if (this.citizen.name != null) {
-        name = this.citizen.name;
-      }
-      if (this.citizen.address != null) {
-        address = this.citizen.address
-      }
-      if (this.citizen.nationalId != null) {
-        nationalId = this.citizen.nationalId;
-      }
-      if (this.citizen.occupation != null) {
-        occupation = this.citizen.occupation.name
-      }
-      if (this.citizen.birthDate != null) {
-        birthDate = this.citizen.birthDate
-      }
-      if (this.citizen.mobileNumber != null) {
-        mobileNumber = this.citizen.mobileNumber
-      }
-  
-      if (this.citizen.governate != null) {
-        governate = this.citizen.governate.name
-      }
-  
-      if (this.request.custom != null) {
-        custom = this.request.custom.name;
-      }
-  
-      if (this.request.bonesCommittee != null) {
-        bonesCommittee = this.request.bonesCommittee.date;
-  
-        bonesPageContents = AppPrint.getBonesResultPageContent(nationalId, birthDate, name, occupation, address, governate, mobileNumber, custom, bonesCommittee,url);
-  
-      }
-  
-      if (this.request.eyeCommittee != null) {
-        eyeCommittee = this.request.eyeCommittee.date;
-        eyePageContents = AppPrint.getEyeResultPageContent(nationalId, name, address, governate, eyeCommittee, url);
-  
-      }
-  
-      popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
-      // // window.print()
-      popupWin.document.open();
-      popupWin.document.write(bonesPageContents + eyePageContents);
-      popupWin.document.close();
-      popupWin.print();
-        
 
-        
-      },error =>{
-        this.medicalRevealSuccessMessage = error.error.message;
+        var bonesPageContents = "", eyePageContents = "", popupWin, name = "", address = ""
+          , nationalId = 0, occupation = "", birthDate = "", mobileNumber = ""
+          , governate = "", custom = "", bonesCommittee = " لم يتم تحديد اللجنة", eyeCommittee = " لم يتم تحديد اللجنة";
+
+        if (this.citizen.name != null) {
+          name = this.citizen.name;
+        }
+        if (this.citizen.address != null) {
+          address = this.citizen.address
+        }
+        if (this.citizen.nationalId != null) {
+          nationalId = this.citizen.nationalId;
+        }
+        if (this.citizen.occupation != null) {
+          occupation = this.citizen.occupation.name
+        }
+        if (this.citizen.birthDate != null) {
+          birthDate = this.citizen.birthDate
+        }
+        if (this.citizen.mobileNumber != null) {
+          mobileNumber = this.citizen.mobileNumber
+        }
+
+        if (this.citizen.governate != null) {
+          governate = this.citizen.governate.name
+        }
+
+        if (this.request.custom != null) {
+          custom = this.request.custom.name;
+        }
+
+        if (this.request.bonesCommittee != null) {
+          bonesCommittee = this.request.bonesCommittee.date;
+
+          bonesPageContents += AppPrint.getBonesResultPageContent(nationalId, birthDate, name, occupation, address, governate, mobileNumber, custom, bonesCommittee, url);
+
+        }
+
+        if (this.request.eyeCommittee != null) {
+          eyeCommittee = this.request.eyeCommittee.date;
+          eyePageContents += AppPrint.getEyeResultPageContent(nationalId, name, address, governate, eyeCommittee, url);
+        }
+
+        popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+        // // window.print()
+        popupWin.document.open();
+
+        popupWin.document.write(bonesPageContents + eyePageContents);
+        popupWin.document.close();
+        // popupWin.print();
+
+
+
+      }, error => {
+        if (error.status == 404) {
+          this.medicalRevealErrorMessage = " لم يتم تسجيل صورة شخصية للمواطن.. يجب رفع الصورة الشخصية اولا"
+        }
+        else if (error.error.message != null) {
+          this.medicalRevealErrorMessage = error.error.message;
+        } else {
+          this.medicalRevealErrorMessage = error.error;
+        }
+        console.error();
       }
 
     )
 
 
-   
+
   }
 }

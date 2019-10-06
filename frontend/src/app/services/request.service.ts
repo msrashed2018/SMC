@@ -4,7 +4,6 @@ import { Request } from '../model/request.model';
 import { API_URL } from '../app.constants';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { text } from '@angular/core/src/render3';
 import { RequestDocument } from '../model/request-document.model';
 
 @Injectable({

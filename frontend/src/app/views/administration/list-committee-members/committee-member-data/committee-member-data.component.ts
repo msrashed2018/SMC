@@ -13,9 +13,9 @@ import { CommitteeMember } from '../../../../model/committee-member.model';
 })
 export class CommitteeMemberDataComponent implements OnInit {
   requestModel : CommitteeMember= new CommitteeMember;
-  successMessage: boolean = false;
   isCollapsed: boolean = false;
   iconCollapse: string = 'icon-arrow-up';
+  errorMessage :string = "";
   // public zones : Zone[];
   // public selectedZoneId : number
   constructor(private formBuilder: FormBuilder, private zoneService: ZoneService, private committeeMemberService: CommitteeMemberService, private router: Router ) { }
@@ -40,11 +40,16 @@ export class CommitteeMemberDataComponent implements OnInit {
     // this.requestModel.zone = zone;
     this.committeeMemberService.createCommitteeMember(this.requestModel).subscribe(
       result => {
+        this.errorMessage = "";
         this.router.navigateByUrl("/administration/committee-members");
       },
       error => {
-        console.log('oops', error);
-        this.successMessage = false;
+        if(error.error.message != null){
+          this.errorMessage = error.error.message
+        }else{
+          this.errorMessage = error.error
+        }
+        console.log('oops', error.error);
       }
     );
   }

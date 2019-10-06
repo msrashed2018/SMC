@@ -90,5 +90,5 @@ export class ListZonesComponent implements OnInit {
   }
 
 
-  @ViewChild('content') content: ElementRef;
+  
 }

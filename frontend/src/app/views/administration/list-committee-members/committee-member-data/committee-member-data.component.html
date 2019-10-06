@@ -1,54 +1,59 @@
 <div class="animated fadeIn ">
 
-    <div class="row ">
-      <div style="width:100% !important;">
-        <div class="card">
-          
-          
-          <div class="card-header">
-            <strong>بيانات العضو</strong>
-            <div class="card-header-actions">
-              <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i
-                  class={{iconCollapse}}></i></button>
-            </div>
+  <div class="row ">
+    <div style="width:100% !important;">
+      <div class="card">
+
+
+        <div class="card-header">
+          <strong>بيانات العضو</strong>
+          <div class="card-header-actions">
+            <button type="button" class="card-header-action btn btn-link btn-minimize" (click)="toggleCollapse()"><i
+                class={{iconCollapse}}></i></button>
           </div>
-          <div (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" class="card-body ">
-            <form   class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" novalidate>
-              <div class="form-group row">
-                <label class="col-md-1 col-form-label font-weight-bold" for="name"> الاسم (*)</label>
-                <div class="col-md-6">
-                  <input maxlength="100" [(ngModel)]="requestModel.name"  #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required type="text"  name="name" class="form-control" >
-                  <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
-                    <div *ngIf="name.errors.required"> برجاء ادخال اسم العضو</div>
-                  </div>
+        </div>
+        <div (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" class="card-body ">
+          <form class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" novalidate>
+            <div class="form-group row">
+              <label class="col-md-1 col-form-label font-weight-bold" for="name"> الاسم (*)</label>
+              <div class="col-md-6">
+                <input maxlength="100" [(ngModel)]="requestModel.name" #name="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required type="text" name="name"
+                  class="form-control">
+                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                  <div *ngIf="name.errors.required"> برجاء ادخال اسم العضو</div>
                 </div>
               </div>
-              
-              <div class="form-group row">
-                  <label class="col-md-1 col-form-label font-weight-bold" for="title-select">تصنيف الوظيفة</label>
-                  <div class="col-md-6">
-                          <select  [(ngModel)]="requestModel.title"  #title="ngModel" [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" name="title-select" class="form-control" required >
-                            <option value="مقرر">مقرر</option>
-                            <option value="طبيب رمد">طبيب رمد</option>
-                            <option value="طبيب عظام">طبيب عظام</option>
-                            <option value="مهندس">مهندس</option>
-                            <option value="عضو">عضو</option>
-                          </select>
-                          <div *ngIf="f.submitted && title.invalid" class="invalid-feedback">
-                            <div *ngIf="title.errors.required"> برجاء اختيار تصنيف الوظيفة</div>
-                          </div>
-                  </div>
-              </div>
+            </div>
 
-              <div class="form-group row">
-                  <label class="col-md-1 col-form-label font-weight-bold" for="mobileNumber-input"> رقم الموبيل</label>
-                  <div class="col-md-6">
-                    <input maxlength="20" [(ngModel)]="requestModel.mobileNumber"  #mobileNumber="ngModel"  type="text"  name="mobileNumber-input" class="form-control" >
-                  </div>
+            <div class="form-group row">
+              <label class="col-md-1 col-form-label font-weight-bold" for="title-select">تصنيف الوظيفة</label>
+              <div class="col-md-6">
+                <select [(ngModel)]="requestModel.title" #title="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" name="title-select" class="form-control"
+                  required>
+                  <option value="مقرر">مقرر</option>
+                  <option value="طبيب رمد">طبيب رمد</option>
+                  <option value="طبيب عظام">طبيب عظام</option>
+                  <option value="مهندس">مهندس</option>
+                  <option value="عضو">عضو</option>
+                </select>
+                <div *ngIf="f.submitted && title.invalid" class="invalid-feedback">
+                  <div *ngIf="title.errors.required"> برجاء اختيار تصنيف الوظيفة</div>
+                </div>
               </div>
-              
-              
-              <!-- <div class="form-group row">
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-1 col-form-label font-weight-bold" for="mobileNumber-input"> رقم الموبيل</label>
+              <div class="col-md-6">
+                <input maxlength="20" [(ngModel)]="requestModel.mobileNumber" #mobileNumber="ngModel" type="text"
+                  name="mobileNumber-input" class="form-control">
+              </div>
+            </div>
+
+
+            <!-- <div class="form-group row">
                   <label class="col-md-1 col-form-label font-weight-bold" for="zone-select">المقر</label>
                   <div class="col-md-6">
                           <select  [(ngModel)]="selectedZoneId" name="zone-select" #zone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && zone.invalid }" class="form-control" required>
@@ -62,28 +67,35 @@
 
 
 
-              <div class="form-group row">
-                <label class="col-md-1 col-form-label font-weight-bold" for="description-input">ملاحظات</label>
-                <div class="col-md-6">
-                  <input maxlength="150" [(ngModel)]="requestModel.description" #description="ngModel" type="text" id="description-input" name="description-input" class="form-control" placeholder="">
-                </div>
+            <div class="form-group row">
+              <label class="col-md-1 col-form-label font-weight-bold" for="description-input">ملاحظات</label>
+              <div class="col-md-6">
+                <input maxlength="150" [(ngModel)]="requestModel.description" #description="ngModel" type="text"
+                  id="description-input" name="description-input" class="form-control" placeholder="">
               </div>
-              
-              
-              
-              <div class="card-footer">
-                <button type="submit" class="btn btn-sm btn-primary" ><i class="fa fa-dot-circle-o"></i>
-                  أضف العضو</button>
-                <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i> إلغاء</button>
+            </div>
+
+
+
+            <div class="card-footer">
+              <div *ngIf="errorMessage">
+                <alert type="danger">
+                  <strong>{{errorMessage}}</strong>
+                </alert>
               </div>
-    
-            </form>
-          </div>
-          
+              <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+                أضف العضو</button>
+              <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i class="fa fa-ban"></i>
+                إلغاء</button>
+            </div>
+
+          </form>
         </div>
-  
+
       </div>
-  
+
     </div>
-    <!--/.row-->
+
   </div>
+  <!--/.row-->
+</div>

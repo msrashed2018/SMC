@@ -81,7 +81,7 @@ export class AppPrint {
 
         return header+ resultsTableHeader + resultstableContent +resultsTableFooter+footer;
     } 
-    static getReceivedDocumentReceiptPageContent(name, custom, eyeCommitteeDate, bonesCommitteeDate): string {
+    static getReceivedDocumentReceiptPageContent(name, custom, eyeCommitteeDate, bonesCommitteeDate, price, tafkeet): string {
         return `
         <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" dir="rtl" lang="ar">
@@ -133,7 +133,7 @@ export class AppPrint {
 
 </head>
 
-<body>
+<body onload="window.print()">
 
     <div class="one">
         <br>
@@ -162,9 +162,12 @@ export class AppPrint {
         <p class="two">
             &#160;&#160;&#160;&#160;&#160;&#160;
             قام بسداد مبلغ وقيمته
-            (&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-            )&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; تفقيط المبلغ
-
+            (
+                ${price}
+            )&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+             تفقيط المبلغ
+                :
+                ${tafkeet}
 
             <br>
             &#160;&#160;&#160;&#160;&#160;&#160;
@@ -200,7 +203,7 @@ export class AppPrint {
             <br><br>
             &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
 
-            ✓ صورة شهادة محو األميه
+            ✓ صورة شهادة محو الأمية
             <br><br>
             &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
 
@@ -221,7 +224,7 @@ export class AppPrint {
         `
     }
 
-    static getPaymentPermsissionPageContent(name, custom): string {
+    static getPaymentPermsissionPageContent(name, custom, price, tafkeet): string {
         return `
         <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" dir="rtl" lang="ar">
@@ -300,9 +303,15 @@ export class AppPrint {
         <p class="two">
             &#160;&#160;&#160;&#160;&#160;&#160;
             سداد مبلغ وقيمته
-            (&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-            )&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; تفقيط المبلغ
-
+            (
+                ${price}
+            
+                )&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                
+                تفقيط المبلغ
+                :
+                &#160;&#160;
+                ${tafkeet}
 
             <br>
             &#160;&#160;&#160;&#160;&#160;&#160;
@@ -609,7 +618,18 @@ export class AppPrint {
 </html>
         `
     }
-
+static test():string{
+    return `
+    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" dir="rtl" lang="ar">
+        <head>
+        </head>
+        <body onload="window.print()">
+            <p>hereeeeeeeeeeeeee</p>
+        </body>
+    </html>
+    `
+}
     static getEyeResultPageContent(nationalId, name, address, governate, eyeCommittee,personalImageUrl): string {
         return `
     <!DOCTYPE html>
@@ -643,8 +663,7 @@ export class AppPrint {
 
 </head>
 
-<body vlink="blue" link="blue">
-
+<body  onload="window.print()">
     <div>
         <table>
             <tr>
@@ -805,7 +824,7 @@ export class AppPrint {
         
         </head>
         
-        <body  >
+        <body  onload="window.print()">
         
             <div class="container">
                 <table>

@@ -363,7 +363,11 @@ export class EyeRevealRegisteringDataComponent implements OnInit {
         this.showFiles(true);
       },
       error => {
-        this.fileUploadErrorMessage = error.error.message;
+        if (error.error.message != null) {
+          this.fileUploadErrorMessage = error.error.message;
+        } else {
+          this.fileUploadErrorMessage = error.error;
+        }
       }
 
 
