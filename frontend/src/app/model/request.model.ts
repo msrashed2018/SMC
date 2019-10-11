@@ -27,4 +27,5 @@ export class Request {
     public eyeRevealState: string;
     public bonesRevealState: string;
     public description: string;
+    public hasPrevRequest: boolean;
 }

@@ -1,6 +1,5 @@
 package com.almostkbal.web.services.workflow.controllers;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.validation.Valid;
@@ -47,8 +46,9 @@ public class RequestController {
 	public Page<RequestResultDto> retrieveRequestResults(@RequestParam("requestStatusId") int requestStatusId,
 			@RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate,
 			@RequestParam("page") int page, @RequestParam("size") int size) {
-		
-		return requestService.getRequestReults(requestStatusId, startDate, endDate, PageRequest.of(page, size, Sort.by("requestDate").ascending().and(Sort.by("id").ascending())));
+
+		return requestService.getRequestReults(requestStatusId, startDate, endDate,
+				PageRequest.of(page, size, Sort.by("requestDate").ascending().and(Sort.by("id").ascending())));
 	}
 
 	@GetMapping("/api/requests/retreiveByRequestStates")

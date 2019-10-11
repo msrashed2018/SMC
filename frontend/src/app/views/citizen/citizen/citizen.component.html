@@ -189,6 +189,7 @@
                             <div class="col-md-6">
                                 <select name="custom" class="form-control" [(ngModel)]="selectedCustomId"
                                     #custom="ngModel">
+                                    <option></option>
                                     <option *ngFor="let custom of customs" [value]="custom.id">{{custom.name}}</option>
                                 </select>
                             </div>

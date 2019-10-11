@@ -27,6 +27,7 @@ export class CitizenViewEditComponent implements OnInit {
   message: string = "";
   disabled : boolean = false;
   citizenId : number;
+  
   componentMode;
   public occupations: Occupation[] = [];
   public governates : Governate[] = [];
@@ -54,6 +55,8 @@ export class CitizenViewEditComponent implements OnInit {
         this.disabled = true;
       }
     });
+
+    
   }
 
   displayCitizenDetails(){

@@ -1,6 +1,5 @@
 package com.almostkbal.web.services.workflow.entities;
 
-import java.sql.Clob;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -17,40 +16,39 @@ import javax.validation.constraints.Past;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name="citizen")
+@Table(name = "citizen")
 public class Citizen {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO,  generator="SEQ_CITIZEN")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_CITIZEN")
 	@Column(name = "citizen_id")
 	private long id;
-	
-	@Column(name = "national_id",unique=true,nullable=false)
+
+	@Column(name = "national_id", unique = true, nullable = false)
 	private long nationalId;
-	
+
 	@Column(name = "citizen_name", nullable = false)
 	private String name;
-	
+
 	@Column(name = "birth_date")
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	@Past
 	private Date birthDate;
-	
+
 	@Column(name = "address")
 	private String address;
-	
+
 //	@OneToMany(mappedBy = "citizen",fetch=FetchType.LAZY)
 //	@JsonIgnore
 //	private List<Request> requests;
-	
 
 //	@OneToOne
 //	@JoinColumn(name = "gender_id")
 //	private Gender gender;
-	
+
 	@Column(name = "gender")
 	private String gender;
-	
+
 	@OneToOne
 	@JoinColumn(name = "city_id")
 	private City city;
@@ -62,36 +60,36 @@ public class Citizen {
 	@OneToOne
 	@JoinColumn(name = "zone_id")
 	private Zone zone;
-	
+
 	@OneToOne
 	@JoinColumn(name = "occupation_id")
 	private Occupation occupation;
-	
+
 	@Column(name = "mobile_no")
 	private String mobileNumber;
-	
+
 	@Column(name = "created_by")
 	private String createdBy;
-	
+
 	@Column(name = "created_date")
 //	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date createdDate;
-	
+
 	@Column(name = "modified_by")
 	private String modifiedBy;
-	
+
 	@Column(name = "modified_date")
 //	@Temporal(TemporalType.TIMESTAMP)
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date modifiedDate;
-	
-	@Column(name = "fingerprint", columnDefinition="CLOB")
+
+	@Column(name = "fingerprint", columnDefinition = "CLOB")
 	@Lob
 	private String fingerprint;
 
 	public Citizen() {
-		
+
 	}
 
 	public Citizen(long nationalId, String name) {
@@ -139,8 +137,6 @@ public class Citizen {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	
 
 	public String getGender() {
 		return gender;
@@ -254,5 +250,5 @@ public class Citizen {
 			return false;
 		return true;
 	}
-	
+
 }

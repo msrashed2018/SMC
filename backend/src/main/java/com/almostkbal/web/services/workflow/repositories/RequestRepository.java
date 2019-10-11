@@ -2,6 +2,7 @@ package com.almostkbal.web.services.workflow.repositories;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -24,9 +25,16 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
 	public static final String FIND_REQUEST_RESULTS_QUERY = "select new  com.almostkbal.web.services.workflow.dto.RequestResultDto (r.id , c.nationalId , c.name , c.address , s.name , d.name	) from Request r, Citizen c, RequestStatus s, BonesReveal b , Disability d, Zone z where  b.request = r AND r.citizen = c AND r.requestStatus = s AND b.disability = d AND r.zone = z AND z.id = :zoneId AND s.id=:requestStatusId AND r.requestDate BETWEEN :startDate AND :endDate ";
 
 	@Query(value = FIND_REQUEST_RESULTS_QUERY)
-	public Page<RequestResultDto> findRequestResults(long zoneId, int requestStatusId, Date startDate, Date endDate, Pageable pageable);
+	public Page<RequestResultDto> findRequestResults(long zoneId, int requestStatusId, Date startDate, Date endDate,
+			Pageable pageable);
+
+	boolean existsByCitizenNationalIdAndRequestDateGreaterThan(long nationalId, Date requestDate);
+
 	
-	boolean existsByZoneIdAndCitizenIdAndRequestDateGreaterThan(long zoneId, long citizenId, Date requestDate);
+	
+	boolean existsByCitizenNationalIdAndRequestStatusNameContaining(long nationalId, String name);
+
+	boolean existsByCitizenNationalId(long nationalId);
 
 	Optional<Request> findByZoneIdAndId(long zoneId, long id);
 
@@ -54,8 +62,6 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
 
 	Page<Request> findByZoneIdAndRequestStatusIdAndRequestDateBetween(long zoneId, int requestStatusId,
 			Date requestDateStart, Date requestDateEnd, Pageable pageable);
-	
-	
 
 	// ============== for search by national Id
 	// ===========================================

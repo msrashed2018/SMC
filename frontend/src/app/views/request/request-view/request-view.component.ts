@@ -22,6 +22,8 @@ import { DocumentCategory } from '../../../model/document-category.enum';
 import { DocumentTypeService } from '../../../services/administration/document-type.service';
 import { RequestDocument } from '../../../model/request-document.model';
 import { DocumentType } from '../../../model/document-type.model';
+import { Tafkeet } from '../../../tafkeet';
+import { AppPrint } from '../../../app-print';
 @Component({
   selector: 'app-request-view',
   templateUrl: './request-view.component.html',
@@ -89,6 +91,7 @@ export class RequestViewComponent implements OnInit {
   displayRequestDataDetails() {
     this.requestService.retrieveRequest(this.requestId).subscribe(
       result => {
+        console.log(result);
         this.request = result as Request;
         this.citizen = this.request.citizen;
 
@@ -227,7 +230,7 @@ export class RequestViewComponent implements OnInit {
   showFiles() {
     this.requestService.getRequestDocumentsByCategory(this.request.id, DocumentCategory.ALL).subscribe(
       result => {
-        
+
         if (result != null && result.length > 0) {
           console.log("result = " + result)
           this.requestDocuments = result as RequestDocument[];
@@ -244,5 +247,68 @@ export class RequestViewComponent implements OnInit {
 
   getFile(requestDocumentName) {
     this.requestService.getRequestDocument(this.request.id, requestDocumentName);
+  }
+
+
+  printPaymentPermission(): void {
+
+    let paymentPermissionPageContent, popupWin, name = ""
+      , nationalId = 0, mobileNumber = "", custom = "", tafkeet = "صفر";
+    if (this.request.citizen.name != null) {
+      name = this.request.citizen.name;
+    }
+
+    // if (this.citizen.nationalId != null) {
+    //   nationalId = this.citizen.nationalId;
+    // }
+
+    // if (this.citizen.mobileNumber != null) {
+    //   mobileNumber = this.citizen.mobileNumber
+    // }
+
+    if (this.request.custom != null) {
+      custom = this.request.custom.name
+    }
+
+    if (this.request.requestType.price == 0) {
+      tafkeet = "صفر"
+    } else {
+      tafkeet = Tafkeet.tafqeet(this.request.requestType.price)
+    }
+    tafkeet = tafkeet + " جنيها";
+
+    paymentPermissionPageContent = AppPrint.getPaymentPermsissionPageContent(name, custom, this.request.requestType.price, tafkeet);
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    // // window.print()
+    popupWin.document.open();
+    popupWin.document.write(paymentPermissionPageContent);
+    popupWin.document.close();
+    popupWin.print();
+  }
+  printRequestDocument(): void {
+    let requestDocumentPageContents, popupWin, name = ""
+      , requestType = '', mobileNumber = "",
+      custom = "";
+    if (this.request.citizen.name != null) {
+      name = this.request.citizen.name;
+    }
+
+
+    if (this.request.citizen.mobileNumber != null) {
+      mobileNumber = this.request.citizen.mobileNumber;
+    }
+    if (this.request.custom != null) {
+      custom = this.request.custom.name
+    }
+
+    requestType = this.request.requestType.name
+    requestDocumentPageContents = AppPrint.getRequestDocumentPageContent(name, mobileNumber, custom, requestType, this.request.hasPrevRequest);
+
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    // // window.print()
+    popupWin.document.open();
+    popupWin.document.write(requestDocumentPageContents);
+    popupWin.document.close();
+    popupWin.print();
   }
 }

@@ -25,12 +25,12 @@
                 <th scope="col">#</th>
                 <th class="text-center">رقم الطلب</th>
                 <th class="text-center">نوع الطلب</th>
-                <th class="text-center">حالة الطلب</th>
+                <th class="text-center">نتيجة الطلب</th>
                 <th class="text-center"> الجمرك</th>
                 <th class="text-center">المرور</th>
                 <th class="text-center">تاريخ التسجيل</th>
-                <th *ngIf="isAdmin" class="text-center">تعديل</th>
-                <th *ngIf="isAdmin" class="text-center">حذف</th>
+                <th *ngIf="canEdit" class="text-center">تعديل</th>
+                <th *ngIf="canEdit" class="text-center">حذف</th>
               </tr>
             </thead>
             <tbody>
@@ -56,13 +56,13 @@
                 <td class="text-center">
                   <b>{{request.requestDate}}</b>
                 </td>
-                <td *ngIf="isAdmin" class="text-center">
+                <td *ngIf="canEdit" class="text-center">
                   <button [attr.disabled]="disabled ? '' : null" type="button" class="edit-btn btn btn-info"
                     (click)="onEditRequest(request.id)">تعديل
                     <i class="fa fa-edit"></i>
                   </button>
                 </td>
-                <td *ngIf="isAdmin" class="text-center">
+                <td *ngIf="canEdit" class="text-center">
                   <button [attr.disabled]="disabled ? '' : null" type="button" class="delete-btn btn btn-danger"
                     (click)="onDeleteRequest(request.id)">حذف
                     <i class="fa fa-trash"></i>
@@ -82,7 +82,7 @@
     <div style="width:100% !important;">
       <div class="card">
         <div class="card-header">
-          <strong>طلب جديد</strong>
+          <strong style="color: green; "> <i class="fa fa-plus-circle"></i> طلب جديد </strong>
           <div class="card-header-actions">
             <button type="button" class="card-header-action btn btn-link btn-minimize"
               (click)="toggleNewRequestCollapse()"><i class={{iconNewRequestCollapse}}></i></button>
@@ -128,14 +128,18 @@
               </div>
             </div>
             <div class="card-footer">
-                <div *ngIf="newRequestErrorMessage != '' ">
-                    <alert type="danger">{{newRequestErrorMessage}}</alert>
-                </div>
-                <div *ngIf="newRequestSuccessMessage!= '' ">
-                    <alert type="success"> {{newRequestSuccessMessage}} </alert>
-                </div>
+              <div *ngIf="newRequestErrorMessage != '' ">
+                <alert type="danger">{{newRequestErrorMessage}}</alert>
+              </div>
+              <div *ngIf="newRequestSuccessMessage!= '' ">
+                <alert type="success"> {{newRequestSuccessMessage}} </alert>
+              </div>
               <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>اضافه
                 الطلب</button>
+              <button type="button" [disabled]="!printEnabled" (click)="printRequestDocument()"
+                class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> نموذج طلب</button>
+              <button type="button" [disabled]="!printEnabled" (click)="printPaymentPermission()"
+                class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> اذن دفع</button>
             </div>
 
           </form>

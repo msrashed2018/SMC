@@ -24,6 +24,8 @@ import { AppPrint } from '../../../../app-print';
 import { RequestType } from '../../../../model/request-type.model';
 import { PERSONAL_PHOTO_FILE_NAME } from '../../../../app-words';
 import { Tafkeet } from '../../../../tafkeet';
+import { ConfirmModalService } from '../../../confirm-modal/confirm-modal.service';
+import { Roles } from '../../../../model/roles.enum';
 
 @Component({
   selector: 'app-continue-registering-data',
@@ -79,7 +81,7 @@ export class ContinueRegisteringDataComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 }
   //---------------------------------------------------------------------------------------------------------
 
-  constructor(private documentTypeService: DocumentTypeService, private route: ActivatedRoute, private formBuilder: FormBuilder, private committeeService: CommitteeService, private disabilityService: DisabilityService, private equipmentService: EquipmentService, private eyeMeasureService: EyeMeasureService, private eyeRevealSettingService: EyeRevealSettingService, private customService: CustomService, private requestService: RequestService, private requestTypeService: RequestTypeService, private requestStatusService: RequestStatusService, private trafficManagementService: TrafficManagementService) { }
+  constructor(private confirmationModalService: ConfirmModalService, private documentTypeService: DocumentTypeService, private route: ActivatedRoute, private formBuilder: FormBuilder, private committeeService: CommitteeService, private disabilityService: DisabilityService, private equipmentService: EquipmentService, private eyeMeasureService: EyeMeasureService, private eyeRevealSettingService: EyeRevealSettingService, private customService: CustomService, private requestService: RequestService, private requestTypeService: RequestTypeService, private requestStatusService: RequestStatusService, private trafficManagementService: TrafficManagementService) { }
 
   ngOnInit() {
     this.route.params.forEach((urlParams) => {
@@ -218,19 +220,25 @@ export class ContinueRegisteringDataComponent implements OnInit {
   getFile(requestDocumentName) {
     this.requestService.getRequestDocument(this.request.id, requestDocumentName);
   }
+
   deleteFile(requestDocumentName) {
-    this.requestService.deleteRequestDocument(this.request.id, requestDocumentName).subscribe(
-      result => {
-        this.fileUploadErrorMessage = "";
-        this.showFiles(true);
-      },
-      error => {
-        this.fileUploadErrorMessage = error.error.message;
-      }
-
-
-    );
+    let message = ` هل انت متاكد من حذف هذا الملف"${requestDocumentName} "`
+    this.confirmationModalService.confirm('من فضلك اضغط علي ok', message)
+      .then((confirmed) => {
+        if (confirmed) {
+          this.requestService.deleteRequestDocument(this.request.id, requestDocumentName).subscribe(
+            result => {
+              this.fileUploadErrorMessage = "";
+              this.showFiles(true);
+            },
+            error => {
+              this.fileUploadErrorMessage = error.error.message;
+            }
+          );
+        }
+      })
   }
+
   upload() {
 
     if (this.selectedDocumentTypeId != 0) {
@@ -313,7 +321,7 @@ export class ContinueRegisteringDataComponent implements OnInit {
   }
 
   printReceivedDoocumentReceipts(): void {
-    var receivedDocumentReceiptPageContent = "", popupWin, name = "", custom = "", bonesCommitteeDate = " لم يتم تحديد اللجنة", eyeCommitteeDate = " لم يتم تحديد اللجنة",tafkeet ="صفر" ;
+    var receivedDocumentReceiptPageContent = "", popupWin, name = "", custom = "", bonesCommitteeDate = " لم يتم تحديد اللجنة", eyeCommitteeDate = " لم يتم تحديد اللجنة", tafkeet = "صفر";
 
     if (this.citizen.name != null) {
       name = this.citizen.name;
@@ -330,9 +338,9 @@ export class ContinueRegisteringDataComponent implements OnInit {
     if (this.request.eyeCommittee != null) {
       eyeCommitteeDate = this.request.eyeCommittee.date;
     }
-    if(this.request.requestType.price == 0){
+    if (this.request.requestType.price == 0) {
       tafkeet = "صفر"
-    }else{
+    } else {
       tafkeet = Tafkeet.tafqeet(this.request.requestType.price)
     }
     tafkeet = tafkeet + " جنيها";

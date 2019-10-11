@@ -84,7 +84,7 @@ export class RequestEditComponent implements OnInit {
   squintCheck: boolean = false;
   selectedEyeCommitteeId: number = 0;
   selectedLeftEyeMeasureId: number = 0;
-  selectedRightEyeMeasureId: number = 0;
+  selectedRightEyeMeasureId;
 
   bonesReveal: BonesReveal;
   selectedBonesCommitteeId: number = 0;
@@ -267,11 +267,15 @@ export class RequestEditComponent implements OnInit {
       let custom: Custom = new Custom;
       custom.id = this.selectedCustomId;
       this.request.custom = custom;
+    }else{
+      this.request.custom = null;
     }
     if (this.selectedRequestStatusId != 0) {
       let requestStatus: RequestStatus = new RequestStatus;
       requestStatus.id = this.selectedRequestStatusId;
       this.request.requestStatus = requestStatus;
+    }else{
+      this.request.requestStatus = null;
     }
     if (this.selectedRequestTypeId != 0) {
       let requestType: RequestType = new RequestType;
@@ -282,6 +286,8 @@ export class RequestEditComponent implements OnInit {
       let trafficManagement: TrafficManagement = new TrafficManagement;
       trafficManagement.id = this.selectedTrafficManagementId;
       this.request.trafficManagement = trafficManagement;
+    }else{
+      this.request.trafficManagement = null;
     }
 
     // console.log(JSON.stringify(this.request))
@@ -408,7 +414,6 @@ export class RequestEditComponent implements OnInit {
     this.requestService.retreiveRequestBonesReveal(this.requestId).subscribe(
       result => {
         this.bonesReveal = result as BonesReveal;
-        console.log(JSON.stringify(this.bonesReveal))
 
         // if(this.bonesReveal.committee != null){
         //   this.selectedBonesCommitteeId = this.bonesReveal.committee.id
@@ -573,7 +578,7 @@ export class RequestEditComponent implements OnInit {
     this.requestService.getRequestDocument(this.request.id, requestDocumentName);
   }
   deleteFile(requestDocumentName) {
-    let message  = ` هل انت متاكد من حذف هذا الملف   "${requestDocumentName} "` 
+    let message  = ` هل انت متاكد من حذف هذا الملف"${requestDocumentName} "` 
     this.confirmationModalService.confirm('من فضلك اضغط علي ok',  message)
       .then((confirmed) => {
         if (confirmed) {
@@ -610,8 +615,12 @@ export class RequestEditComponent implements OnInit {
 
         },
         error => {
-          this.fileUploadErrorMessage = error.error;
-          console.log('oops', error.error.message)
+
+          if (error.error.message != null) {
+            this.fileUploadErrorMessage = error.error.message;
+          } else {
+            this.fileUploadErrorMessage = error.error;
+          }
           console.log('oops', error.error)
         }
 

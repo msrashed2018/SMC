@@ -82,6 +82,7 @@
                         <label class="col-md-2 col-form-label font-weight-bold" for="custom">الجمرك</label>
                         <div class="col-md-5">
                             <select name="custom" class="form-control" [(ngModel)]="selectedCustomId" #custom="ngModel">
+                                <option></option>
                                 <option *ngFor="let custom of customs" [value]="custom.id">{{custom.name}}</option>
                             </select>
                         </div>
@@ -93,6 +94,7 @@
                         <div class="col-md-5">
                             <select name="trafficManagement" class="form-control"
                                 [(ngModel)]="selectedTrafficManagementId" #trafficManagement="ngModel">
+                                <option></option>
                                 <option *ngFor="let trafficManagement of trafficManagements"
                                     [value]="trafficManagement.id">{{trafficManagement.name}}</option>
                             </select>
@@ -127,6 +129,7 @@
                         <div class="col-md-5">
                             <select name="requestStatus" class="form-control" [(ngModel)]="selectedRequestStatusId"
                                 #requestStatus="ngModel">
+                                <option></option>
                                 <option *ngFor="let status of requestStatuses" [value]="status.id">{{status.name}}
                                 </option>
                             </select>
@@ -354,6 +357,7 @@
                             الاعاقة</label>
                         <div class="col-md-5">
                             <select name="committee" class="form-control" [(ngModel)]="selectedDisabilityTypeId">
+                                <option></option>
                                 <option *ngFor="let disability of disabilities" [value]="disability.id">
                                     {{disability.name}}</option>
                             </select>
@@ -463,7 +467,7 @@
                 </div>
                 <br><br><br>
                 <div class="form-group row">
-                    <label class="col-md-2 col-form-label font-weight-bold" for="documentType">نوع الملف</label>
+                    <label class="col-md-1 col-form-label font-weight-bold" for="documentType">نوع الملف</label>
                     <div class="col-md-3">
                         <select [(ngModel)]="selectedDocumentTypeId" name="documentType" class="form-control">
                             <option *ngFor="let documentType of documentTypes" [value]="documentType.id">

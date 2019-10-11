@@ -19,8 +19,8 @@ export class ListCitizensComponent implements OnInit {
   searchKey: string = '';
   private citizens: Citizen[];
   private noDataFound: boolean = false;
-  private isAdmin: boolean = false;
   private errorMessage: boolean = false;
+  private canEdit : boolean = false
   isForSearch: boolean = true;
   constructor(private tokenStorageService: TokenStorageService, private confirmationModalService: ConfirmModalService, private citizenService: CitizenService, private router: Router, private datepipe: DatePipe) { }
   page: number = 0;
@@ -59,7 +59,9 @@ export class ListCitizensComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.isAdmin = this.tokenStorageService.hasAdminRole();
+    if(this.tokenStorageService.hasRole("ROLE_SUPER_USER") || this.tokenStorageService.hasRole("ROLE_ADMIN")){
+      this.canEdit = true;
+    }
     this.citizens = [];
     this.retriveAllCitizens();
   }

@@ -85,7 +85,7 @@ public class RequestServiceImpl implements RequestService {
 						RequestState.PENDING_PAYMENT, key, pageable);
 			}
 		} catch (NumberFormatException | NullPointerException nfe) {
-			if(searchKey.contains(":")) {
+			if (searchKey.contains(":")) {
 				String startDate = searchKey.split(":")[0];
 				String endDate = searchKey.split(":")[1];
 				Calendar start = Calendar.getInstance();
@@ -100,8 +100,8 @@ public class RequestServiceImpl implements RequestService {
 				Date requestDateEnd = end.getTime();
 				return requestRepository.findByZoneIdAndStateAndRequestDateBetween(userService.getUserZoneId(),
 						RequestState.PENDING_PAYMENT, requestDateStart, requestDateEnd, pageable);
-				
-			}else if (searchKey.contains("-")) {
+
+			} else if (searchKey.contains("-")) {
 				// search key is date
 				try {
 					Calendar start = Calendar.getInstance();
@@ -150,7 +150,7 @@ public class RequestServiceImpl implements RequestService {
 						RequestState.PENDING_CONTINUE_REGISTERING, key, pageable);
 			}
 		} catch (NumberFormatException | NullPointerException nfe) {
-			if(searchKey.contains(":")) {
+			if (searchKey.contains(":")) {
 				String startDate = searchKey.split(":")[0];
 				String endDate = searchKey.split(":")[1];
 				Calendar start = Calendar.getInstance();
@@ -165,8 +165,8 @@ public class RequestServiceImpl implements RequestService {
 				Date requestDateEnd = end.getTime();
 				return requestRepository.findByZoneIdAndStateAndRequestDateBetween(userService.getUserZoneId(),
 						RequestState.PENDING_CONTINUE_REGISTERING, requestDateStart, requestDateEnd, pageable);
-				
-			}else if (searchKey.contains("-")) {
+
+			} else if (searchKey.contains("-")) {
 				// search key is date
 				try {
 					Calendar start = Calendar.getInstance();
@@ -219,7 +219,7 @@ public class RequestServiceImpl implements RequestService {
 						EyeRevealState.PENDING_REVEAL, key, page);
 			}
 		} catch (NumberFormatException | NullPointerException nfe) {
-			if(searchKey.contains(":")) {
+			if (searchKey.contains(":")) {
 				String startDate = searchKey.split(":")[0];
 				String endDate = searchKey.split(":")[1];
 				Calendar start = Calendar.getInstance();
@@ -235,8 +235,8 @@ public class RequestServiceImpl implements RequestService {
 				return requestRepository.findByZoneIdAndStateAndEyeRevealStateAndRequestDateBetween(
 						userService.getUserZoneId(), RequestState.CONTINUE_REGISTERING_DONE,
 						EyeRevealState.PENDING_REVEAL, requestDateStart, requestDateEnd, page);
-				
-			}else if (searchKey.contains("-")) {
+
+			} else if (searchKey.contains("-")) {
 				// search key is date
 				try {
 					Calendar start = Calendar.getInstance();
@@ -290,7 +290,7 @@ public class RequestServiceImpl implements RequestService {
 						BonesRevealState.PENDING_REVEAL, key, page);
 			}
 		} catch (NumberFormatException | NullPointerException nfe) {
-			if(searchKey.contains(":")) {
+			if (searchKey.contains(":")) {
 				String startDate = searchKey.split(":")[0];
 				String endDate = searchKey.split(":")[1];
 				Calendar start = Calendar.getInstance();
@@ -306,8 +306,8 @@ public class RequestServiceImpl implements RequestService {
 				return requestRepository.findByZoneIdAndStateAndBonesRevealStateAndRequestDateBetween(
 						userService.getUserZoneId(), RequestState.CONTINUE_REGISTERING_DONE,
 						BonesRevealState.PENDING_REVEAL, requestDateStart, requestDateEnd, page);
-				
-			}else if (searchKey.contains("-")) {
+
+			} else if (searchKey.contains("-")) {
 				// search key is date
 				try {
 					Calendar start = Calendar.getInstance();
@@ -361,7 +361,7 @@ public class RequestServiceImpl implements RequestService {
 						EyeRevealState.PENDING_REGISTERING, key, page);
 			}
 		} catch (NumberFormatException | NullPointerException nfe) {
-			if(searchKey.contains(":")) {
+			if (searchKey.contains(":")) {
 				String startDate = searchKey.split(":")[0];
 				String endDate = searchKey.split(":")[1];
 				Calendar start = Calendar.getInstance();
@@ -377,8 +377,8 @@ public class RequestServiceImpl implements RequestService {
 				return requestRepository.findByZoneIdAndStateAndEyeRevealStateAndRequestDateBetween(
 						userService.getUserZoneId(), RequestState.CONTINUE_REGISTERING_DONE,
 						EyeRevealState.PENDING_REGISTERING, requestDateStart, requestDateEnd, page);
-				
-			}else if (searchKey.contains("-")) {
+
+			} else if (searchKey.contains("-")) {
 				// search key is date
 				try {
 					Calendar start = Calendar.getInstance();
@@ -432,7 +432,7 @@ public class RequestServiceImpl implements RequestService {
 						BonesRevealState.PENDING_REGISTERING, key, page);
 			}
 		} catch (NumberFormatException | NullPointerException nfe) {
-			if(searchKey.contains(":")) {
+			if (searchKey.contains(":")) {
 				String startDate = searchKey.split(":")[0];
 				String endDate = searchKey.split(":")[1];
 				Calendar start = Calendar.getInstance();
@@ -448,8 +448,8 @@ public class RequestServiceImpl implements RequestService {
 				return requestRepository.findByZoneIdAndStateAndBonesRevealStateAndRequestDateBetween(
 						userService.getUserZoneId(), RequestState.CONTINUE_REGISTERING_DONE,
 						BonesRevealState.PENDING_REGISTERING, requestDateStart, requestDateEnd, page);
-				
-			}else if (searchKey.contains("-")) {
+
+			} else if (searchKey.contains("-")) {
 				// search key is date
 				try {
 					Calendar start = Calendar.getInstance();
@@ -524,7 +524,7 @@ public class RequestServiceImpl implements RequestService {
 								eyeRevealStates, key, page);
 			}
 		} catch (NumberFormatException | NullPointerException nfe) {
-			if(searchKey.contains(":")) {
+			if (searchKey.contains(":")) {
 				String startDate = searchKey.split(":")[0];
 				String endDate = searchKey.split(":")[1];
 				Calendar start = Calendar.getInstance();
@@ -537,11 +537,12 @@ public class RequestServiceImpl implements RequestService {
 				}
 				Date requestDateStart = start.getTime();
 				Date requestDateEnd = end.getTime();
-				return requestRepository.findByZoneIdAndStateAndBonesRevealStateInAndEyeRevealStateInAndRequestDateBetween(
-						userService.getUserZoneId(), RequestState.CONTINUE_REGISTERING_DONE, bonesRevealStates,
-						eyeRevealStates, requestDateStart, requestDateEnd, page);
-				
-			}else if (searchKey.contains("-")) {
+				return requestRepository
+						.findByZoneIdAndStateAndBonesRevealStateInAndEyeRevealStateInAndRequestDateBetween(
+								userService.getUserZoneId(), RequestState.CONTINUE_REGISTERING_DONE, bonesRevealStates,
+								eyeRevealStates, requestDateStart, requestDateEnd, page);
+
+			} else if (searchKey.contains("-")) {
 				// search key is date
 				try {
 					Calendar start = Calendar.getInstance();
@@ -551,9 +552,10 @@ public class RequestServiceImpl implements RequestService {
 					Date requestDateStart = start.getTime();
 					Date requestDateEnd = end.getTime();
 
-					return requestRepository.findByZoneIdAndStateAndBonesRevealStateInAndEyeRevealStateInAndRequestDateBetween(
-							userService.getUserZoneId(), RequestState.CONTINUE_REGISTERING_DONE, bonesRevealStates,
-							eyeRevealStates, requestDateStart, requestDateEnd, page);
+					return requestRepository
+							.findByZoneIdAndStateAndBonesRevealStateInAndEyeRevealStateInAndRequestDateBetween(
+									userService.getUserZoneId(), RequestState.CONTINUE_REGISTERING_DONE,
+									bonesRevealStates, eyeRevealStates, requestDateStart, requestDateEnd, page);
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -595,7 +597,7 @@ public class RequestServiceImpl implements RequestService {
 						RequestState.REVIEWED, key, pageable);
 			}
 		} catch (NumberFormatException | NullPointerException nfe) {
-			if(searchKey.contains(":")) {
+			if (searchKey.contains(":")) {
 				String startDate = searchKey.split(":")[0];
 				String endDate = searchKey.split(":")[1];
 				Calendar start = Calendar.getInstance();
@@ -610,8 +612,8 @@ public class RequestServiceImpl implements RequestService {
 				Date requestDateEnd = end.getTime();
 				return requestRepository.findByZoneIdAndStateAndRequestDateBetween(userService.getUserZoneId(),
 						RequestState.REVIEWED, requestDateStart, requestDateEnd, pageable);
-				
-			}else if (searchKey.contains("-")) {
+
+			} else if (searchKey.contains("-")) {
 				// search key is date
 				try {
 					Calendar start = Calendar.getInstance();
@@ -659,7 +661,7 @@ public class RequestServiceImpl implements RequestService {
 						RequestState.APPROVED, key, pageable);
 			}
 		} catch (NumberFormatException | NullPointerException nfe) {
-			if(searchKey.contains(":")) {
+			if (searchKey.contains(":")) {
 				String startDate = searchKey.split(":")[0];
 				String endDate = searchKey.split(":")[1];
 				Calendar start = Calendar.getInstance();
@@ -674,8 +676,8 @@ public class RequestServiceImpl implements RequestService {
 				Date requestDateEnd = end.getTime();
 				return requestRepository.findByZoneIdAndStateAndRequestDateBetween(userService.getUserZoneId(),
 						RequestState.APPROVED, requestDateStart, requestDateEnd, pageable);
-				
-			}else if (searchKey.contains("-")) {
+
+			} else if (searchKey.contains("-")) {
 				// search key is date
 				try {
 					Calendar start = Calendar.getInstance();
@@ -723,7 +725,7 @@ public class RequestServiceImpl implements RequestService {
 				return requestRepository.findByZoneIdAndCitizenNationalId(userService.getUserZoneId(), key, pageable);
 			}
 		} catch (NumberFormatException | NullPointerException nfe) {
-			if(searchKey.contains(":")) {
+			if (searchKey.contains(":")) {
 				String startDate = searchKey.split(":")[0];
 				String endDate = searchKey.split(":")[1];
 				Calendar start = Calendar.getInstance();
@@ -738,8 +740,8 @@ public class RequestServiceImpl implements RequestService {
 				Date requestDateEnd = end.getTime();
 				return requestRepository.findByZoneIdAndRequestDateBetween(userService.getUserZoneId(),
 						requestDateStart, requestDateEnd, pageable);
-				
-			}else if (searchKey.contains("-")) {
+
+			} else if (searchKey.contains("-")) {
 				// search key is date
 
 				try {
@@ -810,42 +812,59 @@ public class RequestServiceImpl implements RequestService {
 		Optional<Request> request = requestRepository.findByZoneIdAndId(userService.getUserZoneId(), requestId);
 		if (!request.isPresent())
 			throw new ResourceNotFoundException("هذا الطلب غير موجود");
+		
+		//check if the citizen has previous accepted request
+		if(requestRepository.existsByCitizenNationalIdAndRequestStatusNameContaining(request.get().getCitizen().getNationalId(), "توصيه نهائيه")) {
+			request.get().setHasPrevRequest(true);
+		}
 		return request.get();
 	}
 
 	@Override
 	@PreAuthorize(" hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_CITIZEN_REQUEST_REGISTERING')")
 	public Object createRequest(long citizenId, Request request) {
-		if (!citizenRepository.existsById(citizenId)) {
+		boolean hasAcceptedOldRequestBeforeFiveYear = false;
+		// check citizen is existing
+		Optional<Citizen> citizen = citizenRepository.findById(citizenId);
+		if (!citizen.isPresent()) {
 			throw new ResourceNotFoundException("هذا المواطن غير موجود");
 		}
 
+		// check requestType is existing
 		Optional<RequestType> requestType = requestTypeRepository.findById(request.getRequestType().getId());
-
 		if (!requestType.isPresent()) {
 			throw new ResourceNotFoundException("عفوا نوع الطلب غير موجود");
 		}
+
 		if (requestType.get().getName().equals("كشف عادي") || requestType.get().getName().equals("كشف مستعجل")) {
-			// check if citizen has request before 5 years ago
-			final Calendar dateBeforeFiveYears = Calendar.getInstance();
-			dateBeforeFiveYears.add(Calendar.YEAR, -5);
-			if (requestRepository.existsByZoneIdAndCitizenIdAndRequestDateGreaterThan(userService.getUserZoneId(),
-					citizenId, dateBeforeFiveYears.getTime())) {
-				return new ResponseEntity<>(
-						new ExceptionResponse(new Date(),
-								"عفوا لا يمكن اضافة هذا الطلب حيث انه لم يمر خمس سنين علي اخر طلب لهذا المواطن",
-								"عفوا لا يمكن اضافة هذا الطلب حيث انه لم يمر خمس سنين علي اخر طلب لهذا المواطن"),
-						HttpStatus.BAD_REQUEST);
+
+			if (requestRepository.existsByCitizenNationalId(citizen.get().getNationalId())) {
+				// check if citizen has request before 5 years ago
+				final Calendar dateBeforeFiveYears = Calendar.getInstance();
+				dateBeforeFiveYears.add(Calendar.YEAR, -5);
+				if (requestRepository.existsByCitizenNationalIdAndRequestDateGreaterThan(citizen.get().getNationalId(),
+						dateBeforeFiveYears.getTime())) {
+					return new ResponseEntity<>(
+							new ExceptionResponse(new Date(),
+									"عفوا لا يمكن اضافة هذا الطلب حيث انه لم يمر خمس سنين علي اخر طلب لهذا المواطن",
+									"عفوا لا يمكن اضافة هذا الطلب حيث انه لم يمر خمس سنين علي اخر طلب لهذا المواطن"),
+							HttpStatus.BAD_REQUEST);
+				} 
 			}
+
 		}
 
+		
+		//check if the citizen has previous accepted request
+		if(requestRepository.existsByCitizenNationalIdAndRequestStatusNameContaining(citizen.get().getNationalId(), "توصيه نهائيه")) {
+			hasAcceptedOldRequestBeforeFiveYear = true;
+		}
+		
 		Zone zone = new Zone();
 		zone.setId(userService.getUserZoneId());
 		request.setZone(zone);
 
-		Citizen citizen = new Citizen();
-		citizen.setId(citizenId);
-		request.setCitizen(citizen);
+		request.setCitizen(citizen.get());
 
 		request.setCreatedBy(userService.getUsername());
 		request.setRequestDate(new Date());
@@ -857,18 +876,28 @@ public class RequestServiceImpl implements RequestService {
 			requestPayment.setReceiptSerialNumber("0");
 			request.setState(RequestState.PENDING_PAYMENT);
 			savedRequest = requestRepository.save(request);
+			savedRequest.setHasPrevRequest(hasAcceptedOldRequestBeforeFiveYear);
 			requestPayment.setRequest(savedRequest);
 			paymentRepository.save(requestPayment);
 		} else {
 			request.setState(RequestState.PENDING_CONTINUE_REGISTERING);
 			savedRequest = requestRepository.save(request);
+			savedRequest.setHasPrevRequest(hasAcceptedOldRequestBeforeFiveYear);
 		}
 
 		// auditing
 		String action = "اضافة طلب جديد";
 		StringBuilder details = new StringBuilder("");
+
 		details.append("نوع الطلب");
 		details.append(" : " + requestType.get().getName());
+
+		details.append(" اسم المواطن  ");
+		details.append(" : " + citizen.get().getName());
+
+		details.append(" الرقم القومي  ");
+		details.append(" : " + citizen.get().getNationalId());
+
 		long requestId = savedRequest.getId();
 		String performedBy = userService.getUsername();
 		Audit audit = new Audit(action, details.toString(), requestId, performedBy, userService.getUserZoneId());
@@ -893,16 +922,15 @@ public class RequestServiceImpl implements RequestService {
 
 		details.append(" نوع الطلب ");
 		details.append((" : " + updatedRequest.getRequestType().getName()));
-		
+
 		String performedBy = userService.getUsername();
 		Audit audit = new Audit(action, details.toString(), requestId, performedBy, userService.getUserZoneId());
 		auditRepository.save(audit);
 
 		return new ResponseEntity<Request>(updatedRequest, HttpStatus.OK);
-		
+
 	}
-	
-	
+
 	@Override
 	@PreAuthorize(" hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_REQUEST_CONTINUE_REGISTERING') OR hasRole('ROLE_CITIZENS_DATA_EDITING')")
 	public ResponseEntity<Request> continueRegisteringRequest(long citizenId, long requestId, Request request) {
@@ -1016,7 +1044,7 @@ public class RequestServiceImpl implements RequestService {
 		auditRepository.save(audit);
 
 	}
-	
+
 	public void formatDates(Calendar start, Calendar end, String startDate, String endDate) throws ParseException {
 
 		// creating a date object with specifed time.
@@ -1037,7 +1065,8 @@ public class RequestServiceImpl implements RequestService {
 	}
 
 	@Override
-	public Page<RequestResultDto> getRequestReults(int requestStatusId, String startDate, String endDate, Pageable pageable) {
+	public Page<RequestResultDto> getRequestReults(int requestStatusId, String startDate, String endDate,
+			Pageable pageable) {
 		try {
 			Calendar start = Calendar.getInstance();
 			Calendar end = Calendar.getInstance();
@@ -1045,8 +1074,10 @@ public class RequestServiceImpl implements RequestService {
 			formatDates(start, end, startDate, endDate);
 			Date requestDateStart = start.getTime();
 			Date requestDateEnd = end.getTime();
-			return requestRepository.findRequestResults(userService.getUserZoneId(),requestStatusId, requestDateStart, requestDateEnd, pageable);
-			//			return requestRepository.findByZoneIdAndRequestStatusIdAndRequestDateBetween(userService.getUserZoneId(),requestStatusId,
+			return requestRepository.findRequestResults(userService.getUserZoneId(), requestStatusId, requestDateStart,
+					requestDateEnd, pageable);
+			// return
+			// requestRepository.findByZoneIdAndRequestStatusIdAndRequestDateBetween(userService.getUserZoneId(),requestStatusId,
 //					requestDateStart, requestDateEnd, pageable);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -2,7 +2,7 @@ import { RequestResult } from './model/request-result.model';
 
 export class AppPrint {
     static getRequestResultsPageContent(requestResults: RequestResult[], result): string {
-    // static getRequestResultsPageContent(requestResults: RequestResult[], zone, result, startDate, endDate ): string {
+        // static getRequestResultsPageContent(requestResults: RequestResult[], zone, result, startDate, endDate ): string {
         let header, footer, resultsTableHeader, resultstableContent, resultsTableFooter, popupWin;
         header = `<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" dir="rtl" lang="ar">
         <head>
@@ -31,56 +31,56 @@ export class AppPrint {
         `
         // resultstableContent = document.getElementById('resultsTable').innerHTML;
         resultstableContent = ` `;
+
+        for (var x = 0; x < requestResults.length; x++) {
+            resultstableContent = resultstableContent + `<tr>
     
-        for (var x = 0; x<requestResults.length ; x++){
-          resultstableContent = resultstableContent + `<tr>
-    
-          <td class="text-center"> <b>${x+1}</b></td>
+          <td class="text-center"> <b>${x + 1}</b></td>
           <td class="text-center"> ${requestResults[x].requestId}</td>
           <td class="text-center"> ${requestResults[x].nationalId}</td>
           <td class="text-center"> ${requestResults[x].citizenName}</td>
           `
-    
-          if(requestResults[x].address != null ){
-            resultstableContent = resultstableContent + `
+
+            if (requestResults[x].address != null) {
+                resultstableContent = resultstableContent + `
             <td class="text-center"> ${requestResults[x].address}</td>
-            ` 
-          }else{
-            resultstableContent = resultstableContent + `
+            `
+            } else {
+                resultstableContent = resultstableContent + `
             <td class="text-center"> لا يوجد</td>
             `
-          }
-          if(requestResults[x].result != null){
-            resultstableContent = resultstableContent + `
+            }
+            if (requestResults[x].result != null) {
+                resultstableContent = resultstableContent + `
             <td class="text-center"> ${requestResults[x].citizenName}</td>
-            ` 
-          }else{
-            
-            resultstableContent = resultstableContent + `
+            `
+            } else {
+
+                resultstableContent = resultstableContent + `
             <td class="text-center"> لم تحدد</td>
             `
-          }
-    
-    
-    
-          if(requestResults[x].disability != null){
-            resultstableContent = resultstableContent + `
+            }
+
+
+
+            if (requestResults[x].disability != null) {
+                resultstableContent = resultstableContent + `
             <td class="text-center"> ${requestResults[x].disability}</td>
-            ` 
-          }else{
-            resultstableContent = resultstableContent + `
+            `
+            } else {
+                resultstableContent = resultstableContent + `
             <td class="text-center"> لم تحدد</td>
             `
-          }
-          resultstableContent = resultstableContent + `</tr>` 
+            }
+            resultstableContent = resultstableContent + `</tr>`
         }
-    
-    
+
+
         resultsTableFooter = ` </tbody> </table> `
         footer = `</div> </body> </html> `;
 
-        return header+ resultsTableHeader + resultstableContent +resultsTableFooter+footer;
-    } 
+        return header + resultsTableHeader + resultstableContent + resultsTableFooter + footer;
+    }
     static getReceivedDocumentReceiptPageContent(name, custom, eyeCommitteeDate, bonesCommitteeDate, price, tafkeet): string {
         return `
         <!DOCTYPE html>
@@ -354,9 +354,15 @@ export class AppPrint {
         <p class="two">
             &#160;&#160;&#160;&#160;&#160;&#160;
             سداد مبلغ وقيمته
-            (&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-            )&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; تفقيط المبلغ
-
+            (
+                ${price}
+            
+                )&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                
+                تفقيط المبلغ
+                :
+                &#160;&#160;
+                ${tafkeet}
 
             <br>
             &#160;&#160;&#160;&#160;&#160;&#160;
@@ -382,106 +388,128 @@ export class AppPrint {
 
     }
 
-    static getRequestDocumentPageContent(name, mobileNumber, custom, requestType): string {
-        return `
+    static getRequestDocumentPageContent(name, mobileNumber, custom, requestType, hasPrevAcceptedRequests): string {
+
+        let part1, part2, part3;
+        part1 = `
         <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" dir="rtl" lang="ar">
+        <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" dir="rtl" lang="ar">
+        
+        <head>
+            <title>إذن دفع</title>
+        
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        
+            <style type="text/css">
+                div.one {
+                    margin: 0;
+                    padding: 0;
+                    border-style: solid;
+                    border-width: 1px;
+                }
+        
+                p.one {
+                    font-size: 14px;
+                }
+        
+                p.two {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 18px;
+                }
+        
+                p.two {
+                    font-size: 16px;
+                }
+        
+                table {
+                    width: 100%;
+                }
+        
+                /* table,
+                    th,
+                    td {
+                        border: 1px solid black; border-collapse: collapse;
+                    } */
+        
+                th {
+                    text-align: center;
+                }
+        
+                td {
+                    padding: 0px;
+                }
+            </style>
+        
+        </head>
+        
+        <body>
+            <div class="one">
+                <img width="90" height="90" src="../../../../../assets/img/brand/logo_2.png" align="right" alt="background image" />
+                <p class="one"><b>
+                        وزارة الصحة والسكان
+                        <br> الإدارة العامة للمجالس الطبية
+                        <br> المتخصصة
+                        <br> السيارات المجهزة
+                    </b>
+                </p>
+        
+        
+                <u>
+                    <h3 style="text-align: center"> طلب توقيع الكشف الطبي للحصول على سيارة معفاة من الرسوم الجمركية </h3>
+                </u>
+                <table style=" border-collapse:separate; border-spacing: 0 1px">
+                    <tr>
+                        <td>
+                            <p class="two">&#160;&#160;<b>الاسم</b> &#160;&#160;:&#160;&#160;${name}</p>
+                        </td>
+                        <td>
+                            <p class="two">&#160;&#160;<b>رقم التليفون</b> :&#160;&#160; ${mobileNumber}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="two">&#160;&#160;<b>الجمرك</b> :&#160;&#160; ${custom}</p>
+                        </td>
+                        <td>
+                            <p class="two">&#160;&#160;<b>نوع الكشف</b> &#160;:&#160;&#160; ${requestType}</p>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+        
+                <p class="two">
+        
+                    &#160;&#160;
+        
+                    سبق الحصول على سيارة مجهزة ؟
+                    :
+                    نعم
+                    
+                    
+                    (&#160;&#160;&#160;&#160;&#160;&#160;
+        `
 
-<head>
-    <title>إذن دفع</title>
+        if (hasPrevAcceptedRequests) {
+            part2 = `
+             &#10003;    &#160;&#160;&#160;&#160;&#160;&#160;)
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <style type="text/css">
-        div.one {
-            margin: 0;
-            padding: 0;
-            border-style: solid;
-            border-width: 1px;
-        }
-
-        p.one {
-            font-size: 14px;
-        }
-
-        p.two {
-            margin: 0;
-            padding: 0;
-            font-size: 18px;
-        }
-
-        p.two {
-            font-size: 16px;
-        }
-
-        table {
-            width: 100%;
-        }
-
-        /* table,
-            th,
-            td {
-                border: 1px solid black; border-collapse: collapse;
-            } */
-
-        th {
-            text-align: center;
-        }
-
-        td {
-            padding: 0px;
-        }
-    </style>
-
-</head>
-
-<body>
-    <div class="one">
-        <img width="90" height="90" src="../../../../../assets/img/brand/logo_2.png" align="right" alt="background image" />
-        <p class="one"><b>
-                وزارة الصحة والسكان
-                <br> الإدارة العامة للمجالس الطبية
-                <br> المتخصصة
-                <br> السيارات المجهزة
-            </b>
-        </p>
-
-
-        <u>
-            <h3 style="text-align: center"> طلب توقيع الكشف الطبي للحصول على سيارة معفاة من الرسوم الجمركية </h3>
-        </u>
-        <table style=" border-collapse:separate; border-spacing: 0 1px">
-            <tr>
-                <td>
-                    <p class="two">&#160;&#160;<b>الاسم</b> &#160;&#160;:&#160;&#160;${name}</p>
-                </td>
-                <td>
-                    <p class="two">&#160;&#160;<b>رقم التليفون</b> :&#160;&#160; ${mobileNumber}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p class="two">&#160;&#160;<b>الجمرك</b> :&#160;&#160; ${custom}</p>
-                </td>
-                <td>
-                    <p class="two">&#160;&#160;<b>نوع الكشف</b> &#160;:&#160;&#160; ${requestType}</p>
-                </td>
-            </tr>
-        </table>
-        <br>
-
-        <p class="two">
-
-            &#160;&#160;
-
-            سبق الحصول على سيارة مجهزة ؟
-            :
-            نعم
-            (&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
-            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+             &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
             لا
             (&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
+            `
+        } else {
+            part2 = `
+            &#160;&#160;&#160;&#160;&#160;&#160;)
 
+            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+           لا
+           (&#160;&#160;&#160;&#160;&#160;&#160;
+            &#10003;
+            &#160;&#160;&#160;&#160;&#160;&#160;)
+            `
+        }
+        part3 = `
         </p>
         <p class="two">
 
@@ -616,10 +644,12 @@ export class AppPrint {
 </body>
 
 </html>
+        
         `
+        return part1 + part2 + part3;
     }
-static test():string{
-    return `
+    static test(): string {
+        return `
     <!DOCTYPE html>
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" dir="rtl" lang="ar">
         <head>
@@ -629,8 +659,8 @@ static test():string{
         </body>
     </html>
     `
-}
-    static getEyeResultPageContent(nationalId, name, address, governate, eyeCommittee,personalImageUrl): string {
+    }
+    static getEyeResultPageContent(nationalId, name, address, governate, eyeCommittee, personalImageUrl): string {
         return `
     <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" dir="rtl" lang="ar">

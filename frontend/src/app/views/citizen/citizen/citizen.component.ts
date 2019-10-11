@@ -37,7 +37,7 @@ export class CitizenComponent implements OnInit {
   iconCollapse: string = 'icon-arrow-up';
   message: string = "";
 
-
+  request : Request = new Request();
 
   public occupations: Occupation[] = [];
   public requestTypes: RequestType[] = [];
@@ -51,7 +51,7 @@ export class CitizenComponent implements OnInit {
   public selectedGovernateId: number
   public selectedCityId: number
   public selectedGenderId: number
-  public selectedTrafficManagementId: number
+  public selectedTrafficManagementId: number = 0;
   public selectedCustomId: number = 0;
   public requestPrice: number = 0;
   private enabled : boolean = true;
@@ -161,30 +161,29 @@ export class CitizenComponent implements OnInit {
     );
   }
   createRequest() {
-    let request = new Request();
     // request.requestDate = this.citizen.createdDate;
-    request.createdBy = this.citizen.createdBy;
+    this.request.createdBy = this.citizen.createdBy;
 
     let requestType = new RequestType;
     requestType.id = this.selectedRequestTypeId;
-    request.requestType = requestType;
+    this.request.requestType = requestType;
 
 
     if (this.selectedCustomId > 0) {
       let custom = new Custom;
       custom.id = this.selectedCustomId;
-      request.custom = custom;
+      this. request.custom = custom;
     }
 
     if (this.selectedTrafficManagementId > 0) {
       let trafficManagement = new TrafficManagement;
       trafficManagement.id = this.selectedTrafficManagementId;
-      request.trafficManagement = trafficManagement;
+      this.request.trafficManagement = trafficManagement;
     }
 
-
-    this.requestService.createRequest(this.citizen.id, request).subscribe(
+    this.requestService.createRequest(this.citizen.id, this.request).subscribe(
       result => {
+        this.request = result as Request
         // this.router.navigateByUrl("/citizen/search");
         this.errorMessage = false;
         this.successMessage = " تم اضافة المواطن بنجاح";
@@ -331,7 +330,7 @@ export class CitizenComponent implements OnInit {
     if (this.selectedRequestTypeId != 0) {
       requestType = this.requestTypes.find((c) => c.id == this.selectedRequestTypeId).name;
     }
-    requestDocumentPageContents = AppPrint.getRequestDocumentPageContent(name, mobileNumber, custom, requestType);
+    requestDocumentPageContents = AppPrint.getRequestDocumentPageContent(name, mobileNumber, custom, requestType, this.request.hasPrevRequest);
 
     popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
     // // window.print()
