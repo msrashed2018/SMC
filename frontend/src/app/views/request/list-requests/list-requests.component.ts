@@ -18,51 +18,34 @@ export class ListRequestsComponent implements OnInit {
   private errorMessage: boolean = false;
   searchKey: string = '';
   constructor(private confirmationModalService: ConfirmModalService, private requestService: RequestService, private router: Router, private datepipe: DatePipe) { }
-  page: number = 0;
-  pages: Array<number>;
-  items: number = 0;
-  isForSearch: boolean = true;
-  setPage(i, event: any): void {
-    // this.currentPage = event.page;
-    event.preventDefault();
-    this.page = i;
-    this.items = i * REQUESTS_PAGE_SIZE;
-    if (this.isForSearch) { this.retrieveRequestsBySearchKey(); } else { this.retriveAllRequests(); }
-  }
-  nextPage(event: any): void {
-    event.preventDefault();
-    if ((this.page + 1) < this.pages.length) {
-      this.page = this.page + 1
-      this.items = (this.page) * REQUESTS_PAGE_SIZE;
-      if (this.isForSearch) { this.retrieveRequestsBySearchKey(); } else { this.retriveAllRequests(); }
-    }
-  }
-  prevPage(event: any): void {
-    event.preventDefault();
 
-    if ((this.page - 1) >= 0) {
-      this.page = this.page - 1;
-      this.items = (this.page) * REQUESTS_PAGE_SIZE;
-      if (this.isForSearch) { this.retrieveRequestsBySearchKey(); } else { this.retriveAllRequests(); }
-    }
+    //pagination variables
+    maxSize: number = 10;
+    totalItems: number = 0;
+    currentPage: number = 0;
+    numPages: number = 0;
+    items: number = 0;
+    itemsPerPage: number = 10;
+  pageChanged(event: any): void {
+    this.items = (event.page -1) * this.itemsPerPage ;
+    this.currentPage = event.page -1;
+    this.refreshData();
   }
   ngOnInit() {
     this.requests = [];
-    this.retriveAllRequests();
+    this.refreshData();
   }
 
-  retrieveRequestsBySearchKey(){
-    this.requestService.retrieveRequestsBySearchKey(this.searchKey, this.page, REQUESTS_PAGE_SIZE)
+  refreshData(){
+    this.requestService.retrieveRequestsBySearchKey(this.searchKey,this.currentPage, this.itemsPerPage)
     .subscribe(
       result => {
         if (typeof result !== 'undefined' && result !== null && result['content'].length != 0) {
           this.noDataFound = false;
           this.requests = result['content'];
-          this.pages = new Array(result['totalPages']);
-          this.isForSearch = true;
+          this.totalItems = result['totalElements'];
           
         } else {
-          this.pages = new Array(0);
           this.noDataFound = true;
         }
       },
@@ -74,36 +57,14 @@ export class ListRequestsComponent implements OnInit {
   }
   searchByKey(event: Event) {
     this.requests = [];
-    this.page = 0;
+   this.currentPage = 0;
     // this.citizens = [];
     this.errorMessage = false;
     this.noDataFound = false;
-    this.retrieveRequestsBySearchKey();
+    this.refreshData();
 
   }
-  retriveAllRequests() {
-    this.requests = [];
-    this.errorMessage = false;
-    this.noDataFound = false;
-    this.requestService.retrieveAllRequests(this.page, REQUESTS_PAGE_SIZE)
-      .subscribe(
-        result => {
-          if (typeof result !== 'undefined' && result !== null && result['content'].length != 0) {
-            this.noDataFound = false;
-            this.requests = result['content'];
-            this.pages = new Array(result['totalPages']);
-            this.isForSearch = false;
-          } else {
-
-            this.noDataFound = true;
-          }
-        },
-        error => {
-          console.log('oops: ', error);
-          this.errorMessage = true;
-        }
-      );
-  }
+  
 
   onDelete(citizenId, requestId) {
     this.confirmationModalService.confirm('برجاء التاكيد', 'هل انت متاكد من حذف الطلب؟ ')
@@ -112,7 +73,7 @@ export class ListRequestsComponent implements OnInit {
           this.requestService.deleteRequest(citizenId, requestId).subscribe(
             response => {
               this.errorMessage = false;
-              if (this.isForSearch) { this.searchByKey(null); } else { this.retriveAllRequests(); }
+              this.refreshData();
             },
             error =>{
               console.log('oops',error)
@@ -125,8 +86,5 @@ export class ListRequestsComponent implements OnInit {
 
   onEdit(id) {
     this.router.navigate(['request/request-edit', id])
-  }
-  onAdd() {
-    // this.router.navigate(['request/new-request'])
   }
 }

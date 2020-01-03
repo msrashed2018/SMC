@@ -22,7 +22,7 @@ import { EyeRevealRegisteringListComponent } from './eye-reveal-registering/eye-
 import { EyeRevealRegisteringDataComponent } from './eye-reveal-registering/eye-reveal-registering-data/eye-reveal-registering-data.component';
 import { RequestEditComponent } from './request-edit/request-edit.component';
 import { RequestResultsComponent } from './request-results/request-results.component';
-
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [ListRequestsComponent, RequestViewComponent,  PaymentListComponent, PaymentDataComponent, ContinueRegisteringDataComponent, ContinueRegisteringListComponent, BonesRevealComponent, EyeRevealComponent, ReviewRequestsComponent, ApproveRequestsComponent, BonesRevealRegisteringListComponent, BonesRevealRegisteringDataComponent, EyeRevealRegisteringListComponent, EyeRevealRegisteringDataComponent, RequestEditComponent, RequestResultsComponent],
@@ -33,6 +33,7 @@ import { RequestResultsComponent } from './request-results/request-results.compo
     FormsModule,
     ReactiveFormsModule,
     NgbModalModule,
+    PaginationModule.forRoot(),
     CollapseModule.forRoot()
   ],
   providers :[ ConfirmModalService ]

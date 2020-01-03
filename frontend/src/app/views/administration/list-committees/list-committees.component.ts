@@ -20,41 +20,26 @@ export class ListCommitteesComponent implements OnInit {
   ) { 
 
   }
-  page: number = 0;
-  pages: Array<number>;
+  //pagination variables
+  maxSize: number = 10;
+  totalItems: number = 0;
+  currentPage: number = 0;
+  numPages: number = 0;
   items: number = 0;
-  setPage(i,event: any): void {
-    // this.currentPage = event.page;
-    event.preventDefault();
-    this.page = i ;
-    this.items = i*COMMITTEES_PAGE_SIZE;
+  itemsPerPage: number = 10;
+  pageChanged(event: any): void {
+    this.items = (event.page -1) * this.itemsPerPage ;
+    this.currentPage = event.page -1;
     this.refreshData();
-  }
-  nextPage(event: any): void {
-    event.preventDefault();
-    if((this.page+1) < this.pages.length){
-      this.page = this.page+1
-      this.items = (this.page)*COMMITTEES_PAGE_SIZE;
-      this.refreshData();
-    }
-  }
-  prevPage(event: any): void {
-    event.preventDefault();
-
-    if((this.page-1) >= 0){
-      this.page =this.page -1;
-      this.items = (this.page)*COMMITTEES_PAGE_SIZE;
-      this.refreshData();
-    }
   }
   ngOnInit() {
     this.refreshData();
   }
   refreshData(){
-    this.committeeService.retrieveAllCommittees(this.page,COMMITTEES_PAGE_SIZE).subscribe(
+    this.committeeService.retrieveAllCommittees(this.currentPage,this.itemsPerPage).subscribe(
       response => {
         this.committees = response['content'];
-        this.pages = new Array(response['totalPages']);
+        this.totalItems = response['totalElements'];
       },
       error =>{
         console.log('oops',error);

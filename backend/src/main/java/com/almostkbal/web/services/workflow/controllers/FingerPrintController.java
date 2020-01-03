@@ -218,7 +218,13 @@ public class FingerprintController {
 
 		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	}
-
+	
+	@DeleteMapping("/api/citizens/fingerprint/cancelverifification")
+	@PreAuthorize("hasRole('ROLE_ADMIN')  OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_CITIZEN_REQUEST_REGISTERING')")
+	@Transactional
+	public void cancelFingerprintVerification() {
+		fingerprintVerificationRepository.deleteByVerifierUsername(userService.getUsername());
+	}
 	// After step1 verification, the web application send this request each interval
 	// time to check if fingerprint is verified by fingerprint desktop application
 	// or not

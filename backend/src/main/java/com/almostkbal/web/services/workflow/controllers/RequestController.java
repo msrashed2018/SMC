@@ -43,10 +43,14 @@ public class RequestController {
 	}
 
 	@GetMapping("/api/requests/retrieveRequestResults")
-	public Page<RequestResultDto> retrieveRequestResults(@RequestParam("requestStatusId") int requestStatusId,
-			@RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate,
+	public Page<RequestResultDto> retrieveRequestResults(@RequestParam(name ="requestStatusId") int requestStatusId,
+			@RequestParam(name="startDate", required=false) String startDate, 
+			@RequestParam(name="endDate", required=false) String endDate,
 			@RequestParam("page") int page, @RequestParam("size") int size) {
 
+		System.out.println("requestStatusId = "+requestStatusId);
+		System.out.println("startDate = "+startDate);
+		System.out.println("endDate = "+endDate);
 		return requestService.getRequestReults(requestStatusId, startDate, endDate,
 				PageRequest.of(page, size, Sort.by("requestDate").ascending().and(Sort.by("id").ascending())));
 	}

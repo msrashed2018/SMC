@@ -847,7 +847,8 @@ public class RequestServiceImpl implements RequestService {
 				dateBeforeFiveYears.add(Calendar.YEAR, -5);
 				if (requestRepository.existsByCitizenNationalIdAndRequestDateGreaterThan(citizen.get().getNationalId(),
 						dateBeforeFiveYears.getTime())) {
-					throw new CitizenValidationException("عفوا لا يمكن اضافة هذا الطلب حيث انه لم يمر خمس سنين علي اخر طلب لهذا المواطن");
+					throw new CitizenValidationException(
+							"عفوا لا يمكن اضافة هذا الطلب حيث انه لم يمر خمس سنين علي اخر طلب لهذا المواطن");
 				}
 			}
 
@@ -937,9 +938,10 @@ public class RequestServiceImpl implements RequestService {
 		if (!existingRequest.isPresent()) {
 			throw new ResourceNotFoundException("هذا الطلب غير موجود");
 		}
-		
-		if(existingRequest.get().getState() != RequestState.PENDING_CONTINUE_REGISTERING) {
-			throw new IllegalRequestStateException(new Date(), "عفوا تم استكمال بيانات هذا الطلب من قبل", "عفوا تم استكمال بيانات هذا الطلب من قبل");
+
+		if (existingRequest.get().getState() != RequestState.PENDING_CONTINUE_REGISTERING) {
+			throw new IllegalRequestStateException(new Date(), "عفوا تم استكمال بيانات هذا الطلب من قبل",
+					"عفوا تم استكمال بيانات هذا الطلب من قبل");
 		}
 
 //		if (requestRepository.findRequestState(requestId) != RequestState.PENDING_CONTINUE_REGISTERING) {
@@ -1068,14 +1070,36 @@ public class RequestServiceImpl implements RequestService {
 	public Page<RequestResultDto> getRequestReults(int requestStatusId, String startDate, String endDate,
 			Pageable pageable) {
 		try {
-			Calendar start = Calendar.getInstance();
-			Calendar end = Calendar.getInstance();
+			if (requestStatusId != 0) {
+				if (startDate != null && endDate != null) {
 
-			formatDates(start, end, startDate, endDate);
-			Date requestDateStart = start.getTime();
-			Date requestDateEnd = end.getTime();
-			return requestRepository.findRequestResults(userService.getUserZoneId(), requestStatusId, requestDateStart,
-					requestDateEnd, pageable);
+					Calendar start = Calendar.getInstance();
+					Calendar end = Calendar.getInstance();
+
+					formatDates(start, end, startDate, endDate);
+					Date requestDateStart = start.getTime();
+					Date requestDateEnd = end.getTime();
+					return requestRepository.findRequestResultsByStatusAndDate(userService.getUserZoneId(),
+							requestStatusId, requestDateStart, requestDateEnd, pageable);
+				} else {
+					return requestRepository.findRequestResultsByStatus(userService.getUserZoneId(), requestStatusId,
+							pageable);
+				}
+			} else {
+				if (startDate != null && endDate != null) {
+					Calendar start = Calendar.getInstance();
+					Calendar end = Calendar.getInstance();
+
+					formatDates(start, end, startDate, endDate);
+					Date requestDateStart = start.getTime();
+					Date requestDateEnd = end.getTime();
+					return requestRepository.findRequestResultsByDate(userService.getUserZoneId(), requestDateStart,
+							requestDateEnd, pageable);
+				} else {
+					return requestRepository.findRequestResults(userService.getUserZoneId(), pageable);
+				}
+			}
+
 			// return
 			// requestRepository.findByZoneIdAndRequestStatusIdAndRequestDateBetween(userService.getUserZoneId(),requestStatusId,
 //					requestDateStart, requestDateEnd, pageable);

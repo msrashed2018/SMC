@@ -53,7 +53,7 @@ public class CommitteeController {
 	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER') OR hasRole('ROLE_COMMITTEES_REGISTERING')")
 	public Page<Committee> retrieveAllCommittees(@RequestParam("page") int page, @RequestParam("size") int size) {
 		return committeeRepository.findByZoneId(userService.getUserZoneId(),
-				PageRequest.of(page, size, Sort.by("date").ascending().and(Sort.by("id").ascending())));
+				PageRequest.of(page, size, Sort.by("date").descending()));
 	}
 
 	@GetMapping("/api/committees/findUpcommingCommitteesByTypeAndFunction")

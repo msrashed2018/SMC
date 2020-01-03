@@ -6,7 +6,6 @@ import { AlertModule, AlertConfig } from 'ngx-bootstrap/alert';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
 import { ConfirmModalService } from '../../confirm-modal/confirm-modal.service';
-import { CITIZENS_PAGE_SIZE } from '../../../app.constants';
 import { TokenStorageService } from '../../../services/authentication/jwt/token-storage.service';
 
 
@@ -20,61 +19,37 @@ export class ListCitizensComponent implements OnInit {
   private citizens: Citizen[];
   private noDataFound: boolean = false;
   private errorMessage: boolean = false;
-  private canEdit : boolean = false
-  isForSearch: boolean = true;
+  private canEdit: boolean = false
   constructor(private tokenStorageService: TokenStorageService, private confirmationModalService: ConfirmModalService, private citizenService: CitizenService, private router: Router, private datepipe: DatePipe) { }
-  page: number = 0;
-  pages: Array<number>;
-  items: number = 0;
-  setPage(i, event: any): void {
-    // this.currentPage = event.page;
-    event.preventDefault();
-    this.page = i;
-    this.items = i * CITIZENS_PAGE_SIZE;
-    if (this.isForSearch) { this.retreiveCitizensBySearchKey(); } else { this.retriveAllCitizens(); }
-  }
-  nextPage(event: any): void {
-    event.preventDefault();
-    if ((this.page + 1) < this.pages.length) {
-      this.page = this.page + 1
-      this.items = (this.page) * CITIZENS_PAGE_SIZE;
-      if (this.isForSearch) {
-        this.retreiveCitizensBySearchKey();
-      } else {
-        this.retriveAllCitizens();
-      }
-    }
-  }
-  prevPage(event: any): void {
-    event.preventDefault();
 
-    if ((this.page - 1) >= 0) {
-      this.page = this.page - 1;
-      this.items = (this.page) * CITIZENS_PAGE_SIZE;
-      if (this.isForSearch) {
-        this.retreiveCitizensBySearchKey();
-      } else {
-        this.retriveAllCitizens();
-      }
-    }
-  }
+  //pagination variables
+  maxSize: number = 10;
+  totalItems: number = 0;
+  currentPage: number = 0;
+  numPages: number = 0;
+  items: number = 0;
+  itemsPerPage: number = 10;
+ 
   ngOnInit() {
-    if(this.tokenStorageService.hasRole("ROLE_SUPER_USER") || this.tokenStorageService.hasRole("ROLE_ADMIN")){
+    if (this.tokenStorageService.hasRole("ROLE_SUPER_USER") || this.tokenStorageService.hasRole("ROLE_ADMIN")) {
       this.canEdit = true;
     }
     this.citizens = [];
-    this.retriveAllCitizens();
+    this.refreshData();
   }
-
-  retreiveCitizensBySearchKey() {
-    this.citizenService.findCitizensBySearchKey(this.searchKey, this.page, CITIZENS_PAGE_SIZE)
+  pageChanged(event: any): void {
+    this.items = (event.page -1) * this.itemsPerPage ;
+    this.currentPage = event.page -1;
+    this.refreshData();
+  }
+  refreshData() {
+    this.citizenService.findCitizensBySearchKey(this.searchKey, this.currentPage, this.itemsPerPage)
       .subscribe(
         result => {
           if (typeof result !== 'undefined' && result !== null && result['content'].length != 0) {
             this.noDataFound = false;
             this.citizens = result['content'];
-            this.isForSearch = true;
-            this.pages = new Array(result['totalPages']);
+            this.totalItems = result['totalElements'];
           } else {
             this.noDataFound = true;
           }
@@ -91,66 +66,33 @@ export class ListCitizensComponent implements OnInit {
     this.citizens = [];
     this.errorMessage = false;
     this.noDataFound = false;
-    this.pages = new Array(0);
-    this.page=0;
-    this.retreiveCitizensBySearchKey();
+    this.currentPage = 0;
+    this.refreshData();
   }
   calculateAge(dateString) {
     let birthDate: Date = new Date(dateString);
     return moment().diff(birthDate, 'years');
   }
-  retriveAllCitizens() {
-    this.citizens = [];
-    this.errorMessage = false;
-    this.noDataFound = false;
-    let date = new Date();
-    // let latest_date =this.datepipe.transform(date, 'yyyy-MM-dd');
-    this.citizenService.retrieveAllCitizens(this.page, CITIZENS_PAGE_SIZE)
-      .subscribe(
-        result => {
-          if (typeof result !== 'undefined' && result !== null && result['content'].length != 0) {
-            this.noDataFound = false;
-            this.citizens = result['content'];
-            this.isForSearch = false;
-            this.pages = new Array(result['totalPages']);
-          } else {
-            this.noDataFound = true;
-          }
-        },
-        error => {
-          console.log('oops: ', error);
-          this.errorMessage = true;
-
-        }
-      );
-  }
-
+  
   onDelete(id) {
     this.confirmationModalService.confirm('برجاء التاكيد', 'هل انت متاكد من حذف المواطن؟ ')
       .then((confirmed) => {
         if (confirmed) {
           this.citizenService.deleteCitizen(id).subscribe(
             response => {
-              this.retriveAllCitizens();
+              this.refreshData();
               this.errorMessage = false;
             },
-            error =>{
-              console.log('oops',error)
-              this.errorMessage = true; 
+            error => {
+              console.log('oops', error)
+              this.errorMessage = true;
             }
           )
         }
       })
   }
   displayCitizenRequests(id) {
-    let citizenName = "";
-    this.citizens.forEach(
-      citizen => {
-        if (citizen.id == id) {
-          citizenName = citizen.name;
-        }
-      }
-    )
+    let citizenName = this.citizens.find((c) => c.id == id).name;
     this.router.navigate(['citizen/citizen-requests', id, { name: citizenName }])
   }
   onEdit(id) {

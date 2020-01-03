@@ -19,7 +19,7 @@ public interface AuditRepository extends JpaRepository<Audit, Long> {
 	
 	Page<Audit> findByZoneIdAndRequestId(long zoneId, long requestId, Pageable pageable);
 	
-	Page<Audit> findByZoneIdAndPerformedBy(long zoneId, String performedBy, Pageable pageable);
+	Page<Audit> findByZoneIdAndPerformedByContaining(long zoneId, String performedBy, Pageable pageable);
 	
 	@Transactional
 	@Modifying

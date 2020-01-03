@@ -60,7 +60,7 @@ public class AuditController {
 				}
 			} else {
 				//search key is performedBy 
-				return auditRepository.findByZoneIdAndPerformedBy(userService.getUserZoneId(),searchKey, PageRequest.of(page, size));
+				return auditRepository.findByZoneIdAndPerformedByContaining(userService.getUserZoneId(),searchKey, PageRequest.of(page, size));
 			}
 
 		}

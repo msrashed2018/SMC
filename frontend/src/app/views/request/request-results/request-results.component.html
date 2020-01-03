@@ -26,49 +26,30 @@
 <span class="small text-muted"> يمكن البحث باستخدام ( الرقم القومي - رقم الموبيل - جزء من اسم المواطن - التاريخ) </span> -->
 
 <br />
-<form class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSearch()" novalidate>
   <div class="form-group row ">
     <div class="col-md-2">
       <button type="button" (click)="printResults()" class="btn btn-md btn-success"><i class="fa fa-print"></i>
         طباعة </button>
     </div>
-
     <label class="col-md-0 col-form-label font-weight-bold" for="sDate"><b style="color:darkred"> من : </b></label>
     <div class="col-md-2">
-      <input [(ngModel)]="startDate" #sDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && sDate.invalid }"
-        required class="form-control" type="date" name="sDate" style="text-align: right" placeholder="date">
-      <div *ngIf="f.submitted && sDate.invalid" class="invalid-feedback">
-        <div *ngIf="sDate.errors.required"> برجاء ادخال تاريخ</div>
-      </div>
+      <input (change)="onSearch()" [(ngModel)]="startDate"  class="form-control" type="date" name="sDate" style="text-align: right" placeholder="date">
     </div>
     <label class="col-md-0 col-form-label font-weight-bold" for="eDate"><b style="color:darkred"> الي : </b></label>
     <div class="col-md-2">
-      <input [(ngModel)]="endDate" #eDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && eDate.invalid }" required
+      <input (change)="onSearch()" [(ngModel)]="endDate" 
         class="form-control" type="date" name="eDate" style="text-align: right" placeholder="date">
-      <div *ngIf="f.submitted && eDate.invalid" class="invalid-feedback">
-        <div *ngIf="f.submitted && eDate.invalid &&eDate.errors.required"> برجاء ادخال تاريخ</div>
-      </div>
+      
     </div>
     <label class="col-md-0 col-form-label font-weight-bold" for="requestStatus"><b style="color:darkred">نتيجة
         الطلب </b></label>
     <div class="col-md-2">
-      <select name="requestStatus" class="form-control" [(ngModel)]="selectedRequestStatusId" #requestStatus="ngModel"
-        [ngClass]="{ 'is-invalid': f.submitted && requestStatus.invalid }" required>
+      <select name="requestStatus" class="form-control" [(ngModel)]="selectedRequestStatusId"  (change)="onSearch()" required>
         <option *ngFor="let requestStatus of requestStatuses" [value]="requestStatus.id">{{requestStatus.name}}
         </option>
       </select>
-      <div *ngIf="f.submitted && requestStatus.invalid" class="invalid-feedback">
-        <div *ngIf="requestStatus.errors.required"> برجاء اختيار نتيجة الطلب </div>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-search"></i>
-        بحث</button>
     </div>
   </div>
-</form>
-
-
 <table id="resultsTable" class="table table-responsive-sm table-hover table-outline mb-0">
   <thead class="thead-light">
     <tr>
@@ -116,12 +97,11 @@
   </tbody>
 </table>
 <hr>
-<ul class="nav nav-pills justify-content-center">
-  <li class="page-item"><a class="page-link" (click)="prevPage($event)">السابق</a></li>
-
-  <li class="nav-item" *ngFor="let p of pages; let i=index">
-    <a [ngClass]="{'active':i==page}" (click)="setPage(i,$event)" class="nav-link active" href="#">{{i}}</a>
-  </li>
-  <li class="page-item"><a class="page-link" (click)="nextPage($event)">التالي</a></li>
-</ul>
+<div style="justify-content: center !important; display: flex !important;">
+  <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" class="pagination-sm"
+    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [boundaryLinks]="true"
+    [rotate]="true" (numPages)="numPages = $event" (pageChanged)="pageChanged($event)" [itemsPerPage]="itemsPerPage">
+  </pagination>
+</div>
+<pre class="card card-body card-header justify-content-center">Page: {{currentPage}} / {{numPages}}</pre>
 <hr>

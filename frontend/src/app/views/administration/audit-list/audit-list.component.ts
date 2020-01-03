@@ -24,58 +24,33 @@ export class AuditListComponent implements OnInit {
   ) {
 
   }
-  page: number = 0;
-  pages: Array<number>;
+  //pagination variables
+  maxSize: number = 10;
+  totalItems: number = 0;
+  currentPage: number = 0;
+  numPages: number = 0;
   items: number = 0;
-  setPage(i, event: any): void {
-    // this.currentPage = event.page;
-    event.preventDefault();
-    this.page = i;
-    this.items = i * AUDITS_PAGE_SIZE;
-    if (this.isForSearch) { this.retrieveAuditsBySearchKey(); } else { this.refreshData(); }
-  }2
-  nextPage(event: any): void {
-    event.preventDefault();
-    if ((this.page + 1) < this.pages.length) {
-      this.page = this.page + 1
-      this.items = (this.page) * AUDITS_PAGE_SIZE;
-      if(this.isForSearch){
-        this.retrieveAuditsBySearchKey();
-      }else{
-        this.refreshData();
-      }
-    }
-  }
-  prevPage(event: any): void {
-    event.preventDefault();
-
-    if ((this.page - 1) >= 0) {
-      this.page = this.page - 1;
-      this.items = (this.page) * AUDITS_PAGE_SIZE;
-      if(this.isForSearch){
-        this.retrieveAuditsBySearchKey();
-      }else{
-        this.refreshData();
-      }
-    }
+  itemsPerPage : number = 10;
+  pageChanged(event: any): void {
+    this.items = (event.page -1) * this.itemsPerPage ;
+    this.currentPage = event.page -1;
+    this.refreshData();
   }
 
   ngOnInit() {
     this.refreshData();
   }
 
-  retrieveAuditsBySearchKey(){
-    this.auditService.retrieveAuditsBySearchKey(this.searchKey, this.page, AUDITS_PAGE_SIZE)
+  refreshData(){
+    this.auditService.retrieveAuditsBySearchKey(this.searchKey, this.currentPage, this.itemsPerPage)
     .subscribe(
       result => {
         if (typeof result !== 'undefined' && result !== null && result['content'].length != 0) {
           this.noDataFound = false;
           this.audits = result['content'];
           this.isForSearch = true;
-          this.pages = new Array(result['totalPages']);
+          this.totalItems = result['totalElements'];
         } else {
-
-          this.pages = new Array(0);
           this.noDataFound = true;
         }
       },
@@ -87,29 +62,13 @@ export class AuditListComponent implements OnInit {
   }
   searchByKey(event: Event) {
     this.audits = [];
-    this.page = 0;
+    this.currentPage = 0;
     // this.citizens = [];
     this.errorMessage = false;
     this.noDataFound = false;
-    this.retrieveAuditsBySearchKey();
+    this.refreshData();
 
   }
-
-  refreshData() {
-    this.auditService.retrieveAllAudits(this.page, AUDITS_PAGE_SIZE).subscribe(
-      response => {
-        this.noDataFound = false;
-        this.audits = response['content'];
-        this.pages = new Array(response['totalPages']);
-        this.isForSearch = false;
-      },
-      error => {
-        console.log('oops', error);
-        this.errorMessage = true;
-      }
-    )
-  }
-
   onDelete(id) {
     this.confirmationModalService.confirm('برجاء التاكيد', 'هل انت متاكد من حذف هذا الحدث ')
       .then((confirmed) => {

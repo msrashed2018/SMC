@@ -18,52 +18,32 @@ export class EyeRevealRegisteringListComponent implements OnInit {
   private noDataFound: boolean = false;
   private errorMessage: boolean = false;
   searchKey: string = '';
-  isForSearch: boolean = true;
   constructor(private confirmationModalService: ConfirmModalService, private requestService: RequestService, private router: Router, private datepipe: DatePipe) { }
-  page: number = 0;
-  pages: Array<number>;
+  //pagination variables
+  maxSize: number = 10;
+  totalItems: number = 0;
+  currentPage: number = 0;
+  numPages: number = 0;
   items: number = 0;
-  setPage(i, event: any): void {
-    // this.currentPage = event.page;
-    event.preventDefault();
-    this.page = i;
-    this.items = i * EYE_REVEAL_REGISTRATION_PAGE_SIZE;
-    if (this.isForSearch) { this.searchByStatesAndSearchKey(); } else { this.retriveAllRequests(); }
-  }
-  nextPage(event: any): void {
-    event.preventDefault();
-    if ((this.page + 1) < this.pages.length) {
-      this.page = this.page + 1
-      this.items = (this.page) * EYE_REVEAL_REGISTRATION_PAGE_SIZE;
-      if (this.isForSearch) { this.searchByStatesAndSearchKey(); } else { this.retriveAllRequests(); }
-    }
-  }
-  prevPage(event: any): void {
-    event.preventDefault();
-
-    if ((this.page - 1) >= 0) {
-      this.page = this.page - 1;
-      this.items = (this.page) * EYE_REVEAL_REGISTRATION_PAGE_SIZE;
-      if (this.isForSearch) { this.searchByStatesAndSearchKey(); } else { this.retriveAllRequests(); }
-    }
-  }
+  itemsPerPage: number = 10;
   ngOnInit() {
     this.requests = [];
-    this.retriveAllRequests();
+    this.refreshData();
   }
-
-  searchByStatesAndSearchKey() {
-    this.requestService.searchByStatesAndSearchKey("CONTINUE_REGISTERING_DONE", "NA", "PENDING_REGISTERING", this.searchKey, this.page, EYE_REVEAL_REGISTRATION_PAGE_SIZE)
+  pageChanged(event: any): void {
+    this.items = (event.page - 1) * this.itemsPerPage;
+    this.currentPage = event.page - 1;
+    this.refreshData();
+  }
+  refreshData() {
+    this.requestService.searchByStatesAndSearchKey("CONTINUE_REGISTERING_DONE", "NA", "PENDING_REGISTERING", this.searchKey,this.currentPage,this.itemsPerPage)
       .subscribe(
         result => {
           if (typeof result !== 'undefined' && result !== null && result['content'].length != 0) {
             this.noDataFound = false;
             this.requests = result['content'];
-            this.pages = new Array(result['totalPages']);
-            this.isForSearch = true;
+            this.totalItems = result['totalElements'];
           } else {
-
-            this.pages = new Array(0);
             this.noDataFound = true;
           }
         },
@@ -75,38 +55,12 @@ export class EyeRevealRegisteringListComponent implements OnInit {
   }
   searchByKey(event: Event) {
     this.requests = [];
-    this.page = 0;
+   this.currentPage = 0;
     // this.citizens = [];
     this.errorMessage = false;
     this.noDataFound = false;
-    this.searchByStatesAndSearchKey();
+    this.refreshData();
 
-  }
-  retriveAllRequests() {
-    this.requests = [];
-    this.errorMessage = false;
-    this.noDataFound = false;
-    let date = new Date();
-    // let today =this.datepipe.transform(date, 'yyyy-MM-dd');
-    this.requestService.retrieveByRequestStates("CONTINUE_REGISTERING_DONE", "NA", "PENDING_REGISTERING", this.page, EYE_REVEAL_REGISTRATION_PAGE_SIZE)
-      .subscribe(
-        result => {
-          if (typeof result !== 'undefined' && result !== null && result['content'].length != 0) {
-            this.noDataFound = false;
-            this.requests = result['content'];
-            this.pages = new Array(result['totalPages']);
-            this.isForSearch = false;
-          } else {
-
-            this.noDataFound = true;
-          }
-        },
-        error => {
-          console.log('oops: ', error);
-          this.errorMessage = true;
-
-        }
-      );
   }
 
   onContinue(id) {

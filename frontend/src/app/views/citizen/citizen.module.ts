@@ -10,7 +10,7 @@ import { CitizenViewEditComponent } from './citizen-view-edit/citizen-view-edit.
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmModalService } from '../confirm-modal/confirm-modal.service';
 import { CitizenRequestsComponent } from './citizen-requests/citizen-requests.component';
-
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 @NgModule({
   declarations: [ListCitizensComponent, CitizenComponent, CitizenViewEditComponent, CitizenRequestsComponent],
   imports: [
@@ -18,6 +18,7 @@ import { CitizenRequestsComponent } from './citizen-requests/citizen-requests.co
     AlertModule,
     CitizenRoutingModule,
     FormsModule,
+    PaginationModule.forRoot(),
     ReactiveFormsModule,
     NgbModalModule,
     CollapseModule.forRoot()

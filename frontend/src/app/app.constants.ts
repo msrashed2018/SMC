@@ -1,5 +1,6 @@
 export const API_URL = "http://localhost:8080/ministry-of-health/api";
 export const GENERAL_PAGE_SIZE= 10;
+
 export const REQUEST_TYPES_PAGE_SIZE = 10; 
 export const REQUEST_STATUS_PAGE_SIZE = 10;
 export const REQUEST_PRICES_PAGE_SIZE = 10;
@@ -28,4 +29,4 @@ export const EYE_REVEAL_REGISTRATION_PAGE_SIZE = 10;
 export const BONES_REVEAL_REGISTRATION_PAGE_SIZE = 10;
 export const MEDICAL_REVEAL_REGISTRATION_PAGE_SIZE = 10;
 export const DOCUMENT_TYPES_PAGE_SIZE = 10;
-export const AUDITS_PAGE_SIZE = 100;
+export const AUDITS_PAGE_SIZE = 5;

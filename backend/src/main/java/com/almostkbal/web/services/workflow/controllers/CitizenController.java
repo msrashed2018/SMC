@@ -83,12 +83,12 @@ public class CitizenController {
 			if (searchKey.startsWith("01")) {
 				// search key is mobile number because it starts with 01
 				return citizenRepository.findByZoneIdAndMobileNumber(userService.getUserZoneId(), searchKey,
-						PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
+						PageRequest.of(page, size, Sort.by("createdDate").descending()));
 			} else {
 				// assuming search key is national id
 
 				return citizenRepository.findByZoneIdAndNationalId(userService.getUserZoneId(), key,
-						PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
+						PageRequest.of(page, size, Sort.by("createdDate").descending()));
 			}
 		} catch (NumberFormatException | NullPointerException nfe) {
 			if (searchKey.contains(":")) {
@@ -106,7 +106,7 @@ public class CitizenController {
 				Date createdDateEnd = end.getTime();
 				return citizenRepository.findByZoneIdAndCreatedDateBetween(userService.getUserZoneId(),
 						createdDateStart, createdDateEnd,
-						PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
+						PageRequest.of(page, size, Sort.by("createdDate").descending()));
 
 			}
 			if (searchKey.contains("-")) {
@@ -121,7 +121,7 @@ public class CitizenController {
 					Date createdDateEnd = end.getTime();
 					return citizenRepository.findByZoneIdAndCreatedDateBetween(userService.getUserZoneId(),
 							createdDateStart, createdDateEnd,
-							PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
+							PageRequest.of(page, size, Sort.by("createdDate").descending()));
 				} catch (Exception e) {
 					e.printStackTrace();
 					return null;
@@ -129,7 +129,7 @@ public class CitizenController {
 
 			} else {
 				return citizenRepository.findByZoneIdAndNameContaining(userService.getUserZoneId(), searchKey,
-						PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
+						PageRequest.of(page, size, Sort.by("createdDate").descending()));
 			}
 
 		}

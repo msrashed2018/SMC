@@ -52,6 +52,9 @@ export const AUTHENTICATED_USER = 'authenticaterUser'
   cancelFingerprintRegisteration(){
     return this.http.delete(`${API_URL}/citizens/fingerprint/cancelenrollment`);
   }
+  cancelFingerprintVerification(){
+    return this.http.delete(`${API_URL}/citizens/fingerprint/cancelverifification`);
+  }
 
   isCitizenfigerprintEnrolled(citizenId){
     return this.http.get<Boolean>(`${API_URL}/citizens/${citizenId}/fingerprint/isenrolled`);

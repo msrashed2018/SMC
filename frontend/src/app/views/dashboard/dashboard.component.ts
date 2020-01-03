@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 
@@ -178,7 +177,8 @@ export class DashboardComponent implements OnInit {
   public barChart1Data: Array<any> = [
     {
       data: [78, 81, 80, 45, 34, 12, 40, 78, 81, 80, 45, 34, 12, 40, 12, 40],
-      label: 'Series A'
+      label: 'Series A',
+      barPercentage: 0.6,
     }
   ];
   public barChart1Labels: Array<any> = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'];
@@ -191,7 +191,6 @@ export class DashboardComponent implements OnInit {
     scales: {
       xAxes: [{
         display: false,
-        barPercentage: 0.6,
       }],
       yAxes: [{
         display: false

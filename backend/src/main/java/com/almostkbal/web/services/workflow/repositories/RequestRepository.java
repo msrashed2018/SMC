@@ -22,16 +22,27 @@ import com.almostkbal.web.services.workflow.entities.RequestState;
 import com.almostkbal.web.services.workflow.entities.RequestStatus;
 
 public interface RequestRepository extends JpaRepository<Request, Long> {
-	public static final String FIND_REQUEST_RESULTS_QUERY = "select new  com.almostkbal.web.services.workflow.dto.RequestResultDto (r.id , c.nationalId , c.name , c.address , s.name , d.name	) from Request r, Citizen c, RequestStatus s, BonesReveal b , Disability d, Zone z where  b.request = r AND r.citizen = c AND r.requestStatus = s AND b.disability = d AND r.zone = z AND z.id = :zoneId AND s.id=:requestStatusId AND r.requestDate BETWEEN :startDate AND :endDate ";
+	public static final String FIND_REQUEST_RESULTS_BY_STATUS_AND_DATE_QUERY = "select new  com.almostkbal.web.services.workflow.dto.RequestResultDto (r.id , c.nationalId , c.name , c.address , s.name , d.name	) from Request r, Citizen c, RequestStatus s, BonesReveal b , Disability d, Zone z where  b.request = r AND r.citizen = c AND r.requestStatus = s AND b.disability = d AND r.zone = z AND z.id = :zoneId AND s.id=:requestStatusId AND r.requestDate BETWEEN :startDate AND :endDate AND r.state='APPROVED'";
+	public static final String FIND_REQUEST_RESULTS_BY_STATUS_QUERY = "select new  com.almostkbal.web.services.workflow.dto.RequestResultDto (r.id , c.nationalId , c.name , c.address , s.name , d.name	) from Request r, Citizen c, RequestStatus s, BonesReveal b , Disability d, Zone z where  b.request = r AND r.citizen = c AND r.requestStatus = s AND b.disability = d AND r.zone = z AND z.id = :zoneId AND s.id=:requestStatusId  AND r.state='APPROVED'";
+	public static final String FIND_REQUEST_RESULTS_BY_DATE_QUERY = "select new  com.almostkbal.web.services.workflow.dto.RequestResultDto (r.id , c.nationalId , c.name , c.address , s.name , d.name	) from Request r, Citizen c, RequestStatus s, BonesReveal b , Disability d, Zone z where  b.request = r AND r.citizen = c AND r.requestStatus = s AND b.disability = d AND r.zone = z AND z.id = :zoneId AND r.requestDate BETWEEN :startDate AND :endDate AND r.state='APPROVED'";
+	public static final String FIND_REQUEST_RESULTS = "select new  com.almostkbal.web.services.workflow.dto.RequestResultDto (r.id , c.nationalId , c.name , c.address , s.name , d.name	) from Request r, Citizen c, RequestStatus s, BonesReveal b , Disability d, Zone z where  b.request = r AND r.citizen = c AND r.requestStatus = s AND b.disability = d AND r.zone = z AND z.id = :zoneId  AND r.state='APPROVED'";
 
-	@Query(value = FIND_REQUEST_RESULTS_QUERY)
-	public Page<RequestResultDto> findRequestResults(long zoneId, int requestStatusId, Date startDate, Date endDate,
+	@Query(value = FIND_REQUEST_RESULTS_BY_STATUS_AND_DATE_QUERY)
+	public Page<RequestResultDto> findRequestResultsByStatusAndDate(long zoneId, int requestStatusId, Date startDate,
+			Date endDate, Pageable pageable);
+
+	@Query(value = FIND_REQUEST_RESULTS_BY_STATUS_QUERY)
+	public Page<RequestResultDto> findRequestResultsByStatus(long zoneId, int requestStatusId, Pageable pageable);
+
+	@Query(value = FIND_REQUEST_RESULTS_BY_DATE_QUERY)
+	public Page<RequestResultDto> findRequestResultsByDate(long zoneId, Date startDate, Date endDate,
 			Pageable pageable);
+
+	@Query(value = FIND_REQUEST_RESULTS)
+	public Page<RequestResultDto> findRequestResults(long zoneId, Pageable pageable);
 
 	boolean existsByCitizenNationalIdAndRequestDateGreaterThan(long nationalId, Date requestDate);
 
-	
-	
 	boolean existsByCitizenNationalIdAndRequestStatusNameContaining(long nationalId, String name);
 
 	boolean existsByCitizenNationalId(long nationalId);
