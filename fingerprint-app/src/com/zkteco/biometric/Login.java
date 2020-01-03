@@ -37,7 +37,7 @@ class Login extends JFrame implements ActionListener, KeyListener {
 		
 		
 		text1 = new JTextField(50);
-		text1.setText("admin");
+//		text1.setText("admin");
 		text1.setBounds(190, 20, 200, 30);
 		
 		
@@ -48,7 +48,7 @@ class Login extends JFrame implements ActionListener, KeyListener {
 		
 		
 		text2 = new JPasswordField(50);
-		text2.setText("admin");
+//		text2.setText("admin");
 		text2.setBounds(190, 70, 200, 30);
 		
 		radioVerify = new JRadioButton("Verify", true);

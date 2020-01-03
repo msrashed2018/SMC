@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +32,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.almostkbal.web.services.workflow.auth.UserService;
+import com.almostkbal.web.services.workflow.cmd.CitizenRequestCommand;
 import com.almostkbal.web.services.workflow.entities.Audit;
 import com.almostkbal.web.services.workflow.entities.Citizen;
+import com.almostkbal.web.services.workflow.entities.Request;
 import com.almostkbal.web.services.workflow.entities.Zone;
 import com.almostkbal.web.services.workflow.exceptions.CitizenValidationException;
 import com.almostkbal.web.services.workflow.repositories.AuditRepository;
 import com.almostkbal.web.services.workflow.repositories.CitizenRepository;
+import com.almostkbal.web.services.workflow.repositories.FingerprintRepository;
+import com.almostkbal.web.services.workflow.services.RequestService;
 
 //@CrossOrigin(origins="http://192.168.0.100:4200")
 @CrossOrigin(origins = "*")
@@ -47,6 +52,12 @@ public class CitizenController {
 
 	@Autowired
 	private AuditRepository auditRepository;
+	
+	@Autowired
+	private FingerprintRepository fingerprintRepository;
+
+	@Autowired
+	private RequestService requestService;
 
 	@Autowired
 	private UserService userService;
@@ -71,14 +82,16 @@ public class CitizenController {
 			// check if it is national id or mobile number
 			if (searchKey.startsWith("01")) {
 				// search key is mobile number because it starts with 01
-				return citizenRepository.findByZoneIdAndMobileNumber(userService.getUserZoneId(), searchKey, PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
+				return citizenRepository.findByZoneIdAndMobileNumber(userService.getUserZoneId(), searchKey,
+						PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
 			} else {
 				// assuming search key is national id
-				
-				return citizenRepository.findByZoneIdAndNationalId(userService.getUserZoneId(), key, PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
+
+				return citizenRepository.findByZoneIdAndNationalId(userService.getUserZoneId(), key,
+						PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
 			}
 		} catch (NumberFormatException | NullPointerException nfe) {
-			if(searchKey.contains(":")) {
+			if (searchKey.contains(":")) {
 				String startDate = searchKey.split(":")[0];
 				String endDate = searchKey.split(":")[1];
 				Calendar start = Calendar.getInstance();
@@ -91,9 +104,12 @@ public class CitizenController {
 				}
 				Date createdDateStart = start.getTime();
 				Date createdDateEnd = end.getTime();
-				return citizenRepository.findByZoneIdAndCreatedDateBetween(userService.getUserZoneId(), createdDateStart, createdDateEnd, PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
-				
-			}if (searchKey.contains("-")) {
+				return citizenRepository.findByZoneIdAndCreatedDateBetween(userService.getUserZoneId(),
+						createdDateStart, createdDateEnd,
+						PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
+
+			}
+			if (searchKey.contains("-")) {
 				// search key is date
 
 				try {
@@ -103,14 +119,17 @@ public class CitizenController {
 					formatDates(start, end, searchKey, searchKey);
 					Date createdDateStart = start.getTime();
 					Date createdDateEnd = end.getTime();
-					return citizenRepository.findByZoneIdAndCreatedDateBetween(userService.getUserZoneId(), createdDateStart, createdDateEnd, PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
+					return citizenRepository.findByZoneIdAndCreatedDateBetween(userService.getUserZoneId(),
+							createdDateStart, createdDateEnd,
+							PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
 				} catch (Exception e) {
 					e.printStackTrace();
 					return null;
 				}
-				
+
 			} else {
-				return citizenRepository.findByZoneIdAndNameContaining(userService.getUserZoneId(), searchKey, PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
+				return citizenRepository.findByZoneIdAndNameContaining(userService.getUserZoneId(), searchKey,
+						PageRequest.of(page, size, Sort.by("createdDate").descending().and(Sort.by("id"))));
 			}
 
 		}
@@ -122,6 +141,12 @@ public class CitizenController {
 		Optional<Citizen> citizen = citizenRepository.findById(id);
 		if (!citizen.isPresent())
 			throw new ResourceNotFoundException("id-" + id);
+		
+		if(fingerprintRepository.existsById(id)) {
+			citizen.get().setFingerprintEnrolled(true);
+		}else {
+			citizen.get().setFingerprintEnrolled(false);
+		}
 //		Resource<Citizen> resource = new Resource<Citizen>(citizen.get());
 		return citizen.get();
 	}
@@ -153,34 +178,73 @@ public class CitizenController {
 
 	@PostMapping("/api/citizens")
 	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_CITIZEN_REQUEST_REGISTERING')")
-	public Object createCitizen(@Valid @RequestBody Citizen citizen, Authentication authentication) {
-		Citizen savedCitizen = null;
-		try {
-			Zone zone = new Zone();
-			zone.setId(userService.getUserZoneId());
-			citizen.setZone(zone);
-			
-			citizen.setCreatedBy(userService.getUsername());
-			citizen.setCreatedDate(new Date());
-			savedCitizen = citizenRepository.save(citizen);
+	@Transactional
+	public ResponseEntity<Request> createCitizenWithRequest(@Valid @RequestBody CitizenRequestCommand cmd) {
 
-			// auditing
-			String action = "تسجيل مواطن جديد";
-			StringBuilder details = new StringBuilder("");
-			details.append(" اسم المواطن : ");
-			details.append(savedCitizen.getName());
-			details.append(" الرقم القومي : ");
-			details.append(savedCitizen.getNationalId());
-			String performedBy = authentication.getName();
-			Audit audit = new Audit(action, details.toString(), 0l, performedBy, userService.getUserZoneId());
-			auditRepository.save(audit);
+//		Citizen savedCitizen = null;
 
-			return savedCitizen;
-		} catch (DataIntegrityViolationException ex) {
+		Citizen citizen = cmd.getCitizen();
+		Request request = cmd.getRequest();
+
+		if (citizenRepository.existsByNationalId(citizen.getNationalId())) {
 			throw new CitizenValidationException("هذا الرقم القومي يوجد بالفعل");
-
 		}
+		Zone zone = new Zone();
+		zone.setId(userService.getUserZoneId());
+		citizen.setZone(zone);
+
+		citizen.setCreatedBy(userService.getUsername());
+		citizen.setCreatedDate(new Date());
+
+		citizenRepository.save(citizen);
+
+		// auditing
+		String action = "تسجيل مواطن جديد";
+		StringBuilder details = new StringBuilder("");
+		details.append(" اسم المواطن : ");
+		details.append(citizen.getName());
+		details.append(" الرقم القومي : ");
+		details.append(citizen.getNationalId());
+		String performedBy = userService.getUsername();
+		Audit audit = new Audit(action, details.toString(), 0l, performedBy, userService.getUserZoneId());
+		auditRepository.save(audit);
+
+		Request createdRequest = requestService.createRequest(citizen.getId(), request); 
+
+		return new ResponseEntity<Request>(createdRequest, HttpStatus.OK);
+
 	}
+
+//	@PostMapping("/api/citizens")
+//	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_CITIZEN_REQUEST_REGISTERING')")
+//	public Object createCitizen(@Valid @RequestBody Citizen citizen, Authentication authentication) {
+//		Citizen savedCitizen = null;
+//		try {
+//			Zone zone = new Zone();
+//			zone.setId(userService.getUserZoneId());
+//			citizen.setZone(zone);
+//
+//			citizen.setCreatedBy(userService.getUsername());
+//			citizen.setCreatedDate(new Date());
+//			savedCitizen = citizenRepository.save(citizen);
+//
+//			// auditing
+//			String action = "تسجيل مواطن جديد";
+//			StringBuilder details = new StringBuilder("");
+//			details.append(" اسم المواطن : ");
+//			details.append(savedCitizen.getName());
+//			details.append(" الرقم القومي : ");
+//			details.append(savedCitizen.getNationalId());
+//			String performedBy = authentication.getName();
+//			Audit audit = new Audit(action, details.toString(), 0l, performedBy, userService.getUserZoneId());
+//			auditRepository.save(audit);
+//
+//			return savedCitizen;
+//		} catch (DataIntegrityViolationException ex) {
+//			throw new CitizenValidationException("هذا الرقم القومي يوجد بالفعل");
+//
+//		}
+//	}
 
 	@PutMapping("/api/citizens/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_REQUEST_REVIEWING') OR hasRole('ROLE_CITIZENS_DATA_EDITING')")
@@ -200,7 +264,7 @@ public class CitizenController {
 
 			citizen.setModifiedDate(new Date());
 			citizen.setModifiedBy(userService.getUsername());
-			
+
 			updatedCitzen = citizenRepository.save(citizen);
 
 			// auditing
@@ -221,7 +285,7 @@ public class CitizenController {
 		}
 
 	}
-	
+
 	public void formatDates(Calendar start, Calendar end, String startDate, String endDate) throws ParseException {
 
 		// creating a date object with specifed time.

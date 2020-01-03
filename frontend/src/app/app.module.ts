@@ -47,6 +47,7 @@ import { RouteGuardService } from './services/authentication/route-guard.service
 import { ConfirmModalComponent } from './views/confirm-modal/confirm-modal.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthInterceptor } from './services/authentication/jwt/auth-interceptor';
+import { FingerprintConfirmModalComponent } from './views/fingerprint-confirm-modal/fingerprint-confirm-modal.component';
 
 @NgModule({
   imports: [
@@ -76,7 +77,8 @@ import { AuthInterceptor } from './services/authentication/jwt/auth-interceptor'
     P404Component,
     P500Component,
     LoginComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    FingerprintConfirmModalComponent
     
   ],
  
@@ -88,7 +90,7 @@ import { AuthInterceptor } from './services/authentication/jwt/auth-interceptor'
   {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   DatePipe],
   bootstrap: [ AppComponent ],
-  entryComponents : [ ConfirmModalComponent],
-  exports : [ ConfirmModalComponent]
+  entryComponents : [ ConfirmModalComponent, FingerprintConfirmModalComponent],
+  exports : [ ConfirmModalComponent, FingerprintConfirmModalComponent]
 })
 export class AppModule { }

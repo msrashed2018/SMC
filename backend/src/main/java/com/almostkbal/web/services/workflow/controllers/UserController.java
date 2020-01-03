@@ -28,7 +28,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.almostkbal.web.services.workflow.entities.Role;
 import com.almostkbal.web.services.workflow.entities.User;
-import com.almostkbal.web.services.workflow.repositories.RoleRepository;
 import com.almostkbal.web.services.workflow.repositories.UserRepository;
 
 

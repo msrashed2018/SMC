@@ -30,7 +30,9 @@ import com.almostkbal.web.services.workflow.entities.RequestState;
 import com.almostkbal.web.services.workflow.entities.RequestStatus;
 import com.almostkbal.web.services.workflow.entities.RequestType;
 import com.almostkbal.web.services.workflow.entities.Zone;
+import com.almostkbal.web.services.workflow.exceptions.CitizenValidationException;
 import com.almostkbal.web.services.workflow.exceptions.ExceptionResponse;
+import com.almostkbal.web.services.workflow.exceptions.IllegalRequestStateException;
 import com.almostkbal.web.services.workflow.repositories.AuditRepository;
 import com.almostkbal.web.services.workflow.repositories.CitizenRepository;
 import com.almostkbal.web.services.workflow.repositories.RequestPaymentRepository;
@@ -812,9 +814,10 @@ public class RequestServiceImpl implements RequestService {
 		Optional<Request> request = requestRepository.findByZoneIdAndId(userService.getUserZoneId(), requestId);
 		if (!request.isPresent())
 			throw new ResourceNotFoundException("هذا الطلب غير موجود");
-		
-		//check if the citizen has previous accepted request
-		if(requestRepository.existsByCitizenNationalIdAndRequestStatusNameContaining(request.get().getCitizen().getNationalId(), "توصيه نهائيه")) {
+
+		// check if the citizen has previous accepted request
+		if (requestRepository.existsByCitizenNationalIdAndRequestStatusNameContaining(
+				request.get().getCitizen().getNationalId(), "توصيه نهائيه")) {
 			request.get().setHasPrevRequest(true);
 		}
 		return request.get();
@@ -822,7 +825,7 @@ public class RequestServiceImpl implements RequestService {
 
 	@Override
 	@PreAuthorize(" hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_CITIZEN_REQUEST_REGISTERING')")
-	public Object createRequest(long citizenId, Request request) {
+	public Request createRequest(long citizenId, Request request) {
 		boolean hasAcceptedOldRequestBeforeFiveYear = false;
 		// check citizen is existing
 		Optional<Citizen> citizen = citizenRepository.findById(citizenId);
@@ -844,22 +847,18 @@ public class RequestServiceImpl implements RequestService {
 				dateBeforeFiveYears.add(Calendar.YEAR, -5);
 				if (requestRepository.existsByCitizenNationalIdAndRequestDateGreaterThan(citizen.get().getNationalId(),
 						dateBeforeFiveYears.getTime())) {
-					return new ResponseEntity<>(
-							new ExceptionResponse(new Date(),
-									"عفوا لا يمكن اضافة هذا الطلب حيث انه لم يمر خمس سنين علي اخر طلب لهذا المواطن",
-									"عفوا لا يمكن اضافة هذا الطلب حيث انه لم يمر خمس سنين علي اخر طلب لهذا المواطن"),
-							HttpStatus.BAD_REQUEST);
-				} 
+					throw new CitizenValidationException("عفوا لا يمكن اضافة هذا الطلب حيث انه لم يمر خمس سنين علي اخر طلب لهذا المواطن");
+				}
 			}
 
 		}
 
-		
-		//check if the citizen has previous accepted request
-		if(requestRepository.existsByCitizenNationalIdAndRequestStatusNameContaining(citizen.get().getNationalId(), "توصيه نهائيه")) {
+		// check if the citizen has previous accepted request
+		if (requestRepository.existsByCitizenNationalIdAndRequestStatusNameContaining(citizen.get().getNationalId(),
+				"توصيه نهائيه")) {
 			hasAcceptedOldRequestBeforeFiveYear = true;
 		}
-		
+
 		Zone zone = new Zone();
 		zone.setId(userService.getUserZoneId());
 		request.setZone(zone);
@@ -884,7 +883,6 @@ public class RequestServiceImpl implements RequestService {
 			savedRequest = requestRepository.save(request);
 			savedRequest.setHasPrevRequest(hasAcceptedOldRequestBeforeFiveYear);
 		}
-
 		// auditing
 		String action = "اضافة طلب جديد";
 		StringBuilder details = new StringBuilder("");
@@ -934,12 +932,14 @@ public class RequestServiceImpl implements RequestService {
 	@Override
 	@PreAuthorize(" hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_REQUEST_CONTINUE_REGISTERING') OR hasRole('ROLE_CITIZENS_DATA_EDITING')")
 	public ResponseEntity<Request> continueRegisteringRequest(long citizenId, long requestId, Request request) {
-		if (!citizenRepository.existsById(citizenId)) {
-			throw new ResourceNotFoundException("هذا المواطن غير موجود");
-		}
+		Optional<Request> existingRequest = requestRepository.findById(requestId);
 
-		if (!requestRepository.existsById(requestId)) {
+		if (!existingRequest.isPresent()) {
 			throw new ResourceNotFoundException("هذا الطلب غير موجود");
+		}
+		
+		if(existingRequest.get().getState() != RequestState.PENDING_CONTINUE_REGISTERING) {
+			throw new IllegalRequestStateException(new Date(), "عفوا تم استكمال بيانات هذا الطلب من قبل", "عفوا تم استكمال بيانات هذا الطلب من قبل");
 		}
 
 //		if (requestRepository.findRequestState(requestId) != RequestState.PENDING_CONTINUE_REGISTERING) {

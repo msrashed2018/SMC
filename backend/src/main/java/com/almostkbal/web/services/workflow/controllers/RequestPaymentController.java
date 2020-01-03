@@ -1,5 +1,8 @@
 package com.almostkbal.web.services.workflow.controllers;
 
+import java.util.Date;
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,7 @@ import com.almostkbal.web.services.workflow.entities.Audit;
 import com.almostkbal.web.services.workflow.entities.Request;
 import com.almostkbal.web.services.workflow.entities.RequestPayment;
 import com.almostkbal.web.services.workflow.entities.RequestState;
+import com.almostkbal.web.services.workflow.exceptions.IllegalRequestStateException;
 import com.almostkbal.web.services.workflow.repositories.AuditRepository;
 import com.almostkbal.web.services.workflow.repositories.RequestPaymentRepository;
 import com.almostkbal.web.services.workflow.repositories.RequestRepository;
@@ -53,17 +57,20 @@ public class RequestPaymentController {
 	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_REQUEST_REVIEWING') OR hasRole('ROLE_PAYMENTS_REGISTRATION')")
 	public ResponseEntity<RequestPayment> addRequestPayment(@PathVariable long id,
 			@Valid @RequestBody RequestPayment requestPayment, Authentication authentication) {
-
 		
-		if (!requestRepository.existsById(id)) {
+		Optional<Request> request = requestRepository.findById(id);
+		
+		if (!request.isPresent()) {
 			throw new ResourceNotFoundException("هذا الطلب غير موجود");
 		}
-		Request request = new Request();
-		request.setId(id);
+		
+		if(request.get().getState() != RequestState.PENDING_PAYMENT) {
+			throw new IllegalRequestStateException(new Date(), "عفوا تم تسجيل المدفوعات لهذا الطلب من قبل", "عفوا تم تسجيل المدفوعات لهذا الطلب من قبل");
+		}
 		if (requestPayment.getPaymentDone() == 1) {
 			requestRepository.setRequestState(id, RequestState.PENDING_CONTINUE_REGISTERING);
 		}
-		requestPayment.setRequest(request);
+		requestPayment.setRequest(request.get());
 		RequestPayment savedRequestPayment = requestPaymentRepository.save(requestPayment);
 		
 		

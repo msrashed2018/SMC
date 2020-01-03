@@ -1,79 +1,280 @@
 package com.almostkbal.web.services.workflow.controllers;
 
-import java.util.Optional;
+import java.util.Date;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.ResourceAccessException;
 
 import com.almostkbal.web.services.workflow.auth.UserService;
-import com.almostkbal.web.services.workflow.dto.FingerprintTemplate;
 import com.almostkbal.web.services.workflow.entities.Citizen;
+import com.almostkbal.web.services.workflow.entities.Fingerprint;
+import com.almostkbal.web.services.workflow.entities.FingerprintEnrollment;
+import com.almostkbal.web.services.workflow.entities.FingerprintVerification;
+import com.almostkbal.web.services.workflow.entities.User;
 import com.almostkbal.web.services.workflow.repositories.CitizenRepository;
-
+import com.almostkbal.web.services.workflow.repositories.FingerprintEnrollmentRepository;
+import com.almostkbal.web.services.workflow.repositories.FingerprintRepository;
+import com.almostkbal.web.services.workflow.repositories.FingerprintVerificationRepository;
+import com.almostkbal.web.services.workflow.repositories.UserRepository;
+import com.almostkbal.web.services.workflow.services.RequestService;
 
 //@CrossOrigin(origins="http://192.168.0.100:4200")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 @RestController
-public class FingerPrintController {
+public class FingerprintController {
 	@Autowired
 	private CitizenRepository citizenRepository;
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Autowired
+	private FingerprintVerificationRepository fingerprintVerificationRepository;
+
+	@Autowired
+	private FingerprintEnrollmentRepository fingerprintEnrollmentRepository;
+
+	@Autowired
+	private FingerprintRepository fingerprintRepository;
+
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private RequestService requestService;
+
+	// request registering citizen fingerprint template - Step1 of Enrollment
+	// This API is called from Web Applicaton
+	@PostMapping("/api/citizens/{citizenId}/fingerprint/enrollmentstep1")
+	@PreAuthorize("hasRole('ROLE_ADMIN')  OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_CITIZEN_REQUEST_REGISTERING')")
+	@Transactional
+	public ResponseEntity<Boolean> registerCitizenFingerprintStep1(@PathVariable long citizenId,
+			Authentication authentication) {
+		Citizen citizen = citizenRepository.findByZoneIdAndId(userService.getUserZoneId(), citizenId);
+		if (citizen == null)
+			throw new ResourceNotFoundException("The citizen is not exisitng");
+
+		// check if citizen fingerprint is registered before or not. if registered, only
+		// admin and super user can edit fingerprint
+		Fingerprint existingFingerprint = fingerprintRepository.findByCitizenId(citizenId);
+		if (existingFingerprint != null) {
+			boolean canUpdateCitizenFingerprint = false;
+			for (GrantedAuthority authority : authentication.getAuthorities()) {
+				if (authority.getAuthority().equals("ROLE_ADMIN")
+						|| authority.getAuthority().equals("ROLE_SUPER_USER")) {
+					canUpdateCitizenFingerprint = true;
+				}
+			}
+			if (!canUpdateCitizenFingerprint) {
+				throw new ResourceAccessException("تم تسجيل البصمة لهذا المواطن من قبل.. و ليس لديك الصلاحية للتعديل");
+			}
+		}
+
+		fingerprintEnrollmentRepository.deleteByRegisterarUsername(userService.getUsername());
+		FingerprintEnrollment fingerprintEnrollment = new FingerprintEnrollment();
+		User registerar = userRepository.findByUsername(userService.getUsername());
+		fingerprintEnrollment.setRegisterar(registerar);
+		fingerprintEnrollment.setCitizen(citizen);
+		fingerprintEnrollment.setEnrolled(false);
+		fingerprintEnrollmentRepository.save(fingerprintEnrollment);
+
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	}
 	
-	@GetMapping("/api/fingerprint")
-	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER') OR hasRole('ROLE_EYE_REVEAL') OR hasRole('ROLE_BONES_REVEAL')")
-	public String retrieveCitizenFingerTemplate(@RequestParam(name = "nationalId", required = true) Long nationalId) {
-		Optional<Citizen> citizen = citizenRepository.findByZoneIdAndNationalId(userService.getUserZoneId(), nationalId);
-		if(!citizen.isPresent())
-			throw new ResourceNotFoundException("Citizen not existing");
-//		Resource<Citizen> resource = new Resource<Citizen>(citizen.get());
-		return citizen.get().getFingerprint();
+	@DeleteMapping("/api/citizens/fingerprint/cancelenrollment")
+	@PreAuthorize("hasRole('ROLE_ADMIN')  OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_CITIZEN_REQUEST_REGISTERING')")
+	@Transactional
+	public void cancelFingerprintRegisteration() {
+		fingerprintEnrollmentRepository.deleteByRegisterarUsername(userService.getUsername());
 	}
 
-	@PostMapping("/api/fingerprint")
-	@PreAuthorize("hasRole('ROLE_ADMIN')  OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_CITIZEN_REQUEST_REGISTERING') ")
-	public String createCitizenFingerTemplate(@RequestParam(name = "nationalId", required = true) Long nationalId,@Valid @RequestBody FingerprintTemplate fingerPrintTemplate) {
-		
-		Optional<Citizen> citizen = citizenRepository.findByZoneIdAndNationalId(userService.getUserZoneId(), nationalId);
-		if(!citizen.isPresent())
-			return "Error: National-ID["+nationalId+"] isn't existing";
-		citizen.get().setFingerprint(fingerPrintTemplate.getFingerprintTemplate());
-		citizenRepository.save(citizen.get());
-		
-		return "Citizen [National-ID : "+nationalId+"] Fingerprint is added successfully";
-		
-		
+	// After step1 enrollment, the web application send this request each interval
+	// time to check if fingerprint is enrolled by fingerprint desktop application
+	// or not
+	// This API is called from Web Applicaton
+	@GetMapping("/api/citizens/{citizenId}/fingerprint/isenrolled")
+	@PreAuthorize("hasRole('ROLE_ADMIN')  OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_CITIZEN_REQUEST_REGISTERING')")
+	@Transactional
+	public ResponseEntity<Boolean> isCitizenfigerprintEnrolled(@PathVariable long citizenId) {
+		Boolean isEnrolled = false;
+
+		FingerprintEnrollment fingerprintEnrollment = fingerprintEnrollmentRepository
+				.findByRegisterarUsername(userService.getUsername());
+
+		if (fingerprintEnrollment == null) {
+			throw new ResourceNotFoundException(
+					"No previous request has been issued for registering citizen fingerprint");
+		}
+
+		if (fingerprintEnrollment.isEnrolled()) {
+			isEnrolled = true;
+			fingerprintEnrollmentRepository.deleteByRegisterarUsername(userService.getUsername());
+		}
+		return new ResponseEntity<Boolean>(isEnrolled, HttpStatus.OK);
 	}
-	@PutMapping("/api/fingerprint")
-	public String updateCitizen(@RequestParam(name = "nationalId", required = true) Long nationalId, @Valid @RequestBody FingerprintTemplate fingerPrintTemplate) {
-		Optional<Citizen> citizen = citizenRepository.findByZoneIdAndNationalId(userService.getUserZoneId(), nationalId);
-		if(!citizen.isPresent())
-			return "Error: National-ID["+nationalId+"] isn't existing";
-		citizen.get().setFingerprint(fingerPrintTemplate.getFingerprintTemplate());
-		citizenRepository.save(citizen.get());
-		
-		return "Citizen [National-ID : "+nationalId+"] Fingerprint is updated successfully";
+
+	// this API is called by fingerprint desktop application to get the next
+	// enrollment request
+	@GetMapping("/api/fingerprint/getnextenrollment")
+	@PreAuthorize("hasRole('ROLE_ADMIN')  OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_CITIZEN_REQUEST_REGISTERING')")
+	public ResponseEntity<FingerprintEnrollment> getNextEnrollment() {
+
+		FingerprintEnrollment fingerprintEnrollment = fingerprintEnrollmentRepository
+				.findByRegisterarUsername(userService.getUsername());
+
+		if (fingerprintEnrollment == null || !fingerprintEnrollment.isEnrolled()) {
+			throw new ResourceNotFoundException("No Enrollment Request Existing");
+		}
+
+		return new ResponseEntity<FingerprintEnrollment>(fingerprintEnrollment, HttpStatus.OK);
 	}
-	
-	@DeleteMapping("/api/fingerprint")
-	public String deleteCitizenFingerTemplate(@RequestParam(name = "nationalId", required = true) Long nationalId) {
-		Optional<Citizen> citizen = citizenRepository.findByZoneIdAndNationalId(userService.getUserZoneId(), nationalId);
-		if(!citizen.isPresent())
-			return "Error: National-ID["+nationalId+"] isn't existing";
-		citizen.get().setFingerprint(null);
-		citizenRepository.save(citizen.get());
-		
-		return "Citizen [National-ID : "+nationalId+"] Fingerprint is updated successfully";
+
+	// this API is called by fingerprint desktop application to register citizen
+	// fingerprint template
+	@PostMapping("/api/citizens/{citizenId}/fingerprint/enrollmentstep2")
+	@PreAuthorize("hasRole('ROLE_ADMIN')  OR hasRole('ROLE_SUPER_USER')  OR hasRole('ROLE_CITIZEN_REQUEST_REGISTERING')")
+	@Transactional
+	public ResponseEntity<String> registerCitizenFingerprintStep2(@PathVariable long citizenId,
+			@Valid @RequestBody Fingerprint fingerprint, Authentication authentication) {
+
+		Citizen citizen = citizenRepository.findByZoneIdAndId(userService.getUserZoneId(), citizenId);
+		if (citizen == null)
+			throw new ResourceNotFoundException("The citizen is not exisitng");
+
+		Fingerprint existingFingerprint = fingerprintRepository.findByCitizenId(citizenId);
+
+		if (existingFingerprint != null) {
+
+			boolean canUpdateCitizenFingerprint = false;
+			for (GrantedAuthority authority : authentication.getAuthorities()) {
+				if (authority.getAuthority().equals("ROLE_ADMIN")
+						|| authority.getAuthority().equals("ROLE_SUPER_USER")) {
+					canUpdateCitizenFingerprint = true;
+				}
+			}
+			if (canUpdateCitizenFingerprint) {
+				throw new ResourceAccessException(
+						"تم تسجيل البصمة لهذا المواطن من قبل.. و ليس لديك الصلاحية للتعديل");
+			}
+			existingFingerprint.setModifiedBy(userService.getUsername());
+			existingFingerprint.setModifiedDate(new Date());
+		} else {
+			fingerprint.setCitizen(citizen);
+			fingerprint.setCreatedDate(new Date());
+			fingerprintRepository.save(fingerprint);
+		}
+
+		FingerprintEnrollment fingerprintEnrollment = fingerprintEnrollmentRepository
+				.findByRegisterarUsername(userService.getUsername());
+
+		if (fingerprintEnrollment == null) {
+			throw new ResourceNotFoundException("No Enrollment Request Existing");
+		}
+		fingerprintEnrollment.setEnrolled(true);
+		fingerprintEnrollmentRepository.save(fingerprintEnrollment);
+
+		return new ResponseEntity<String>("Citizen Fingerprint is enrolled successfully", HttpStatus.OK);
+	}
+
+	///////////////////////// VERIFYING CITIZEN FINGERPRINT /////////////////
+
+	// request verifying citizen fingerprint template - Step1 of Verifying
+	// This API is called from Web Applicaton
+	@PostMapping("/api/citizens/{citizenId}/fingerprint/verifystep1")
+	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER') OR hasRole('ROLE_EYE_REVEAL') OR hasRole('ROLE_BONES_REVEAL')")
+	@Transactional
+	public ResponseEntity<Boolean> verifyCitizenFingerprintStep1(@PathVariable long citizenId) {
+
+		// check if this citizen has registered fingerprint or not
+		Fingerprint fingerprint = fingerprintRepository.findByCitizenId(citizenId);
+		if (fingerprint == null)
+			throw new ResourceNotFoundException("لم يتم تسجيل بصمة لهذا المواطن من قبل");
+
+		// delete previous verfication requests
+		fingerprintVerificationRepository.deleteByVerifierUsername(userService.getUsername());
+
+		// create new fingerprint verfication request.
+		FingerprintVerification fingerprintVerfication = new FingerprintVerification();
+		fingerprintVerfication.setFingerprint(fingerprint);
+		fingerprintVerfication.setVerified(false);
+		fingerprintVerfication.setVerifier(userRepository.findByUsername(userService.getUsername()));
+		fingerprintVerificationRepository.save(fingerprintVerfication);
+
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	}
+
+	// After step1 verification, the web application send this request each interval
+	// time to check if fingerprint is verified by fingerprint desktop application
+	// or not
+	// This API is called from Web Applicaton
+	@GetMapping("/api/citizens/{citizenId}/fingerprint/isverified")
+	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER') OR hasRole('ROLE_EYE_REVEAL') OR hasRole('ROLE_BONES_REVEAL')")
+	@Transactional
+	public ResponseEntity<Boolean> isCitizenfigerprintVerified(@PathVariable long citizenId) {
+		Boolean isVerified = false;
+
+		FingerprintVerification fingerprintVerfication = fingerprintVerificationRepository
+				.findByFingerprintCitizenIdAndVerifierUsername(citizenId, userService.getUsername());
+
+		if (fingerprintVerfication == null) {
+			throw new ResourceNotFoundException(
+					"No previous request has been issued for verifying citizen fingerprint");
+		}
+
+		if (fingerprintVerfication.isVerified()) {
+			isVerified = true;
+			fingerprintVerificationRepository.deleteByVerifierUsername(userService.getUsername());
+		}
+		return new ResponseEntity<Boolean>(isVerified, HttpStatus.OK);
+	}
+
+	// this API is called by fingerprint desktop application to get the next
+	// verification request
+	@GetMapping("/api/fingerprint/getnextverification")
+	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER') OR hasRole('ROLE_EYE_REVEAL') OR hasRole('ROLE_BONES_REVEAL')")
+	public ResponseEntity<FingerprintVerification> getNextVerification() {
+
+		FingerprintVerification fingerprintVerfication = fingerprintVerificationRepository
+				.findByVerifierUsername(userService.getUsername());
+
+		if (fingerprintVerfication == null || !fingerprintVerfication.isVerified()) {
+			throw new ResourceNotFoundException("No Verification Request Existing");
+		}
+
+		return new ResponseEntity<FingerprintVerification>(fingerprintVerfication, HttpStatus.OK);
+	}
+
+	// this API is called by fingerprint desktop application to register citizen
+	// fingerprint template
+	@PostMapping("/api/citizens/{citizenId}/fingerprint/verifystep2")
+	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER') OR hasRole('ROLE_EYE_REVEAL') OR hasRole('ROLE_BONES_REVEAL')")
+	@Transactional
+	public ResponseEntity<Boolean> verifyCitizenFingerprintStep2(@PathVariable long citizenId) {
+		FingerprintVerification fingerprintVerfication = fingerprintVerificationRepository
+				.findByFingerprintCitizenIdAndVerifierUsername(citizenId, userService.getUsername());
+
+		if (fingerprintVerfication == null) {
+			throw new ResourceNotFoundException("No Enrollment Request Existing");
+		}
+		fingerprintVerfication.setVerified(true);
+		fingerprintVerificationRepository.save(fingerprintVerfication);
+
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	}
 }

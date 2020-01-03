@@ -16,15 +16,13 @@
                             (click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
                     </div>
                 </div>
-
                 <div (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed"
-                    class="card-body ">
+                    class="card-body">
                     <form class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" novalidate>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="name">الاسم <b
-                                    style="color: red">*</b></label>
-                            <div class="col-md-6">
+                            <label class="col-md-1 col-form-label font-weight-bold" for="name">الاسم </label>
+                            <div class="col-md-4">
                                 <input [attr.disabled]="disabled ? '' : null" maxlength="100" [(ngModel)]="citizen.name"
                                     #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required
                                     type="text" name="name" class="form-control" placeholder="الاسم بالكامل" autofocus>
@@ -36,29 +34,30 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="nationalId">الرقم القومي <b
-                                    style="color: red">*</b></label>
-                            <div class="col-md-6">
+                            <label class="col-md-1 col-form-label font-weight-bold" for="nationalId">الرقم القومي
+                            </label>
+                            <div class="col-md-4">
                                 <input [attr.disabled]="disabled ? '' : null" minlength="14" maxlength="14"
                                     (input)="onNationalIdChange($event.target.value)" [(ngModel)]="citizen.nationalId"
                                     #nationalId="ngModel"
                                     [ngClass]="{ 'is-invalid': f.submitted && nationalId.invalid }" required type="text"
-                                    name="nationalId" class="form-control" placeholder="الرقم القومي" pattern="(2|3)[0-9][0-9][0-1][1-9][0-3][0-9](1|2|29|19|18|21|12|13|16|14|17|24|28|25|22|26|27|15|33|88|3|4|11|23|31|32|34|35|37)\d\d\d\d\d">
+                                    name="nationalId" class="form-control" placeholder="الرقم القومي"
+                                    pattern="(2|3)[0-9][0-9][0-1][1-9][0-3][0-9](1|2|29|19|18|21|12|13|16|14|17|24|28|25|22|26|27|15|33|88|3|4|11|23|31|32|34|35|37)\d\d\d\d\d">
                                 <div *ngIf="f.submitted && nationalId.invalid" class="invalid-feedback">
                                     <div *ngIf="nationalId.errors.required"> برجاء ادخال الرقم القومي</div>
                                     <div *ngIf="nationalId.errors.minlength">الرقم القومي يتكون من 14 رقم, ادخل الرقم
                                         صحيح</div>
                                     <div *ngIf="nationalId.errors.maxlength">الرقم القومي يتكون من 14 رقم, ادخل الرقم
                                         صحيح</div>
-                                        <div *ngIf="nationalId.errors.pattern">الرقم القومي غير صحيح</div>
+                                    <div *ngIf="nationalId.errors.pattern">الرقم القومي غير صحيح</div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="birthDate">تاريخ الميلاد <b
-                                    style="color: red">*</b></label>
-                            <div class="col-md-6">
+                            <label class="col-md-1 col-form-label font-weight-bold" for="birthDate">تاريخ الميلاد
+                            </label>
+                            <div class="col-md-4">
                                 <!-- <input class="form-control"  type="text" [(ngModel)]="citizen.birthDate" #birthDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && birthDate.invalid }" name="birthDate" placeholder="YYYY-MM-DD" required /> -->
 
                                 <input [attr.disabled]="disabled ? '' : null" [(ngModel)]="citizen.birthDate"
@@ -73,25 +72,26 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="address">العنوان</label>
-                            <div class="col-md-6">
+                            <label class="col-md-1 col-form-label font-weight-bold" for="address">العنوان</label>
+                            <div class="col-md-4">
                                 <input [attr.disabled]="disabled ? '' : null" maxlength="150"
                                     [(ngModel)]="citizen.address" #address="ngModel"
                                     [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" type="text"
-                                    name="address" class="form-control" >
+                                    name="address" class="form-control">
                                 <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
                                     <div *ngIf="address.errors.maxlength"> العنوان لا يجب ان يتعدي 150 حرف </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="mobileNumber">رقم
+                            <label class="col-md-1 col-form-label font-weight-bold" for="mobileNumber">رقم
                                 الموبيل</label>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <input [attr.disabled]="disabled ? '' : null" maxlength="12"
                                     [(ngModel)]="citizen.mobileNumber" #mobileNumber="ngModel"
                                     [ngClass]="{ 'is-invalid': f.submitted && mobileNumber.invalid }" type="text"
-                                    name="mobileNumber" class="form-control" pattern="(01)[0-9]{9}" placeholder="01xxxxxxxxx">
+                                    name="mobileNumber" class="form-control" pattern="(01)[0-9]{9}"
+                                    placeholder="01xxxxxxxxx">
                                 <div *ngIf="f.submitted && mobileNumber.invalid" class="invalid-feedback">
                                     <div *ngIf="mobileNumber.errors.maxlength"> رقم الموبيل لا يجب ان يتعدي 11 رقم
                                     </div>
@@ -101,9 +101,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="governate">المحافظة <b
-                                    style="color: red">*</b></label>
-                            <div class="col-md-6">
+                            <label class="col-md-1 col-form-label font-weight-bold" for="governate">المحافظة </label>
+                            <div class="col-md-4">
                                 <!-- <input name="governate"  class="form-control" type="text" list="governates-list" [(ngModel)]="selectedGovernateId" #governate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && governate.invalid }" (change)="onGovernateChanged(governate.value)" required/> -->
                                 <select [attr.disabled]="disabled ? '' : null" name="governate" class="form-control"
                                     [(ngModel)]="selectedGovernateId" #governate="ngModel"
@@ -119,9 +118,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="city">المدينة <b
-                                    style="color: red">*</b></label>
-                            <div class="col-md-6">
+                            <label class="col-md-1 col-form-label font-weight-bold" for="city">المدينة </label>
+                            <div class="col-md-4">
                                 <select [attr.disabled]="disabled ? '' : null" [(ngModel)]="selectedCityId"
                                     #city="ngModel" [ngClass]="{ 'is-invalid': f.submitted && city.invalid }"
                                     name="city" class="form-control" required>
@@ -135,9 +133,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="occupation">المهنه <b
-                                    style="color: red">*</b></label>
-                            <div class="col-md-6">
+                            <label class="col-md-1 col-form-label font-weight-bold" for="occupation">المهنه </label>
+                            <div class="col-md-4">
                                 <select [attr.disabled]="disabled ? '' : null" [(ngModel)]="selectedOccupationId"
                                     #occupation="ngModel"
                                     [ngClass]="{ 'is-invalid': f.submitted && occupation.invalid }" name="occupation"
@@ -153,9 +150,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="gender">النوع <b
-                                    style="color: red">*</b></label>
-                            <div class="col-md-6">
+                            <label class="col-md-1 col-form-label font-weight-bold" for="gender">النوع </label>
+                            <div class="col-md-4">
                                 <select [attr.disabled]="disabled ? '' : null" [(ngModel)]="citizen.gender"
                                     #gender="ngModel" [ngClass]="{ 'is-invalid': f.submitted && gender.invalid }"
                                     name="gender" class="form-control" required>
@@ -169,12 +165,24 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="form-group row">
+                            <label class="col-md-1 col-form-label font-weight-bold" for="fingerprint">البصمة</label>
+                            <div class="col-md-4">
+                                <i *ngIf="citizen.fingerprintEnrolled" class="fa fa-check-circle"
+                                    style="font-size:22px;color:green"> تم التسجيل </i>
+                                <i *ngIf="!citizen.fingerprintEnrolled" class="fa fa-times-circle"
+                                    style="font-size:22px;color:red"> لم يتم التسجيل </i>
+                            </div>
+                        </div>
                         <div *ngIf="componentMode=='editMode'" class="card-footer">
-                            <button type="submit" class="btn btn-sm btn-success"><i
-                                    class="fa fa-dot-circle-o"></i>حفظ</button>
+                            <button type="submit" class="btn btn-sm btn-success"><i style="font-size:16px;"
+                                    class="fa fa-dot-circle-o"> حفظ </i></button>
+                            <button type="button" (click)="onFingerprintBtnClicked()"
+                                style="font-size:14px; color: white;" class="btn btn-sm btn-info"><i
+                                    class="fa fa-hand-pointer-o "> تسجيل بصمة </i>
+                            </button>
                             <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i
-                                    class="fa fa-ban"></i> رجوع</button>
+                                    style="font-size:16px;" class="fa fa-ban"> رجوع </i> </button>
                         </div>
                         <div *ngIf="componentMode=='viewMode'" class="card-footer">
                             <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i

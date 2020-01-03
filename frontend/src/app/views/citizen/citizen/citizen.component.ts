@@ -23,6 +23,8 @@ import { CustomService } from '../../../services/administration/custom.service';
 import { TokenStorageService } from '../../../services/authentication/jwt/token-storage.service';
 import { AppPrint } from '../../../app-print';
 import { Tafkeet } from '../../../tafkeet';
+import { FingerprintConfirmServiceService } from '../../fingerprint-confirm-modal/fingerprint-confirm-service.service';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-citizen',
@@ -37,7 +39,7 @@ export class CitizenComponent implements OnInit {
   iconCollapse: string = 'icon-arrow-up';
   message: string = "";
 
-  request : Request = new Request();
+  request: Request = new Request();
 
   public occupations: Occupation[] = [];
   public requestTypes: RequestType[] = [];
@@ -54,10 +56,12 @@ export class CitizenComponent implements OnInit {
   public selectedTrafficManagementId: number = 0;
   public selectedCustomId: number = 0;
   public requestPrice: number = 0;
-  private enabled : boolean = true;
+  private enabled: boolean = true;
 
+  checkEnrollmentInterval = interval(2000);
+  subscription: Subscription = new Subscription();
 
-  constructor(private requestTypeService: RequestTypeService, private requestService: RequestService, private formBuilder: FormBuilder, private authenticationService: TokenStorageService, private datepipe: DatePipe, private genderService: GenderService, private governateService: GovernateService, private occupationService: OccupationService, private citizenService: CitizenService, private trafficManagementService: TrafficManagementService, private customService: CustomService, private router: Router) { }
+  constructor(private fingerprintConfirmService: FingerprintConfirmServiceService, private requestTypeService: RequestTypeService, private requestService: RequestService, private formBuilder: FormBuilder, private authenticationService: TokenStorageService, private datepipe: DatePipe, private genderService: GenderService, private governateService: GovernateService, private occupationService: OccupationService, private citizenService: CitizenService, private trafficManagementService: TrafficManagementService, private customService: CustomService, private router: Router) { }
 
   ngOnInit() {
     // this.fillCities();
@@ -123,7 +127,7 @@ export class CitizenComponent implements OnInit {
     }
   }
   onSave() {
-
+    let citizenRequestCommand: any = {}
     // this.citizen.createdBy = this.authenticationService.getUsername();
     // this.citizen.createdDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
 
@@ -144,13 +148,32 @@ export class CitizenComponent implements OnInit {
     // gender.id = this.selectedGenderId;
     // this.citizen.gender = gender;
 
+    let requestType = new RequestType;
+    requestType.id = this.selectedRequestTypeId;
+    this.request.requestType = requestType;
 
-    this.citizenService.createCitizen(this.citizen).subscribe(
+
+    if (this.selectedCustomId > 0) {
+      let custom = new Custom;
+      custom.id = this.selectedCustomId;
+      this.request.custom = custom;
+    }
+
+    if (this.selectedTrafficManagementId > 0) {
+      let trafficManagement = new TrafficManagement;
+      trafficManagement.id = this.selectedTrafficManagementId;
+      this.request.trafficManagement = trafficManagement;
+    }
+
+    citizenRequestCommand.citizen = this.citizen;
+    citizenRequestCommand.request = this.request;
+    this.citizenService.createCitizenRequest(citizenRequestCommand).subscribe(
       result => {
+        this.request = result as Request
         this.errorMessage = false;
-
-        this.citizen = result;
-        this.createRequest();
+        this.successMessage = " تم اضافة المواطن بنجاح";
+        this.enabled = false;
+        this.onFingerprintBtnClicked();
         // this.router.navigateByUrl("/citizen/search");
       },
       error => {
@@ -160,44 +183,42 @@ export class CitizenComponent implements OnInit {
       }
     );
   }
-  createRequest() {
-    // request.requestDate = this.citizen.createdDate;
-    this.request.createdBy = this.citizen.createdBy;
+  // createRequest() {
 
-    let requestType = new RequestType;
-    requestType.id = this.selectedRequestTypeId;
-    this.request.requestType = requestType;
+  //   let requestType = new RequestType;
+  //   requestType.id = this.selectedRequestTypeId;
+  //   this.request.requestType = requestType;
 
 
-    if (this.selectedCustomId > 0) {
-      let custom = new Custom;
-      custom.id = this.selectedCustomId;
-      this. request.custom = custom;
-    }
+  //   if (this.selectedCustomId > 0) {
+  //     let custom = new Custom;
+  //     custom.id = this.selectedCustomId;
+  //     this. request.custom = custom;
+  //   }
 
-    if (this.selectedTrafficManagementId > 0) {
-      let trafficManagement = new TrafficManagement;
-      trafficManagement.id = this.selectedTrafficManagementId;
-      this.request.trafficManagement = trafficManagement;
-    }
+  //   if (this.selectedTrafficManagementId > 0) {
+  //     let trafficManagement = new TrafficManagement;
+  //     trafficManagement.id = this.selectedTrafficManagementId;
+  //     this.request.trafficManagement = trafficManagement;
+  //   }
 
-    this.requestService.createRequest(this.citizen.id, this.request).subscribe(
-      result => {
-        this.request = result as Request
-        // this.router.navigateByUrl("/citizen/search");
-        this.errorMessage = false;
-        this.successMessage = " تم اضافة المواطن بنجاح";
-        this.enabled= false;
-      },
-      error => {
-        this.successMessage  = '';
-        console.log('oops', error);
-        this.errorMessage = true;
-        this.message = error.error.message;
-        
-      }
-    )
-  }
+  //   this.requestService.createRequest(this.citizen.id, this.request).subscribe(
+  //     result => {
+  //       this.request = result as Request
+  //       // this.router.navigateByUrl("/citizen/search");
+  //       this.errorMessage = false;
+  //       this.successMessage = " تم اضافة المواطن بنجاح";
+  //       this.enabled= false;
+  //     },
+  //     error => {
+  //       this.successMessage  = '';
+  //       console.log('oops', error);
+  //       this.errorMessage = true;
+  //       this.message = error.error.message;
+
+  //     }
+  //   )
+  // }
 
   fillOccupations() {
     this.occupationService.retrieveAllOccupations(0, 200).subscribe(
@@ -277,7 +298,7 @@ export class CitizenComponent implements OnInit {
 
   printPaymentPermission(): void {
     let paymentPermissionPageContent, popupWin, name = ""
-      , nationalId = 0, mobileNumber = "", custom = "",tafkeet ="صفر" ;
+      , nationalId = 0, mobileNumber = "", custom = "", tafkeet = "صفر";
     if (this.citizen.name != null) {
       name = this.citizen.name;
     }
@@ -294,14 +315,14 @@ export class CitizenComponent implements OnInit {
       custom = this.customs.find((c) => c.id == this.selectedCustomId).name;
     }
 
-    if(this.requestPrice == 0){
+    if (this.requestPrice == 0) {
       tafkeet = "صفر"
-    }else{
+    } else {
       tafkeet = Tafkeet.tafqeet(this.requestPrice)
     }
     tafkeet = tafkeet + " جنيها";
-    
-    paymentPermissionPageContent = AppPrint.getPaymentPermsissionPageContent(name, custom, this.requestPrice,tafkeet);
+
+    paymentPermissionPageContent = AppPrint.getPaymentPermsissionPageContent(name, custom, this.requestPrice, tafkeet);
     popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
     // // window.print()
     popupWin.document.open();
@@ -339,4 +360,54 @@ export class CitizenComponent implements OnInit {
     popupWin.document.close();
     popupWin.print();
   }
+
+
+  onFingerprintBtnClicked() {
+    let citizenId = this.request.citizen.id;
+    this.citizenService.registerCitizenFingerprintStep1(citizenId).subscribe(
+      result => {
+        this.showfingerprintConfirmationModal(citizenId);
+      },
+      error => {
+        console.log('oops', error);
+        this.errorMessage = true;
+        this.message = error.error.message;
+      }
+    )
+  }
+
+  showfingerprintConfirmationModal(citizenId) {
+    this.subscription = this.checkEnrollmentInterval.subscribe(n => {
+      if (n == 60) {
+        this.cancelFingerprintEnrollment();
+        this.subscription.unsubscribe();
+        this.fingerprintConfirmService.close();
+      }
+      this.citizenService.isCitizenfigerprintEnrolled(citizenId).subscribe(
+        result => {
+          if (result == true) {
+            this.fingerprintConfirmService.close();
+            this.fingerprintConfirmService.confirm('تسجيل بصمة المواطن', 'تم تسجيل بصمة المواطن بنجاح', '/assets/img/brand/success.png', true)
+          }
+        },
+        error => {
+          console.log('oops', error);
+          this.errorMessage = true;
+        }
+      )
+    });
+
+    this.fingerprintConfirmService.confirm('تسجيل بصمة المواطن', 'من فضلك ادخل بصمة المواطن الان', '/assets/img/brand/fingerprint.gif')
+      .then((confirmed) => {
+
+      }).finally(() => {
+        this.subscription.unsubscribe();
+        this.cancelFingerprintEnrollment();
+      })
+
+  }
+  cancelFingerprintEnrollment() {
+    this.citizenService.cancelFingerprintRegisteration().subscribe();
+  }
+
 }

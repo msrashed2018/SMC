@@ -61,7 +61,7 @@ public interface RequestService {
 
 	Request getRequestById(long requestId);
 
-	Object createRequest(long citizenId, Request request);
+	Request createRequest(long citizenId, Request request);
 
 	ResponseEntity<Request> continueRegisteringRequest(long citizenId, long requestId, Request request);
 

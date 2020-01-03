@@ -6,4 +6,5 @@ public interface UserService {
 	String getUsername();
 	
 	long getUserZoneId();
+	
 }

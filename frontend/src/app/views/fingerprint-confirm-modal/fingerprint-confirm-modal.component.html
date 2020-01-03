@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ title }}</h4>
+
+</div>
+<div class="modal-body">
+    {{ message }}
+</div>
+<div >
+        <img  width="100%" height="350" [src]="imgSrc" alt="Fingerprint image" />
+</div>
+<br>
+<div class="modal-footer">
+    <button *ngIf="cancelEnabled" type="button" class="btn btn-danger" (click)="decline()">{{ btnCancelText }}</button>
+    <button *ngIf="skipEnabled" type="button" class="btn btn-danger" (click)="skip()">{{ btnSkipText }}</button> 
+    <button  *ngIf="okEnabled" type="button" class="btn btn-primary" (click)="accept()">{{ btnOkText }}</button>
+</div>

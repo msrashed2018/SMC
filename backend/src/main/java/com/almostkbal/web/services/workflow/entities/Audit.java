@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "SYSTEM_AUDIT")
 public class Audit {
@@ -30,6 +32,7 @@ public class Audit {
 	private String performedBy;
 
 	@Column(name = "timestamp")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+2")
 	private Date timestamp;
 	
 	@Column(name = "zone_id")

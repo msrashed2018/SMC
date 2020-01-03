@@ -22,10 +22,12 @@ public class MoHRestfulApplication implements ApplicationRunner{
 	}
 
 	@Override
+	@Autowired
 	public void run(ApplicationArguments args) throws Exception {
 //		storageService.deleteAll();
 		
 		storageService.init();
 		
 	}
+	
 }

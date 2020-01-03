@@ -64,8 +64,6 @@ public class EyeReveal {
     @JsonIgnore
 	private Request request;
 	
-	
-
 	public EyeReveal() {
 		
 	}

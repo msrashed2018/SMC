@@ -39,10 +39,26 @@ export const AUTHENTICATED_USER = 'authenticaterUser'
         return data;
       }));
   }
+  verifyCitizenFingerprintStep1(citizenId){
+    return this.http.post<Boolean>(`${API_URL}/citizens/${citizenId}/fingerprint/verifystep1`,null);
+  }
 
-  createCitizen(citizen : Citizen){
-    return this.http.post<Citizen>
-    (`${API_URL}`+'/citizens',citizen).pipe( map(
+  isCitizenfigerprintVerified(citizenId){
+    return this.http.get<Boolean>(`${API_URL}/citizens/${citizenId}/fingerprint/isverified`);
+  }
+  registerCitizenFingerprintStep1(citizenId){
+    return this.http.post<Boolean>(`${API_URL}/citizens/${citizenId}/fingerprint/enrollmentstep1`,null);
+  }
+  cancelFingerprintRegisteration(){
+    return this.http.delete(`${API_URL}/citizens/fingerprint/cancelenrollment`);
+  }
+
+  isCitizenfigerprintEnrolled(citizenId){
+    return this.http.get<Boolean>(`${API_URL}/citizens/${citizenId}/fingerprint/isenrolled`);
+  }
+  createCitizenRequest(citizenRequestCommand){
+    return this.http.post<any>
+    (`${API_URL}`+'/citizens',citizenRequestCommand).pipe( map(
       data => {
       return data;
     }));

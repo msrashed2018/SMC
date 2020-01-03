@@ -128,10 +128,10 @@ searchByStatesAndSearchKey(state,bonesRevealState, eyeRevealState,searchKey,page
     return this.http.get(
               `${API_URL}/requests/${id}/eye-reveal`);
   }
-  saveRequestBonesReveal(id,eyeReveal){
+  saveRequestBonesReveal(id,bonesReveal){
     return this.http.post(
               `${API_URL}/requests/${id}/bones-reveal`
-                , eyeReveal);
+                , bonesReveal);
   }
   updateRequestBonesReveal(requestId,bonesRevealId,bonesReveal){
     return this.http.put(

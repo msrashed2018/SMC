@@ -8,7 +8,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -160,7 +159,7 @@ public class Verification extends JFrame {
 //		enroll_idx = 0;
 		if (FingerprintSensorErrorCode.ZKFP_ERR_OK != FingerprintSensorEx.Init()) {
 			textArea.setForeground(Color.RED);
-			textArea.setText("Init failed!");
+			textArea.setText("Fingerprint device Init is failed!..");
 			return;
 		}
 		ret = FingerprintSensorEx.GetDeviceCount();

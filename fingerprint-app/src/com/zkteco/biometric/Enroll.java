@@ -164,7 +164,7 @@ public class Enroll extends JFrame {
 		enroll_idx = 0;
 		if (FingerprintSensorErrorCode.ZKFP_ERR_OK != FingerprintSensorEx.Init()) {
 			textArea.setForeground(Color.RED);
-			textArea.setText("Init failed!");
+			textArea.setText("Fingerprint device Init is failed!..");
 			return;
 		}
 		ret = FingerprintSensorEx.GetDeviceCount();

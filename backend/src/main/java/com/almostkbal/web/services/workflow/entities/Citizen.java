@@ -8,9 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Past;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -84,9 +84,17 @@ public class Citizen {
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date modifiedDate;
 
-	@Column(name = "fingerprint", columnDefinition = "CLOB")
-	@Lob
-	private String fingerprint;
+	@Transient
+	private boolean fingerprintEnrolled;
+
+	
+	public boolean isFingerprintEnrolled() {
+		return fingerprintEnrolled;
+	}
+
+	public void setFingerprintEnrolled(boolean fingerprintEnrolled) {
+		this.fingerprintEnrolled = fingerprintEnrolled;
+	}
 
 	public Citizen() {
 
@@ -224,14 +232,6 @@ public class Citizen {
 
 	public void setZone(Zone zone) {
 		this.zone = zone;
-	}
-
-	public String getFingerprint() {
-		return fingerprint;
-	}
-
-	public void setFingerprint(String fingerprint) {
-		this.fingerprint = fingerprint;
 	}
 
 	@Override

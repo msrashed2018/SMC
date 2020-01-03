@@ -17,8 +17,7 @@
                     <form class="form-horizontal" #f="ngForm" (ngSubmit)="f.form.valid && onSave()" novalidate>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="name">الاسم <b
-                                    style="color: red">*</b></label>
+                            <label class="col-md-1 col-form-label font-weight-bold" for="name">الاسم </label>
                             <div class="col-md-6">
                                 <input maxlength="100" [(ngModel)]="citizen.name" #name="ngModel"
                                     [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required type="text"
@@ -31,8 +30,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="nationalId">الرقم القومي <b
-                                    style="color: red">*</b> </label>
+                            <label class="col-md-1 col-form-label font-weight-bold" for="nationalId">الرقم القومي  </label>
                             <div class="col-md-6">
                                 <input minlength="14" maxlength="14" (input)="onNationalIdChange($event.target.value)"
                                     [(ngModel)]="citizen.nationalId" #nationalId="ngModel"
@@ -51,8 +49,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="birthDate">تاريخ الميلاد <b
-                                    style="color: red">*</b></label>
+                            <label class="col-md-1 col-form-label font-weight-bold" for="birthDate">تاريخ الميلاد </label>
                             <div class="col-md-6">
                                 <!-- <input class="form-control"  type="text" [(ngModel)]="citizen.birthDate" #birthDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && birthDate.invalid }" name="birthDate" placeholder="YYYY-MM-DD" required /> -->
 
@@ -68,7 +65,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="address">العنوان</label>
+                            <label class="col-md-1 col-form-label font-weight-bold" for="address">العنوان</label>
                             <div class="col-md-6">
                                 <input maxlength="150" [(ngModel)]="citizen.address" #address="ngModel"
                                     [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" type="text"
@@ -79,7 +76,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="mobileNumber">رقم
+                            <label class="col-md-1 col-form-label font-weight-bold" for="mobileNumber">رقم
                                 الموبيل</label>
                             <div class="col-md-6">
                                 <input maxlength="12" [(ngModel)]="citizen.mobileNumber" #mobileNumber="ngModel"
@@ -95,8 +92,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="governate">المحافظة <b
-                                    style="color: red">*</b></label>
+                            <label class="col-md-1 col-form-label font-weight-bold" for="governate">المحافظة </label>
                             <div class="col-md-6">
                                 <!-- <input name="governate"  class="form-control" type="text" list="governates-list" [(ngModel)]="selectedGovernateId" #governate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && governate.invalid }" (change)="onGovernateChanged(governate.value)" required/> -->
                                 <select name="governate" class="form-control" [(ngModel)]="selectedGovernateId"
@@ -113,8 +109,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="city">المدينة <b
-                                    style="color: red">*</b></label>
+                            <label class="col-md-1 col-form-label font-weight-bold" for="city">المدينة </label>
                             <div class="col-md-6">
                                 <select [(ngModel)]="selectedCityId" #city="ngModel"
                                     [ngClass]="{ 'is-invalid': f.submitted && city.invalid }" name="city"
@@ -128,8 +123,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="occupation">المهنه <b
-                                    style="color: red">*</b></label>
+                            <label class="col-md-1 col-form-label font-weight-bold" for="occupation">المهنه </label>
                             <div class="col-md-6">
                                 <select [(ngModel)]="selectedOccupationId" #occupation="ngModel"
                                     [ngClass]="{ 'is-invalid': f.submitted && occupation.invalid }" name="occupation"
@@ -145,8 +139,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="gender">النوع <b
-                                    style="color: red">*</b></label>
+                            <label class="col-md-1 col-form-label font-weight-bold" for="gender">النوع </label>
                             <div class="col-md-6">
                                 <select [(ngModel)]="citizen.gender" #gender="ngModel"
                                     [ngClass]="{ 'is-invalid': f.submitted && gender.invalid }" name="gender"
@@ -162,8 +155,7 @@
                         </div>
                         <br><br>
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="requestType">نوع الطلب <b
-                                    style="color: red">*</b></label>
+                            <label class="col-md-1 col-form-label font-weight-bold" for="requestType">نوع الطلب </label>
                             <div class="col-md-6">
                                 <select name="requestType" class="form-control" [(ngModel)]="selectedRequestTypeId"
                                     #requestType="ngModel"
@@ -179,13 +171,13 @@
                             </div>
                         </div>
                         <!-- <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="requestPrice">سعر الطلب</label>
+                            <label class="col-md-1 col-form-label font-weight-bold" for="requestPrice">سعر الطلب</label>
                             <div class="col-md-6">
                                 <input  [(ngModel)]="requestPrice" type="number" name="requestPrice" class="form-control">
                             </div>
                         </div> -->
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold" for="custom">الجمرك</label>
+                            <label class="col-md-1 col-form-label font-weight-bold" for="custom">الجمرك</label>
                             <div class="col-md-6">
                                 <select name="custom" class="form-control" [(ngModel)]="selectedCustomId"
                                     #custom="ngModel">
@@ -195,7 +187,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label font-weight-bold"
+                            <label class="col-md-1 col-form-label font-weight-bold"
                                 for="trafficManagement">المرور</label>
                             <div class="col-md-6">
                                 <select name="trafficManagement" class="form-control"
@@ -214,14 +206,17 @@
                                 </alert>
                             </div>
                             <div *ngIf="successMessage!= '' ">
-                                    <alert type="success"> {{successMessage}} </alert>
-                                </div>
-                            <button type="submit"  [disabled]="!enabled" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>أضف
+                                <alert type="success"> {{successMessage}} </alert>
+                            </div>
+                            <button type="submit" [disabled]="!enabled" class="btn btn-sm btn-primary"><i
+                                    class="fa fa-plus"></i> أضف
                                 المواطن</button>
-                            <button type="button" [disabled]="enabled" (click)="printRequestDocument()" class="btn btn-sm btn-secondary"><i
-                                    class="fa fa-print"></i> نموذج طلب</button>
-                            <button type="button" [disabled]="enabled" (click)="printPaymentPermission()" class="btn btn-sm btn-secondary"><i
-                                    class="fa fa-print"></i> اذن دفع</button>
+                            <button type="button" [disabled]="enabled" (click)="onFingerprintBtnClicked()"
+                                class="btn btn-sm btn-success"><i class="fa fa-hand-pointer-o "></i> تسجيل البصمة</button>
+                            <button type="button" [disabled]="enabled" (click)="printRequestDocument()"
+                                class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> نموذج طلب</button>
+                            <button type="button" [disabled]="enabled" (click)="printPaymentPermission()"
+                                class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> اذن دفع</button>
                             <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i
                                     class="fa fa-ban"></i> الرجوع</button>
 

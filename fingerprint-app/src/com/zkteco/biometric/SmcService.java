@@ -30,14 +30,11 @@ import org.apache.sling.commons.json.JSONObject;
 
 public class SmcService {
 
-	public static final String FINGER_PRINT_ENDPOINT_URL = "http://localhost:8080/ministry-of-health/api/fingerprint";
-	public static final String LOGIN_ENDPOINT_URL = "http://localhost:8080/ministry-of-health/api/signin";
-	
 	public static String TOKEN;
 	
 	public void signin(String username, String password) throws Exception {
 
-		URIBuilder builder = new URIBuilder(LOGIN_ENDPOINT_URL);
+		URIBuilder builder = new URIBuilder(FingerprintApp.LOGIN_ENDPOINT_URL);
 
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(builder.build());
@@ -77,7 +74,7 @@ public class SmcService {
 	}
 
 	public byte[] getCitizenFingerTemplate(Long nationalId) throws IOException, URISyntaxException {
-		URIBuilder builder = new URIBuilder(FINGER_PRINT_ENDPOINT_URL);
+		URIBuilder builder = new URIBuilder(FingerprintApp.FINGER_PRINT_ENDPOINT_URL);
 		builder.setParameter("nationalId", String.valueOf(nationalId));
 
 		HttpClient client = HttpClientBuilder.create().build();
@@ -110,7 +107,7 @@ public class SmcService {
 
 	public String createCitizenFingerTemplate(Long nationalId, byte[] template) throws IOException, URISyntaxException {
 
-		URIBuilder builder = new URIBuilder(FINGER_PRINT_ENDPOINT_URL);
+		URIBuilder builder = new URIBuilder(FingerprintApp.FINGER_PRINT_ENDPOINT_URL);
 		builder.setParameter("nationalId", String.valueOf(nationalId));
 
 		HttpClient client = HttpClientBuilder.create().build();
@@ -149,7 +146,7 @@ public class SmcService {
 	}
 
 	public void updateCitizenFingerTemplate(Long nationalId, byte[] template) throws IOException, URISyntaxException {
-		URIBuilder builder = new URIBuilder(FINGER_PRINT_ENDPOINT_URL);
+		URIBuilder builder = new URIBuilder(FingerprintApp.FINGER_PRINT_ENDPOINT_URL);
 		builder.setParameter("nationalId", String.valueOf(nationalId));
 
 		HttpClient client = HttpClientBuilder.create().build();
@@ -178,7 +175,7 @@ public class SmcService {
 	}
 
 	public void deleteCitizenFingerTemplate(Long nationalId, byte[] template) throws IOException, URISyntaxException {
-		URIBuilder builder = new URIBuilder(FINGER_PRINT_ENDPOINT_URL);
+		URIBuilder builder = new URIBuilder(FingerprintApp.FINGER_PRINT_ENDPOINT_URL);
 		builder.setParameter("nationalId", String.valueOf(nationalId));
 
 		HttpClient client = HttpClientBuilder.create().build();

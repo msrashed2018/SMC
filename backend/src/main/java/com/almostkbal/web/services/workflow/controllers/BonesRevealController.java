@@ -1,5 +1,8 @@
 package com.almostkbal.web.services.workflow.controllers;
 
+import java.util.Date;
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +24,12 @@ import com.almostkbal.web.services.workflow.auth.UserService;
 import com.almostkbal.web.services.workflow.entities.Audit;
 import com.almostkbal.web.services.workflow.entities.BonesReveal;
 import com.almostkbal.web.services.workflow.entities.BonesRevealState;
+import com.almostkbal.web.services.workflow.entities.FingerprintVerification;
 import com.almostkbal.web.services.workflow.entities.Request;
+import com.almostkbal.web.services.workflow.exceptions.IllegalRequestStateException;
 import com.almostkbal.web.services.workflow.repositories.AuditRepository;
 import com.almostkbal.web.services.workflow.repositories.BonesRevealRepository;
+import com.almostkbal.web.services.workflow.repositories.FingerprintVerificationRepository;
 import com.almostkbal.web.services.workflow.repositories.RequestRepository;
 
 //@CrossOrigin(origins="http://192.168.0.100:4200")
@@ -41,6 +48,8 @@ public class BonesRevealController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private FingerprintVerificationRepository fingerprintVerificationRepository;
 	@GetMapping("/api/requests/{id}/bones-reveal")
 //	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_BONES_REVEAL') OR hasRole('ROLE_REQUEST_REVIEWING')  OR hasRole('ROLE_EYE_REVEAL_RESULT_REGISTERING')")
 	public BonesReveal retrieveRequestBonesReveal(@PathVariable long id) {
@@ -55,13 +64,34 @@ public class BonesRevealController {
 	public ResponseEntity<BonesReveal> addRequestBonesReveal(@PathVariable long id,
 			@Valid @RequestBody BonesReveal bonesReveal, Authentication authentication) {
 
-		if (!requestRepository.existsById(id)) {
+		Optional<Request> request = requestRepository.findById(id);
+		
+		if (!request.isPresent()) {
 			throw new ResourceNotFoundException("هذا الطلب غير موجود");
 		}
+		if(request.get().getBonesRevealState() != BonesRevealState.PENDING_REVEAL) {
+			throw new IllegalRequestStateException(new Date(), "عفوا هذا الطلب ليس في مرحلة كشف العظام", "عفوا هذا الطلب ليس في مرحلة كشف العظام");
+		}
 
-		Request request = new Request();
-		request.setId(id);
-		bonesReveal.setRequest(request);
+		FingerprintVerification fingerprintVerfication = fingerprintVerificationRepository
+				.findByVerifierUsername(userService.getUsername());
+
+		if (fingerprintVerfication == null) {
+			throw new ResourceNotFoundException("لم يتم التحقق من بصمة المواطن");
+		}
+		boolean skipFingerprintVerification = false;
+		if (!fingerprintVerfication.isVerified()) {
+			for (GrantedAuthority authority : authentication.getAuthorities()) {
+				if (authority.getAuthority().equals("ROLE_ADMIN")) {
+					skipFingerprintVerification = true;
+				}
+			}
+		}
+		if (skipFingerprintVerification) {
+			throw new ResourceNotFoundException("لم يتم التحقق من بصمة المواطن");
+		}
+		
+		bonesReveal.setRequest(request.get());
 		BonesReveal savedBonesReveal = bonesRevealRepository.save(bonesReveal);
 		if (bonesReveal.getRevealDone() == 1) {
 			requestRepository.setBonesRevealState(id, BonesRevealState.PENDING_REGISTERING);

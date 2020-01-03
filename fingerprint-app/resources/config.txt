@@ -1,0 +1,2 @@
+fingerprint-endpoint-url=http://localhost:8080/ministry-of-health/api/fingerprint
+fingerprint-signin-url=http://localhost:8080/ministry-of-health/api/signin
