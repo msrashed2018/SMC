@@ -33,7 +33,7 @@ public class Fingerprint {
 	@Column(name = "TEMPLATE", columnDefinition = "CLOB")
 	@Lob
 	@NotNull
-	private String fingerprint;
+	private String template;
 
 	@Column(name = "created_date")
 //	@Temporal(TemporalType.DATE)
@@ -64,12 +64,12 @@ public class Fingerprint {
 		this.citizen = citizen;
 	}
 
-	public String getFingerprint() {
-		return fingerprint;
+	public String getTemplate() {
+		return template;
 	}
 
-	public void setFingerprint(String fingerprint) {
-		this.fingerprint = fingerprint;
+	public void setTemplate(String template) {
+		this.template = template;
 	}
 
 	public Date getCreatedDate() {

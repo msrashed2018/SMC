@@ -38,8 +38,8 @@ export class BonesRevealComponent implements OnInit {
   items: number = 0;
   itemsPerPage: number = 10;
   pageChanged(event: any): void {
-    this.items = (event.page -1) * this.itemsPerPage ;
-    this.currentPage = event.page -1;
+    this.items = (event.page - 1) * this.itemsPerPage;
+    this.currentPage = event.page - 1;
     this.refreshData();
   }
   ngOnInit() {
@@ -53,7 +53,7 @@ export class BonesRevealComponent implements OnInit {
   }
 
   refreshData() {
-    this.requestService.searchByStatesAndSearchKey("CONTINUE_REGISTERING_DONE", "PENDING_REVEAL", "NA", this.searchKey,this.currentPage, this.itemsPerPage)
+    this.requestService.searchByStatesAndSearchKey("CONTINUE_REGISTERING_DONE", "PENDING_REVEAL", "NA", this.searchKey, this.currentPage, this.itemsPerPage)
       .subscribe(
         result => {
           if (typeof result !== 'undefined' && result !== null && result['content'].length != 0) {
@@ -73,13 +73,13 @@ export class BonesRevealComponent implements OnInit {
   }
   searchByKey(event: Event) {
     this.requests = [];
-   this.currentPage = 0;
+    this.currentPage = 0;
     // this.citizens = [];
     this.errorMessage = false;
     this.noDataFound = false;
     this.refreshData();
   }
-  
+
 
   onAttend(requestId) {
     let citizenId = this.requests.find((request) => request.id == requestId).citizen.id;
@@ -96,15 +96,19 @@ export class BonesRevealComponent implements OnInit {
 
   showfingerprintConfirmationModal(citizenId, requestId) {
     this.subscription = this.checkVerificationinterval.subscribe(n => {
-      if( n == 60){
+      if (n == 60) {
         this.cancelFingerprintVerification();
         this.subscription.unsubscribe();
         this.fingerprintConfirmationModalService.close();
       }
       this.citizenService.isCitizenfigerprintVerified(citizenId).subscribe(
         result => {
-          if (result == true) {
-            this.confirmAttend(requestId);
+          if (result != null) {
+            if (result == true) {
+              this.confirmAttend(true, requestId);
+            } else if (result == false) {
+              this.confirmAttend(false, requestId);
+            }
           }
         },
         error => {
@@ -117,38 +121,53 @@ export class BonesRevealComponent implements OnInit {
     this.fingerprintConfirmationModalService.confirm('التحقق من بصمة المواطن', 'لتسجيل حضور المواطن لكشف العظام, من فضلك ادخل بصمة المواطن الان', '/assets/img/brand/fingerprint.gif', false, this.canSkipFingerprintVerfication)
       .then((skip) => {
         if (skip) {
-          this.confirmAttend(requestId);
-          
+          this.confirmAttend(true, requestId);
+
         }
-      }).finally(() => { 
-        this.subscription.unsubscribe(); 
+      }).finally(() => {
+        this.subscription.unsubscribe();
         this.cancelFingerprintVerification();
       })
 
   }
 
-  confirmAttend(requestId) {
+  confirmAttend(isVerified, requestId) {
     this.fingerprintConfirmationModalService.close();
-    this.fingerprintConfirmationModalService.confirm('التحقق من بصمة المواطن', 'تم تسجيل حضور المواطن لكشف العظام بنجاح', '/assets/img/brand/success.png', true)
-      .then((confirmed) => {
-        if (confirmed) {
-          // do something
+
+    if (isVerified) {
+      this.fingerprintConfirmationModalService.confirm('التحقق من بصمة المواطن', 'تم تسجيل حضور المواطن لكشف العظام بنجاح', '/assets/img/brand/success.png', true)
+        .then((confirmed) => {
+          if (confirmed) {
+            // do something
+          }
+        }).finally(() => {
+          this.refreshData();
+        })
+      let bonesReveal = new BonesReveal();
+      bonesReveal.revealDone = '1';
+      this.requestService.saveRequestBonesReveal(requestId, bonesReveal).subscribe(
+        result => {
+          // this.retriveAllRequests();
+          this.errorMessage = false;
+        },
+        error => {
+          console.log('oops', error);
+          this.errorMessage = true;
         }
-      }).finally(() => {
-        this.refreshData();
-      })
-    let bonesReveal = new BonesReveal();
-    bonesReveal.revealDone = '1';
-    this.requestService.saveRequestBonesReveal(requestId, bonesReveal).subscribe(
-      result => {
-        // this.retriveAllRequests();
-        this.errorMessage = false;
-      },
-      error => {
-        console.log('oops', error);
-        this.errorMessage = true;
-      }
-    )
+      )
+    } else {
+      this.fingerprintConfirmationModalService.confirm('التحقق من بصمة المواطن', 'عفوا البصمة غير متطابقة..!!', '/assets/img/brand/failure.png', true)
+        .then((confirmed) => {
+          if (confirmed) {
+            // do something
+          }
+        }).finally(() => {
+          // this.refreshData();
+        })
+
+    }
+
+
   }
   cancelFingerprintVerification() {
     this.citizenService.cancelFingerprintVerification().subscribe();

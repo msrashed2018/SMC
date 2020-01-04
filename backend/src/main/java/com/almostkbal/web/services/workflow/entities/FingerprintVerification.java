@@ -36,7 +36,7 @@ public class FingerprintVerification {
 	private Fingerprint fingerprint;
 
 	@Column(name = "VERIFIED")
-	private boolean verified = false;
+	private Boolean verified;
 
 	public long getId() {
 		return id;
@@ -62,11 +62,11 @@ public class FingerprintVerification {
 		this.verifier = verifier;
 	}
 
-	public boolean isVerified() {
+	public Boolean isVerified() {
 		return verified;
 	}
 
-	public void setVerified(boolean verified) {
+	public void setVerified(Boolean verified) {
 		this.verified = verified;
 	}
 

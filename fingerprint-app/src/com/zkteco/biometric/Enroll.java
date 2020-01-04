@@ -8,7 +8,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -18,13 +17,16 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.zkteco.biometric.models.FingerprintEnrollment;
+
 public class Enroll extends JFrame {
 
-	JButton btnEnroll = null;
+	FingerprintEnrollment fingerprintEnrollment;
+//	JButton btnEnroll = null;
 //	JButton btnClose = null;
 	JButton btnImg = null;
-	JLabel nationalIdLabel = null;
-	JTextField nationalIdTextfield = null;
+	JLabel citizenNameLabel = null;
+	JTextField citizenNameTextfield = null;
 //	JRadioButton radioISO = null;
 //	JRadioButton radioANSI = null;
 
@@ -64,20 +66,22 @@ public class Enroll extends JFrame {
 	private WorkThread workThread = null;
 
 	public void launchFrame() {
+		// TODO remove below line
+		
 		this.setLayout(null);
 		int nRsize = 20;
-		nationalIdLabel = new JLabel();
-		nationalIdLabel.setFont(new Font(Font.SERIF, Font.PLAIN, 19));
-		nationalIdLabel.setText("National ID :");
-		this.add(nationalIdLabel);
-		nationalIdLabel.setBounds(30, 5 + nRsize, 100, 30);
-		nationalIdTextfield = new JTextField(14);
-		this.add(nationalIdTextfield);
-		nationalIdTextfield.setBounds(150, 5 + nRsize, 250, 30);
-
-		btnEnroll = new JButton("Enroll");
-		this.add(btnEnroll);
-		btnEnroll.setBounds(405, 5 + nRsize, 100, 30);
+		citizenNameLabel = new JLabel();
+		citizenNameLabel.setFont(new Font(Font.SERIF, Font.PLAIN, 19));
+		citizenNameLabel.setText("Citizen Name:");
+		this.add(citizenNameLabel);
+		citizenNameLabel.setBounds(30, 5 + nRsize, 103, 30);
+		citizenNameTextfield = new JTextField(14);
+		this.add(citizenNameTextfield);
+		citizenNameTextfield.setBounds(150, 5 + nRsize, 250, 30);
+		citizenNameTextfield.setEnabled(false);
+//		btnEnroll = new JButton("Enroll");
+//		this.add(btnEnroll);
+//		btnEnroll.setBounds(405, 5 + nRsize, 100, 30);
 
 		// For ISO/Ansi
 //		radioANSI = new JRadioButton("ANSI", true);// 创建单选按钮
@@ -111,28 +115,27 @@ public class Enroll extends JFrame {
 		this.setTitle("SMC Citizen Fingerprint Registration");
 		this.setResizable(false);
 
-
-		btnEnroll.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				if (!verifyNationalId()) {
-					return;
-				}
-				if (0 == mhDevice) {
-					textArea.setForeground(Color.RED);
-					textArea.setText("Device is not connected!");
-					return;
-				}
-//				if (!bRegister) {
-					enroll_idx = 0;
-					bRegister = true;
-					textArea.setForeground(Color.BLACK);
-					textArea.setText("Please put your finger 3 times!");
+//		btnEnroll.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//
+//				if (!verifyNationalId()) {
+//					return;
 //				}
-			}
-		});
+//				if (0 == mhDevice) {
+//					textArea.setForeground(Color.RED);
+//					textArea.setText("Device is not connected!");
+//					return;
+//				}
+////				if (!bRegister) {
+//					enroll_idx = 0;
+//					bRegister = true;
+//					textArea.setForeground(Color.BLACK);
+//					textArea.setText("Please put your finger 3 times!");
+////				}
+//			}
+//		});
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
@@ -385,30 +388,44 @@ public class Enroll extends JFrame {
 		}
 	}
 
-	private boolean verifyNationalId() {
-		String nationalId = nationalIdTextfield.getText();
-
-		if (nationalId == null || nationalId.isEmpty()) {
-			textArea.setForeground(Color.RED);
-			textArea.setText("Error: Please input Citizen National ID first");
-			return false;
-		} else if (nationalId.length() != 14) {
-			textArea.setForeground(Color.RED);
-			textArea.setText("Error: National ID must be 16 numbers length");
-			return false;
-		}
-
-		try {
-			Long.parseLong(nationalId);
-		} catch (NumberFormatException ex) {
-			textArea.setForeground(Color.RED);
-			textArea.setText("Error: National ID must be numberic");
-			return false;
-		}
-		return true;
-	}
+//	private boolean verifyNationalId() {
+//		String nationalId = citizenNameTextfield.getText();
+//
+//		if (nationalId == null || nationalId.isEmpty()) {
+//			textArea.setForeground(Color.RED);
+//			textArea.setText("Error: Please input Citizen National ID first");
+//			return false;
+//		} else if (nationalId.length() != 14) {
+//			textArea.setForeground(Color.RED);
+//			textArea.setText("Error: National ID must be 16 numbers length");
+//			return false;
+//		}
+//
+//		try {
+//			Long.parseLong(nationalId);
+//		} catch (NumberFormatException ex) {
+//			textArea.setForeground(Color.RED);
+//			textArea.setText("Error: National ID must be numberic");
+//			return false;
+//		}
+//		return true;
+//	}
 
 	private void OnExtractOK(byte[] template, int len) {
+		
+		if(enroll_idx == 0 ) {
+			fingerprintEnrollment = smcService.getNextEnrollment();
+			if(fingerprintEnrollment == null) {
+				bRegister = false;
+				textArea.setForeground(Color.RED);
+				textArea.setText(" Sorry, No Fingerprint Registeration Request issued!");
+				citizenNameTextfield.setText("");
+			}else {
+				bRegister = true;
+				citizenNameTextfield.setText(fingerprintEnrollment.getCitizen().getName());
+			}
+		}
+		
 		if (bRegister) {
 			int[] fid = new int[1];
 			int[] score = new int[1];
@@ -438,7 +455,7 @@ public class Enroll extends JFrame {
 					System.arraycopy(regTemp, 0, lastRegTemp, 0, cbRegTemp);
 					String strBase64 = FingerprintSensorEx.BlobToBase64(regTemp, cbRegTemp);
 
-					System.out.println("strBase64 = " + strBase64);
+					/*System.out.println("strBase64 = " + strBase64);
 					try {
 						if (!verifyNationalId()) {
 							return;
@@ -463,13 +480,14 @@ public class Enroll extends JFrame {
 						textArea.setForeground(Color.RED);
 						textArea.setText(" enroll fail, error: " + e.getMessage());
 						e.printStackTrace();
-					}
+					}*/
 					// Base64 Template
 
 				} else {
 					textArea.setForeground(Color.RED);
 					textArea.setText("enroll fail, error code=" + ret);
 				}
+				enroll_idx = 0;
 				bRegister = false;
 			} else {
 				textArea.setForeground(Color.BLACK);

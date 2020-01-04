@@ -17,13 +17,16 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.zkteco.biometric.models.FingerprintVerification;
+import org.apache.commons.codec.binary.Base64;
+
 public class Verification extends JFrame {
 
-	JButton btnVerify = null;
+//	JButton btnVerify = null;
 //	JButton btnClose = null;
 	JButton btnImg = null;
-	JLabel nationalIdLabel = null;
-	JTextField nationalIdTextfield = null;
+	JLabel citizenNameLabel = null;
+	JTextField citizenNameTextfield = null;
 //	JRadioButton radioISO = null;
 //	JRadioButton radioANSI = null;
 
@@ -41,7 +44,7 @@ public class Verification extends JFrame {
 	// pre-register template
 	private byte[][] regtemparray = new byte[3][2048];
 	// Register
-	private boolean bVerify = false;
+	private boolean bVerify = true;
 	// Identify
 //	private boolean bIdentify = true;
 	// finger id
@@ -65,18 +68,19 @@ public class Verification extends JFrame {
 	public void launchFrame() {
 		this.setLayout(null);
 		int nRsize = 20;
-		nationalIdLabel = new JLabel();
-		nationalIdLabel.setFont(new Font(Font.SERIF, Font.PLAIN, 19));
-		nationalIdLabel.setText("National ID :");
-		this.add(nationalIdLabel);
-		nationalIdLabel.setBounds(30, 5 + nRsize, 100, 30);
-		nationalIdTextfield = new JTextField(14);
-		this.add(nationalIdTextfield);
-		nationalIdTextfield.setBounds(150, 5 + nRsize, 250, 30);
+		citizenNameLabel = new JLabel();
+		citizenNameLabel.setFont(new Font(Font.SERIF, Font.PLAIN, 19));
+		citizenNameLabel.setText("Citizen Name:");
+		this.add(citizenNameLabel);
+		citizenNameLabel.setBounds(30, 5 + nRsize, 103, 30);
+		citizenNameTextfield = new JTextField(14);
+		citizenNameTextfield.setEnabled(false);
+		this.add(citizenNameTextfield);
+		citizenNameTextfield.setBounds(150, 5 + nRsize, 250, 30);
 
-		btnVerify = new JButton("Verify");
-		this.add(btnVerify);
-		btnVerify.setBounds(405, 5 + nRsize, 100, 30);
+//		btnVerify = new JButton("Verify");
+//		this.add(btnVerify);
+//		btnVerify.setBounds(405, 5 + nRsize, 100, 30);
 
 		// For ISO/Ansi
 //		radioANSI = new JRadioButton("ANSI", true);// 创建单选按钮
@@ -110,24 +114,24 @@ public class Verification extends JFrame {
 		this.setTitle("SMC Citizen Fingerprint Verification");
 		this.setResizable(false);
 
-		btnVerify.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (!verifyNationalId()) {
-					return;
-				}
-				if (0 == mhDevice) {
-					textArea.setForeground(Color.RED);
-					textArea.setText("Device is not connected!");
-					return;
-				}
-//				enroll_idx = 0;
-				bVerify = true;
-				textArea.setForeground(Color.BLACK);
-				textArea.setText("Please put your finger!");
-			}
-		});
+//		btnVerify.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				if (!verifyNationalId()) {
+//					return;
+//				}
+//				if (0 == mhDevice) {
+//					textArea.setForeground(Color.RED);
+//					textArea.setText("Device is not connected!");
+//					return;
+//				}
+////				enroll_idx = 0;
+//				bVerify = true;
+//				textArea.setForeground(Color.BLACK);
+//				textArea.setText("Please put your finger!");
+//			}
+//		});
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
@@ -380,52 +384,60 @@ public class Verification extends JFrame {
 		}
 	}
 
-	private boolean verifyNationalId() {
-		String nationalId = nationalIdTextfield.getText();
-
-		if (nationalId == null || nationalId.isEmpty()) {
-			textArea.setForeground(Color.RED);
-			textArea.setText("Error: Please input Citizen National ID first");
-			return false;
-		} else if (nationalId.length() != 14) {
-			textArea.setForeground(Color.RED);
-			textArea.setText("Error: National ID must be 16 numbers length");
-			return false;
-		}
-
-		try {
-			Long.parseLong(nationalId);
-		} catch (NumberFormatException ex) {
-			textArea.setForeground(Color.RED);
-			textArea.setText("Error: National ID must be numberic");
-			return false;
-		}
-		return true;
-	}
+//	private boolean verifyNationalId() {
+//		String nationalId = citizenNameTextfield.getText();
+//
+//		if (nationalId == null || nationalId.isEmpty()) {
+//			textArea.setForeground(Color.RED);
+//			textArea.setText("Error: Please input Citizen National ID first");
+//			return false;
+//		} else if (nationalId.length() != 14) {
+//			textArea.setForeground(Color.RED);
+//			textArea.setText("Error: National ID must be 16 numbers length");
+//			return false;
+//		}
+//
+//		try {
+//			Long.parseLong(nationalId);
+//		} catch (NumberFormatException ex) {
+//			textArea.setForeground(Color.RED);
+//			textArea.setText("Error: National ID must be numberic");
+//			return false;
+//		}
+//		return true;
+//	}
 
 	private void OnExtractOK(byte[] template, int len) {
 		if (bVerify) {
 
 			int ret;
 			try {
-				ret = FingerprintSensorEx.DBMatch(mhDB, smcService.getCitizenFingerTemplate(29106202101737l),
-						template);
-				if (ret > 0) {
-					textArea.setForeground(Color.GREEN);
-					textArea.setText("Verify success, score=" + ret);
-
-				} else {
+				FingerprintVerification fingerprintVerification = smcService.getNextVerification();
+				if (fingerprintVerification == null) {
 					textArea.setForeground(Color.RED);
-					textArea.setText("Verify fail, ret=" + ret);
+					textArea.setText("Sorry, No Fingerprint Verification Request is issued!");
+				} else {
+					String citizenTemplate = fingerprintVerification.getFingerprint().getTemplate();
+					citizenNameTextfield.setText(fingerprintVerification.getFingerprint().getCitizen().getName());
+					ret = FingerprintSensorEx.DBMatch(mhDB, Base64.decodeBase64(citizenTemplate), template);
+					if (ret > 0) {
+						textArea.setForeground(Color.GREEN);
+						textArea.setText("Verify success, score=" + ret);
+						smcService.verifyCitizenFingerprintStep2(
+								fingerprintVerification.getFingerprint().getCitizen().getId(), true);
 
+					} else {
+						textArea.setForeground(Color.RED);
+						textArea.setText("Verify fail, ret=" + ret);
+						smcService.verifyCitizenFingerprintStep2(
+								fingerprintVerification.getFingerprint().getCitizen().getId(), false);
+					}
 				}
 			} catch (Exception e) {
 				textArea.setForeground(Color.RED);
 				textArea.setText("Error: " + e.getMessage());
 				e.printStackTrace();
 			}
-
-		
 
 		}
 	}

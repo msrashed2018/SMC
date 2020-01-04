@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="lib" path="lib/ZKFingerReader.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.11.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.2.jar"/>
@@ -15,5 +16,6 @@
 	<classpathentry kind="lib" path="lib/jna-platform-4.5.2.jar"/>
 	<classpathentry kind="lib" path="lib/org.apache.sling.commons.json-2.0.20.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/almostkbal/projects/SMC/fingerprint-app/lib/gson-2.2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

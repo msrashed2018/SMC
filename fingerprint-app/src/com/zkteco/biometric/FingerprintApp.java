@@ -3,38 +3,39 @@ package com.zkteco.biometric;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
 import java.util.Properties;
 
 import javax.swing.JOptionPane;
 
 public class FingerprintApp {
 
-
-	public static String FINGER_PRINT_ENDPOINT_URL ;
-	public static String LOGIN_ENDPOINT_URL ;
+	public static String FINGER_PRINT_ENDPOINT_URL;
 
 	public void getPropValues() throws IOException {
 		InputStream inputStream = null;
-			Properties prop = new Properties();
-			String propFileName = "config.txt";
+		Properties prop = new Properties();
+		String propFileName = "config.txt";
 
-			inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(propFileName);
-			
-			if (inputStream != null) {
-				prop.load(inputStream);
-			} else {
-				throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
-			}
+		inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(propFileName);
 
-			FINGER_PRINT_ENDPOINT_URL = prop.getProperty("fingerprint-endpoint-url");
-			LOGIN_ENDPOINT_URL = prop.getProperty("fingerprint-signin-url");
+		if (inputStream != null) {
+			prop.load(inputStream);
+		} else {
+			throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+		}
 
-			System.out.println("FINGER_PRINT_ENDPOINT_URL = " + FINGER_PRINT_ENDPOINT_URL);
-			System.out.println("LOGIN_ENDPOINT_URL = " + LOGIN_ENDPOINT_URL);
+		FINGER_PRINT_ENDPOINT_URL = prop.getProperty("fingerprint-endpoint-url");
+
+		System.out.println("FINGER_PRINT_ENDPOINT_URL = " + FINGER_PRINT_ENDPOINT_URL);
 	}
 
 	public static void main(String arg[]) {
 		try {
+			// the below socked is opened to make sure that only one instance of the application is running.  
+			ServerSocket socket = new ServerSocket(9779, 10, InetAddress.getLocalHost());
+			
 			new FingerprintApp().getPropValues();
 			Login frame = new Login();
 			frame.setSize(520, 250);
@@ -42,7 +43,11 @@ public class FingerprintApp {
 			frame.setVisible(true);
 			frame.setTitle("SMC Login");
 			frame.setResizable(false);
+		} catch (java.net.BindException b) {
+			b.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Application Already Running...");
 		} catch (Exception e) {
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}

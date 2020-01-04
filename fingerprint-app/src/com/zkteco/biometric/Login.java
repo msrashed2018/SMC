@@ -1,8 +1,6 @@
 package com.zkteco.biometric;
 
-import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -13,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -37,7 +34,7 @@ class Login extends JFrame implements ActionListener, KeyListener {
 		
 		
 		text1 = new JTextField(50);
-//		text1.setText("admin");
+		text1.setText("admin");
 		text1.setBounds(190, 20, 200, 30);
 		
 		
@@ -48,7 +45,7 @@ class Login extends JFrame implements ActionListener, KeyListener {
 		
 		
 		text2 = new JPasswordField(50);
-//		text2.setText("admin");
+		text2.setText("admin");
 		text2.setBounds(190, 70, 200, 30);
 		
 		radioVerify = new JRadioButton("Verify", true);
@@ -79,6 +76,7 @@ class Login extends JFrame implements ActionListener, KeyListener {
 		SUBMIT.addActionListener(this);
 		SUBMIT.addKeyListener(this);
 		setTitle("LOGIN");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	public void signin() {
 		String username = text1.getText();

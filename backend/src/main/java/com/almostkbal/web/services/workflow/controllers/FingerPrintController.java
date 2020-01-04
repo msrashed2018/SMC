@@ -138,10 +138,9 @@ public class FingerprintController {
 		FingerprintEnrollment fingerprintEnrollment = fingerprintEnrollmentRepository
 				.findByRegisterarUsername(userService.getUsername());
 
-		if (fingerprintEnrollment == null || !fingerprintEnrollment.isEnrolled()) {
-			throw new ResourceNotFoundException("No Enrollment Request Existing");
+		if(fingerprintEnrollment == null || fingerprintEnrollment.isEnrolled()) {
+			return null;
 		}
-
 		return new ResponseEntity<FingerprintEnrollment>(fingerprintEnrollment, HttpStatus.OK);
 	}
 
@@ -233,7 +232,6 @@ public class FingerprintController {
 	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER') OR hasRole('ROLE_EYE_REVEAL') OR hasRole('ROLE_BONES_REVEAL')")
 	@Transactional
 	public ResponseEntity<Boolean> isCitizenfigerprintVerified(@PathVariable long citizenId) {
-		Boolean isVerified = false;
 
 		FingerprintVerification fingerprintVerfication = fingerprintVerificationRepository
 				.findByFingerprintCitizenIdAndVerifierUsername(citizenId, userService.getUsername());
@@ -243,11 +241,12 @@ public class FingerprintController {
 					"No previous request has been issued for verifying citizen fingerprint");
 		}
 
-		if (fingerprintVerfication.isVerified()) {
-			isVerified = true;
-			fingerprintVerificationRepository.deleteByVerifierUsername(userService.getUsername());
+		if(fingerprintVerfication.isVerified() == null) {
+			// still not determined if verified or not.
+			return null;
 		}
-		return new ResponseEntity<Boolean>(isVerified, HttpStatus.OK);
+		fingerprintVerificationRepository.deleteByVerifierUsername(userService.getUsername());
+		return new ResponseEntity<Boolean>(fingerprintVerfication.isVerified(), HttpStatus.OK);
 	}
 
 	// this API is called by fingerprint desktop application to get the next
@@ -259,10 +258,9 @@ public class FingerprintController {
 		FingerprintVerification fingerprintVerfication = fingerprintVerificationRepository
 				.findByVerifierUsername(userService.getUsername());
 
-		if (fingerprintVerfication == null || !fingerprintVerfication.isVerified()) {
-			throw new ResourceNotFoundException("No Verification Request Existing");
+		if(fingerprintVerfication == null|| fingerprintVerfication.isVerified()) {
+			return null;
 		}
-
 		return new ResponseEntity<FingerprintVerification>(fingerprintVerfication, HttpStatus.OK);
 	}
 
@@ -271,16 +269,17 @@ public class FingerprintController {
 	@PostMapping("/api/citizens/{citizenId}/fingerprint/verifystep2")
 	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER') OR hasRole('ROLE_EYE_REVEAL') OR hasRole('ROLE_BONES_REVEAL')")
 	@Transactional
-	public ResponseEntity<Boolean> verifyCitizenFingerprintStep2(@PathVariable long citizenId) {
+	public ResponseEntity<?> verifyCitizenFingerprintStep2(@PathVariable long citizenId, @RequestBody Boolean verified) {
 		FingerprintVerification fingerprintVerfication = fingerprintVerificationRepository
-				.findByFingerprintCitizenIdAndVerifierUsername(citizenId, userService.getUsername());
+				.findByVerifierUsername(userService.getUsername());
 
-		if (fingerprintVerfication == null) {
-			throw new ResourceNotFoundException("No Enrollment Request Existing");
+		if (fingerprintVerfication == null || fingerprintVerfication.getFingerprint().getCitizen().getId() != citizenId) {
+			throw new ResourceNotFoundException("No Verification Request is issued for this citizen");
 		}
-		fingerprintVerfication.setVerified(true);
+		
+		fingerprintVerfication.setVerified(verified);
 		fingerprintVerificationRepository.save(fingerprintVerfication);
 
-		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+		return ResponseEntity.ok().build();
 	}
 }

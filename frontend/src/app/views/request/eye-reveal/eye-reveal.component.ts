@@ -24,7 +24,7 @@ export class EyeRevealComponent implements OnInit {
   subscription: Subscription = new Subscription();
 
   canSkipFingerprintVerfication: boolean = false;
-  constructor( private fingerprintConfirmationModalService: FingerprintConfirmServiceService, private citizenService: CitizenService, private requestService: RequestService, private router: Router, private datepipe: DatePipe) { }
+  constructor(private fingerprintConfirmationModalService: FingerprintConfirmServiceService, private citizenService: CitizenService, private requestService: RequestService, private router: Router, private datepipe: DatePipe) { }
   //pagination variables
   maxSize: number = 10;
   totalItems: number = 0;
@@ -92,8 +92,12 @@ export class EyeRevealComponent implements OnInit {
       }
       this.citizenService.isCitizenfigerprintVerified(citizenId).subscribe(
         result => {
-          if (result == true) {
-            this.confirmAttend(requestId);
+          if (result != null) {
+            if (result == true) {
+              this.confirmAttend(true, requestId);
+            } else  if (result == false){
+              this.confirmAttend(false, requestId);
+            }
           }
         },
         error => {
@@ -106,7 +110,7 @@ export class EyeRevealComponent implements OnInit {
     this.fingerprintConfirmationModalService.confirm('التحقق من بصمة المواطن', 'لتسجيل حضور المواطن لكشف العظام, من فضلك ادخل بصمة المواطن الان', '/assets/img/brand/fingerprint.gif', false, this.canSkipFingerprintVerfication)
       .then((skip) => {
         if (skip) {
-          this.confirmAttend(requestId);
+          this.confirmAttend(true, requestId);
 
         }
       }).finally(() => {
@@ -116,9 +120,11 @@ export class EyeRevealComponent implements OnInit {
 
   }
 
-  confirmAttend(requestId) {
+  confirmAttend(isVerified, requestId) {
     this.fingerprintConfirmationModalService.close();
-    this.fingerprintConfirmationModalService.confirm('التحقق من بصمة المواطن', 'تم تسجيل حضور المواطن لكشف العظام بنجاح', '/assets/img/brand/success.png', true)
+
+    if (isVerified) {
+      this.fingerprintConfirmationModalService.confirm('التحقق من بصمة المواطن', 'تم تسجيل حضور المواطن لكشف العظام بنجاح', '/assets/img/brand/success.png', true)
       .then((confirmed) => {
         if (confirmed) {
           // do something
@@ -126,18 +132,29 @@ export class EyeRevealComponent implements OnInit {
       }).finally(() => {
         this.refreshData();
       })
-      let eyeReveal = new EyeReveal();
-      eyeReveal.revealDone = '1';
-      this.requestService.saveRequestEyeReveal(requestId, eyeReveal).subscribe(
-        result => {
-          this.refreshData();
-          this.errorMessage = false;
-        },
-        error => {
-          console.log('oops', error);
-          this.errorMessage = true;
+    let eyeReveal = new EyeReveal();
+    eyeReveal.revealDone = '1';
+    this.requestService.saveRequestEyeReveal(requestId, eyeReveal).subscribe(
+      result => {
+        this.refreshData();
+        this.errorMessage = false;
+      },
+      error => {
+        console.log('oops', error);
+        this.errorMessage = true;
+      }
+    )
+    } else {
+      this.fingerprintConfirmationModalService.confirm('التحقق من بصمة المواطن', 'عفوا البصمة غير متطابقة..!!', '/assets/img/brand/failure.png', true)
+      .then((confirmed) => {
+        if (confirmed) {
+          // do something
         }
-      )
+      }).finally(() => {
+        // this.refreshData();
+      })
+    }
+    
   }
   cancelFingerprintVerification() {
     this.citizenService.cancelFingerprintVerification().subscribe();
