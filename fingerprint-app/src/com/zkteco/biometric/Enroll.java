@@ -2,12 +2,11 @@ package com.zkteco.biometric;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -67,7 +66,7 @@ public class Enroll extends JFrame {
 
 	public void launchFrame() {
 		// TODO remove below line
-		
+
 		this.setLayout(null);
 		int nRsize = 20;
 		citizenNameLabel = new JLabel();
@@ -412,88 +411,92 @@ public class Enroll extends JFrame {
 //	}
 
 	private void OnExtractOK(byte[] template, int len) {
-		
-		if(enroll_idx == 0 ) {
-			fingerprintEnrollment = smcService.getNextEnrollment();
-			if(fingerprintEnrollment == null) {
-				bRegister = false;
-				textArea.setForeground(Color.RED);
-				textArea.setText(" Sorry, No Fingerprint Registeration Request issued!");
-				citizenNameTextfield.setText("");
-			}else {
-				bRegister = true;
-				citizenNameTextfield.setText(fingerprintEnrollment.getCitizen().getName());
+		try {
+			if (enroll_idx == 0) {
+				fingerprintEnrollment = smcService.getNextEnrollment();
+				if (fingerprintEnrollment == null) {
+					bRegister = false;
+					textArea.setForeground(Color.RED);
+					textArea.setText(" Sorry, No Fingerprint Registeration Request issued!");
+					citizenNameTextfield.setText("");
+				} else {
+					bRegister = true;
+					citizenNameTextfield.setText(fingerprintEnrollment.getCitizen().getName());
+				}
 			}
-		}
-		
-		if (bRegister) {
-			int[] fid = new int[1];
-			int[] score = new int[1];
-			int ret = FingerprintSensorEx.DBIdentify(mhDB, template, fid, score);
+
+			if (bRegister) {
+				int[] fid = new int[1];
+				int[] score = new int[1];
+				int ret = FingerprintSensorEx.DBIdentify(mhDB, template, fid, score);
 //			if (ret == 0) {
 //				textArea.setText("the finger already enroll by " + fid[0] + ",cancel enroll");
 //				bRegister = false;
 //				enroll_idx = 0;
 //				return;
 //			}
-			if (enroll_idx > 0 && FingerprintSensorEx.DBMatch(mhDB, regtemparray[enroll_idx - 1], template) <= 0) {
-				textArea.setForeground(Color.RED);
-				textArea.setText("please press the same finger 3 times for the enrollment");
-				return;
-			}
-			System.arraycopy(template, 0, regtemparray[enroll_idx], 0, 2048);
-			enroll_idx++;
-			if (enroll_idx == 3) {
-				int[] _retLen = new int[1];
-				_retLen[0] = 2048;
-				byte[] regTemp = new byte[_retLen[0]];
+				if (enroll_idx > 0 && FingerprintSensorEx.DBMatch(mhDB, regtemparray[enroll_idx - 1], template) <= 0) {
+					textArea.setForeground(Color.RED);
+					textArea.setText("please press the same finger 3 times for the enrollment");
+					smcService.updateEnrollmentStatusMessage("please press the same finger 3 times for the enrollment");
+					return;
+				}
+				System.arraycopy(template, 0, regtemparray[enroll_idx], 0, 2048);
+				enroll_idx++;
 
-				if (0 == (ret = FingerprintSensorEx.DBMerge(mhDB, regtemparray[0], regtemparray[1], regtemparray[2],
-						regTemp, _retLen)) && 0 == (ret = FingerprintSensorEx.DBAdd(mhDB, iFid, regTemp))) {
-					iFid++;
-					cbRegTemp = _retLen[0];
-					System.arraycopy(regTemp, 0, lastRegTemp, 0, cbRegTemp);
-					String strBase64 = FingerprintSensorEx.BlobToBase64(regTemp, cbRegTemp);
+				if (enroll_idx != 3) {
+					textArea.setForeground(Color.BLACK);
+					textArea.setText("You need to press the " + (3 - enroll_idx) + " times fingerprint");
+					smcService.updateEnrollmentStatusMessage(
+							"You need to press the " + (3 - enroll_idx) + " times fingerprint");
+				} else if (enroll_idx == 3) {
+					int[] _retLen = new int[1];
+					_retLen[0] = 2048;
+					byte[] regTemp = new byte[_retLen[0]];
 
-					/*System.out.println("strBase64 = " + strBase64);
-					try {
-						if (!verifyNationalId()) {
-							return;
-						}
+					if (0 == (ret = FingerprintSensorEx.DBMerge(mhDB, regtemparray[0], regtemparray[1], regtemparray[2],
+							regTemp, _retLen)) && 0 == (ret = FingerprintSensorEx.DBAdd(mhDB, iFid, regTemp))) {
+						iFid++;
+						cbRegTemp = _retLen[0];
+						System.arraycopy(regTemp, 0, lastRegTemp, 0, cbRegTemp);
+
 						String result = smcService
-								.createCitizenFingerTemplate(Long.parseLong(nationalIdTextfield.getText()), regTemp);
-						
-						if(result.contains("success")) {
+								.registerCitizenFingerprintStep2(fingerprintEnrollment.getCitizen().getId(), regTemp);
+
+						if (result.contains("success")) {
 							textArea.setForeground(Color.GREEN);
-						}else {
+						} else {
 							textArea.setForeground(Color.RED);
 						}
 						textArea.setText(result);
-						bRegister = false;
+						resetEnrollment();
 
-					} catch (IOException | URISyntaxException e) {
+						// Base64 Template
+
+					} else {
 						textArea.setForeground(Color.RED);
-						textArea.setText(" enroll fail, error: " + e.getMessage());
-
-						e.printStackTrace();
-					} catch (RuntimeException e) {
-						textArea.setForeground(Color.RED);
-						textArea.setText(" enroll fail, error: " + e.getMessage());
-						e.printStackTrace();
-					}*/
-					// Base64 Template
-
-				} else {
-					textArea.setForeground(Color.RED);
-					textArea.setText("enroll fail, error code=" + ret);
+						textArea.setText("enroll fail, error code=" + ret);
+					}
+					
 				}
-				enroll_idx = 0;
-				bRegister = false;
-			} else {
-				textArea.setForeground(Color.BLACK);
-				textArea.setText("You need to press the " + (3 - enroll_idx) + " times fingerprint");
 			}
+		} catch (IOException | URISyntaxException e) {
+			resetEnrollment();
+			textArea.setForeground(Color.RED);
+			textArea.setText(" enroll fail, error: " + e.getMessage());
+
+			e.printStackTrace();
+		} catch (RuntimeException e) {
+			resetEnrollment();
+			textArea.setForeground(Color.RED);
+			textArea.setText(" enroll fail, error: " + e.getMessage());
+			e.printStackTrace();
 		}
+	}
+	
+	private void resetEnrollment(){
+		enroll_idx = 0;
+		bRegister = false;
 	}
 
 }

@@ -5,6 +5,8 @@ public class FingerprintEnrollment {
 	private long id;
 
 	private Citizen citizen;
+	
+	private String message;
 
 	public long getId() {
 		return id;
@@ -20,6 +22,14 @@ public class FingerprintEnrollment {
 
 	public void setCitizen(Citizen citizen) {
 		this.citizen = citizen;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	@Override

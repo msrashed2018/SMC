@@ -56,8 +56,9 @@ export class CitizenComponent implements OnInit {
   public selectedTrafficManagementId: number = 0;
   public selectedCustomId: number = 0;
   public requestPrice: number = 0;
-  private enabled: boolean = true;
-
+  private citizenAdded: boolean = false;
+  private fingerprintBtnEnabled: boolean = false;
+  
   checkEnrollmentInterval = interval(2000);
   subscription: Subscription = new Subscription();
 
@@ -172,7 +173,8 @@ export class CitizenComponent implements OnInit {
         this.request = result as Request
         this.errorMessage = false;
         this.successMessage = " تم اضافة المواطن بنجاح";
-        this.enabled = false;
+        this.citizenAdded = true;
+        this.fingerprintBtnEnabled = true;
         this.onFingerprintBtnClicked();
         // this.router.navigateByUrl("/citizen/search");
       },
@@ -377,33 +379,50 @@ export class CitizenComponent implements OnInit {
   }
 
   showfingerprintConfirmationModal(citizenId) {
-    this.subscription = this.checkEnrollmentInterval.subscribe(n => {
-      if (n == 60) {
-        this.cancelFingerprintEnrollment();
-        this.subscription.unsubscribe();
-        this.fingerprintConfirmService.close();
-      }
-      this.citizenService.isCitizenfigerprintEnrolled(citizenId).subscribe(
-        result => {
-          if (result == true) {
-            this.fingerprintConfirmService.close();
-            this.fingerprintConfirmService.confirm('تسجيل بصمة المواطن', 'تم تسجيل بصمة المواطن بنجاح', '/assets/img/brand/success.png', true)
-          }
-        },
-        error => {
-          console.log('oops', error);
-          this.errorMessage = true;
-        }
-      )
-    });
-
     this.fingerprintConfirmService.confirm('تسجيل بصمة المواطن', 'من فضلك ادخل بصمة المواطن الان', '/assets/img/brand/fingerprint.gif')
-      .then((confirmed) => {
+      .then(
+        (confirmed) => {
+          // do something
+          if (confirmed) { /*Ok or skip*/
 
-      }).finally(() => {
+          } else { /* declined */ }
+        },
+        (reason) => {
+          // dismissed
+          this.cancelFingerprintEnrollment();
+        })
+      .finally(() => {
         this.subscription.unsubscribe();
-        this.cancelFingerprintEnrollment();
       })
+
+
+      this.subscription = this.checkEnrollmentInterval.subscribe(n => {
+        if (n == 40) {
+          this.subscription.unsubscribe();
+          this.fingerprintConfirmService.close();
+          this.cancelFingerprintEnrollment();
+        }
+        this.citizenService.isCitizenfigerprintEnrolled(citizenId).subscribe(
+          result => {
+            let enrollment = result as any;
+            if (enrollment != null) {
+              if (enrollment.enrolled) {
+                this.fingerprintBtnEnabled = false;
+                this.subscription.unsubscribe();
+                this.fingerprintConfirmService.reset('تسجيل بصمة المواطن', 'تم تسجيل بصمة المواطن بنجاح', '/assets/img/brand/success.png', true);
+                
+              } else if (enrollment.message) {
+                this.fingerprintConfirmService.setStatusMessage(enrollment.message);
+              }
+            }
+  
+          },
+          error => {
+            console.log('oops', error);
+            this.errorMessage = true;
+          }
+        )
+      });
 
   }
   cancelFingerprintEnrollment() {

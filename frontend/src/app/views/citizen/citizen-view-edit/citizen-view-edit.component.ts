@@ -70,7 +70,7 @@ export class CitizenViewEditComponent implements OnInit {
   displayCitizenDetails() {
     this.citizenService.retrieveCitizen(this.citizenId).subscribe(
       response => {
-        
+
         this.citizen = response as Citizen;
 
         if (this.citizen.governate != null) {
@@ -230,6 +230,24 @@ export class CitizenViewEditComponent implements OnInit {
   }
 
   showfingerprintConfirmationModal(citizenId) {
+    this.fingerprintConfirmService.confirm('تسجيل بصمة المواطن', 'من فضلك ادخل بصمة المواطن الان', '/assets/img/brand/fingerprint.gif')
+      .then(
+        (confirmed) => {
+          // do something
+          if (confirmed) { /*Ok or skip*/ 
+            
+          } else { /* declined */ }
+        },
+        (reason) => {
+          // dismissed
+          this.cancelFingerprintEnrollment();
+        })
+      .finally(() => {
+        this.displayCitizenDetails();
+        this.subscription.unsubscribe();
+      })
+
+
     this.subscription = this.checkEnrollmentInterval.subscribe(n => {
       if (n == 40) {
         this.subscription.unsubscribe();
@@ -238,11 +256,16 @@ export class CitizenViewEditComponent implements OnInit {
       }
       this.citizenService.isCitizenfigerprintEnrolled(citizenId).subscribe(
         result => {
-          if (result == true) {
-            this.fingerprintConfirmService.close();
-            this.fingerprintConfirmService.confirm('تسجيل بصمة المواطن', 'تم تسجيل بصمة المواطن بنجاح', '/assets/img/brand/success.png', true);
-            this.displayCitizenDetails();
+          let enrollment = result as any;
+          if (enrollment != null) {
+            if (enrollment.enrolled) {
+              this.subscription.unsubscribe();
+              this.fingerprintConfirmService.reset('تسجيل بصمة المواطن', 'تم تسجيل بصمة المواطن بنجاح', '/assets/img/brand/success.png', true);
+            } else if (enrollment.message) {
+              this.fingerprintConfirmService.setStatusMessage(enrollment.message);
+            }
           }
+
         },
         error => {
           console.log('oops', error);
@@ -251,16 +274,10 @@ export class CitizenViewEditComponent implements OnInit {
       )
     });
 
-    this.fingerprintConfirmService.confirm('تسجيل بصمة المواطن', 'من فضلك ادخل بصمة المواطن الان', '/assets/img/brand/fingerprint.gif')
-      .then((confirmed) => {
 
-      }).finally(() => {
-        this.cancelFingerprintEnrollment();
-        this.subscription.unsubscribe();
-      })
   }
 
-  cancelFingerprintEnrollment(){
+  cancelFingerprintEnrollment() {
     this.citizenService.cancelFingerprintRegisteration().subscribe();
   }
 

@@ -208,14 +208,14 @@
                             <div *ngIf="successMessage!= '' ">
                                 <alert type="success"> {{successMessage}} </alert>
                             </div>
-                            <button type="submit" [disabled]="!enabled" class="btn btn-sm btn-primary"><i
+                            <button type="submit" [disabled]="citizenAdded" class="btn btn-sm btn-primary"><i
                                     class="fa fa-plus"></i> أضف
                                 المواطن</button>
-                            <button type="button" [disabled]="enabled" (click)="onFingerprintBtnClicked()"
+                            <button type="button" [disabled]="!citizenAdded" (click)="onFingerprintBtnClicked()"
                                 class="btn btn-sm btn-success"><i class="fa fa-hand-pointer-o "></i> تسجيل البصمة</button>
-                            <button type="button" [disabled]="enabled" (click)="printRequestDocument()"
+                            <button type="button" [disabled]="!fingerprintBtnEnabled" (click)="printRequestDocument()"
                                 class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> نموذج طلب</button>
-                            <button type="button" [disabled]="enabled" (click)="printPaymentPermission()"
+                            <button type="button" [disabled]="!citizenAdded" (click)="printPaymentPermission()"
                                 class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> اذن دفع</button>
                             <button type="reset" class="btn btn-sm btn-danger" (click)="close()"><i
                                     class="fa fa-ban"></i> الرجوع</button>

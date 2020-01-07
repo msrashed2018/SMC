@@ -8,6 +8,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -433,9 +434,14 @@ public class Verification extends JFrame {
 								fingerprintVerification.getFingerprint().getCitizen().getId(), false);
 					}
 				}
-			} catch (Exception e) {
+			}catch (IOException | URISyntaxException e) {
 				textArea.setForeground(Color.RED);
-				textArea.setText("Error: " + e.getMessage());
+				textArea.setText(" enroll fail, error: " + e.getMessage());
+
+				e.printStackTrace();
+			} catch (RuntimeException e) {
+				textArea.setForeground(Color.RED);
+				textArea.setText(" enroll fail, error: " + e.getMessage());
 				e.printStackTrace();
 			}
 

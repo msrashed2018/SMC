@@ -12,11 +12,12 @@ export class FingerprintConfirmModalComponent implements OnInit {
   @Input() btnOkText: string;
   @Input() btnSkipText: string;
   @Input() btnCancelText: string;
+  @Input() statusMessage: string;
   @Input() imgSrc: string ;
   @Input() skipEnabled: boolean = false;
   @Input() okEnabled: boolean = false;
   @Input() cancelEnabled: boolean = false;
-
+  @Input() statusMessageEnabled: boolean = false;
   constructor(private activeModal: NgbActiveModal) { }
 
   ngOnInit() {

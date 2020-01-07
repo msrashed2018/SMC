@@ -34,10 +34,11 @@ public class FingerprintEnrollment {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Citizen citizen;
 
-
-
 	@Column(name = "ENROLLED")
 	private boolean enrolled = false;
+	
+	@Column(name = "MESSAGE")
+	private String message = "";
 
 	public long getId() {
 		return id;
@@ -70,6 +71,14 @@ public class FingerprintEnrollment {
 
 	public void setEnrolled(boolean enrolled) {
 		this.enrolled = enrolled;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
 }

@@ -6,8 +6,10 @@ import { FingerprintConfirmModalComponent } from './fingerprint-confirm-modal.co
 })
 export class FingerprintConfirmServiceService {
 
-  constructor(private modalService: NgbModal) { }
+  public modalRef : any;
 
+  constructor(private modalService: NgbModal) { }
+  
   public confirm(
     title: string,
     message: string,
@@ -15,26 +17,65 @@ export class FingerprintConfirmServiceService {
     okEnabled: boolean = false,
     skipEnabled: boolean = false,
     cancelEnabled: boolean = false,
+    statusMessage: string = '',
+    statusMessageEnabled: boolean = false,
     btnOkText: string = 'OK',
     btnCancelText: string = 'Cancel',
     btnSkipText: string = 'Skip',
     dialogSize: 'sm' | 'lg' = 'lg'): Promise<boolean> {
-    const modalRef = this.modalService.open(FingerprintConfirmModalComponent);
-    modalRef.componentInstance.title = title;
-    modalRef.componentInstance.message = message;
-    modalRef.componentInstance.btnOkText = btnOkText;
-    modalRef.componentInstance.btnCancelText = btnCancelText;
-    modalRef.componentInstance.btnSkipText = btnSkipText;
-    modalRef.componentInstance.imgSrc = imgSrc;
-    modalRef.componentInstance.okEnabled = okEnabled;
-    modalRef.componentInstance.skipEnabled = skipEnabled;
-    modalRef.componentInstance.cancelEnabled = cancelEnabled;
+    this.modalRef = this.modalService.open(FingerprintConfirmModalComponent);
+    this.modalRef.componentInstance.title = title;
+    this.modalRef.componentInstance.message = message;
+    this.modalRef.componentInstance.btnOkText = btnOkText;
+    this.modalRef.componentInstance.btnCancelText = btnCancelText;
+    this.modalRef.componentInstance.btnSkipText = btnSkipText;
+    this.modalRef.componentInstance.imgSrc = imgSrc;
+    this.modalRef.componentInstance.okEnabled = okEnabled;
+    this.modalRef.componentInstance.skipEnabled = skipEnabled;
+    this.modalRef.componentInstance.cancelEnabled = cancelEnabled;
 
-    return modalRef.result;
+    return this.modalRef.result;
   }
 
+  public reset(
+    title: string,
+    message: string,
+    imgSrc: string,
+    okEnabled: boolean = false,
+    skipEnabled: boolean = false,
+    cancelEnabled: boolean = false,
+    statusMessage: string = '',
+    statusMessageEnabled: boolean = false,
+    btnOkText: string = 'OK',
+    btnCancelText: string = 'Cancel',
+    btnSkipText: string = 'Skip'
+
+  ){
+
+    this.modalRef.componentInstance.title = title;
+    this.modalRef.componentInstance.message = message;
+    this.modalRef.componentInstance.btnOkText = btnOkText;
+    this.modalRef.componentInstance.btnCancelText = btnCancelText;
+    this.modalRef.componentInstance.btnSkipText = btnSkipText;
+    this.modalRef.componentInstance.imgSrc = imgSrc;
+    this.modalRef.componentInstance.okEnabled = okEnabled;
+    this.modalRef.componentInstance.skipEnabled = skipEnabled;
+    this.modalRef.componentInstance.cancelEnabled = cancelEnabled;
+    this.modalRef.componentInstance.statusMessage = statusMessage;
+    this.modalRef.componentInstance.statusMessageEnabled = statusMessageEnabled;
+
+  }
   public close(){
     this.modalService.dismissAll();
   }
 
+
+  public setStatusMessage(message){
+    this.modalRef.componentInstance.statusMessageEnabled = true
+    this.modalRef.componentInstance.statusMessage = message;
+  }
+
+  public resetStatusMessage(){
+    this.modalRef.componentInstance.statusMessageEnabled = false;
+  }
 }
