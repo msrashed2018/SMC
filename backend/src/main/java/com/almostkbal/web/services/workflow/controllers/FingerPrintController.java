@@ -184,7 +184,7 @@ public class FingerprintController {
 					canUpdateCitizenFingerprint = true;
 				}
 			}
-			if (canUpdateCitizenFingerprint) {
+			if (!canUpdateCitizenFingerprint) {
 				throw new ResourceAccessException("تم تسجيل البصمة لهذا المواطن من قبل.. و ليس لديك الصلاحية للتعديل");
 			}
 			existingFingerprint.setModifiedBy(userService.getUsername());
@@ -227,7 +227,7 @@ public class FingerprintController {
 		// create new fingerprint verfication request.
 		FingerprintVerification fingerprintVerfication = new FingerprintVerification();
 		fingerprintVerfication.setFingerprint(fingerprint);
-		fingerprintVerfication.setVerified(false);
+//		fingerprintVerfication.setVerified(false);
 		fingerprintVerfication.setVerifier(userRepository.findByUsername(userService.getUsername()));
 		fingerprintVerificationRepository.save(fingerprintVerfication);
 
@@ -249,7 +249,6 @@ public class FingerprintController {
 	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER') OR hasRole('ROLE_EYE_REVEAL') OR hasRole('ROLE_BONES_REVEAL')")
 	@Transactional
 	public ResponseEntity<Boolean> isCitizenfigerprintVerified(@PathVariable long citizenId) {
-
 		FingerprintVerification fingerprintVerfication = fingerprintVerificationRepository
 				.findByFingerprintCitizenIdAndVerifierUsername(citizenId, userService.getUsername());
 
@@ -271,11 +270,10 @@ public class FingerprintController {
 	@GetMapping("/api/fingerprint/getnextverification")
 	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER') OR hasRole('ROLE_EYE_REVEAL') OR hasRole('ROLE_BONES_REVEAL')")
 	public ResponseEntity<FingerprintVerification> getNextVerification() {
-
 		FingerprintVerification fingerprintVerfication = fingerprintVerificationRepository
 				.findByVerifierUsername(userService.getUsername());
 
-		if (fingerprintVerfication == null || fingerprintVerfication.isVerified()) {
+		if (fingerprintVerfication == null ) {
 			return null;
 		}
 		return new ResponseEntity<FingerprintVerification>(fingerprintVerfication, HttpStatus.OK);
@@ -287,7 +285,8 @@ public class FingerprintController {
 	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_SUPER_USER') OR hasRole('ROLE_EYE_REVEAL') OR hasRole('ROLE_BONES_REVEAL')")
 	@Transactional
 	public ResponseEntity<?> verifyCitizenFingerprintStep2(@PathVariable long citizenId,
-			@RequestBody Boolean verified) {
+			@RequestBody String verified) {
+		
 		FingerprintVerification fingerprintVerfication = fingerprintVerificationRepository
 				.findByVerifierUsername(userService.getUsername());
 
@@ -296,7 +295,7 @@ public class FingerprintController {
 			throw new ResourceNotFoundException("No Verification Request is issued for this citizen");
 		}
 
-		fingerprintVerfication.setVerified(verified);
+		fingerprintVerfication.setVerified(Boolean.valueOf(verified));
 		fingerprintVerificationRepository.save(fingerprintVerfication);
 
 		return ResponseEntity.ok().build();

@@ -6,31 +6,23 @@ import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.commons.codec.Charsets;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.apache.sling.commons.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.zkteco.biometric.models.Fingerprint;
 import com.zkteco.biometric.models.FingerprintEnrollment;
 import com.zkteco.biometric.models.FingerprintVerification;
 
@@ -119,7 +111,7 @@ public class SmcService {
 
 	public void updateEnrollmentStatusMessage(String message) throws IOException, URISyntaxException, RuntimeException {
 		URIBuilder builder = new URIBuilder(
-				FingerprintApp.FINGER_PRINT_ENDPOINT_URL + "/fingerprint/updateenrollmentMessage");
+				FingerprintApp.FINGER_PRINT_ENDPOINT_URL + "/citizens/fingerprint/updateenrollmentMessage");
 
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(builder.build());
@@ -147,7 +139,7 @@ public class SmcService {
 			throws IOException, URISyntaxException, RuntimeException {
 		BufferedReader rd = null;
 		URIBuilder builder = new URIBuilder(
-				FingerprintApp.FINGER_PRINT_ENDPOINT_URL + "/" + citizenId + "/fingerprint/enrollmentstep2");
+				FingerprintApp.FINGER_PRINT_ENDPOINT_URL + "/citizens/" + citizenId + "/fingerprint/enrollmentstep2");
 
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(builder.build());
@@ -185,7 +177,7 @@ public class SmcService {
 	public FingerprintVerification getNextVerification() throws IOException, URISyntaxException, RuntimeException {
 		BufferedReader rd = null;
 		URIBuilder builder = new URIBuilder(
-				FingerprintApp.FINGER_PRINT_ENDPOINT_URL + "/fingerprint/getnextenrollment");
+				FingerprintApp.FINGER_PRINT_ENDPOINT_URL + "/fingerprint/getnextverification");
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpGet request = new HttpGet(builder.build());
 		// add request header
@@ -225,7 +217,7 @@ public class SmcService {
 	public void verifyCitizenFingerprintStep2(long citizenId, boolean verified)
 			throws IOException, URISyntaxException, RuntimeException {
 		URIBuilder builder = new URIBuilder(
-				FingerprintApp.FINGER_PRINT_ENDPOINT_URL + "/" + citizenId + "/fingerprint/verifystep2");
+				FingerprintApp.FINGER_PRINT_ENDPOINT_URL + "/citizens/" + citizenId + "/fingerprint/verifystep2");
 
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(builder.build());

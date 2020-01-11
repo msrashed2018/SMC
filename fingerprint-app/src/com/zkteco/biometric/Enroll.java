@@ -78,6 +78,7 @@ public class Enroll extends JFrame {
 		this.add(citizenNameTextfield);
 		citizenNameTextfield.setBounds(150, 5 + nRsize, 250, 30);
 		citizenNameTextfield.setEnabled(false);
+		citizenNameTextfield.setFont(new Font(Font.SERIF, Font.PLAIN, 19));
 //		btnEnroll = new JButton("Enroll");
 //		this.add(btnEnroll);
 //		btnEnroll.setBounds(405, 5 + nRsize, 100, 30);
@@ -497,6 +498,7 @@ public class Enroll extends JFrame {
 	private void resetEnrollment(){
 		enroll_idx = 0;
 		bRegister = false;
+		citizenNameTextfield.setText("");
 	}
 
 }

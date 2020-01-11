@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +26,6 @@ import com.almostkbal.web.services.workflow.entities.Audit;
 import com.almostkbal.web.services.workflow.entities.EyeReveal;
 import com.almostkbal.web.services.workflow.entities.EyeRevealSetting;
 import com.almostkbal.web.services.workflow.entities.EyeRevealState;
-import com.almostkbal.web.services.workflow.entities.FingerprintVerification;
 import com.almostkbal.web.services.workflow.entities.Request;
 import com.almostkbal.web.services.workflow.exceptions.IllegalRequestStateException;
 import com.almostkbal.web.services.workflow.repositories.AuditRepository;
@@ -84,24 +82,24 @@ public class EyeRevealController {
 					"عفوا هذا الطلب ليس في مرحلة كشف النظر");
 		}
 
-		FingerprintVerification fingerprintVerfication = fingerprintVerificationRepository
-				.findByVerifierUsername(userService.getUsername());
-
-		if (fingerprintVerfication == null) {
-			throw new ResourceNotFoundException("لم يتم التحقق من بصمة المواطن");
-		}
-
-		boolean skipFingerprintVerification = false;
-		if (!fingerprintVerfication.isVerified()) {
-			for (GrantedAuthority authority : authentication.getAuthorities()) {
-				if (authority.getAuthority().equals("ROLE_ADMIN")) {
-					skipFingerprintVerification = true;
-				}
-			}
-		}
-		if (skipFingerprintVerification) {
-			throw new ResourceNotFoundException("لم يتم التحقق من بصمة المواطن");
-		}
+//		FingerprintVerification fingerprintVerfication = fingerprintVerificationRepository
+//				.findByVerifierUsername(userService.getUsername());
+//
+//		if (fingerprintVerfication == null) {
+//			throw new ResourceNotFoundException("لم يتم التحقق من بصمة المواطن");
+//		}
+//
+//		boolean skipFingerprintVerification = false;
+//		if (!fingerprintVerfication.isVerified()) {
+//			for (GrantedAuthority authority : authentication.getAuthorities()) {
+//				if (authority.getAuthority().equals("ROLE_ADMIN")) {
+//					skipFingerprintVerification = true;
+//				}
+//			}
+//		}
+//		if (skipFingerprintVerification) {
+//			throw new ResourceNotFoundException("لم يتم التحقق من بصمة المواطن");
+//		}
 
 		eyeReveal.setRequest(request.get());
 		EyeReveal savedEyeReveal = eyeRevealRepository.save(eyeReveal);

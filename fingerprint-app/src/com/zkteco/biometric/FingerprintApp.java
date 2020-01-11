@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 public class FingerprintApp {
 
 	public static String FINGER_PRINT_ENDPOINT_URL;
+	public static String PORT;
 
 	public void getPropValues() throws IOException {
 		InputStream inputStream = null;
@@ -27,16 +28,17 @@ public class FingerprintApp {
 		}
 
 		FINGER_PRINT_ENDPOINT_URL = prop.getProperty("fingerprint-endpoint-url");
+		PORT = prop.getProperty("bind-port");
 
 		System.out.println("FINGER_PRINT_ENDPOINT_URL = " + FINGER_PRINT_ENDPOINT_URL);
 	}
 
 	public static void main(String arg[]) {
 		try {
-			// the below socked is opened to make sure that only one instance of the application is running.  
-			ServerSocket socket = new ServerSocket(9779, 10, InetAddress.getLocalHost());
-			
 			new FingerprintApp().getPropValues();
+			// the below socked is opened to make sure that only one instance of the application is running.  
+			ServerSocket socket = new ServerSocket(Integer.valueOf(PORT), 10, InetAddress.getLocalHost());
+			
 			Login frame = new Login();
 			frame.setSize(520, 250);
 			frame.setLocationRelativeTo(null);

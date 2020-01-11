@@ -244,6 +244,7 @@ export class CitizenViewEditComponent implements OnInit {
         })
       .finally(() => {
         this.displayCitizenDetails();
+        this.errorMessage=false;
         this.subscription.unsubscribe();
       })
 

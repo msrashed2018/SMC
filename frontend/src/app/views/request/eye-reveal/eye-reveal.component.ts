@@ -52,6 +52,7 @@ export class EyeRevealComponent implements OnInit {
             this.totalItems = result['totalElements'];
           } else {
             this.noDataFound = true;
+            this.requests = [];
           }
         },
         error => {

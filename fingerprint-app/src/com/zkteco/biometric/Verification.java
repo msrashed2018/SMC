@@ -2,8 +2,6 @@ package com.zkteco.biometric;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -18,8 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.zkteco.biometric.models.FingerprintVerification;
 import org.apache.commons.codec.binary.Base64;
+
+import com.zkteco.biometric.models.FingerprintVerification;
 
 public class Verification extends JFrame {
 
@@ -73,9 +72,11 @@ public class Verification extends JFrame {
 		citizenNameLabel.setFont(new Font(Font.SERIF, Font.PLAIN, 19));
 		citizenNameLabel.setText("Citizen Name:");
 		this.add(citizenNameLabel);
-		citizenNameLabel.setBounds(30, 5 + nRsize, 103, 30);
+		citizenNameLabel.setBounds(30, 5 + nRsize, 120, 30);
 		citizenNameTextfield = new JTextField(14);
 		citizenNameTextfield.setEnabled(false);
+		citizenNameTextfield.setFont(new Font(Font.SERIF, Font.PLAIN, 19));
+		citizenNameTextfield.setCaretColor(Color.BLACK);
 		this.add(citizenNameTextfield);
 		citizenNameTextfield.setBounds(150, 5 + nRsize, 250, 30);
 
@@ -158,7 +159,7 @@ public class Verification extends JFrame {
 		int ret = FingerprintSensorErrorCode.ZKFP_ERR_OK;
 		// Initialize
 //		cbRegTemp = 0;
-		bVerify = false;
+//		bVerify = false;
 //		bIdentify = false;
 		iFid = 1;
 //		enroll_idx = 0;
@@ -409,7 +410,7 @@ public class Verification extends JFrame {
 //	}
 
 	private void OnExtractOK(byte[] template, int len) {
-		if (bVerify) {
+//		if (bVerify) {
 
 			int ret;
 			try {
@@ -435,6 +436,8 @@ public class Verification extends JFrame {
 					}
 				}
 			}catch (IOException | URISyntaxException e) {
+				
+				
 				textArea.setForeground(Color.RED);
 				textArea.setText(" enroll fail, error: " + e.getMessage());
 
@@ -445,7 +448,11 @@ public class Verification extends JFrame {
 				e.printStackTrace();
 			}
 
-		}
+//		}
+	}
+	
+	private void resetEnrollment(){
+		citizenNameTextfield.setText("");
 	}
 
 }

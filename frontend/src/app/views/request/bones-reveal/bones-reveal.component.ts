@@ -63,6 +63,7 @@ export class BonesRevealComponent implements OnInit {
             this.totalItems = result['totalElements'];
           } else {
             this.noDataFound = true;
+            this.requests = [];
           }
         },
         error => {
@@ -132,6 +133,7 @@ export class BonesRevealComponent implements OnInit {
   }
 
   confirmAttend(isVerified, requestId) {
+    this.subscription.unsubscribe();
     this.fingerprintConfirmationModalService.close();
 
     if (isVerified) {
@@ -147,7 +149,7 @@ export class BonesRevealComponent implements OnInit {
       bonesReveal.revealDone = '1';
       this.requestService.saveRequestBonesReveal(requestId, bonesReveal).subscribe(
         result => {
-          // this.retriveAllRequests();
+          this.refreshData();
           this.errorMessage = false;
         },
         error => {
