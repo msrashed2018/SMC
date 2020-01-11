@@ -11,10 +11,10 @@
   </alert>
 </div> 
 
-<div *ngIf="errorMessage">
+<div *ngIf="errorMessage != ''">
   <br>
   <alert type="danger">
-    <strong>عفوا، حدث خطا، حاول مره أخرى. </strong>
+    <strong>{{errorMessage}}</strong>
   </alert>
 </div> 
 <button type="button" class="btn btn-pill btn-primary" style="width: 100px;  color:white !important;"  (click)="searchByKey($event)">بحث  <i class="fa fa-search"></i></button>

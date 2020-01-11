@@ -18,7 +18,7 @@ import { FingerprintConfirmServiceService } from '../../fingerprint-confirm-moda
 export class EyeRevealComponent implements OnInit {
   private requests: Request[];
   private noDataFound: boolean = false;
-  private errorMessage: boolean = false;
+  private errorMessage: string = '';
   searchKey: string = '';
   checkVerificationinterval = interval(2000);
   subscription: Subscription = new Subscription();
@@ -57,14 +57,18 @@ export class EyeRevealComponent implements OnInit {
         },
         error => {
           console.log('oops: ', error);
-          this.errorMessage = true;
+          if(error.error!= null){
+            this.errorMessage = error.error.message;
+          }else{
+            this.errorMessage = "عفوا، حدث خطا، حاول مره أخرى"
+          }
         }
       );
   }
   searchByKey(event: Event) {
     this.requests = [];
     this.currentPage = 0;
-    this.errorMessage = false;
+    this.errorMessage = '';
     this.noDataFound = false;
     this.refreshData();
   }
@@ -79,7 +83,11 @@ export class EyeRevealComponent implements OnInit {
       },
       error => {
         console.log('oops', error);
-        this.errorMessage = true;
+        if(error.error!= null){
+          this.errorMessage = error.error.message;
+        }else{
+          this.errorMessage = "عفوا، حدث خطا، حاول مره أخرى"
+        }
       }
     )
   }
@@ -103,7 +111,11 @@ export class EyeRevealComponent implements OnInit {
         },
         error => {
           console.log('oops', error);
-          this.errorMessage = true;
+          if(error.error!= null){
+            this.errorMessage = error.error.message;
+          }else{
+            this.errorMessage = "عفوا، حدث خطا، حاول مره أخرى"
+          }
         }
       )
     });
@@ -138,11 +150,15 @@ export class EyeRevealComponent implements OnInit {
     this.requestService.saveRequestEyeReveal(requestId, eyeReveal).subscribe(
       result => {
         this.refreshData();
-        this.errorMessage = false;
+        this.errorMessage = '';
       },
       error => {
         console.log('oops', error);
-        this.errorMessage = true;
+        if(error.error!= null){
+          this.errorMessage = error.error.message;
+        }else{
+          this.errorMessage = "عفوا، حدث خطا، حاول مره أخرى"
+        }
       }
     )
     } else {

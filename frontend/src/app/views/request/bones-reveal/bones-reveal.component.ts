@@ -21,7 +21,7 @@ import { TokenStorageService } from '../../../services/authentication/jwt/token-
 export class BonesRevealComponent implements OnInit {
   private requests: Request[];
   private noDataFound: boolean = false;
-  private errorMessage: boolean = false;
+  private errorMessage: string = '';
   searchKey: string = '';
   isForSearch: boolean = true;
   checkVerificationinterval = interval(2000);
@@ -68,7 +68,12 @@ export class BonesRevealComponent implements OnInit {
         },
         error => {
           console.log('oops: ', error);
-          this.errorMessage = true;
+          if(error.error!= null){
+            this.errorMessage = error.error.message;
+          }else{
+            this.errorMessage = "عفوا، حدث خطا، حاول مره أخرى"
+          }
+          
         }
       );
   }
@@ -76,7 +81,7 @@ export class BonesRevealComponent implements OnInit {
     this.requests = [];
     this.currentPage = 0;
     // this.citizens = [];
-    this.errorMessage = false;
+    this.errorMessage = '';
     this.noDataFound = false;
     this.refreshData();
   }
@@ -90,7 +95,11 @@ export class BonesRevealComponent implements OnInit {
       },
       error => {
         console.log('oops', error);
-        this.errorMessage = true;
+        if(error.error!= null){
+          this.errorMessage = error.error.message;
+        }else{
+          this.errorMessage = "عفوا، حدث خطا، حاول مره أخرى"
+        }
       }
     )
   }
@@ -114,7 +123,11 @@ export class BonesRevealComponent implements OnInit {
         },
         error => {
           console.log('oops', error);
-          this.errorMessage = true;
+          if(error.error!= null){
+            this.errorMessage = error.error.message;
+          }else{
+            this.errorMessage = "عفوا، حدث خطا، حاول مره أخرى"
+          }
         }
       )
     });
@@ -150,11 +163,15 @@ export class BonesRevealComponent implements OnInit {
       this.requestService.saveRequestBonesReveal(requestId, bonesReveal).subscribe(
         result => {
           this.refreshData();
-          this.errorMessage = false;
+          this.errorMessage = '';
         },
         error => {
           console.log('oops', error);
-          this.errorMessage = true;
+          if(error.error!= null){
+            this.errorMessage = error.error.message;
+          }else{
+            this.errorMessage = "عفوا، حدث خطا، حاول مره أخرى"
+          }
         }
       )
     } else {

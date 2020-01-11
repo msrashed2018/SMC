@@ -26,7 +26,7 @@ public class Verification extends JFrame {
 //	JButton btnClose = null;
 	JButton btnImg = null;
 	JLabel citizenNameLabel = null;
-	JTextField citizenNameTextfield = null;
+	JLabel citizenNameTextfield = null;
 //	JRadioButton radioISO = null;
 //	JRadioButton radioANSI = null;
 
@@ -73,10 +73,10 @@ public class Verification extends JFrame {
 		citizenNameLabel.setText("Citizen Name:");
 		this.add(citizenNameLabel);
 		citizenNameLabel.setBounds(30, 5 + nRsize, 120, 30);
-		citizenNameTextfield = new JTextField(14);
+		citizenNameTextfield = new JLabel();
 		citizenNameTextfield.setEnabled(false);
 		citizenNameTextfield.setFont(new Font(Font.SERIF, Font.PLAIN, 19));
-		citizenNameTextfield.setCaretColor(Color.BLACK);
+//		citizenNameTextfield.setCaretColor(Color.BLACK);
 		this.add(citizenNameTextfield);
 		citizenNameTextfield.setBounds(150, 5 + nRsize, 250, 30);
 

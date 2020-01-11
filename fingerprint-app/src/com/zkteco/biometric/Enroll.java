@@ -25,7 +25,7 @@ public class Enroll extends JFrame {
 //	JButton btnClose = null;
 	JButton btnImg = null;
 	JLabel citizenNameLabel = null;
-	JTextField citizenNameTextfield = null;
+	JLabel citizenNameTextfield = null;
 //	JRadioButton radioISO = null;
 //	JRadioButton radioANSI = null;
 
@@ -74,7 +74,7 @@ public class Enroll extends JFrame {
 		citizenNameLabel.setText("Citizen Name:");
 		this.add(citizenNameLabel);
 		citizenNameLabel.setBounds(30, 5 + nRsize, 103, 30);
-		citizenNameTextfield = new JTextField(14);
+		citizenNameTextfield = new JLabel();
 		this.add(citizenNameTextfield);
 		citizenNameTextfield.setBounds(150, 5 + nRsize, 250, 30);
 		citizenNameTextfield.setEnabled(false);

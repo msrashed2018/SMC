@@ -48,7 +48,7 @@ import { ConfirmModalComponent } from './views/confirm-modal/confirm-modal.compo
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthInterceptor } from './services/authentication/jwt/auth-interceptor';
 import { FingerprintConfirmModalComponent } from './views/fingerprint-confirm-modal/fingerprint-confirm-modal.component';
-
+import { ErrorModalComponent } from './views/error-modal/error-modal.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -78,7 +78,8 @@ import { FingerprintConfirmModalComponent } from './views/fingerprint-confirm-mo
     P500Component,
     LoginComponent,
     ConfirmModalComponent,
-    FingerprintConfirmModalComponent
+    FingerprintConfirmModalComponent,
+    ErrorModalComponent
     
   ],
  
@@ -90,7 +91,7 @@ import { FingerprintConfirmModalComponent } from './views/fingerprint-confirm-mo
   {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   DatePipe],
   bootstrap: [ AppComponent ],
-  entryComponents : [ ConfirmModalComponent, FingerprintConfirmModalComponent],
-  exports : [ ConfirmModalComponent, FingerprintConfirmModalComponent]
+  entryComponents : [ ConfirmModalComponent, FingerprintConfirmModalComponent,ErrorModalComponent],
+  exports : [ ConfirmModalComponent, FingerprintConfirmModalComponent, ErrorModalComponent]
 })
 export class AppModule { }

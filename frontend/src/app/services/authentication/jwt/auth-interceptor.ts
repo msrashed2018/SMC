@@ -5,6 +5,7 @@ import { TokenStorageService } from './token-storage.service';
 import { tap, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { ErrorModalService } from '../../../views/error-modal/error-modal.service';
 
 
 
@@ -12,7 +13,7 @@ const TOKEN_HEADER_KEY = 'Authorization';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor{
-    constructor(private router: Router, private token: TokenStorageService) { }
+    constructor(private router: Router, private token: TokenStorageService, private errorModalSserive: ErrorModalService) { }
  
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let authReq = req;
@@ -44,6 +45,12 @@ export class AuthInterceptor implements HttpInterceptor{
             // return throwError(error)
         }else if(error.status === 0){
             // this.router.navigate(['500']);
+        }
+        // console.error("Error",error);
+        if(error.error != null ){
+            this.errorModalSserive.error("ERROR",error.error.message);
+        }else{
+            this.errorModalSserive.error("ERROR","عفوا، حدث خطا، حاول مره أخرى");
         }
         return throwError(error)
     }

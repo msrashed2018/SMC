@@ -1,1 +1,2 @@
 fingerprint-endpoint-url=http://localhost:8080/ministry-of-health/api
+bind-port=9797
